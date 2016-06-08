@@ -1,0 +1,126 @@
+
+
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<title>友来宝-古玩收藏交流个人门户,基于微博互助鉴宝平台</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta content="all" name="robots" />
+		<meta name="description" content="Youlaibao.com 友来宝是一个稀有物品收藏展示平台,也是民间收藏爱好者,展示藏品,网络互助鉴赏藏品,寻宝捡漏,学习交流的个人门户网站" />
+		<meta name="keywords" content="博物收藏,馆藏,馆藏精品,民间收藏,民间藏宝,古玩收藏,古玩鉴赏,求鉴定,艺术品收藏" />
+		<meta name="copyright" content="youlaibao.com 友来宝 版权所有2012" />
+		<meta name="author" content="周 &amp; 爆破" />
+		<link rel="stylesheet" href="/assets/css/youlaibao.css?v=20140604">
+		<!--[if lt IE 9]>
+			<script src="/assets/js/html5.js"></script>
+		<![endif]-->
+	</head>
+
+	<body onload="setTimeout('javascript:history.back();',3000);">
+		<!-- Navbar
+		================================================== -->
+				
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="brand mybrand" href="http://www.youlaibao.com"><i class="myicon-brand-20"></i> <span class="mybrand-name">友来宝</span></a>
+					
+					<ul class="nav pull-right">
+						<li><a href="/register">注册</a></li>
+						<li><a href="/login/treatment&act=404">登录</a></li>
+					</ul>
+					
+					<div class="nav-collapse collapse">
+						<ul class="nav">
+							<li><a href="http://www.youlaibao.com">首页</a></li>
+							<li ><a href="/appr">求鉴定</a></li>
+							<li ><a href="/hunt">寻宝</a></li>
+							<li ><a href="/video">视频</a></li>
+							<li class="dropdown ">
+								<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">娱乐 <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="/beauty">美女</a></li>
+									<li><a href="/plot">段子</a></li>
+									<li><a href="/gif">GIF</a></li>
+									<li><a href="/relish">美食</a></li>
+									<li><a href="/trave">旅游</a></li>
+								</ul>
+							</li>
+							<!-- <li ><a href="/relish">美食</a></li>
+							<li ><a href="/gif">GIF</a></li>
+							<li ><a href="/trave">旅游</a></li> -->
+							<!--<li ><a href="/show">展示</a></li> -->
+							<!-- <li ><a href="/appr">鉴赏</a></li> -->
+							<!-- <li ><a href="/auction">拍卖</a></li> -->
+						</ul>
+						<form class="navbar-search pull-left" method="post" action="/search" id="searcform">
+							<input type="text" class="search-query input-small" name="searchname" id="searchname" onblur="return searchSubmit();" placeholder="搜索" value="">
+							<input type="hidden" name="curPage" id="searchpage" value=""/>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div><!-- /Navbar -->
+		<div class="container">
+			<section class="service-error">
+				<h1>404 Error</h1>
+				<p>没有找到您需要的文件；您确定网址正确吗？如果确定，请联系管理员。<p>
+				<p><a class="btn" href="javascript:history.back()"><i class="icon-arrow-left"></i> 返回</a></p>
+			</section>
+		</div><!-- /container -->
+
+				
+		<div class="modal hide" id="popLogin">
+			<div class="modal-header">
+				<a class="close" onclick="closefoot('popLogin')">×</a>
+				<h3>快捷登录</h3>
+			</div>
+			<div class="modal-body">
+				<div style="text-align:center;">
+					<a class="btn btn-large btn-primary" href="/servlet/sina" ><i class="myicon-sina-20"></i> 登录</a>
+					<a class="btn btn-large btn-primary" href="/servlet/qq" ><i class="myicon-qq-20"></i> 登录</a>
+					<a class="btn btn-large btn-primary" href="/servlet/douban" ><i class="myicon-douban-20"></i> 登录</a>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<!-- <a href="/register" class="btn">注册</a> <a href="/login/treatment&act=404" class="btn">登录</a> -->
+				<!-- 登录即可查看更多藏品 -->
+				<a href="javascript:;" onclick="closefoot('popLogin')" class="btn">关闭</a>
+			</div>
+		</div>
+		<footer class="footer">
+			<div class="container">
+				<a href="javascript:;" class="pull-right" id="back-to-top">Back to top</a>
+				<ul class="footer-links">
+					<li>&copy; 2009 Copyright <a href="http://www.youlaibao.com" class="mybrand">YOULAIBAO.COM</a> All rights reserved.</li>
+					<li><a href="http://www.miitbeian.gov.cn/" target="_blank">鲁ICP备12005010号</a></li>
+					<li><a href="/sitemap" target="_blank">网站地图</a></li>
+					<li><a href="/about" target="_blank">关于我们</a></li>
+					<li><a href="/declare" target="_blank">声明</a></li>
+					<li><a href="/agreements" target="_blank">用户协议</a></li>
+					<li><a href="/cooperate" target="_blank">合作</a></li>
+				</ul>
+			</div>
+		</footer>
+		<script type="text/javascript">
+		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F97fd40594fd6ba01c40d67e13787e5b6' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		
+
+		<!-- Le javascript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="/assets/js/jquery.js?v=20120201"></script>
+		<script src="/assets/js/bootstrap.js?v=20120201"></script>
+		<script src="/assets/js/jquery.masonry.min.js?v=20120201"></script>
+		<script src="/assets/js/my.js?v=20120201"></script>
+
+	</body>
+</html>
