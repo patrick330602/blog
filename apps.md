@@ -4,7 +4,8 @@ title: Apps 应用
 permalink: /apps/
 ---
 [<img src="{{ site.baseurl }}/images/wecode.png" width="120px"/>](#)
-### WeCode
+
+### WeCode ###
 
 This is a powerful UWP development toolkit for all developers.
 
@@ -32,4 +33,4 @@ Bug Fixes:
 - You can now unselect the target logo and unplated target logo with one click; 
 - When clicking the icon with the same name but different Unicode, they no longer display the same Unicode in detail page.  
 
-[<img src="{{ site.baseurl }}/images/get-app.png" width="120px"/>](https://www.microsoft.com/store/apps/9nblggh5p90f)
+[<img src="{{ site.baseurl }}/images/get-app.png" width="300px"/>](https://www.microsoft.com/store/apps/9nblggh5p90f)
