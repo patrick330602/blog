@@ -18,7 +18,10 @@ html {
 }
 
 body {
-	background: #FFFFFF $url(images/website-we-bg.png) no-repeat fixed top;
+  background-image: $url('images/website-we-bg.png');
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-position:top;
   font: 18px/1.4 $helvetica;
   color: $darkGray;
 }
