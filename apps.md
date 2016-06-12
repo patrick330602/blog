@@ -7,12 +7,12 @@ permalink: /apps/
   <tr>
     <td width="40%"><img src="{{ site.baseurl }}/images/wecode.png" width="120px"/></th>
     <td width="60%" rowspan="2">
-    ### WeCode
+### WeCode
     </th>
   </tr>
   <tr>
     <td width="40%">
-    [<img src="{{ site.baseurl }}/images/get-app.png" width="300px"/>](https://www.microsoft.com/store/apps/9nblggh5p90f)
+[<img src="{{ site.baseurl }}/images/get-app.png" width="300px"/>](https://www.microsoft.com/store/apps/9nblggh5p90f)
      </td>
   </tr>
 </table>
