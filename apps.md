@@ -4,11 +4,9 @@ title: Apps 应用
 permalink: /apps/
 ---
 
-<img src="{{ site.baseurl }}/images/wecode.png" width="120px"/>
+[<img src="{{ site.baseurl }}/images/wecode.png" width="120px"/>]()
 
-
-
-### WeCode ###
+### WeCode
 
 This is a powerful UWP development toolkit for all developers.
 
