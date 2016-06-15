@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Byte[],Stream,Ibuffer,IRandomAccessStream的互相转换 | WE. Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="今天做8.1程序时彻底弄混了IRandomAcessStream和Stream。。。于是乎，我找了一个可用的不同类型转换。。。。
+Stream 转IRandomAccessStream方法一：12345byte[] bytes = StreamToBytes(stream);InMemoryRandomAccessStream memoryStream = new InMemoryRandomAc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Byte[],Stream,Ibuffer,IRandomAccessStream的互相转换">
+<meta property="og:url" content="http://www.westudio.ml/2014/09/2014-9-7-Byte-Stream-Ibuffer-conversion/index.html">
+<meta property="og:site_name" content="WE. Studio">
+<meta property="og:description" content="今天做8.1程序时彻底弄混了IRandomAcessStream和Stream。。。于是乎，我找了一个可用的不同类型转换。。。。
+Stream 转IRandomAccessStream方法一：12345byte[] bytes = StreamToBytes(stream);InMemoryRandomAccessStream memoryStream = new InMemoryRandomAc">
+<meta property="og:updated_time" content="2016-06-15T09:38:45.058Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Byte[],Stream,Ibuffer,IRandomAccessStream的互相转换">
+<meta name="twitter:description" content="今天做8.1程序时彻底弄混了IRandomAcessStream和Stream。。。于是乎，我找了一个可用的不同类型转换。。。。
+Stream 转IRandomAccessStream方法一：12345byte[] bytes = StreamToBytes(stream);InMemoryRandomAccessStream memoryStream = new InMemoryRandomAc">
+  
+    <link rel="alternate" href="/atom.xml" title="WE. Studio" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">WE. Studio</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.westudio.ml"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2014-9-7-Byte-Stream-Ibuffer-conversion" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/2014-9-7-Byte-Stream-Ibuffer-conversion/" class="article-date">
+  <time datetime="2014-09-07T12:46:25.000Z" itemprop="datePublished">2014-09-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Byte[],Stream,Ibuffer,IRandomAccessStream的互相转换
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天做8.1程序时彻底弄混了IRandomAcessStream和Stream。。。于是乎，我找了一个可用的不同类型转换。。。。</p>
+<h3 id="Stream-转IRandomAccessStream"><a href="#Stream-转IRandomAccessStream" class="headerlink" title="Stream 转IRandomAccessStream"></a>Stream 转IRandomAccessStream</h3><h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">byte[] bytes = StreamToBytes(stream);</span><br><span class="line">InMemoryRandomAccessStream memoryStream = new InMemoryRandomAccessStream();</span><br><span class="line">DataWriter datawriter = new DataWriter(memoryStream.GetOutputStreamAt(0));</span><br><span class="line">datawriter.WriteBytes(bytes);</span><br><span class="line">await datawriter.StoreAsync();</span><br></pre></td></tr></table></figure>
+ <a id="more"></a>
+<h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var randomAccessStream = new InMemoryRandomAccessStream();</span><br><span class="line">var outputStream = randomAccessStream.GetOutputStreamAt(0);</span><br><span class="line">await RandomAccessStream.CopyAsync(stream.AsInputStream(), outputStream);</span><br></pre></td></tr></table></figure>
+<h3 id="IRandomAccessStream-转-Stream"><a href="#IRandomAccessStream-转-Stream" class="headerlink" title="IRandomAccessStream 转 Stream"></a>IRandomAccessStream 转 Stream</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stream stream=WindowsRuntimeStreamExtensions.AsStreamForRead(randomStream.GetInputStreamAt(0));</span><br></pre></td></tr></table></figure>
+<h3 id="Ibuffer转Stream"><a href="#Ibuffer转Stream" class="headerlink" title="Ibuffer转Stream"></a>Ibuffer转Stream</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stream stream = WindowsRuntimeBufferExtensions.AsStream(buffer);</span><br></pre></td></tr></table></figure>
+<h3 id="Stream转Ibuffer"><a href="#Stream转Ibuffer" class="headerlink" title="Stream转Ibuffer"></a>Stream转Ibuffer</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> MemoryStream memoryStream = new MemoryStream();           </span><br><span class="line"></span><br><span class="line"> if (stream != null)</span><br><span class="line"> &#123;</span><br><span class="line">  byte[] bytes = ReadFully(stream);</span><br><span class="line">  if (bytes != null)</span><br><span class="line">  &#123;</span><br><span class="line">       var binaryWriter = new BinaryWriter(memoryStream);</span><br><span class="line">       binaryWriter.Write(bytes);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">IBuffer buffer=WindowsRuntimeBufferExtensions.GetWindowsRuntimeBuffer(memoryStream,0,(int)memoryStream.Length);</span><br></pre></td></tr></table></figure>
+<h3 id="Ibuffer转byte"><a href="#Ibuffer转byte" class="headerlink" title="Ibuffer转byte[]"></a>Ibuffer转byte[]</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">byte[] bytes=WindowsRuntimeBufferExtensions.ToArray(buffer,0,(int)buffer.Length);</span><br></pre></td></tr></table></figure>
+<h3 id="Byte-转Ibuffer"><a href="#Byte-转Ibuffer" class="headerlink" title="Byte[]转Ibuffer"></a>Byte[]转Ibuffer</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WindowsRuntimeBufferExtensions.AsBuffer(bytes,0,bytes.Length);</span><br></pre></td></tr></table></figure>
+<h3 id="Ibuffer转IrandomAccessStream"><a href="#Ibuffer转IrandomAccessStream" class="headerlink" title="Ibuffer转IrandomAccessStream"></a>Ibuffer转IrandomAccessStream</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">InMemoryRandomAccessStream inStream = new InMemoryRandomAccessStream();</span><br><span class="line">DataWriter datawriter = new DataWriter(inStream.GetOutputStreamAt(0));</span><br><span class="line">datawriter.WriteBuffer(buffer,0,buffer.Length);</span><br><span class="line"></span><br><span class="line">await datawriter.StoreAsync();</span><br></pre></td></tr></table></figure>
+<h3 id="IrandomAccessStream转Ibuffer"><a href="#IrandomAccessStream转Ibuffer" class="headerlink" title="IrandomAccessStream转Ibuffer"></a>IrandomAccessStream转Ibuffer</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Stream stream=WindowsRuntimeStreamExtensions.AsStreamForRead(randomStream.GetInputStreamAt(0));</span><br><span class="line">MemoryStream memoryStream = new MemoryStream();           </span><br><span class="line">if (stream != null)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">  byte[] bytes = ReadFully(stream);</span><br><span class="line">  if (bytes != null)</span><br><span class="line">  &#123;</span><br><span class="line">     var binaryWriter = new BinaryWriter(memoryStream);</span><br><span class="line">     binaryWriter.Write(bytes);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">IBuffer buffer=WindowsRuntimeBufferExtensions.GetWindowsRuntimeBuffer(memoryStream,0,(int)memoryStream.Length);</span><br></pre></td></tr></table></figure>
+<h3 id="IRandomAccessStream转FileInputStream"><a href="#IRandomAccessStream转FileInputStream" class="headerlink" title="IRandomAccessStream转FileInputStream"></a>IRandomAccessStream转FileInputStream</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileInputStream inputStream=randomStream.GetInputStreamAt(0) as FileInputStream;</span><br></pre></td></tr></table></figure>
+<h3 id="IRandomAccessStream转FileOutputStream"><a href="#IRandomAccessStream转FileOutputStream" class="headerlink" title="IRandomAccessStream转FileOutputStream"></a>IRandomAccessStream转FileOutputStream</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileOutputStream outStream= randomStream.GetOutputStreamAt(0) as FileOutputStream;</span><br></pre></td></tr></table></figure>
+<h3 id="Stream转byte"><a href="#Stream转byte" class="headerlink" title="Stream转byte[]"></a>Stream转byte[]</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static byte[] ConvertStreamTobyte(Stream input)</span><br><span class="line">   &#123;</span><br><span class="line">       byte[] buffer = new byte[16 * 1024];</span><br><span class="line">       using (MemoryStream ms = new MemoryStream())</span><br><span class="line">           &#123;</span><br><span class="line">               int read;</span><br><span class="line">               while ((read = input.Read(buffer, 0, buffer.Length)) &gt; 0)</span><br><span class="line">               &#123;</span><br><span class="line">                   ms.Write(buffer, 0, read);</span><br><span class="line">               &#125;</span><br><span class="line">           return ms.ToArray();</span><br><span class="line">           &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Byte转Stream"><a href="#Byte转Stream" class="headerlink" title="Byte转Stream"></a>Byte转Stream</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public Stream BytesToStream(byte[] bytes)</span><br><span class="line">    &#123;</span><br><span class="line">        Stream stream = new MemoryStream(bytes);</span><br><span class="line">        return stream;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Stream转MemoryStream"><a href="#Stream转MemoryStream" class="headerlink" title="Stream转MemoryStream"></a>Stream转MemoryStream</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public static MemoryStream ConvertStreamToMemoryStream(Stream stream)</span><br><span class="line">&#123;</span><br><span class="line">        MemoryStream memoryStream = new MemoryStream();</span><br><span class="line">        if (stream != null)</span><br><span class="line">        &#123;</span><br><span class="line">            byte[] buffer = ReadFully(stream);</span><br><span class="line">            if (buffer != null)</span><br><span class="line">            &#123;</span><br><span class="line">                var binaryWriter = new BinaryWriter(memoryStream);</span><br><span class="line">                binaryWriter.Write(buffer);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return memoryStream;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="IrandomAccessStream转byte"><a href="#IrandomAccessStream转byte" class="headerlink" title="IrandomAccessStream转byte[]"></a>IrandomAccessStream转byte[]</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stream stream = WindowsRuntimeStreamExtensions.AsStreamForRead(randomStream.GetInputStreamAt(0));</span><br><span class="line">MemoryStream ms = new MemoryStream();</span><br><span class="line">await stream.CopyToAsync(ms);</span><br><span class="line">byte[] bytes = ms.ToArray();</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.westudio.ml/2014/09/2014-9-7-Byte-Stream-Ibuffer-conversion/" data-id="cipgvklww0001pc6fbm9c6d7k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/10/wp-feedback/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Windows Phone 8 开发：应用崩溃时给作者发送错误报告邮件
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/06/2016-6-12-Color/">Color With C#</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/">How to judge whether a webpage existed in a fast way</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/How-to-create-a-new-window-in-UWP/">How to create a new window in UWP</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/Usage-Of-the-new-Segoe-MDL2-icons/">Usage Of the new Segoe MDL2 icons</a>
+          </li>
+        
+          <li>
+            <a href="/2014/10/WP8-LongListSelector-pinyin/">Windows Phone 8 LongListSelector按拼音首字母分组</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Patrick J. Wu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
