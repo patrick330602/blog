@@ -1,68 +1,123 @@
 <!DOCTYPE html>
-<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
+<html>
 <head>
   <meta charset="utf-8">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>WE. Studio</title>
+  
+  <title>Color With C# | WE. Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Recently, i am doing a research on a project to convert RGB to HSB, which leads me to an awesome article on CodeProject from 9 years ago. Hence, I sort the article a little bit to help myself unders">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Color With C#">
+<meta property="og:url" content="http://www.westudio.ml/2016/06/2016-6-12-Color/index.html">
+<meta property="og:site_name" content="WE. Studio">
+<meta property="og:description" content="Recently, i am doing a research on a project to convert RGB to HSB, which leads me to an awesome article on CodeProject from 9 years ago. Hence, I sort the article a little bit to help myself unders">
+<meta property="og:image" content="http://www.westudio.ml/images/color/rgb.png">
+<meta property="og:image" content="http://www.westudio.ml/images/color/hsv.png">
+<meta property="og:image" content="http://www.westudio.ml/images/color/hsl.png">
+<meta property="og:image" content="http://www.westudio.ml/images/color/cmyk.png">
+<meta property="og:image" content="http://www.westudio.ml/images/color/yuv.png">
+<meta property="og:image" content="http://www.westudio.ml/images/color/xyz.png">
+<meta property="og:image" content="http://www.westudio.ml/images/color/rgb2-1.png">
+<meta property="og:image" content="http://www.westudio.ml/images/color/rgb2-2.png">
+<meta property="og:image" content="http://www.westudio.ml/images/color/rgb2-3.png">
+<meta property="og:image" content="http://www.westudio.ml/images/color/rgb2-4.png">
+<meta property="og:image" content="http://www.westudio.ml/images/color/rgb2-5.png">
+<meta property="og:image" content="http://www.westudio.ml/images/color/rgb2-6.png">
+<meta property="og:image" content="http://www.westudio.ml/!--￼36-->/images/color/xyz2-1.png">
+<meta property="og:image" content="http://www.westudio.ml/!--￼37-->/images/color/xyz2-2.png">
+<meta property="og:image" content="http://www.westudio.ml/!--￼38-->/images/color/xyz2-3.png">
+<meta property="og:image" content="http://www.westudio.ml/!--￼39-->/images/color/xyz2-4.png">
+<meta property="og:image" content="http://www.westudio.ml/!--￼40-->/images/color/xyz2-5.png">
+<meta property="og:image" content="http://www.westudio.ml/!--￼41-->/images/color/xyz2-6.png">
+<meta property="og:image" content="http://www.westudio.ml/!--￼42-->/images/color/xyz2-7.png">
+<meta property="og:image" content="http://www.westudio.ml/!--￼43-->/images/color/lab2-1.png">
+<meta property="og:image" content="http://www.westudio.ml/!--￼44-->/images/color/lab2-2.png">
+<meta property="og:image" content="http://www.westudio.ml/!--￼45-->/images/color/lab2-3.png">
+<meta property="og:image" content="http://www.westudio.ml/!--￼46-->/images/color/lab2-4-1.png">
+<meta property="og:image" content="http://www.westudio.ml/!--￼47-->/images/color/lab2-4-2.png">
+<meta property="og:image" content="http://www.westudio.ml/!--￼48-->/images/color/lab2-4-3.png">
+<meta property="og:image" content="http://www.westudio.ml/!--￼49-->/images/color/lab2-5-1.png">
+<meta property="og:image" content="http://www.westudio.ml/!--￼50-->/images/color/lab2-5-2.png">
+<meta property="og:image" content="http://www.westudio.ml/!--￼51-->/images/color/lab2-5-3.png">
+<meta property="og:image" content="http://www.westudio.ml/!--￼52-->/images/color/lab2-6-1.png">
+<meta property="og:image" content="http://www.westudio.ml/!--￼53-->/images/color/lab2-6-2.png">
+<meta property="og:image" content="http://www.westudio.ml/!--￼54-->/images/color/lab2-6-3.png">
+<meta property="og:updated_time" content="2016-06-15T10:17:08.030Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Color With C#">
+<meta name="twitter:description" content="Recently, i am doing a research on a project to convert RGB to HSB, which leads me to an awesome article on CodeProject from 9 years ago. Hence, I sort the article a little bit to help myself unders">
+<meta name="twitter:image" content="http://www.westudio.ml/images/color/rgb.png">
+  
+    <link rel="alternate" href="/atom.xml" title="WE. Studio" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
   <link rel="stylesheet" href="/css/style.css">
-  <!--在这里倒入jquery 方便处理部分页面的jquery-->
-  <script src="http://lib.sinaapp.com/js/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+  
+
 </head>
 
 <body>
-	
-  <header class="site-header site-color" id="site-header-id">
-
-  <div class="container">
-      <h1><a href="/" title="WE. Studio"><span class="octicon octicon-mark-github"></span> WE. Studio</a></h1>
-      <nav class="site-header-nav" role="navigation">
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">WE. Studio</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
         
-              
-              <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="Home">Home</a>
+          <a class="main-nav-link" href="/">Home</a>
         
-              
-              <a href="/subentry/Life/" target="target" class=" site-header-nav-item hvr-underline-from-center" title="Life">Life</a>
-        
-              
-              <a href="/open-source/"  class=" site-header-nav-item hvr-underline-from-center" title="Open-Source">Open-Source</a>
-        
-              
-              <a href="/blog/"  class=" site-header-nav-item hvr-underline-from-center" title="Blog">Blog</a>
-        
-              
-              <a href="/guestbook/"  class=" site-header-nav-item hvr-underline-from-center" title="Guestbook">Guestbook</a>
+          <a class="main-nav-link" href="/archives">Archives</a>
         
       </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.westudio.ml"></form>
+      </div>
+    </div>
   </div>
 </header>
+      <div class="outer">
+        <section id="main"><article id="post-2016-6-12-Color" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/2016-6-12-Color/" class="article-date">
+  <time datetime="2016-06-15T08:50:52.709Z" itemprop="datePublished">2016-06-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Color With C#
+    </h1>
+  
 
-	
-    <section class="collection-head collection-head-scrolled geopattern" data-pattern-id="Color With C#" >
-
-    <div class="container">
-        <div class="collection-title">
-            <h1 class="collection-header">Color With C#</h1>
-            <div class="collection-info">
-                <span class="meta-info">
-                    
-                        <span class="octicon octicon-calendar"></span>
-                        <time datetime="2016-06-15T08:50:52.709Z" itemprop="datePublished">2016-06-15</time>
-                    
-                </span>
-            </div>
-        </div>
-    </div>
-</section>
-	
-
-    <section class="container content">
-
-    <div class="columns">
-        <div class="column three-fourths" >
-            <article class="article-content article-entry">
-                <p>  Recently, i am doing a research on a project to convert RGB to HSB, which leads me to an awesome <a href="http://www.codeproject.com/Articles/19045/Manipulating-colors-in-NET-Part-1" target="_blank" rel="external">article</a> on CodeProject from 9 years ago. Hence, I sort the article a little bit to help myself understand more of color agorithm.</p>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>  Recently, i am doing a research on a project to convert RGB to HSB, which leads me to an awesome <a href="http://www.codeproject.com/Articles/19045/Manipulating-colors-in-NET-Part-1" target="_blank" rel="external">article</a> on CodeProject from 9 years ago. Hence, I sort the article a little bit to help myself understand more of color agorithm.</p>
  <a id="more"></a>
 <h3 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h3><p><a href="#def">What is “Color”?</a></p>
 <p><a href="#cm">Color models</a></p>
@@ -447,109 +502,113 @@
 </ul>
 <p>Also, I am planning to write a C# class for colors for easier use in UWP and WPF apps. Hope you like it!  <a href="#">link(not finished)</a></p>
 
-            </article>
-            
-                <div class="share">
-                    <!--开启分享-->
-<div class="share-component"></div>
-
-<script src="/js/share.min.js"></script>
-                </div>    
-            
-            
-                <div class="comment">
-                    
-<div class="ds-thread" data-thread-key="2016-6-12-Color" data-title="Color With C#" data-url="http://www.westudio.ml/2016/06/2016-6-12-Color/"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"yumemor"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0]
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-</script>
-                </div>
-            
-        </div>
-        <div class="column one-fourth">
-            
-                <h3>Post Directory</h3>
-
-<div id="post-directory-module">
-	<section class="post-directory">
-		<p><strong class="toc-title">文章目录</strong></p>
-		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Index"><span class="toc-text">Index</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#What-is-“Color”"><span class="toc-text">What is “Color”?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Color-Models"><span class="toc-text">Color Models</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RGB-Red-Green-Blue"><span class="toc-text">RGB (Red Green Blue)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HSB-color-space"><span class="toc-text">HSB color space</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HSL-color-space"><span class="toc-text">HSL color space</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conversion-between-models"><span class="toc-text">Conversion between models</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#A-RGB-Conversions"><span class="toc-text">A - RGB Conversions</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-RGB-to-HSB"><span class="toc-text">a - RGB to HSB</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-RGB-to-HSL"><span class="toc-text">b - RGB to HSL</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#c-RGB-to-CMYK"><span class="toc-text">c - RGB to CMYK</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#d-RGB-to-YUV-YUV444"><span class="toc-text">d - RGB to YUV (YUV444)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#e-RGB-to-web-color"><span class="toc-text">e - RGB to web color</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#f-RGB-to-XYZ"><span class="toc-text">f - RGB to XYZ</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#g-RGB-to-L-a-b"><span class="toc-text">g - RGB to L*a*b*</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#B-HSB-conversions"><span class="toc-text">B - HSB conversions</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-HSB-to-RGB"><span class="toc-text">a - HSB to RGB</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-HSB-to-HSL"><span class="toc-text">b - HSB to HSL</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#c-HSB-to-CMYK"><span class="toc-text">c - HSB to CMYK</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#d-HSB-to-YUV"><span class="toc-text">d - HSB to YUV</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C-HSL-conversions"><span class="toc-text">C - HSL conversions</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-HSL-to-RGB"><span class="toc-text">a - HSL to RGB</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-HSL-to-HSB"><span class="toc-text">b - HSL to HSB</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#c-HSL-to-CMYK"><span class="toc-text">c - HSL to CMYK</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#d-HSL-to-YUV"><span class="toc-text">d - HSL to YUV</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#D-CMYK-conversions"><span class="toc-text">D - CMYK conversions</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-CMYK-to-RGB"><span class="toc-text">a - CMYK to RGB</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-CMYK-to-HSL"><span class="toc-text">b - CMYK to HSL</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#c-CMYK-to-HSB"><span class="toc-text">c - CMYK to HSB</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#d-CMYK-to-YUV"><span class="toc-text">d - CMYK to YUV</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#E-YUV-conversions"><span class="toc-text">E - YUV conversions</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-YUV-to-RGB"><span class="toc-text">a - YUV to RGB</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-YUV-to-HSL"><span class="toc-text">b - YUV to HSL</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#c-YUV-to-HSB"><span class="toc-text">c - YUV to HSB</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#d-YUV-to-CMYK"><span class="toc-text">d - YUV to CMYK</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#F-XYZ-conversions"><span class="toc-text">F - XYZ conversions</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#a-XYZ-to-RGB"><span class="toc-text">a - XYZ to RGB</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-XYZ-to-L-a-b"><span class="toc-text">b - XYZ to L*a*b*</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#b-L-a-b-to-RGB"><span class="toc-text">b - L*a*b* to RGB</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Using-the-code"><span class="toc-text">Using the code</span></a></li></ol>
-	</section>
-</div>
-            
-        </div>
-       
+      
     </div>
+    <footer class="article-footer">
+      <a data-url="http://www.westudio.ml/2016/06/2016-6-12-Color/" data-id="cipgvklx50004pc6ftty6bq0q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">How to judge whether a webpage existed in a fast way</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
 </section>
+        
+          <aside id="sidebar">
+  
+    
 
-<footer class="container">
-    <div class="site-footer" role="contentinfo">
-        <div class="copyright left mobile-block">
-                © 2016
-                <span title="yumemor">yumemor</span>
-                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
-        </div>
+  
+    
 
-        <ul class="site-footer-links right mobile-hidden">
-            <li>
-                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
-            </li>
-        </ul>
-
-        <a href="https://github.com/yumemor/yumemor.github.io" target="_blank" aria-label="view source code">
-            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
-        </a>
-
-        <ul class="site-footer-links mobile-hidden">
-            
-             
-              
-              <li>
-                <a href="/"  title="Home">Home</a>
-              </li>
-            
-              
-              <li>
-                <a href="/subentry/Life/" target="target" title="Life">Life</a>
-              </li>
-            
-              
-              <li>
-                <a href="/open-source/"  title="Open-Source">Open-Source</a>
-              </li>
-            
-              
-              <li>
-                <a href="/blog/"  title="Blog">Blog</a>
-              </li>
-            
-              
-              <li>
-                <a href="/guestbook/"  title="Guestbook">Guestbook</a>
-              </li>
-            
-
-        </ul>
-
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
     </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/06/2016-6-12-Color/">Color With C#</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/">How to judge whether a webpage existed in a fast way</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/How-to-create-a-new-window-in-UWP/">How to create a new window in UWP</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/Usage-Of-the-new-Segoe-MDL2-icons/">Usage Of the new Segoe MDL2 icons</a>
+          </li>
+        
+          <li>
+            <a href="/2014/10/WP8-LongListSelector-pinyin/">Windows Phone 8 LongListSelector按拼音首字母分组</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Patrick J. Wu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
 </footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
 
-		
-		<script src="/js/typer.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-		<script src="/js/geopattern.js"></script>
 
-		<script src="/js/index.js"></script>
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
-		 <script src="/js/popular_repo.js"></script> 
 
-	</body>
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
 </html>
