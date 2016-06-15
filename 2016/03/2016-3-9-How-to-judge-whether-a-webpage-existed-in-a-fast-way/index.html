@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>How to judge whether a webpage existed in a fast way | WE. Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Recently I am coding a app for viewing newspaper. Because there are no API, I have to manually find whether the page ever existed. So I try to look on the Internet, and find a try catch way to judge i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to judge whether a webpage existed in a fast way">
+<meta property="og:url" content="http://www.westudio.ml/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/index.html">
+<meta property="og:site_name" content="WE. Studio">
+<meta property="og:description" content="Recently I am coding a app for viewing newspaper. Because there are no API, I have to manually find whether the page ever existed. So I try to look on the Internet, and find a try catch way to judge i">
+<meta property="og:image" content="http://www.westudio.ml/images/working-code.png">
+<meta property="og:updated_time" content="2016-06-15T09:38:18.433Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to judge whether a webpage existed in a fast way">
+<meta name="twitter:description" content="Recently I am coding a app for viewing newspaper. Because there are no API, I have to manually find whether the page ever existed. So I try to look on the Internet, and find a try catch way to judge i">
+<meta name="twitter:image" content="http://www.westudio.ml/images/working-code.png">
+  
+    <link rel="alternate" href="/atom.xml" title="WE. Studio" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">WE. Studio</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.westudio.ml"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/" class="article-date">
+  <time datetime="2016-03-09T00:00:00.000Z" itemprop="datePublished">2016-03-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      How to judge whether a webpage existed in a fast way
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Recently I am coding a app for viewing newspaper. Because there are no API, I have to manually find whether the page ever existed. So I try to look on the Internet, and find a try catch way to judge it:</p>
+ <a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">HttpWebResponse response = null;</span><br><span class="line"> var request = (HttpWebRequest)WebRequest.Create(/* url */);</span><br><span class="line"> request.Method = “HEAD”;</span><br><span class="line"></span><br><span class="line">try</span><br><span class="line"> &#123;</span><br><span class="line"> response = (HttpWebResponse)request.GetResponse();</span><br><span class="line"> &#125;</span><br><span class="line"> catch (WebException ex)</span><br><span class="line"> &#123;</span><br><span class="line"> /* A WebException will be thrown if the status of the response is not `200 OK` */</span><br><span class="line"> &#125;</span><br><span class="line"> finally</span><br><span class="line"> &#123;</span><br><span class="line"> // Don’t forget to close your response.</span><br><span class="line"> if (response != null)</span><br><span class="line"> &#123;</span><br><span class="line">response.Close()</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>However, I find that GetResponse method now no longer existed in .NET framework 4.5.2. So I find a another one that worked. But it is very slow. So I come up with an idea-using the HTTP head to find out whether it exists, and it is a lot faster:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HttpClient httpClient = new HttpClient();</span><br><span class="line"></span><br><span class="line">//Getting the Web Response.</span><br><span class="line"> HttpResponseMessage httpResponse = new HttpResponseMessage();</span><br><span class="line"> HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, new Uri(website));</span><br><span class="line"> httpResponse = await httpClient.SendRequestAsync(request);</span><br><span class="line"> if(httpResponse.ToString().Contains(“StatusCode: 404”))</span><br><span class="line"> &#123;</span><br><span class="line"> // do something when the page doesn’t exist</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/working-code.png" alt="real working code"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.westudio.ml/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/" data-id="cipgnbhiu0005bsu1m3lfa2ey" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/06/2016-6-12-Color/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          Color With C#
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/02/How-to-create-a-new-window-in-UWP/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">How to create a new window in UWP</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/06/2016-6-12-Color/">Color With C#</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/">How to judge whether a webpage existed in a fast way</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/How-to-create-a-new-window-in-UWP/">How to create a new window in UWP</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/Usage-Of-the-new-Segoe-MDL2-icons/">Usage Of the new Segoe MDL2 icons</a>
+          </li>
+        
+          <li>
+            <a href="/2014/10/WP8-LongListSelector-pinyin/">Windows Phone 8 LongListSelector按拼音首字母分组</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Patrick J. Wu<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

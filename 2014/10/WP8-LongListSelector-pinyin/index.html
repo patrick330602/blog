@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Windows Phone 8 LongListSelector按拼音首字母分组 | WE. Studio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Windows Phone 8的LongListSelector控件按拼音分组主要有两种方法，一个是在数据源里手工指定拼音首字母字段，作为index，这种方法效率高但会造成数据冗余不宜维护。另一个就是我今天介绍的方法，来自MSDN，虽然官网例子是针对是英文数据的首字母分组，但其实稍微改一下还是是支持中文的。
+实现方法很简单。首先你需要一个来自MSDN的AlphaKeyGroup类，代码如下：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows Phone 8 LongListSelector按拼音首字母分组">
+<meta property="og:url" content="http://www.westudio.ml/2014/10/WP8-LongListSelector-pinyin/index.html">
+<meta property="og:site_name" content="WE. Studio">
+<meta property="og:description" content="Windows Phone 8的LongListSelector控件按拼音分组主要有两种方法，一个是在数据源里手工指定拼音首字母字段，作为index，这种方法效率高但会造成数据冗余不宜维护。另一个就是我今天介绍的方法，来自MSDN，虽然官网例子是针对是英文数据的首字母分组，但其实稍微改一下还是是支持中文的。
+实现方法很简单。首先你需要一个来自MSDN的AlphaKeyGroup类，代码如下：">
+<meta property="og:updated_time" content="2016-06-15T09:39:03.805Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Windows Phone 8 LongListSelector按拼音首字母分组">
+<meta name="twitter:description" content="Windows Phone 8的LongListSelector控件按拼音分组主要有两种方法，一个是在数据源里手工指定拼音首字母字段，作为index，这种方法效率高但会造成数据冗余不宜维护。另一个就是我今天介绍的方法，来自MSDN，虽然官网例子是针对是英文数据的首字母分组，但其实稍微改一下还是是支持中文的。
+实现方法很简单。首先你需要一个来自MSDN的AlphaKeyGroup类，代码如下：">
+  
+    <link rel="alternate" href="/atom.xml" title="WE. Studio" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">WE. Studio</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.westudio.ml"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-WP8-LongListSelector-pinyin" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/10/WP8-LongListSelector-pinyin/" class="article-date">
+  <time datetime="2014-10-15T16:00:00.000Z" itemprop="datePublished">2014-10-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Windows Phone 8 LongListSelector按拼音首字母分组
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Windows Phone 8的LongListSelector控件按拼音分组主要有两种方法，一个是在数据源里手工指定拼音首字母字段，作为index，这种方法效率高但会造成数据冗余不宜维护。另一个就是我今天介绍的方法，来自MSDN，虽然官网例子是针对是英文数据的首字母分组，但其实稍微改一下还是是支持中文的。</p>
+<p>实现方法很简单。首先你需要一个来自MSDN的AlphaKeyGroup类，代码如下：</p>
+ <a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">public class AlphaKeyGroup&lt;T&gt; : List&lt;T&gt;&#123;</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// The delegate that is used to get the key information.</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    /// &lt;param name=&quot;item&quot;&gt;An object of type T&lt;/param&gt;</span><br><span class="line">    /// &lt;returns&gt;The key value to use for this object&lt;/returns&gt;</span><br><span class="line">    public delegate string GetKeyDelegate(T item);</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// The Key of this group.</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    public string Key &#123; get; private set; &#125;</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// Public constructor.</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    /// &lt;param name=&quot;key&quot;&gt;The key for this group.&lt;/param&gt;</span><br><span class="line">    public AlphaKeyGroup(string key)</span><br><span class="line">    &#123;</span><br><span class="line">        Key = key;</span><br><span class="line">    &#125;</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// Create a list of AlphaGroup&lt;T&gt; with keys set by a SortedLocaleGrouping.</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    /// &lt;param name=&quot;slg&quot;&gt;The &lt;/param&gt;</span><br><span class="line">    /// &lt;returns&gt;Theitems source for a LongListSelector&lt;/returns&gt;</span><br><span class="line">    private static List&lt;AlphaKeyGroup&lt;T&gt;&gt; CreateGroups(SortedLocaleGrouping slg)</span><br><span class="line">    &#123;</span><br><span class="line">        return slg.GroupDisplayNames.Select(key =&gt; new AlphaKeyGroup&lt;T&gt;(key)).ToList();</span><br><span class="line">    &#125;</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// Create a list of AlphaGroup&lt;T&gt; with keys set by a SortedLocaleGrouping.</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    /// &lt;param name=&quot;items&quot;&gt;The items to place in the groups.&lt;/param&gt;</span><br><span class="line">    /// &lt;param name=&quot;ci&quot;&gt;The CultureInfo to group and sort by.&lt;/param&gt;</span><br><span class="line">    /// &lt;param name=&quot;getKey&quot;&gt;A delegate to get the key from an item.&lt;/param&gt;</span><br><span class="line">    /// &lt;param name=&quot;sort&quot;&gt;Will sort the data if true.&lt;/param&gt;</span><br><span class="line">    /// &lt;returns&gt;An items source for a LongListSelector&lt;/returns&gt;</span><br><span class="line">    public static List&lt;AlphaKeyGroup&lt;T&gt;&gt; CreateGroups(IEnumerable&lt;T&gt; items, CultureInfo ci, GetKeyDelegate getKey, bool sort)</span><br><span class="line">    &#123;</span><br><span class="line">        var slg = new SortedLocaleGrouping(ci);</span><br><span class="line">        var list = CreateGroups(slg);</span><br><span class="line">        foreach (var item in items)</span><br><span class="line">        &#123;</span><br><span class="line">            var index = 0;</span><br><span class="line">            if (slg.SupportsPhonetics)</span><br><span class="line">            &#123;</span><br><span class="line">                //check if your database has yomi string for item</span><br><span class="line">                //if it does not, then do you want to generate Yomi or ask the user for this item.</span><br><span class="line">                //index = slg.GetGroupIndex(getKey(Yomiof(item)));</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                index = slg.GetGroupIndex(getKey(item));</span><br><span class="line">            &#125;</span><br><span class="line">            if (index &gt;= 0 &amp;&amp; index &lt; list.Count)</span><br><span class="line">            &#123;</span><br><span class="line">                list[index].Add(item);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (!sort) return list;</span><br><span class="line">        foreach (var group in list)</span><br><span class="line">        &#123;</span><br><span class="line">            @group.Sort((c0, c1) =&gt; ci.CompareInfo.Compare(getKey(c0), getKey(c1)));</span><br><span class="line">        &#125;</span><br><span class="line">        return list;</span><br><span class="line">    &#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>这个类里面主要的精髓就在于：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var slg = new SortedLocaleGrouping(ci);</span><br></pre></td></tr></table></figure>
+<p>SortedLocaleGrouping可以根据传入的传入的CultureInfo返回经过排序的组标头。</p>
+<p>要按照拼音首字母排序，我们只要传入中国大陆的CultureInfo就可以了，也就是zh-CN。在中文环境的Windows Phone系统上，当然也可以用当前UI线程的CultureInfo去获得<br>System.Threading.Thread.CurrentThread.CurrentUICulture</p>
+<p>但是为了保证我们的拼音排序能在任何语言设置下都统一，我还是建议写死zh-CN在里面。</p>
+<p>在我的应用里，我需要按地铁站点(Station类)的地铁站名首字母(Station.StationName)分组，所以我绑定的集合要用AlphaKeyGroup包一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public ObservableCollection&lt;AlphaKeyGroup&lt;Station&gt;&gt; GroupedStations &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+<p>然后，在给这个集合赋值的地方写Group的具体逻辑：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GroupedStations = AlphaKeyGroup&lt;Station&gt;.CreateGroups(</span><br><span class="line">    AllStations,</span><br><span class="line">    new CultureInfo(&quot;zh-CN&quot;),</span><br><span class="line">    s =&gt; s.StationName.Substring(0, 1),</span><br><span class="line">    true).ToObservableCollection();</span><br></pre></td></tr></table></figure>
+<p>第一个参数AllStations是原始数据，一个普通的IEnumerable<station>集合。</station></p>
+<p>第二个参数是最重要的，按哪种Culture进行分组，一定要传入zh-CN，简体中文。</p>
+<p>第三个参数是个lambda表达式，这个委托负责分组字段的具体逻辑，在这里我们要按Station.StationName的第一个字的拼音首字母排序，所以需要取Substring(0,1)，返回Station.StationName的第一个字，之后SortedLocaleGrouping就可以自动进行拼音首字母分组了。</p>
+<p>第四个参数表示经过分组的排序结果需不需要排序，true表示需要排序，这也是我们通常的需求。</p>
+<p>至此，后端代码的工作就全部搞定了。前台xaml上的数据绑定还是和普通的LongListSelector没啥区别。</p>
+<p>XAML:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;phone:LongListSelector</span><br><span class="line">    x:Name=&quot;StationListSelector&quot;</span><br><span class="line">    ItemsSource=&quot;&#123;Binding GroupedStations, Mode=TwoWay&#125;&quot; </span><br><span class="line">    JumpListStyle=&quot;&#123;StaticResource StationListJumpListStyle&#125;&quot;</span><br><span class="line">    IsGroupingEnabled=&quot;True&quot;</span><br><span class="line">    HideEmptyGroups=&quot;True&quot;</span><br><span class="line">    SelectionChanged=&quot;SelectStation&quot;</span><br><span class="line">    toolkit:TiltEffect.IsTiltEnabled=&quot;True&quot;&gt;</span><br><span class="line">    &lt;phone:LongListSelector.GroupHeaderTemplate&gt;</span><br><span class="line">        &lt;DataTemplate&gt;</span><br><span class="line">            &lt;Border </span><br><span class="line">                BorderBrush=&quot;&#123;StaticResource PhoneAccentBrush&#125;&quot;</span><br><span class="line">                Padding=&quot;15,0&quot;</span><br><span class="line">                Width=&quot;75&quot;</span><br><span class="line">                Height=&quot;75&quot;</span><br><span class="line">                Margin=&quot;0,0,0,10&quot;</span><br><span class="line">                BorderThickness=&quot;2&quot;</span><br><span class="line">                HorizontalAlignment=&quot;Left&quot; </span><br><span class="line">                    Background=&quot;White&quot;&gt;</span><br><span class="line">                &lt;TextBlock Text=&quot;&#123;Binding Key&#125;&quot; </span><br><span class="line">                           FontSize=&quot;48&quot;</span><br><span class="line">                           Foreground=&quot;&#123;StaticResource PhoneAccentBrush&#125;&quot;&gt;</span><br><span class="line">                &lt;/TextBlock&gt;</span><br><span class="line">            &lt;/Border&gt;</span><br><span class="line">        &lt;/DataTemplate&gt;</span><br><span class="line">    &lt;/phone:LongListSelector.GroupHeaderTemplate&gt;</span><br></pre></td></tr></table></figure>
+<p>App.xaml里的Style:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;Style x:Key=&quot;StationListJumpListStyle&quot; TargetType=&quot;phone:LongListSelector&quot;&gt;</span><br><span class="line">    &lt;Setter Property=&quot;GridCellSize&quot;  Value=&quot;113,113&quot;/&gt;</span><br><span class="line">    &lt;Setter Property=&quot;LayoutMode&quot; Value=&quot;Grid&quot; /&gt;</span><br><span class="line">    &lt;Setter Property=&quot;ItemTemplate&quot;&gt;</span><br><span class="line">        &lt;Setter.Value&gt;</span><br><span class="line">            &lt;DataTemplate&gt;</span><br><span class="line">                &lt;Border Background=&quot;&#123;StaticResource PhoneAccentBrush&#125;&quot; Width=&quot;113&quot; Height=&quot;113&quot; Margin=&quot;6&quot; &gt;</span><br><span class="line">                    &lt;TextBlock Text=&quot;&#123;Binding Key&#125;&quot; FontFamily=&quot;&#123;StaticResource PhoneFontFamilySemiBold&#125;&quot; FontSize=&quot;48&quot; Padding=&quot;6&quot;</span><br><span class="line">       Foreground=&quot;&#123;StaticResource PhoneForegroundBrush&#125;&quot; VerticalAlignment=&quot;Center&quot;/&gt;</span><br><span class="line">                &lt;/Border&gt;</span><br><span class="line">            &lt;/DataTemplate&gt;</span><br><span class="line">        &lt;/Setter.Value&gt;</span><br><span class="line">    &lt;/Setter&gt;&lt;/Style&gt;</span><br></pre></td></tr></table></figure>
+<p>转自：<a href="http://diaosbook.com/Post/2014/2/22/longlistselector-group-by-py-wp8" target="_blank" rel="external">http://diaosbook.com/Post/2014/2/22/longlistselector-group-by-py-wp8</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.westudio.ml/2014/10/WP8-LongListSelector-pinyin/" data-id="cipgnbhie0000bsu1bcs710t9" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/11/Usage-Of-the-new-Segoe-MDL2-icons/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          Usage Of the new Segoe MDL2 icons
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/10/wp-feedback/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">Windows Phone 8 开发：应用崩溃时给作者发送错误报告邮件</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/06/2016-6-12-Color/">Color With C#</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/">How to judge whether a webpage existed in a fast way</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/How-to-create-a-new-window-in-UWP/">How to create a new window in UWP</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/Usage-Of-the-new-Segoe-MDL2-icons/">Usage Of the new Segoe MDL2 icons</a>
+          </li>
+        
+          <li>
+            <a href="/2014/10/WP8-LongListSelector-pinyin/">Windows Phone 8 LongListSelector按拼音首字母分组</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Patrick J. Wu<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
