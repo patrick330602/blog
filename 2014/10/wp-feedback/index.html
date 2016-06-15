@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
+<head>
+  <meta charset="utf-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>WE. Studio</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <!--在这里倒入jquery 方便处理部分页面的jquery-->
+  <script src="http://lib.sinaapp.com/js/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+  <header class="site-header site-color" id="site-header-id">
+
+  <div class="container">
+      <h1><a href="/" title="WE. Studio"><span class="octicon octicon-mark-github"></span> WE. Studio</a></h1>
+      <nav class="site-header-nav" role="navigation">
+        
+              
+              <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="Home">Home</a>
+        
+              
+              <a href="/subentry/Life/" target="target" class=" site-header-nav-item hvr-underline-from-center" title="Life">Life</a>
+        
+              
+              <a href="/open-source/"  class=" site-header-nav-item hvr-underline-from-center" title="Open-Source">Open-Source</a>
+        
+              
+              <a href="/blog/"  class=" site-header-nav-item hvr-underline-from-center" title="Blog">Blog</a>
+        
+              
+              <a href="/guestbook/"  class=" site-header-nav-item hvr-underline-from-center" title="Guestbook">Guestbook</a>
+        
+      </nav>
+  </div>
+</header>
+
+	
+    <section class="collection-head collection-head-scrolled geopattern" data-pattern-id="Windows Phone 8 开发：应用崩溃时给作者发送错误报告邮件" >
+
+    <div class="container">
+        <div class="collection-title">
+            <h1 class="collection-header">Windows Phone 8 开发：应用崩溃时给作者发送错误报告邮件</h1>
+            <div class="collection-info">
+                <span class="meta-info">
+                    
+                        <span class="octicon octicon-calendar"></span>
+                        <time datetime="2014-10-14T16:00:00.000Z" itemprop="datePublished">2014-10-15</time>
+                    
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+	
+
+    <section class="container content">
+
+    <div class="columns">
+        <div class="column three-fourths" >
+            <article class="article-content article-entry">
+                <p>我们的应用难免会爆，但是手工在各个方法上加try…catch…未必能cover到所有场景，有时候我们不希望应用吞掉错误，发生严重异常时，我们应当允许应用在用户面前爆掉。如果没有处理这些异常，应用程序的表现就是闪退。比较好的做法是在应用崩溃时给用户一个选择是否发送邮件告诉应用作者崩溃的详细日志。对于作者来说，等待DevCenter的异常报告相对而言比较被动。如果能在应用崩溃之后立即得到回馈那就可以尽早修复问题。</p>
+<p>做法很简单，和ASP.NET网站在Global.asax中使用的全局错误处理类似，WP应用也有个全局错误处理的事件。</p>
+<p>打开App.xaml.cs，定位到Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)事件处理函数上。</p>
+ <a id="more"></a>
+<p>当任何未处理的异常产生时，这个函数都会被call到。我们的任务是发送邮件给应用作者（通常就是你自己），所以我们可以把项目模板中默认的代码给去掉，删除这些代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if</span><br><span class="line"> (Debugger.IsAttached)</span><br><span class="line">&#123;</span><br><span class="line">    // An unhandled exception has occurred; break into the debugger</span><br><span class="line">    Debugger.Break();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后换成我们自己代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">var result = MessageBox.Show(&quot;程序不小心爆掉了。点击确定发送错误详情给软件作者以帮助改进软件。&quot;,  &quot;注定孤独一生&quot;,MessageBoxButton.OKCancel);</span><br><span class="line">if</span><br><span class="line"> (result == MessageBoxResult.OK)</span><br><span class="line">&#123;</span><br><span class="line">    var msg = e.ExceptionObject.Message;</span><br><span class="line">    while(null != e.ExceptionObject.InnerException)</span><br><span class="line">    &#123;</span><br><span class="line">        e.ExceptionObject = e.ExceptionObject.InnerException;</span><br><span class="line">        msg += (e.ExceptionObject.Message + Environment.NewLine);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">    var emailComposeTask = new EmailComposeTask</span><br><span class="line">    &#123;</span><br><span class="line">        Subject = string.Format(&quot;《你的应用名称》应用异常报告&quot;),</span><br><span class="line">        Body = &quot;Message: &quot; + msg,</span><br><span class="line">      To =&quot;你的Email地址&quot;</span><br><span class="line">    &#125;;</span><br><span class="line">    emailComposeTask.Show();</span><br><span class="line">&#125;</span><br><span class="line">e.Handled = true;</span><br></pre></td></tr></table></figure>
+<p>代码比较直接，首先，用MessageBox给用户弹了个框，让用户自己选择是否发送错误报告。如果用户选择了“确定”，就开始收集异常详情。ApplicationUnhandledExceptionEventArgs这个参数的ExceptionObject类型就是System.Exception，所以获取最上层的异常消息做法就像平时try…catch里通常写的ex.Message类似，可以通过Exception对象Message属性获得<br>e.ExceptionObject.Message。</p>
+<p>然而，异常并不通常只有一层，有时候我们会遇到exception里还包着一个innerexception的情况，并且我们不知道是不是包了两层就结束了，有可能innerexception里还有innerexception，所以就得写个循环来遍历直到最底层的innerexception，于是就有了这段代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">while</span><br><span class="line">(null != e.ExceptionObject.InnerException)</span><br><span class="line">&#123;</span><br><span class="line">    e.ExceptionObject = e.ExceptionObject.InnerException;</span><br><span class="line">    msg += (e.ExceptionObject.Message + Environment.NewLine);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，“Environment.NewLine”的意思是换行，目的是提高邮件的可阅读性。</p>
+<p>收集完异常信息后，我们要调用WP系统提供的发送邮件的task来发送异常报告。我们的应用调用系统任务，比如发邮件、打电话、发短信都是通过Task来完成的，email的用法在MSDN上可以找到：<a href="http://msdn.microsoft.com/en-US/library/windowsphone/develop/hh394003%28v=vs.105%29.aspx" target="_blank" rel="external">http://msdn.microsoft.com/en-US/library/windowsphone/develop/hh394003%28v=vs.105%29.aspx</a> 这个网页里你也能找到其他task的用法。</p>
+<p>Subject是邮件的主题，Body是正文，To是收件人。当然，如果你需要，你还可以增加Bcc(密件抄送)和Cc(抄送)。</p>
+<p>转自：<a href="http://diaosbook.com/Post/2014/3/23/send-error-report-windows-phone-8" target="_blank" rel="external">http://diaosbook.com/Post/2014/3/23/send-error-report-windows-phone-8</a></p>
+
+            </article>
+            
+                <div class="share">
+                    <!--开启分享-->
+<div class="share-component"></div>
+
+<script src="/js/share.min.js"></script>
+                </div>    
+            
+            
+                <div class="comment">
+                    
+<div class="ds-thread" data-thread-key="wp-feedback" data-title="Windows Phone 8 开发：应用崩溃时给作者发送错误报告邮件" data-url="http://www.westudio.ml/2014/10/wp-feedback/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"yumemor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+                </div>
+            
+        </div>
+        <div class="column one-fourth">
+            
+                <h3>Post Directory</h3>
+
+<div id="post-directory-module">
+	<section class="post-directory">
+		<p><strong class="toc-title">文章目录</strong></p>
+		
+	</section>
+</div>
+            
+        </div>
+       
+    </div>
+</section>
+
+<footer class="container">
+    <div class="site-footer" role="contentinfo">
+        <div class="copyright left mobile-block">
+                © 2016
+                <span title="yumemor">yumemor</span>
+                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
+        </div>
+
+        <ul class="site-footer-links right mobile-hidden">
+            <li>
+                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
+            </li>
+        </ul>
+
+        <a href="https://github.com/yumemor/yumemor.github.io" target="_blank" aria-label="view source code">
+            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+        </a>
+
+        <ul class="site-footer-links mobile-hidden">
+            
+             
+              
+              <li>
+                <a href="/"  title="Home">Home</a>
+              </li>
+            
+              
+              <li>
+                <a href="/subentry/Life/" target="target" title="Life">Life</a>
+              </li>
+            
+              
+              <li>
+                <a href="/open-source/"  title="Open-Source">Open-Source</a>
+              </li>
+            
+              
+              <li>
+                <a href="/blog/"  title="Blog">Blog</a>
+              </li>
+            
+              
+              <li>
+                <a href="/guestbook/"  title="Guestbook">Guestbook</a>
+              </li>
+            
+
+        </ul>
+
+    </div>
+</footer>
+
+		
+		<script src="/js/typer.js"></script>
+
+		<script src="/js/geopattern.js"></script>
+
+		<script src="/js/index.js"></script>
+
+		 <script src="/js/popular_repo.js"></script> 
+
+	</body>
+</html>

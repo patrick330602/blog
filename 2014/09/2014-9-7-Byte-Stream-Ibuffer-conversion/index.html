@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
+<head>
+  <meta charset="utf-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>WE. Studio</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <!--在这里倒入jquery 方便处理部分页面的jquery-->
+  <script src="http://lib.sinaapp.com/js/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+  <header class="site-header site-color" id="site-header-id">
+
+  <div class="container">
+      <h1><a href="/" title="WE. Studio"><span class="octicon octicon-mark-github"></span> WE. Studio</a></h1>
+      <nav class="site-header-nav" role="navigation">
+        
+              
+              <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="Home">Home</a>
+        
+              
+              <a href="/subentry/Life/" target="target" class=" site-header-nav-item hvr-underline-from-center" title="Life">Life</a>
+        
+              
+              <a href="/open-source/"  class=" site-header-nav-item hvr-underline-from-center" title="Open-Source">Open-Source</a>
+        
+              
+              <a href="/blog/"  class=" site-header-nav-item hvr-underline-from-center" title="Blog">Blog</a>
+        
+              
+              <a href="/guestbook/"  class=" site-header-nav-item hvr-underline-from-center" title="Guestbook">Guestbook</a>
+        
+      </nav>
+  </div>
+</header>
+
+	
+    <section class="collection-head collection-head-scrolled geopattern" data-pattern-id="Byte[],Stream,Ibuffer,IRandomAccessStream的互相转换" >
+
+    <div class="container">
+        <div class="collection-title">
+            <h1 class="collection-header">Byte[],Stream,Ibuffer,IRandomAccessStream的互相转换</h1>
+            <div class="collection-info">
+                <span class="meta-info">
+                    
+                        <span class="octicon octicon-calendar"></span>
+                        <time datetime="2014-09-07T12:46:25.000Z" itemprop="datePublished">2014-09-07</time>
+                    
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+	
+
+    <section class="container content">
+
+    <div class="columns">
+        <div class="column three-fourths" >
+            <article class="article-content article-entry">
+                <p>今天做8.1程序时彻底弄混了IRandomAcessStream和Stream。。。于是乎，我找了一个可用的不同类型转换。。。。</p>
+<h3 id="Stream-转IRandomAccessStream"><a href="#Stream-转IRandomAccessStream" class="headerlink" title="Stream 转IRandomAccessStream"></a>Stream 转IRandomAccessStream</h3><h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">byte[] bytes = StreamToBytes(stream);</span><br><span class="line">InMemoryRandomAccessStream memoryStream = new InMemoryRandomAccessStream();</span><br><span class="line">DataWriter datawriter = new DataWriter(memoryStream.GetOutputStreamAt(0));</span><br><span class="line">datawriter.WriteBytes(bytes);</span><br><span class="line">await datawriter.StoreAsync();</span><br></pre></td></tr></table></figure>
+ <a id="more"></a>
+<h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var randomAccessStream = new InMemoryRandomAccessStream();</span><br><span class="line">var outputStream = randomAccessStream.GetOutputStreamAt(0);</span><br><span class="line">await RandomAccessStream.CopyAsync(stream.AsInputStream(), outputStream);</span><br></pre></td></tr></table></figure>
+<h3 id="IRandomAccessStream-转-Stream"><a href="#IRandomAccessStream-转-Stream" class="headerlink" title="IRandomAccessStream 转 Stream"></a>IRandomAccessStream 转 Stream</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stream stream=WindowsRuntimeStreamExtensions.AsStreamForRead(randomStream.GetInputStreamAt(0));</span><br></pre></td></tr></table></figure>
+<h3 id="Ibuffer转Stream"><a href="#Ibuffer转Stream" class="headerlink" title="Ibuffer转Stream"></a>Ibuffer转Stream</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stream stream = WindowsRuntimeBufferExtensions.AsStream(buffer);</span><br></pre></td></tr></table></figure>
+<h3 id="Stream转Ibuffer"><a href="#Stream转Ibuffer" class="headerlink" title="Stream转Ibuffer"></a>Stream转Ibuffer</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> MemoryStream memoryStream = new MemoryStream();           </span><br><span class="line"></span><br><span class="line"> if (stream != null)</span><br><span class="line"> &#123;</span><br><span class="line">  byte[] bytes = ReadFully(stream);</span><br><span class="line">  if (bytes != null)</span><br><span class="line">  &#123;</span><br><span class="line">       var binaryWriter = new BinaryWriter(memoryStream);</span><br><span class="line">       binaryWriter.Write(bytes);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">IBuffer buffer=WindowsRuntimeBufferExtensions.GetWindowsRuntimeBuffer(memoryStream,0,(int)memoryStream.Length);</span><br></pre></td></tr></table></figure>
+<h3 id="Ibuffer转byte"><a href="#Ibuffer转byte" class="headerlink" title="Ibuffer转byte[]"></a>Ibuffer转byte[]</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">byte[] bytes=WindowsRuntimeBufferExtensions.ToArray(buffer,0,(int)buffer.Length);</span><br></pre></td></tr></table></figure>
+<h3 id="Byte-转Ibuffer"><a href="#Byte-转Ibuffer" class="headerlink" title="Byte[]转Ibuffer"></a>Byte[]转Ibuffer</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WindowsRuntimeBufferExtensions.AsBuffer(bytes,0,bytes.Length);</span><br></pre></td></tr></table></figure>
+<h3 id="Ibuffer转IrandomAccessStream"><a href="#Ibuffer转IrandomAccessStream" class="headerlink" title="Ibuffer转IrandomAccessStream"></a>Ibuffer转IrandomAccessStream</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">InMemoryRandomAccessStream inStream = new InMemoryRandomAccessStream();</span><br><span class="line">DataWriter datawriter = new DataWriter(inStream.GetOutputStreamAt(0));</span><br><span class="line">datawriter.WriteBuffer(buffer,0,buffer.Length);</span><br><span class="line"></span><br><span class="line">await datawriter.StoreAsync();</span><br></pre></td></tr></table></figure>
+<h3 id="IrandomAccessStream转Ibuffer"><a href="#IrandomAccessStream转Ibuffer" class="headerlink" title="IrandomAccessStream转Ibuffer"></a>IrandomAccessStream转Ibuffer</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Stream stream=WindowsRuntimeStreamExtensions.AsStreamForRead(randomStream.GetInputStreamAt(0));</span><br><span class="line">MemoryStream memoryStream = new MemoryStream();           </span><br><span class="line">if (stream != null)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">  byte[] bytes = ReadFully(stream);</span><br><span class="line">  if (bytes != null)</span><br><span class="line">  &#123;</span><br><span class="line">     var binaryWriter = new BinaryWriter(memoryStream);</span><br><span class="line">     binaryWriter.Write(bytes);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">IBuffer buffer=WindowsRuntimeBufferExtensions.GetWindowsRuntimeBuffer(memoryStream,0,(int)memoryStream.Length);</span><br></pre></td></tr></table></figure>
+<h3 id="IRandomAccessStream转FileInputStream"><a href="#IRandomAccessStream转FileInputStream" class="headerlink" title="IRandomAccessStream转FileInputStream"></a>IRandomAccessStream转FileInputStream</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileInputStream inputStream=randomStream.GetInputStreamAt(0) as FileInputStream;</span><br></pre></td></tr></table></figure>
+<h3 id="IRandomAccessStream转FileOutputStream"><a href="#IRandomAccessStream转FileOutputStream" class="headerlink" title="IRandomAccessStream转FileOutputStream"></a>IRandomAccessStream转FileOutputStream</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileOutputStream outStream= randomStream.GetOutputStreamAt(0) as FileOutputStream;</span><br></pre></td></tr></table></figure>
+<h3 id="Stream转byte"><a href="#Stream转byte" class="headerlink" title="Stream转byte[]"></a>Stream转byte[]</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public static byte[] ConvertStreamTobyte(Stream input)</span><br><span class="line">   &#123;</span><br><span class="line">       byte[] buffer = new byte[16 * 1024];</span><br><span class="line">       using (MemoryStream ms = new MemoryStream())</span><br><span class="line">           &#123;</span><br><span class="line">               int read;</span><br><span class="line">               while ((read = input.Read(buffer, 0, buffer.Length)) &gt; 0)</span><br><span class="line">               &#123;</span><br><span class="line">                   ms.Write(buffer, 0, read);</span><br><span class="line">               &#125;</span><br><span class="line">           return ms.ToArray();</span><br><span class="line">           &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Byte转Stream"><a href="#Byte转Stream" class="headerlink" title="Byte转Stream"></a>Byte转Stream</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public Stream BytesToStream(byte[] bytes)</span><br><span class="line">    &#123;</span><br><span class="line">        Stream stream = new MemoryStream(bytes);</span><br><span class="line">        return stream;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Stream转MemoryStream"><a href="#Stream转MemoryStream" class="headerlink" title="Stream转MemoryStream"></a>Stream转MemoryStream</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public static MemoryStream ConvertStreamToMemoryStream(Stream stream)</span><br><span class="line">&#123;</span><br><span class="line">        MemoryStream memoryStream = new MemoryStream();</span><br><span class="line">        if (stream != null)</span><br><span class="line">        &#123;</span><br><span class="line">            byte[] buffer = ReadFully(stream);</span><br><span class="line">            if (buffer != null)</span><br><span class="line">            &#123;</span><br><span class="line">                var binaryWriter = new BinaryWriter(memoryStream);</span><br><span class="line">                binaryWriter.Write(buffer);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return memoryStream;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="IrandomAccessStream转byte"><a href="#IrandomAccessStream转byte" class="headerlink" title="IrandomAccessStream转byte[]"></a>IrandomAccessStream转byte[]</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stream stream = WindowsRuntimeStreamExtensions.AsStreamForRead(randomStream.GetInputStreamAt(0));</span><br><span class="line">MemoryStream ms = new MemoryStream();</span><br><span class="line">await stream.CopyToAsync(ms);</span><br><span class="line">byte[] bytes = ms.ToArray();</span><br></pre></td></tr></table></figure>
+
+            </article>
+            
+                <div class="share">
+                    <!--开启分享-->
+<div class="share-component"></div>
+
+<script src="/js/share.min.js"></script>
+                </div>    
+            
+            
+                <div class="comment">
+                    
+<div class="ds-thread" data-thread-key="2014-9-7-Byte-Stream-Ibuffer-conversion" data-title="Byte[],Stream,Ibuffer,IRandomAccessStream的互相转换" data-url="http://www.westudio.ml/2014/09/2014-9-7-Byte-Stream-Ibuffer-conversion/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"yumemor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+                </div>
+            
+        </div>
+        <div class="column one-fourth">
+            
+                <h3>Post Directory</h3>
+
+<div id="post-directory-module">
+	<section class="post-directory">
+		<p><strong class="toc-title">文章目录</strong></p>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Stream-转IRandomAccessStream"><span class="toc-text">Stream 转IRandomAccessStream</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#方法一："><span class="toc-text">方法一：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法二："><span class="toc-text">方法二：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IRandomAccessStream-转-Stream"><span class="toc-text">IRandomAccessStream 转 Stream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ibuffer转Stream"><span class="toc-text">Ibuffer转Stream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stream转Ibuffer"><span class="toc-text">Stream转Ibuffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ibuffer转byte"><span class="toc-text">Ibuffer转byte[]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Byte-转Ibuffer"><span class="toc-text">Byte[]转Ibuffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ibuffer转IrandomAccessStream"><span class="toc-text">Ibuffer转IrandomAccessStream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IrandomAccessStream转Ibuffer"><span class="toc-text">IrandomAccessStream转Ibuffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IRandomAccessStream转FileInputStream"><span class="toc-text">IRandomAccessStream转FileInputStream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IRandomAccessStream转FileOutputStream"><span class="toc-text">IRandomAccessStream转FileOutputStream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stream转byte"><span class="toc-text">Stream转byte[]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Byte转Stream"><span class="toc-text">Byte转Stream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stream转MemoryStream"><span class="toc-text">Stream转MemoryStream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IrandomAccessStream转byte"><span class="toc-text">IrandomAccessStream转byte[]</span></a></li></ol>
+	</section>
+</div>
+            
+        </div>
+       
+    </div>
+</section>
+
+<footer class="container">
+    <div class="site-footer" role="contentinfo">
+        <div class="copyright left mobile-block">
+                © 2016
+                <span title="yumemor">yumemor</span>
+                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
+        </div>
+
+        <ul class="site-footer-links right mobile-hidden">
+            <li>
+                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
+            </li>
+        </ul>
+
+        <a href="https://github.com/yumemor/yumemor.github.io" target="_blank" aria-label="view source code">
+            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+        </a>
+
+        <ul class="site-footer-links mobile-hidden">
+            
+             
+              
+              <li>
+                <a href="/"  title="Home">Home</a>
+              </li>
+            
+              
+              <li>
+                <a href="/subentry/Life/" target="target" title="Life">Life</a>
+              </li>
+            
+              
+              <li>
+                <a href="/open-source/"  title="Open-Source">Open-Source</a>
+              </li>
+            
+              
+              <li>
+                <a href="/blog/"  title="Blog">Blog</a>
+              </li>
+            
+              
+              <li>
+                <a href="/guestbook/"  title="Guestbook">Guestbook</a>
+              </li>
+            
+
+        </ul>
+
+    </div>
+</footer>
+
+		
+		<script src="/js/typer.js"></script>
+
+		<script src="/js/geopattern.js"></script>
+
+		<script src="/js/index.js"></script>
+
+		 <script src="/js/popular_repo.js"></script> 
+
+	</body>
+</html>

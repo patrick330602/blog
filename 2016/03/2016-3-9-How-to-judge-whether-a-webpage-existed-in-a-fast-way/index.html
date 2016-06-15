@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
+<head>
+  <meta charset="utf-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>WE. Studio</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <!--在这里倒入jquery 方便处理部分页面的jquery-->
+  <script src="http://lib.sinaapp.com/js/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+	
+  <header class="site-header site-color" id="site-header-id">
+
+  <div class="container">
+      <h1><a href="/" title="WE. Studio"><span class="octicon octicon-mark-github"></span> WE. Studio</a></h1>
+      <nav class="site-header-nav" role="navigation">
+        
+              
+              <a href="/"  class=" site-header-nav-item hvr-underline-from-center" title="Home">Home</a>
+        
+              
+              <a href="/subentry/Life/" target="target" class=" site-header-nav-item hvr-underline-from-center" title="Life">Life</a>
+        
+              
+              <a href="/open-source/"  class=" site-header-nav-item hvr-underline-from-center" title="Open-Source">Open-Source</a>
+        
+              
+              <a href="/blog/"  class=" site-header-nav-item hvr-underline-from-center" title="Blog">Blog</a>
+        
+              
+              <a href="/guestbook/"  class=" site-header-nav-item hvr-underline-from-center" title="Guestbook">Guestbook</a>
+        
+      </nav>
+  </div>
+</header>
+
+	
+    <section class="collection-head collection-head-scrolled geopattern" data-pattern-id="How to judge whether a webpage existed in a fast way" >
+
+    <div class="container">
+        <div class="collection-title">
+            <h1 class="collection-header">How to judge whether a webpage existed in a fast way</h1>
+            <div class="collection-info">
+                <span class="meta-info">
+                    
+                        <span class="octicon octicon-calendar"></span>
+                        <time datetime="2016-03-09T00:00:00.000Z" itemprop="datePublished">2016-03-09</time>
+                    
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+	
+
+    <section class="container content">
+
+    <div class="columns">
+        <div class="column three-fourths" >
+            <article class="article-content article-entry">
+                <p>Recently I am coding a app for viewing newspaper. Because there are no API, I have to manually find whether the page ever existed. So I try to look on the Internet, and find a try catch way to judge it:</p>
+ <a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">HttpWebResponse response = null;</span><br><span class="line"> var request = (HttpWebRequest)WebRequest.Create(/* url */);</span><br><span class="line"> request.Method = “HEAD”;</span><br><span class="line"></span><br><span class="line">try</span><br><span class="line"> &#123;</span><br><span class="line"> response = (HttpWebResponse)request.GetResponse();</span><br><span class="line"> &#125;</span><br><span class="line"> catch (WebException ex)</span><br><span class="line"> &#123;</span><br><span class="line"> /* A WebException will be thrown if the status of the response is not `200 OK` */</span><br><span class="line"> &#125;</span><br><span class="line"> finally</span><br><span class="line"> &#123;</span><br><span class="line"> // Don’t forget to close your response.</span><br><span class="line"> if (response != null)</span><br><span class="line"> &#123;</span><br><span class="line">response.Close()</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>However, I find that GetResponse method now no longer existed in .NET framework 4.5.2. So I find a another one that worked. But it is very slow. So I come up with an idea-using the HTTP head to find out whether it exists, and it is a lot faster:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HttpClient httpClient = new HttpClient();</span><br><span class="line"></span><br><span class="line">//Getting the Web Response.</span><br><span class="line"> HttpResponseMessage httpResponse = new HttpResponseMessage();</span><br><span class="line"> HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, new Uri(website));</span><br><span class="line"> httpResponse = await httpClient.SendRequestAsync(request);</span><br><span class="line"> if(httpResponse.ToString().Contains(“StatusCode: 404”))</span><br><span class="line"> &#123;</span><br><span class="line"> // do something when the page doesn’t exist</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/working-code.png" alt="real working code"></p>
+
+            </article>
+            
+                <div class="share">
+                    <!--开启分享-->
+<div class="share-component"></div>
+
+<script src="/js/share.min.js"></script>
+                </div>    
+            
+            
+                <div class="comment">
+                    
+<div class="ds-thread" data-thread-key="2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way" data-title="How to judge whether a webpage existed in a fast way" data-url="http://www.westudio.ml/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"yumemor"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+                </div>
+            
+        </div>
+        <div class="column one-fourth">
+            
+                <h3>Post Directory</h3>
+
+<div id="post-directory-module">
+	<section class="post-directory">
+		<p><strong class="toc-title">文章目录</strong></p>
+		
+	</section>
+</div>
+            
+        </div>
+       
+    </div>
+</section>
+
+<footer class="container">
+    <div class="site-footer" role="contentinfo">
+        <div class="copyright left mobile-block">
+                © 2016
+                <span title="yumemor">yumemor</span>
+                <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
+        </div>
+
+        <ul class="site-footer-links right mobile-hidden">
+            <li>
+                <a href="javascript:window.scrollTo(0,0)" >TOP</a>
+            </li>
+        </ul>
+
+        <a href="https://github.com/yumemor/yumemor.github.io" target="_blank" aria-label="view source code">
+            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+        </a>
+
+        <ul class="site-footer-links mobile-hidden">
+            
+             
+              
+              <li>
+                <a href="/"  title="Home">Home</a>
+              </li>
+            
+              
+              <li>
+                <a href="/subentry/Life/" target="target" title="Life">Life</a>
+              </li>
+            
+              
+              <li>
+                <a href="/open-source/"  title="Open-Source">Open-Source</a>
+              </li>
+            
+              
+              <li>
+                <a href="/blog/"  title="Blog">Blog</a>
+              </li>
+            
+              
+              <li>
+                <a href="/guestbook/"  title="Guestbook">Guestbook</a>
+              </li>
+            
+
+        </ul>
+
+    </div>
+</footer>
+
+		
+		<script src="/js/typer.js"></script>
+
+		<script src="/js/geopattern.js"></script>
+
+		<script src="/js/index.js"></script>
+
+		 <script src="/js/popular_repo.js"></script> 
+
+	</body>
+</html>
