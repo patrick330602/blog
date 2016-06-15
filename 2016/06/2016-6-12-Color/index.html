@@ -16,7 +16,7 @@
 <meta property="og:image" content="http://www.westudio.ml/images/color/hsl.png">
 <meta property="og:image" content="http://www.westudio.ml/images/color/cmyk.png">
 <meta property="og:image" content="http://www.westudio.ml/images/color/yuv.png">
-<meta property="og:image" content="http://www.westudio.ml/image/color/xyz.png">
+<meta property="og:image" content="http://www.westudio.ml/images/color/xyz.png">
 <meta property="og:image" content="http://www.westudio.ml/images/color/rgb2-1.png">
 <meta property="og:image" content="http://www.westudio.ml/images/color/rgb2-2.png">
 <meta property="og:image" content="http://www.westudio.ml/images/color/rgb2-3.png">
@@ -42,7 +42,7 @@
 <meta property="og:image" content="http://www.westudio.ml/!--￼52-->/images/color/lab2-6-1.png">
 <meta property="og:image" content="http://www.westudio.ml/!--￼53-->/images/color/lab2-6-2.png">
 <meta property="og:image" content="http://www.westudio.ml/!--￼54-->/images/color/lab2-6-3.png">
-<meta property="og:updated_time" content="2016-06-15T09:38:03.291Z">
+<meta property="og:updated_time" content="2016-06-15T10:17:08.030Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Color With C#">
 <meta name="twitter:description" content="Recently, i am doing a research on a project to convert RGB to HSB, which leads me to an awesome article on CodeProject from 9 years ago. Hence, I sort the article a little bit to help myself unders">
@@ -84,9 +84,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.westudio.ml"></form>
@@ -325,7 +325,7 @@
 </ul>
 <p>Before trying to explain why I include this color space in this article, you have to know that it’s one of the first standards created by the International Commission on Illumination (CIE) in 1931. It is based on direct measurements of the human eye, and serves as the basis from which many other color spaces are defined.</p>
 <p>A graphic representation is the following image:</p>
-<p><img src="/image/color/xyz.png" alt="CIE XYZ Color Space"></p>
+<p><img src="/images/color/xyz.png" alt="CIE XYZ Color Space"></p>
 <p>A <strong>CIE XYZ</strong> structure can be:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line">/// &lt;summary&gt;</span><br><span class="line">/// Structure to define CIE XYZ.</span><br><span class="line">/// &lt;/summary&gt;</span><br><span class="line">public struct CIEXYZ</span><br><span class="line">&#123;</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// Gets an empty CIEXYZ structure.</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    public static readonly CIEXYZ Empty = new CIEXYZ();</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// Gets the CIE D65 (white) structure.</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    public static readonly CIEXYZ D65 = new CIEXYZ(0.9505, 1.0, 1.0890);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private double x;</span><br><span class="line">    private double y;</span><br><span class="line">    private double z;</span><br><span class="line"></span><br><span class="line">    public static bool operator ==(CIEXYZ item1, CIEXYZ item2)</span><br><span class="line">    &#123;</span><br><span class="line">        return (</span><br><span class="line">            item1.X == item2.X</span><br><span class="line">            &amp;&amp; item1.Y == item2.Y</span><br><span class="line">            &amp;&amp; item1.Z == item2.Z</span><br><span class="line">            );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static bool operator !=(CIEXYZ item1, CIEXYZ item2)</span><br><span class="line">    &#123;</span><br><span class="line">        return (</span><br><span class="line">            item1.X != item2.X</span><br><span class="line">            || item1.Y != item2.Y</span><br><span class="line">            || item1.Z != item2.Z</span><br><span class="line">            );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// Gets or sets X component.</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    public double X</span><br><span class="line">    &#123;</span><br><span class="line">        get</span><br><span class="line">        &#123;</span><br><span class="line">            return this.x;</span><br><span class="line">        &#125;</span><br><span class="line">        set</span><br><span class="line">        &#123;</span><br><span class="line">            this.x = (value&gt;0.9505)? 0.9505 : ((value&lt;0)? 0 : value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// Gets or sets Y component.</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    public double Y</span><br><span class="line">    &#123;</span><br><span class="line">        get</span><br><span class="line">        &#123;</span><br><span class="line">            return this.y;</span><br><span class="line">        &#125;</span><br><span class="line">        set</span><br><span class="line">        &#123;</span><br><span class="line">            this.y = (value&gt;1.0)? 1.0 : ((value&lt;0)?0 : value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// Gets or sets Z component.</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    public double Z</span><br><span class="line">    &#123;</span><br><span class="line">        get</span><br><span class="line">        &#123;</span><br><span class="line">            return this.z;</span><br><span class="line">        &#125;</span><br><span class="line">        set</span><br><span class="line">        &#123;</span><br><span class="line">            this.z = (value&gt;1.089)? 1.089 : ((value&lt;0)? 0 : value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public CIEXYZ(double x, double y, double z)</span><br><span class="line">    &#123;</span><br><span class="line">        this.x = (x&gt;0.9505)? 0.9505 : ((x&lt;0)? 0 : x);</span><br><span class="line">        this.y = (y&gt;1.0)? 1.0 : ((y&lt;0)? 0 : y);</span><br><span class="line">        this.z = (z&gt;1.089)? 1.089 : ((z&lt;0)? 0 : z);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public override bool Equals(Object obj)</span><br><span class="line">    &#123;</span><br><span class="line">        if(obj==null || GetType()!=obj.GetType()) return false;</span><br><span class="line"></span><br><span class="line">        return (this == (CIEXYZ)obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public override int GetHashCode()</span><br><span class="line">    &#123;</span><br><span class="line">        return X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Well! why do I have to include this model?</p>
@@ -505,7 +505,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.westudio.ml/2016/06/2016-6-12-Color/" data-id="cipgomuko000054u1kh3sex05" class="article-share-link">Partager</a>
+      <a data-url="http://www.westudio.ml/2016/06/2016-6-12-Color/" data-id="cipgq7nbw0004wgu1chv6df35" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -516,7 +516,7 @@
   
   
     <a href="/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
+      <strong class="article-nav-caption">Ouder</strong>
       <div class="article-nav-title">How to judge whether a webpage existed in a fast way</div>
     </a>
   
@@ -539,7 +539,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li></ul>
     </div>
@@ -549,7 +549,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
         
@@ -586,7 +586,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2016 Patrick J. Wu<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
