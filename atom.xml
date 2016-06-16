@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.westudio.ml/"/>
-  <updated>2016-06-16T00:32:33.802Z</updated>
+  <updated>2016-06-16T01:52:34.581Z</updated>
   <id>http://www.westudio.ml/</id>
   
   <author>
@@ -16,11 +16,55 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>WeCode huge update is coming!</title>
+    <link href="http://www.westudio.ml/2016/06/wecode-big-update-coming/"/>
+    <id>http://www.westudio.ml/2016/06/wecode-big-update-coming/</id>
+    <published>2016-06-16T00:00:00.000Z</published>
+    <updated>2016-06-16T01:52:34.581Z</updated>
+    
+    <content type="html">&lt;p&gt;Developer tools For UWP is now WECode with 2.0 update!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ap.westudio.ml/sources/images/wecode.png&quot; width=&quot;120px&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Improvements&quot;&gt;&lt;a href=&quot;#Improvements&quot; class=&quot;headerlink&quot; title=&quot;Improvements:&quot;&gt;&lt;/a&gt;Improvements:&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;new UI, logo and name; &lt;/li&gt;
+&lt;li&gt;Add Home; &lt;/li&gt;
+&lt;li&gt;Add Newest Build Information; &lt;/li&gt;
+&lt;li&gt;Update database of Segoe MDL2 Assets; &lt;/li&gt;
+&lt;li&gt;Improved About; &lt;/li&gt;
+&lt;li&gt;Integration of Feedback Hub. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Bug-Fixes&quot;&gt;&lt;a href=&quot;#Bug-Fixes&quot; class=&quot;headerlink&quot; title=&quot;Bug Fixes:&quot;&gt;&lt;/a&gt;Bug Fixes:&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;When you click test in URI Tester, the app no longer randomly crashes; &lt;/li&gt;
+&lt;li&gt;You can now unselect the target logo and unplated target logo with one click; &lt;/li&gt;
+&lt;li&gt;When clicking the icon with the same name but different Unicode, they no longer display the same Unicode in detail page. &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Get it now!&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.microsoft.com/store/apps/9nblggh5p90f&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://ap.westudio.ml/sources/images/get-app-win10.png&quot; width=&quot;300px&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Developer tools For UWP is now WECode with 2.0 update!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ap.westudio.ml/sources/images/wecode.png&quot; width=&quot;120px&quot;&gt;&lt;/
+    
+    </summary>
+    
+      <category term="App Release" scheme="http://www.westudio.ml/categories/App-Release/"/>
+    
+    
+      <category term="UWP" scheme="http://www.westudio.ml/tags/UWP/"/>
+    
+      <category term="Developer Tools For UWP" scheme="http://www.westudio.ml/tags/Developer-Tools-For-UWP/"/>
+    
+      <category term="WeCode" scheme="http://www.westudio.ml/tags/WeCode/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Color With C#</title>
-    <link href="http://www.westudio.ml/2016/06/2016-6-12-Color/"/>
-    <id>http://www.westudio.ml/2016/06/2016-6-12-Color/</id>
-    <published>2016-06-15T08:50:52.709Z</published>
-    <updated>2016-06-16T00:32:33.802Z</updated>
+    <link href="http://www.westudio.ml/2016/06/Color/"/>
+    <id>http://www.westudio.ml/2016/06/Color/</id>
+    <published>2016-06-12T00:00:00.000Z</published>
+    <updated>2016-06-14T00:00:00.000Z</updated>
     
     <content type="html">&lt;p&gt;  Recently, i am doing a research on a project to convert RGB to HSB, which leads me to an awesome &lt;a href=&quot;http://www.codeproject.com/Articles/19045/Manipulating-colors-in-NET-Part-1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;article&lt;/a&gt; on CodeProject from 9 years ago. Hence, I sort the article a little bit to help myself understand more of color agorithm.&lt;/p&gt;
  &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
@@ -410,15 +454,23 @@
     
     </summary>
     
+      <category term="Developing Process" scheme="http://www.westudio.ml/categories/Developing-Process/"/>
+    
+    
+      <category term="C#" scheme="http://www.westudio.ml/tags/C/"/>
+    
+      <category term=".NET" scheme="http://www.westudio.ml/tags/NET/"/>
+    
+      <category term="Color" scheme="http://www.westudio.ml/tags/Color/"/>
     
   </entry>
   
   <entry>
     <title>How to judge whether a webpage existed in a fast way</title>
-    <link href="http://www.westudio.ml/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/"/>
-    <id>http://www.westudio.ml/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/</id>
+    <link href="http://www.westudio.ml/2016/03/How-to-judge-whether-a-webpage-existed-in-a-fast-way/"/>
+    <id>http://www.westudio.ml/2016/03/How-to-judge-whether-a-webpage-existed-in-a-fast-way/</id>
     <published>2016-03-09T00:00:00.000Z</published>
-    <updated>2016-06-15T09:38:18.433Z</updated>
+    <updated>2016-06-16T01:40:50.502Z</updated>
     
     <content type="html">&lt;p&gt;Recently I am coding a app for viewing newspaper. Because there are no API, I have to manually find whether the page ever existed. So I try to look on the Internet, and find a try catch way to judge it:&lt;/p&gt;
  &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
@@ -434,6 +486,16 @@
     
     </summary>
     
+      <category term="Developing Process" scheme="http://www.westudio.ml/categories/Developing-Process/"/>
+    
+    
+      <category term="C#" scheme="http://www.westudio.ml/tags/C/"/>
+    
+      <category term=".NET" scheme="http://www.westudio.ml/tags/NET/"/>
+    
+      <category term="Web" scheme="http://www.westudio.ml/tags/Web/"/>
+    
+      <category term="Network" scheme="http://www.westudio.ml/tags/Network/"/>
     
   </entry>
   
@@ -442,7 +504,7 @@
     <link href="http://www.westudio.ml/2016/02/How-to-create-a-new-window-in-UWP/"/>
     <id>http://www.westudio.ml/2016/02/How-to-create-a-new-window-in-UWP/</id>
     <published>2016-02-07T00:00:00.000Z</published>
-    <updated>2016-06-15T10:25:59.002Z</updated>
+    <updated>2016-06-16T01:41:59.310Z</updated>
     
     <content type="html">&lt;p&gt;Some friends of mine asked me how to create a window like this:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/images/new-window.png&quot; alt=&quot;new window in UWP&quot;&gt;&lt;/p&gt;
@@ -458,6 +520,14 @@
     
     </summary>
     
+      <category term="Developing Process" scheme="http://www.westudio.ml/categories/Developing-Process/"/>
+    
+    
+      <category term="C#" scheme="http://www.westudio.ml/tags/C/"/>
+    
+      <category term=".NET" scheme="http://www.westudio.ml/tags/NET/"/>
+    
+      <category term="UWP" scheme="http://www.westudio.ml/tags/UWP/"/>
     
   </entry>
   
@@ -465,8 +535,8 @@
     <title>Usage Of the new Segoe MDL2 icons</title>
     <link href="http://www.westudio.ml/2015/11/Usage-Of-the-new-Segoe-MDL2-icons/"/>
     <id>http://www.westudio.ml/2015/11/Usage-Of-the-new-Segoe-MDL2-icons/</id>
-    <published>2015-11-26T16:00:00.000Z</published>
-    <updated>2016-06-15T09:39:23.957Z</updated>
+    <published>2015-11-27T00:00:00.000Z</published>
+    <updated>2016-06-16T01:40:05.570Z</updated>
     
     <content type="html">&lt;p&gt;The Windows 8/8.1 &lt;strong&gt;Segoe UI Symbol&lt;/strong&gt; icon font has been replaced with the &lt;strong&gt;Segoe MDL2 Assets&lt;/strong&gt; font effective with the release of Windows 10. It can be used in much the same manner as the older font, but many glyphs have been redrawn in the Windows 10 icon style with the font’s metrics set so that icons are aligned within the font’s em-square instead of on a typographic baseline.So in Windows 10, You have to use the new Segoe MDL2. Besides the traditional use, There is other more simple way of using them. Font direct is a way I find that can be useful. I found this way by using the IntensiveTemplate to build my app uwp.HKUST. They use the direct font:&lt;/p&gt;
  &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
@@ -481,6 +551,12 @@
     
     </summary>
     
+      <category term="Developing Process" scheme="http://www.westudio.ml/categories/Developing-Process/"/>
+    
+    
+      <category term="UWP" scheme="http://www.westudio.ml/tags/UWP/"/>
+    
+      <category term="Icon" scheme="http://www.westudio.ml/tags/Icon/"/>
     
   </entry>
   
@@ -488,8 +564,8 @@
     <title>Windows Phone 8 LongListSelector按拼音首字母分组</title>
     <link href="http://www.westudio.ml/2014/10/WP8-LongListSelector-pinyin/"/>
     <id>http://www.westudio.ml/2014/10/WP8-LongListSelector-pinyin/</id>
-    <published>2014-10-15T16:00:00.000Z</published>
-    <updated>2016-06-15T09:39:03.805Z</updated>
+    <published>2014-10-16T00:00:00.000Z</published>
+    <updated>2016-06-16T01:40:34.119Z</updated>
     
     <content type="html">&lt;p&gt;Windows Phone 8的LongListSelector控件按拼音分组主要有两种方法，一个是在数据源里手工指定拼音首字母字段，作为index，这种方法效率高但会造成数据冗余不宜维护。另一个就是我今天介绍的方法，来自MSDN，虽然官网例子是针对是英文数据的首字母分组，但其实稍微改一下还是是支持中文的。&lt;/p&gt;
 &lt;p&gt;实现方法很简单。首先你需要一个来自MSDN的AlphaKeyGroup类，代码如下：&lt;/p&gt;
@@ -523,6 +599,18 @@
     
     </summary>
     
+      <category term="Developing Process" scheme="http://www.westudio.ml/categories/Developing-Process/"/>
+    
+    
+      <category term="C#" scheme="http://www.westudio.ml/tags/C/"/>
+    
+      <category term=".NET" scheme="http://www.westudio.ml/tags/NET/"/>
+    
+      <category term="WP" scheme="http://www.westudio.ml/tags/WP/"/>
+    
+      <category term="WP8" scheme="http://www.westudio.ml/tags/WP8/"/>
+    
+      <category term="Sliverlight" scheme="http://www.westudio.ml/tags/Sliverlight/"/>
     
   </entry>
   
@@ -530,8 +618,8 @@
     <title>Windows Phone 8 开发：应用崩溃时给作者发送错误报告邮件</title>
     <link href="http://www.westudio.ml/2014/10/wp-feedback/"/>
     <id>http://www.westudio.ml/2014/10/wp-feedback/</id>
-    <published>2014-10-14T16:00:00.000Z</published>
-    <updated>2016-06-15T09:38:55.524Z</updated>
+    <published>2014-10-15T00:00:00.000Z</published>
+    <updated>2016-06-16T01:39:36.316Z</updated>
     
     <content type="html">&lt;p&gt;我们的应用难免会爆，但是手工在各个方法上加try…catch…未必能cover到所有场景，有时候我们不希望应用吞掉错误，发生严重异常时，我们应当允许应用在用户面前爆掉。如果没有处理这些异常，应用程序的表现就是闪退。比较好的做法是在应用崩溃时给用户一个选择是否发送邮件告诉应用作者崩溃的详细日志。对于作者来说，等待DevCenter的异常报告相对而言比较被动。如果能在应用崩溃之后立即得到回馈那就可以尽早修复问题。&lt;/p&gt;
 &lt;p&gt;做法很简单，和ASP.NET网站在Global.asax中使用的全局错误处理类似，WP应用也有个全局错误处理的事件。&lt;/p&gt;
@@ -557,15 +645,21 @@
     
     </summary>
     
+      <category term="Developing Process" scheme="http://www.westudio.ml/categories/Developing-Process/"/>
+    
+    
+      <category term="C#" scheme="http://www.westudio.ml/tags/C/"/>
+    
+      <category term="WP" scheme="http://www.westudio.ml/tags/WP/"/>
     
   </entry>
   
   <entry>
     <title>Byte[],Stream,Ibuffer,IRandomAccessStream的互相转换</title>
-    <link href="http://www.westudio.ml/2014/09/2014-9-7-Byte-Stream-Ibuffer-conversion/"/>
-    <id>http://www.westudio.ml/2014/09/2014-9-7-Byte-Stream-Ibuffer-conversion/</id>
+    <link href="http://www.westudio.ml/2014/09/Byte-Stream-Ibuffer-conversion/"/>
+    <id>http://www.westudio.ml/2014/09/Byte-Stream-Ibuffer-conversion/</id>
     <published>2014-09-07T12:46:25.000Z</published>
-    <updated>2016-06-15T09:38:45.058Z</updated>
+    <updated>2016-06-16T01:42:31.408Z</updated>
     
     <content type="html">&lt;p&gt;今天做8.1程序时彻底弄混了IRandomAcessStream和Stream。。。于是乎，我找了一个可用的不同类型转换。。。。&lt;/p&gt;
 &lt;h3 id=&quot;Stream-转IRandomAccessStream&quot;&gt;&lt;a href=&quot;#Stream-转IRandomAccessStream&quot; class=&quot;headerlink&quot; title=&quot;Stream 转IRandomAccessStream&quot;&gt;&lt;/a&gt;Stream 转IRandomAccessStream&lt;/h3&gt;&lt;h4 id=&quot;方法一：&quot;&gt;&lt;a href=&quot;#方法一：&quot; class=&quot;headerlink&quot; title=&quot;方法一：&quot;&gt;&lt;/a&gt;方法一：&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;byte[] bytes = StreamToBytes(stream);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;InMemoryRandomAccessStream memoryStream = new InMemoryRandomAccessStream();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;DataWriter datawriter = new DataWriter(memoryStream.GetOutputStreamAt(0));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;datawriter.WriteBytes(bytes);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;await datawriter.StoreAsync();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -593,6 +687,12 @@
     
     </summary>
     
+      <category term="Developing Process" scheme="http://www.westudio.ml/categories/Developing-Process/"/>
+    
+    
+      <category term="C#" scheme="http://www.westudio.ml/tags/C/"/>
+    
+      <category term=".NET" scheme="http://www.westudio.ml/tags/NET/"/>
     
   </entry>
   
