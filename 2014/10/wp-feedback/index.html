@@ -23,10 +23,13 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows Phone 8 开发：应用崩溃时给作者发送错误报告邮件">
 <meta name="twitter:description" content="我们的应用难免会爆，但是手工在各个方法上加try…catch…未必能cover到所有场景，有时候我们不希望应用吞掉错误，发生严重异常时，我们应当允许应用在用户面前爆掉。如果没有处理这些异常，应用程序的表现就是闪退。比较好的做法是在应用崩溃时给用户一个选择是否发送邮件告诉应用作者崩溃的详细日志。对于作者来说，等待DevCenter的异常报告相对而言比较被动。如果能在应用崩溃之后立即得到回馈那就可以尽">
+<meta name="twitter:creator" content="@patrick330602">
     
     
         
     
+    
+        <meta property="og:image" content="http://ap.westudio.ml/source/images/we-studio-icon.png"/>
     
     
     
@@ -35,6 +38,17 @@
     <link rel="stylesheet" href="/assets/css/style-nuvue6sithwirecbhvw3dkaobiojqvtadsnhguwi7k04xklybw5djl1smadp.min.css">
     <!--STYLES END-->
     
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-44416732-4']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
     
 </head>
 
@@ -44,8 +58,12 @@
 
 
     
+        
+            
+        
+    
 
-<header id="header" data-behavior="4">
+<header id="header" data-behavior="3">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <h1 class="header-title">
         <a class="header-title-link" href="/ ">WE. Studio</a>
@@ -53,8 +71,10 @@
     
         
             <a  class="header-right-picture "
-                href="#about">
+                href="/">
         
+        
+            <img class="header-picture" src="http://ap.westudio.ml/source/images/we-studio-icon.png"/>
         
         </a>
     
@@ -63,7 +83,18 @@
             <!-- Define author's picture -->
 
 
-<nav id="sidebar" data-behavior="4">
+
+        
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="http://ap.westudio.ml/source/images/we-studio-icon.png"/>
+            </a>
+            <span class="sidebar-profile-name">Patrick J. Wu</span>
+        </div>
     
     
         <ul class="sidebar-buttons">
@@ -118,22 +149,7 @@
         
             <li class="sidebar-button">
                 
-                    <a  class="sidebar-button-link st-search-show-outputs"
-                         href="#search"
-                        
-                    >
-                
-                    <i class="sidebar-button-icon fa fa-lg fa-search"></i>
-                    <span class="sidebar-button-desc">Search</span>
-                </a>
-        </li>
-        
-            <li class="sidebar-button">
-                
-                    <a  class="sidebar-button-link "
-                         href="#about"
-                        
-                    >
+                    <a  class="sidebar-button-link " href="http://ap.westudio.ml/" target="_blank">
                 
                     <i class="sidebar-button-icon fa fa-lg fa-question"></i>
                     <span class="sidebar-button-desc">About</span>
@@ -143,6 +159,33 @@
     </ul>
     
         <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="http://patrickwu.ml/" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-fa-cube"></i>
+                    <span class="sidebar-button-desc">ME.</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/patrick330602" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="mailto:pk.we.studio.com" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Mail</span>
+                </a>
+        </li>
         
     </ul>
     
@@ -165,7 +208,7 @@
 </nav>
 
             
-            <div id="main" data-behavior="4"
+            <div id="main" data-behavior="3"
                  class="
                         hasCoverMetaIn
                         ">
@@ -255,6 +298,12 @@
             </a>
         </li>
         
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
         <li class="post-action">
             
                 <a class="post-action-btn btn btn--default" href="#">
@@ -267,6 +316,10 @@
 
 
         
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
             
         
     </div>
@@ -282,7 +335,7 @@
 
             </div>
             
-                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
                     <div class="post-actions-wrap">
     <nav>
         <ul class="post-actions post-action-nav">
@@ -326,6 +379,12 @@
             </a>
         </li>
         
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
         <li class="post-action">
             
                 <a class="post-action-btn btn btn--default" href="#">
@@ -338,7 +397,7 @@
 
 
                 </div>
-                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
             <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.westudio.ml/2014/10/wp-feedback/">
@@ -363,11 +422,17 @@
         
 
 
+    
+        
+    
+
 <div id="about">
     <div id="about-card">
         <div id="about-btn-close">
             <i class="fa fa-remove"></i>
         </div>
+        
+            <img id="about-card-picture" src="http://ap.westudio.ml/source/images/we-studio-icon.png"/>
         
             <h4 id="about-card-name">Patrick J. Wu</h4>
         
@@ -383,6 +448,12 @@
             </h5>
         
         
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Hong Kong
+            </h5>
+        
     </div>
 </div>
 
@@ -393,6 +464,23 @@
 <script src="/assets/js/script-i4qo6jx6jji9fg0dftpya6ivemizsbow4fhow76d8dwpm7m1wbvi378ssumx.min.js"></script>
 <!--SCRIPTS END-->
 
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://www.westudio.ml/2014/10/wp-feedback/';
+                 
+                    this.page.identifier = '2014/10/wp-feedback/';
+                                  
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'westudio';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
     
 
 
