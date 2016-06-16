@@ -3,28 +3,53 @@
 <html lang="en">
     
 <head>
-    <meta charset="UTF-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="WE. Studio">
-    <title>How to judge whether a webpage existed in a fast way - WE. Studio</title>
+    <title>WeCode huge update is coming! - WE. Studio</title>
     <meta name="author" content="Patrick J. Wu">
     
     
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="Recently I am coding a app for viewing newspaper. Because there are no API, I have to manually find whether the page ever existed. So I try to look on the Internet, and find a try catch way to judge i">
+    <meta name="description" content="Developer tools For UWP is now WECode with 2.0 update!
+
+Improvements:
+new UI, logo and name; 
+Add Home; 
+Add Newest Build Information; 
+Update database of Segoe MDL2 Assets; 
+Improved About; 
+Integrat">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="How to judge whether a webpage existed in a fast way">
-<meta property="og:url" content="http://www.westudio.ml/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/index.html">
+<meta property="og:title" content="WeCode huge update is coming!">
+<meta property="og:url" content="http://www.westudio.ml/2016/06/wecode-big-update-coming/index.html">
 <meta property="og:site_name" content="WE. Studio">
-<meta property="og:description" content="Recently I am coding a app for viewing newspaper. Because there are no API, I have to manually find whether the page ever existed. So I try to look on the Internet, and find a try catch way to judge i">
-<meta property="og:image" content="http://www.westudio.ml/images/working-code.png">
-<meta property="og:updated_time" content="2016-06-15T09:38:18.433Z">
+<meta property="og:description" content="Developer tools For UWP is now WECode with 2.0 update!
+
+Improvements:
+new UI, logo and name; 
+Add Home; 
+Add Newest Build Information; 
+Update database of Segoe MDL2 Assets; 
+Improved About; 
+Integrat">
+<meta property="og:image" content="http://ap.westudio.ml/sources/images/wecode.png">
+<meta property="og:image" content="http://ap.westudio.ml/sources/images/get-app-win10.png">
+<meta property="og:updated_time" content="2016-06-16T01:52:34.581Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to judge whether a webpage existed in a fast way">
-<meta name="twitter:description" content="Recently I am coding a app for viewing newspaper. Because there are no API, I have to manually find whether the page ever existed. So I try to look on the Internet, and find a try catch way to judge i">
-<meta name="twitter:image" content="http://www.westudio.ml/images/working-code.png">
+<meta name="twitter:title" content="WeCode huge update is coming!">
+<meta name="twitter:description" content="Developer tools For UWP is now WECode with 2.0 update!
+
+Improvements:
+new UI, logo and name; 
+Add Home; 
+Add Newest Build Information; 
+Update database of Segoe MDL2 Assets; 
+Improved About; 
+Integrat">
+<meta name="twitter:image" content="http://ap.westudio.ml/sources/images/wecode.png">
 <meta name="twitter:creator" content="@patrick330602">
     
     
@@ -49,13 +74,13 @@
             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
-    </script>
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
     
 </head>
 
     <body>
-        <div id="blog">
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="blog">
             <!-- Define author's picture -->
 
 
@@ -221,15 +246,21 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            How to judge whether a webpage existed in a fast way
+            WeCode huge update is coming!
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" datetime="2016-03-09T08:00:00+08:00">
+    <time itemprop="datePublished" datetime="2016-06-16T08:00:00+08:00">
 	
-		    Mar 09, 2016
+		    Jun 16, 2016
     	
     </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/App-Release/">App Release</a>
+
+
     
 </div>
 
@@ -237,24 +268,42 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>Recently I am coding a app for viewing newspaper. Because there are no API, I have to manually find whether the page ever existed. So I try to look on the Internet, and find a try catch way to judge it:</p>
- <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">HttpWebResponse response = null;</span><br><span class="line"> var request = (HttpWebRequest)WebRequest.Create(/* url */);</span><br><span class="line"> request.Method = “HEAD”;</span><br><span class="line"></span><br><span class="line">try</span><br><span class="line"> &#123;</span><br><span class="line"> response = (HttpWebResponse)request.GetResponse();</span><br><span class="line"> &#125;</span><br><span class="line"> catch (WebException ex)</span><br><span class="line"> &#123;</span><br><span class="line"> /* A WebException will be thrown if the status of the response is not `200 OK` */</span><br><span class="line"> &#125;</span><br><span class="line"> finally</span><br><span class="line"> &#123;</span><br><span class="line"> // Don’t forget to close your response.</span><br><span class="line"> if (response != null)</span><br><span class="line"> &#123;</span><br><span class="line">response.Close()</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>However, I find that GetResponse method now no longer existed in .NET framework 4.5.2. So I find a another one that worked. But it is very slow. So I come up with an idea-using the HTTP head to find out whether it exists, and it is a lot faster:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HttpClient httpClient = new HttpClient();</span><br><span class="line"></span><br><span class="line">//Getting the Web Response.</span><br><span class="line"> HttpResponseMessage httpResponse = new HttpResponseMessage();</span><br><span class="line"> HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, new Uri(website));</span><br><span class="line"> httpResponse = await httpClient.SendRequestAsync(request);</span><br><span class="line"> if(httpResponse.ToString().Contains(“StatusCode: 404”))</span><br><span class="line"> &#123;</span><br><span class="line"> // do something when the page doesn’t exist</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/working-code.png" alt="real working code"></p>
+            <p>Developer tools For UWP is now WECode with 2.0 update!</p>
+<p><img src="http://ap.westudio.ml/sources/images/wecode.png" width="120px"></p>
+<h3 id="Improvements"><a href="#Improvements" class="headerlink" title="Improvements:"></a>Improvements:</h3><ul>
+<li>new UI, logo and name; </li>
+<li>Add Home; </li>
+<li>Add Newest Build Information; </li>
+<li>Update database of Segoe MDL2 Assets; </li>
+<li>Improved About; </li>
+<li>Integration of Feedback Hub. </li>
+</ul>
+<h3 id="Bug-Fixes"><a href="#Bug-Fixes" class="headerlink" title="Bug Fixes:"></a>Bug Fixes:</h3><ul>
+<li>When you click test in URI Tester, the app no longer randomly crashes; </li>
+<li>You can now unselect the target logo and unplated target logo with one click; </li>
+<li>When clicking the icon with the same name but different Unicode, they no longer display the same Unicode in detail page. </li>
+</ul>
+<p>Get it now!</p>
+<p><a href="https://www.microsoft.com/store/apps/9nblggh5p90f" target="_blank" rel="external"><img src="http://ap.westudio.ml/sources/images/get-app-win10.png" width="300px"></a></p>
 
             
         </div>
     </div>
     <div id="post-footer" class="post-footer main-content-wrap">
         
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Developer-Tools-For-UWP/">Developer Tools For UWP</a> <a class="tag tag--primary tag--small t-link" href="/tags/UWP/">UWP</a> <a class="tag tag--primary tag--small t-link" href="/tags/WeCode/">WeCode</a>
+
+            </div>
+        
         <div class="post-actions-wrap">
     <nav>
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/06/2016-6-12-Color/"  data-tooltip="Color With C#">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -262,7 +311,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/02/How-to-create-a-new-window-in-UWP/" data-tooltip="How to create a new window in UWP">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/06/Color/" data-tooltip="Color With C#">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -277,17 +326,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.westudio.ml/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.westudio.ml/2016/06/wecode-big-update-coming/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.westudio.ml/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.westudio.ml/2016/06/wecode-big-update-coming/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.westudio.ml/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.westudio.ml/2016/06/wecode-big-update-coming/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -335,7 +384,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/06/2016-6-12-Color/"  data-tooltip="Color With C#">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -343,7 +392,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/02/How-to-create-a-new-window-in-UWP/" data-tooltip="How to create a new window in UWP">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/06/Color/" data-tooltip="Color With C#">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                     <i class="fa fa-angle-right"></i>
@@ -358,17 +407,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.westudio.ml/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.westudio.ml/2016/06/wecode-big-update-coming/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.westudio.ml/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.westudio.ml/2016/06/wecode-big-update-coming/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.westudio.ml/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.westudio.ml/2016/06/wecode-big-update-coming/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -394,17 +443,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="3">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.westudio.ml/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.westudio.ml/2016/06/wecode-big-update-coming/">
                 <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.westudio.ml/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.westudio.ml/2016/06/wecode-big-update-coming/">
                 <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.westudio.ml/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.westudio.ml/2016/06/wecode-big-update-coming/">
                 <i class="fa fa-twitter"></i><span>Share on Twitter</span>
             </a>
         </li>
@@ -452,7 +501,7 @@
 </div>
 
         
-<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     </body>
     <!--SCRIPTS-->
 <script src="/assets/js/script-i4qo6jx6jji9fg0dftpya6ivemizsbow4fhow76d8dwpm7m1wbvi378ssumx.min.js"></script>
@@ -461,9 +510,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://www.westudio.ml/2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/';
+                 this.page.url = 'http://www.westudio.ml/2016/06/wecode-big-update-coming/';
                  
-                    this.page.identifier = '2016/03/2016-3-9-How-to-judge-whether-a-webpage-existed-in-a-fast-way/';
+                    this.page.identifier = '2016/06/wecode-big-update-coming/';
                                   
              };
             (function() {
