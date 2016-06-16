@@ -161,9 +161,9 @@
         
             <li class="sidebar-button">
                 
-                    <a  class="sidebar-button-link " href="http://patrickwu.ml/" target="_blank">
+                    <a  class="sidebar-button-link " href="http://patrickwu.cf/" target="_blank">
                 
-                    <i class="sidebar-button-icon fa fa-lg fa-fa-cube"></i>
+                    <i class="sidebar-button-icon fa fa-lg fa-cube"></i>
                     <span class="sidebar-button-desc">ME.</span>
                 </a>
         </li>
@@ -174,6 +174,33 @@
                 
                     <i class="sidebar-button-icon fa fa-lg fa-github"></i>
                     <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://twitter.com/patrick330602" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                    <span class="sidebar-button-desc">Twitter</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.weibo.com/patrick330602" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-weibo"></i>
+                    <span class="sidebar-button-desc">weibo</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://facebook.com/" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+                    <span class="sidebar-button-desc">Facebook</span>
                 </a>
         </li>
         
@@ -217,7 +244,7 @@
 <section class="postShorten-group main-content-wrap">
     
     
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
         <div class="postShorten-wrap">
             
             <div class="postShorten-header">
@@ -245,34 +272,20 @@
 
             </div>
             
-                <div class="postShorten-content" itemprop="articleBody">
+                <div class="postShorten-excerpt" itemprop="articleBody">
                     <p>Developer tools For UWP is now WECode with 2.0 update!</p>
-<p><img src="http://ap.westudio.ml/sources/images/wecode.png" width="120px"></p>
 <h3 id="Improvements"><a href="#Improvements" class="headerlink" title="Improvements:"></a>Improvements:</h3><ul>
 <li>new UI, logo and name; </li>
-<li>Add Home; </li>
+<li>Add Home;</li>
 <li>Add Newest Build Information; </li>
 <li>Update database of Segoe MDL2 Assets; </li>
 <li>Improved About; </li>
-<li>Integration of Feedback Hub. </li>
-</ul>
-<h3 id="Bug-Fixes"><a href="#Bug-Fixes" class="headerlink" title="Bug Fixes:"></a>Bug Fixes:</h3><ul>
-<li>When you click test in URI Tester, the app no longer randomly crashes; </li>
-<li>You can now unselect the target logo and unplated target logo with one click; </li>
-<li>When clicking the icon with the same name but different Unicode, they no longer display the same Unicode in detail page. </li>
-</ul>
-<p>Get it now!</p>
-<p><a href="https://www.microsoft.com/store/apps/9nblggh5p90f" target="_blank" rel="external"><img src="http://ap.westudio.ml/sources/images/get-app-win10.png" width="300px"></a></p>
-
+<li><p>Integration of Feedback Hub. </p>
                     
+                        <a href="/2016/06/wecode-big-update-coming/" class="postShorten-excerpt_link link">
+                            Continue reading
+                        </a>
                         
-                    
-                    
-                        <p>
-                            <a href="/2016/06/wecode-big-update-coming/#post-footer" class="postShorten-excerpt_link link">
-                                Comment and share
-                            </a>
-                        </p>
                     
                 </div>
             
@@ -574,7 +587,7 @@
             
                 <div class="postShorten-excerpt" itemprop="articleBody">
                     <p>今天做8.1程序时彻底弄混了IRandomAcessStream和Stream。。。于是乎，我找了一个可用的不同类型转换。。。。</p>
-<h3 id="Stream-转IRandomAccessStream"><a href="#Stream-转IRandomAccessStream" class="headerlink" title="Stream 转IRandomAccessStream"></a>Stream 转IRandomAccessStream</h3><h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">byte[] bytes = StreamToBytes(stream);</span><br><span class="line">InMemoryRandomAccessStream memoryStream = new InMemoryRandomAccessStream();</span><br><span class="line">DataWriter datawriter = new DataWriter(memoryStream.GetOutputStreamAt(0));</span><br><span class="line">datawriter.WriteBytes(bytes);</span><br><span class="line">await datawriter.StoreAsync();</span><br></pre></td></tr></table></figure>
+<h3 id="Stream-转IRandomAccessStream"><a href="#Stream-转IRandomAccessStream" class="headerlink" title="Stream 转IRandomAccessStream"></a>Stream 转IRandomAccessStream</h3><h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">byte</span>[] bytes = StreamToBytes(stream);</span><br><span class="line">InMemoryRandomAccessStream memoryStream = <span class="keyword">new</span> InMemoryRandomAccessStream();</span><br><span class="line">DataWriter datawriter = <span class="keyword">new</span> DataWriter(memoryStream.GetOutputStreamAt(<span class="number">0</span>));</span><br><span class="line">datawriter.WriteBytes(bytes);</span><br><span class="line"><span class="keyword">await</span> datawriter.StoreAsync();</span><br></pre></td></tr></table></figure>
                     
                         <a href="/2014/09/Byte-Stream-Ibuffer-conversion/" class="postShorten-excerpt_link link">
                             Continue reading
