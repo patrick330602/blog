@@ -20,7 +20,7 @@
 <meta property="og:site_name" content="WE. Studio">
 <meta property="og:description" content="Recently I am coding a app for viewing newspaper. Because there are no API, I have to manually find whether the page ever existed. So I try to look on the Internet, and find a try catch way to judge i">
 <meta property="og:image" content="http://www.westudio.ml/images/working-code.png">
-<meta property="og:updated_time" content="2016-06-16T01:40:50.502Z">
+<meta property="og:updated_time" content="2016-06-16T03:15:56.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to judge whether a webpage existed in a fast way">
 <meta name="twitter:description" content="Recently I am coding a app for viewing newspaper. Because there are no API, I have to manually find whether the page ever existed. So I try to look on the Internet, and find a try catch way to judge i">
@@ -164,9 +164,9 @@
         
             <li class="sidebar-button">
                 
-                    <a  class="sidebar-button-link " href="http://patrickwu.ml/" target="_blank">
+                    <a  class="sidebar-button-link " href="http://patrickwu.cf/" target="_blank">
                 
-                    <i class="sidebar-button-icon fa fa-lg fa-fa-cube"></i>
+                    <i class="sidebar-button-icon fa fa-lg fa-cube"></i>
                     <span class="sidebar-button-desc">ME.</span>
                 </a>
         </li>
@@ -177,6 +177,33 @@
                 
                     <i class="sidebar-button-icon fa fa-lg fa-github"></i>
                     <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://twitter.com/patrick330602" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                    <span class="sidebar-button-desc">Twitter</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.weibo.com/patrick330602" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-weibo"></i>
+                    <span class="sidebar-button-desc">weibo</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://facebook.com/" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+                    <span class="sidebar-button-desc">Facebook</span>
                 </a>
         </li>
         
@@ -245,9 +272,9 @@
         <div class="main-content-wrap">
             <p>Recently I am coding a app for viewing newspaper. Because there are no API, I have to manually find whether the page ever existed. So I try to look on the Internet, and find a try catch way to judge it:</p>
  <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">HttpWebResponse response = null;</span><br><span class="line"> var request = (HttpWebRequest)WebRequest.Create(/* url */);</span><br><span class="line"> request.Method = “HEAD”;</span><br><span class="line"></span><br><span class="line">try</span><br><span class="line"> &#123;</span><br><span class="line"> response = (HttpWebResponse)request.GetResponse();</span><br><span class="line"> &#125;</span><br><span class="line"> catch (WebException ex)</span><br><span class="line"> &#123;</span><br><span class="line"> /* A WebException will be thrown if the status of the response is not `200 OK` */</span><br><span class="line"> &#125;</span><br><span class="line"> finally</span><br><span class="line"> &#123;</span><br><span class="line"> // Don’t forget to close your response.</span><br><span class="line"> if (response != null)</span><br><span class="line"> &#123;</span><br><span class="line">response.Close()</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">HttpWebResponse response = <span class="literal">null</span>;</span><br><span class="line"> <span class="keyword">var</span> request = (HttpWebRequest)WebRequest.Create(<span class="comment">/* url */</span>);</span><br><span class="line"> request.Method = “HEAD”;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span></span><br><span class="line"> &#123;</span><br><span class="line"> response = (HttpWebResponse)request.GetResponse();</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">catch</span> (WebException ex)</span><br><span class="line"> &#123;</span><br><span class="line"> <span class="comment">/* A WebException will be thrown if the status of the response is not `200 OK` */</span></span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">finally</span></span><br><span class="line"> &#123;</span><br><span class="line"> <span class="comment">// Don’t forget to close your response.</span></span><br><span class="line"> <span class="keyword">if</span> (response != <span class="literal">null</span>)</span><br><span class="line"> &#123;</span><br><span class="line">response.Close()</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 <p>However, I find that GetResponse method now no longer existed in .NET framework 4.5.2. So I find a another one that worked. But it is very slow. So I come up with an idea-using the HTTP head to find out whether it exists, and it is a lot faster:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HttpClient httpClient = new HttpClient();</span><br><span class="line"></span><br><span class="line">//Getting the Web Response.</span><br><span class="line"> HttpResponseMessage httpResponse = new HttpResponseMessage();</span><br><span class="line"> HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, new Uri(website));</span><br><span class="line"> httpResponse = await httpClient.SendRequestAsync(request);</span><br><span class="line"> if(httpResponse.ToString().Contains(“StatusCode: 404”))</span><br><span class="line"> &#123;</span><br><span class="line"> // do something when the page doesn’t exist</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HttpClient httpClient = <span class="keyword">new</span> HttpClient();</span><br><span class="line"></span><br><span class="line"><span class="comment">//Getting the Web Response.</span></span><br><span class="line"> HttpResponseMessage httpResponse = <span class="keyword">new</span> HttpResponseMessage();</span><br><span class="line"> HttpRequestMessage request = <span class="keyword">new</span> HttpRequestMessage(HttpMethod.Get, <span class="keyword">new</span> Uri(website));</span><br><span class="line"> httpResponse = <span class="keyword">await</span> httpClient.SendRequestAsync(request);</span><br><span class="line"> <span class="keyword">if</span>(httpResponse.ToString().Contains(“StatusCode: <span class="number">404</span>”))</span><br><span class="line"> &#123;</span><br><span class="line"> <span class="comment">// do something when the page doesn’t exist</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/images/working-code.png" alt="real working code"></p>
 
             

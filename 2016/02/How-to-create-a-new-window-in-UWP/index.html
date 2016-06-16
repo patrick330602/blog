@@ -24,7 +24,7 @@ I cannot say this is difficult or simple. In order to open a new window, You nee
 
 I cannot say this is difficult or simple. In order to open a new window, You need to use CoreApplication.CreateNewView() to generate th">
 <meta property="og:image" content="http://www.westudio.ml/images/new-window.png">
-<meta property="og:updated_time" content="2016-06-16T01:41:59.310Z">
+<meta property="og:updated_time" content="2016-06-16T03:15:44.620Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to create a new window in UWP">
 <meta name="twitter:description" content="Some friends of mine asked me how to create a window like this:
@@ -170,9 +170,9 @@ I cannot say this is difficult or simple. In order to open a new window, You nee
         
             <li class="sidebar-button">
                 
-                    <a  class="sidebar-button-link " href="http://patrickwu.ml/" target="_blank">
+                    <a  class="sidebar-button-link " href="http://patrickwu.cf/" target="_blank">
                 
-                    <i class="sidebar-button-icon fa fa-lg fa-fa-cube"></i>
+                    <i class="sidebar-button-icon fa fa-lg fa-cube"></i>
                     <span class="sidebar-button-desc">ME.</span>
                 </a>
         </li>
@@ -183,6 +183,33 @@ I cannot say this is difficult or simple. In order to open a new window, You nee
                 
                     <i class="sidebar-button-icon fa fa-lg fa-github"></i>
                     <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://twitter.com/patrick330602" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                    <span class="sidebar-button-desc">Twitter</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.weibo.com/patrick330602" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-weibo"></i>
+                    <span class="sidebar-button-desc">weibo</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://facebook.com/" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+                    <span class="sidebar-button-desc">Facebook</span>
                 </a>
         </li>
         
@@ -253,7 +280,7 @@ I cannot say this is difficult or simple. In order to open a new window, You nee
 <p><img src="/images/new-window.png" alt="new window in UWP"></p>
 <p>I cannot say this is difficult or simple. In order to open a new window, You need to use CoreApplication.CreateNewView() to generate the Window, or view:</p>
  <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var currentAV = ApplicationView.GetForCurrentView();</span><br><span class="line"></span><br><span class="line">await newAV.Dispatcher.RunAsync(</span><br><span class="line"> CoreDispatcherPriority.Normal,</span><br><span class="line"> async () =&gt;</span><br><span class="line"> &#123;</span><br><span class="line"> var newWindow = Window.Current;</span><br><span class="line"> var newAppView = ApplicationView.GetForCurrentView();newAppView.Title = title;  //The title of new windowvar frame = new Frame();</span><br><span class="line"> frame.Navigate(typeof(Page), Datatosend); //Navigation is here</span><br><span class="line"> newWindow.Content = frame;</span><br><span class="line"> newWindow.Activate();await ApplicationViewSwitcher.TryShowAsStandaloneAsync(</span><br><span class="line">newAppView.Id,</span><br><span class="line"> ViewSizePreference.UseMinimum,</span><br><span class="line">currentAV.Id,</span><br><span class="line"> ViewSizePreference.UseMinimum);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentAV = ApplicationView.GetForCurrentView();</span><br><span class="line"></span><br><span class="line"><span class="keyword">await</span> newAV.Dispatcher.RunAsync(</span><br><span class="line"> CoreDispatcherPriority.Normal,</span><br><span class="line"> <span class="keyword">async</span> () =&gt;</span><br><span class="line"> &#123;</span><br><span class="line"> <span class="keyword">var</span> newWindow = Window.Current;</span><br><span class="line"> <span class="keyword">var</span> newAppView = ApplicationView.GetForCurrentView();newAppView.Title = title;  <span class="comment">//The title of new windowvar frame = new Frame();</span></span><br><span class="line"> frame.Navigate(<span class="keyword">typeof</span>(Page), Datatosend); <span class="comment">//Navigation is here</span></span><br><span class="line"> newWindow.Content = frame;</span><br><span class="line"> newWindow.Activate();<span class="keyword">await</span> ApplicationViewSwitcher.TryShowAsStandaloneAsync(</span><br><span class="line">newAppView.Id,</span><br><span class="line"> ViewSizePreference.UseMinimum,</span><br><span class="line">currentAV.Id,</span><br><span class="line"> ViewSizePreference.UseMinimum);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
             
         </div>
     </div>
