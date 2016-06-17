@@ -13,66 +13,70 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="&amp;nbsp;
-
-
-
-URI scheme
+    <meta name="description" content="URI scheme
 Description
+
+
+
 
 ms-battery
 Launches the Usage tab of the Battery Saver app.
 
+
 ms-wallet
 Launches Wallet app.
+
 
 ms-settings-camera
 Launches the Photos + Camera Settings app.
 
-&amp;lt;span s">
+
+ms-settings">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="URI Info">
 <meta property="og:url" content="http://www.westudio.ml/2014/07/URI-Info/index.html">
 <meta property="og:site_name" content="WE. Studio">
-<meta property="og:description" content="&amp;nbsp;
-
-
-
-URI scheme
+<meta property="og:description" content="URI scheme
 Description
+
+
+
 
 ms-battery
 Launches the Usage tab of the Battery Saver app.
 
+
 ms-wallet
 Launches Wallet app.
+
 
 ms-settings-camera
 Launches the Photos + Camera Settings app.
 
-&amp;lt;span s">
-<meta property="og:image" content="http://i.msdn.microsoft.com/dynimg/IC46226.gif">
-<meta property="og:updated_time" content="2016-06-17T01:44:50.528Z">
+
+ms-settings">
+<meta property="og:updated_time" content="2016-06-17T02:26:53.783Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="URI Info">
-<meta name="twitter:description" content="&amp;nbsp;
-
-
-
-URI scheme
+<meta name="twitter:description" content="URI scheme
 Description
+
+
+
 
 ms-battery
 Launches the Usage tab of the Battery Saver app.
 
+
 ms-wallet
 Launches Wallet app.
+
 
 ms-settings-camera
 Launches the Photos + Camera Settings app.
 
-&amp;lt;span s">
-<meta name="twitter:image" content="http://i.msdn.microsoft.com/dynimg/IC46226.gif">
+
+ms-settings">
 <meta name="twitter:creator" content="@patrick330602">
     
     
@@ -221,6 +225,15 @@ Launches the Photos + Camera Settings app.
         
             <li class="sidebar-button">
                 
+                    <a  class="sidebar-button-link " href="http://blog.patrickwu.cf/" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-book"></i>
+                    <span class="sidebar-button-desc">The Road I Choose</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
                     <a  class="sidebar-button-link " href="https://github.com/patrick330602" target="_blank">
                 
                     <i class="sidebar-button-icon fa fa-lg fa-github"></i>
@@ -318,43 +331,239 @@ Launches the Photos + Camera Settings app.
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>&nbsp;</p>
-<p><table></table></p>
-<p><tbody></tbody></p>
-<p><tr class="firstRow"></tr></p>
-<p><th>URI scheme</th></p>
-<p><th>Description</th><br></p>
-<p><tr></tr></p>
-<p><td nowrap="nowrap"><code>ms-battery</code></td></p>
-<p><td>Launches the Usage tab of the Battery Saver app.</td><br></p>
-<p><tr></tr></p>
-<p><td nowrap="nowrap"><code>ms-wallet</code></td></p>
-<p><td>Launches Wallet app.</td><br></p>
-<p><tr></tr></p>
-<p><td nowrap="nowrap"><code>ms-settings-camera</code></td></p>
-<p><td>Launches the Photos + Camera Settings app.</td><br></p>
-<p><tr></tr></p>
-<p><td nowrap="nowrap"><code>&lt;span style=&quot;background-color:#ffff00;&quot;&gt;ms-settings-networkprofileupdate&lt;/span&gt;</code></td></p>
-<p><td style="-ms-word-break:break-all;">Launches the Network Profile Update app.</td></p>
-<p>*这货不知道干啥用的<br></p>
-<p><tr></tr></p>
-<p><td nowrap="nowrap"><code>ms-settings-nfctransactions</code></td></p>
-<p><td>Launches the NFC Settings app.<sup><span style="font-size:12px;">1</span></sup></td><br></p>
-<p><tr></tr></p>
-<p><td nowrap="nowrap"><code>ms-settings-notifications</code></td></p>
-<p><td>Launches the Notifications + Actions Settings app.</td><br></p>
-<p><tr></tr></p>
-<p><td nowrap="nowrap"><code>ms-settings-proximity</code></td></p>
-<p><td>Launches the NFC Settings app.<sup><span style="font-size:12px;">1</span></sup></td><br></p>
-<p><tr></tr></p>
-<p><td nowrap="nowrap"><code>ms-settings-uicctoolkit</code></td></p>
-<p><td>Launches a SIM Applications related app. UICC appears to stand for Universal Integrated Circuit Card.<sup><span style="font-size:12px;">2</span></sup></td><br></p>
-<p><tr></tr></p>
-<p><td nowrap="nowrap"><code>ms-settings-workplace</code></td></p>
-<p><td>Launches the Workplace Settings app.</td><br><br><br></p>
-<p><pre>Windows.System.Launcher.LaunchUriAsync( Uri(“ms-settings-bluetooth:”));</pre><br><a id="more"></a></p>
+            <table>
+<thead>
+<tr>
+<th>URI scheme</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ms-battery</code></td>
+<td>Launches the Usage tab of the Battery Saver app.</td>
+</tr>
+<tr>
+<td><code>ms-wallet</code></td>
+<td>Launches Wallet app.</td>
+</tr>
+<tr>
+<td><code>ms-settings-camera</code></td>
+<td>Launches the Photos + Camera Settings app.</td>
+</tr>
+<tr>
+<td><code>ms-settings-networkprofileupdate</code></td>
+<td>Launches the Network Profile Update app.*这货不知道干啥用的</td>
+</tr>
+<tr>
+<td><code>ms-settings-nfctransactions</code></td>
+<td>Launches the NFC Settings app.<sup><span style="font-size:12px;">1</span></sup></td>
+</tr>
+<tr>
+<td><code>ms-settings-notifications</code></td>
+<td>Launches the Notifications + Actions Settings app.</td>
+</tr>
+<tr>
+<td><code>ms-settings-proximity</code></td>
+<td>Launches the NFC Settings app.<sup><span style="font-size:12px;">1</span></sup></td>
+</tr>
+<tr>
+<td><code>ms-settings-uicctoolkit</code></td>
+<td>Launches a SIM Applications related app. UICC appears to stand for Universal Integrated Circuit Card.<sup><span style="font-size:12px;">2</span></sup></td>
+</tr>
+<tr>
+<td><code>ms-settings-workplace</code></td>
+<td>Launches the Workplace Settings app.</td>
+</tr>
+</tbody>
+</table>
+<p><code>Windows.System.Launcher.LaunchUriAsync( Uri(“ms-settings-bluetooth:”));</code><br><a id="more"></a></p>
 <p>托管的应用 和 Direct3D 应用 都支持此内置应用启动方法。</p>
-<div><br><div><a href="void(0"><span class="LW_CollapsibleArea_Title">URI 方案列表</span></a> “折叠”)<br><div class="LW_CollapsibleArea_HrDiv"><br><br><em> </em> <em><br><br></em></div><br></div><br><div class="sectionblock"><a id="sectionToggle0"></a>下表列出了用于启动内置应用的 URI 方案。<br><div class="caption"></div><br><div class="tableSection"><br><table style="width:601px;"><br><tbody><br><tr class="firstRow"><br><th>URI 方案</th><br><th>说明</th><br></tr><br><tr><br><td>http:[URL]</td><br><td>启动 Web 浏览器并导航到特定的 URL。</td><br></tr><br><tr><br><td>mailto:[email address]</td><br><td>启动电子邮件应用并使用“收件人”一行上特定的电子邮件地址创建新邮件。请注意，电子邮件不会发送直到用户点按发送。</td><br></tr><br><tr><br><td>ms-settings-airplanemode：</td><br><td>启动飞行模式设置应用。</td><br></tr><br><tr><br><td>ms-settings-bluetooth：</td><br><td>启动蓝牙设置应用。</td><br></tr><br><tr><br><td>ms-settings-cellular：</td><br><td>启动手机网络设置应用。</td><br></tr><br><tr><br><td>ms-settings-emailandaccounts：</td><br><td>启动电子邮件和帐户设置应用。</td><br></tr><br><tr><br><td>ms-settings-location：</td><br><td>启动位置设置应用。</td><br></tr><br><tr><br><td>ms-settings-lock：</td><br><td>启动锁屏设置应用。</td><br></tr><br><tr><br><td>ms-settings-power：</td><br><td>启动节电模式设置应用。</td><br></tr><br><tr><br><td>ms-settings-screenrotation：</td><br><td>启动屏幕旋转设置应用。<br><div class="alert"><br><div class="mtps-table"><br><div class="mtps-row"><span class="mtps-th"><img src="http://i.msdn.microsoft.com/dynimg/IC46226.gif" alt="重要说明" title="重要说明"><strong>重要说明：</strong></span></div><br><div class="mtps-row"><span class="mtps-cell">您的应用仅可以在具有  的设备上使用此功能。通常需要代码中的条件逻辑以测试某个设备是否具有 。</span></div><br></div><br></div><br>您可以使用以下代码测试设备是否具有 。<br><br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  Version TargetedVersion =  Version(<span class="number">8</span>, <span class="number">0</span>, <span class="number">10492</span>);   IsTargetedVersion</span><br><span class="line">&#123;     &#123;  Environment.OSVersion.Version &amp;gt;= TargetedVersion; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br></td><br></tr><br><tr><br><td>ms-settings-wifi：</td><br><td>启动 Wi-Fi 设置应用。</td><br></tr><br><tr><br><td>zune:navigate?appid=[app ID]</td><br><td>启动 Windows Phone 商店 并显示特定应用的详细信息页面。</td><br></tr><br><tr><br><td>zune:reviewapp</td><br><td>启动 商店 并显示调用应用的查看页面。</td><br></tr><br><tr><br><td>zune:reviewapp?appid=app[app ID]</td><br><td>启动 商店 并显示特定应用的查看页面。请注意，您必须在指定应用的 ID 前面加上“app”。例如，检查 ID 为 fdf05477-814e-41d4-86cd-25d5a50ab2d8 的应用时，URI 为 <span class="code">zune:reviewapp?appid=appfdf05477-814e-41d4-86cd-25d5a50ab2d8</span></td><br></tr><br><tr><br><td>zune:search?keyword=[search keyword]&amp;publisher=[publisher name]&amp;contenttype=app</td><br><td>启动 商店 并搜索特定的内容。所有参数都是可选的。指定“contenttype=app”将限制对应用的搜索。省略此参数将搜索所有内容。</td><br></tr><br><tr><br><td>zune:search?keyword=[search keyword]&amp;contenttype=app</td><br><td>启动 商店 并按关键字搜索应用。</td><br></tr><br><tr><br><td>zune:search?publisher=[publisher name]</td><br><td>启动 商店 并按发布者名称搜索项目。</td><br></tr><br></tbody><br></table><br></div><br></div><br></div><br>有两种保留 URI 方案名称：为 Windows Phone 内置应用保留的 URI 方案名称和为操作系统保留的 URI 方案名称。如果 URI 包含为内置应用保留的 URI 方案名称，那么启动该 URI 时，只有内置应用会启动。任何利用该 URI 方案名称注册应用的企图都会被忽略。同样，任何利用为操作系统保留的 URI 方案名称注册应用的企图也会被忽略。<br><br>### 为内置应用保留的 URI 方案名称<br><br><div class="subsection"><br><br>Windows Phone 为内置应用保留以下 URI 方案名称。<br><div class="caption"></div><br><div class="tableSection"><br><table><br><tbody><br><tr class="firstRow"><br><td style="-ms-word-break:break-all;"><span style="background-color:#ffff00;">bing</span>。特殊的bing</td><br><td>ms-settings-emailandaccounts。</td><br></tr><br><tr><br><td>callto。</td><br><td>ms-settings-location。</td><br></tr><br><tr><br><td>dtmf。</td><br><td>ms-settings-lock。</td><br></tr><br><tr><br><td>http。</td><br><td>ms-settings-wifi。</td><br></tr><br><tr><br><td>https。</td><br><td>ms-word。</td><br></tr><br><tr><br><td>mailto。</td><br><td>office。</td><br></tr><br><tr><br><td style="-ms-word-break:break-all;"><span style="background-color:#ffff00;">maps</span>。*地图。需要加上位置</td><br><td>onenote。</td><br></tr><br><tr><br><td>ms-excel。</td><br><td>tel。</td><br></tr><br><tr><br><td>ms-powerpoint。</td><br><td>wallet。</td><br></tr><br><tr><br><td>ms-settings-airplanemode。</td><br><td style="-ms-word-break:break-all;"><span style="background-color:#ffff00;">xbls</span>。游戏中心</td><br></tr><br><tr><br><td>ms-settings-bluetooth。</td><br><td style="-ms-word-break:break-all;"><span style="background-color:#ffff00;">zune</span>。音乐</td><br></tr><br><tr><br><td>ms-settings-cellular。</td><br><td></td><br></tr><br></tbody><br></table><br></div><br></div>
+<h2 id="URI-方案列表"><a href="#URI-方案列表" class="headerlink" title="URI 方案列表"></a>URI 方案列表</h2><hr>
+<p>下表列出了用于启动内置应用的 URI 方案。</p>
+<table>
+<thead>
+<tr>
+<th>URI 方案</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>http:[URL]</code></td>
+<td>启动 Web 浏览器并导航到特定的 URL。</td>
+</tr>
+<tr>
+<td><code>mailto:[email address]</code></td>
+<td>启动电子邮件应用并使用“收件人”一行上特定的电子邮件地址创建新邮件。请注意，电子邮件不会发送直到用户点按发送。</td>
+</tr>
+<tr>
+<td><code>ms-settings-airplanemode：</code></td>
+<td>启动飞行模式设置应用。</td>
+</tr>
+<tr>
+<td><code>ms-settings-bluetooth：</code></td>
+<td>启动蓝牙设置应用。</td>
+</tr>
+<tr>
+<td><code>ms-settings-cellular：</code></td>
+<td>启动手机网络设置应用。</td>
+</tr>
+<tr>
+<td><code>ms-settings-emailandaccounts：</code></td>
+<td>启动电子邮件和帐户设置应用。</td>
+</tr>
+<tr>
+<td><code>ms-settings-location：</code></td>
+<td>启动位置设置应用。</td>
+</tr>
+<tr>
+<td><code>ms-settings-lock：</code></td>
+<td>启动锁屏设置应用。</td>
+</tr>
+<tr>
+<td><code>ms-settings-power：</code></td>
+<td>启动节电模式设置应用。</td>
+</tr>
+<tr>
+<td><code>ms-settings-screenrotation：</code></td>
+<td>启动屏幕旋转设置应用。</td>
+</tr>
+<tr>
+<td><code>ms-settings-wifi：</code></td>
+<td>启动 Wi-Fi 设置应用。</td>
+</tr>
+<tr>
+<td><code>zune:navigate?appid=[app ID]</code></td>
+<td>启动 Windows Phone 商店 并显示特定应用的详细信息页面。</td>
+</tr>
+<tr>
+<td><code>zune:reviewapp</code></td>
+<td>启动 商店 并显示调用应用的查看页面。</td>
+</tr>
+<tr>
+<td><code>zune:reviewapp?appid=app[app ID]</code></td>
+<td>启动 商店 并显示特定应用的查看页面。请注意，您必须在指定应用的 ID 前面加上“app”。例如，检查 ID 为 fdf05477-814e-41d4-86cd-25d5a50ab2d8 的应用时，URI 为 <code>zune:reviewapp?appid=appfdf05477-814e-41d4-86cd-25d5a50ab2d8</code></td>
+</tr>
+<tr>
+<td><code>zune:search?keyword=[search keyword]&amp;amp;publisher=[publisher name]&amp;amp;contenttype=app</code></td>
+<td>启动 商店 并搜索特定的内容。所有参数都是可选的。指定“contenttype=app”将限制对应用的搜索。省略此参数将搜索所有内容。</td>
+</tr>
+<tr>
+<td><code>zune:search?keyword=[search keyword]&amp;amp;contenttype=app</code></td>
+<td>启动 商店 并按关键字搜索应用。</td>
+</tr>
+<tr>
+<td><code>zune:search?publisher=[publisher name]</code></td>
+<td>启动 商店 并按发布者名称搜索项目。</td>
+</tr>
+</tbody>
+</table>
+<p>有两种保留 URI 方案名称：为 Windows Phone 内置应用保留的 URI 方案名称和为操作系统保留的 URI 方案名称。如果 URI 包含为内置应用保留的 URI 方案名称，那么启动该 URI 时，只有内置应用会启动。任何利用该 URI 方案名称注册应用的企图都会被忽略。同样，任何利用为操作系统保留的 URI 方案名称注册应用的企图也会被忽略。</p>
+<h3 id="为内置应用保留的-URI-方案名称"><a href="#为内置应用保留的-URI-方案名称" class="headerlink" title="为内置应用保留的 URI 方案名称"></a>为内置应用保留的 URI 方案名称</h3><p>Windows Phone 为内置应用保留以下 URI 方案名称。</p>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bing</td>
+<td>*特殊的bing</td>
+</tr>
+<tr>
+<td>ms-settings-emailandaccounts</td>
+<td></td>
+</tr>
+<tr>
+<td>callto</td>
+<td></td>
+</tr>
+<tr>
+<td>ms-settings-location</td>
+<td></td>
+</tr>
+<tr>
+<td>dtmf</td>
+<td></td>
+</tr>
+<tr>
+<td>ms-settings-lock</td>
+<td></td>
+</tr>
+<tr>
+<td>http</td>
+<td></td>
+</tr>
+<tr>
+<td>ms-settings-wifi</td>
+<td></td>
+</tr>
+<tr>
+<td>https</td>
+<td></td>
+</tr>
+<tr>
+<td>ms-word</td>
+<td></td>
+</tr>
+<tr>
+<td>mailto</td>
+<td></td>
+</tr>
+<tr>
+<td>office</td>
+<td></td>
+</tr>
+<tr>
+<td>maps</td>
+<td>*地图。需要加上位置</td>
+</tr>
+<tr>
+<td>onenote</td>
+<td></td>
+</tr>
+<tr>
+<td>ms-excel</td>
+<td></td>
+</tr>
+<tr>
+<td>tel</td>
+<td></td>
+</tr>
+<tr>
+<td>ms-powerpoint</td>
+<td></td>
+</tr>
+<tr>
+<td>wallet</td>
+<td></td>
+</tr>
+<tr>
+<td>ms-settings-airplanemode</td>
+<td></td>
+</tr>
+<tr>
+<td>xbls</td>
+<td>游戏中心</td>
+</tr>
+<tr>
+<td>ms-settings-bluetooth</td>
+<td></td>
+</tr>
+<tr>
+<td>zune</td>
+<td>音乐</td>
+</tr>
+<tr>
+<td>ms-settings-cellular</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
             
         </div>
     </div>

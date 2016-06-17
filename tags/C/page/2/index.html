@@ -170,6 +170,15 @@
         
             <li class="sidebar-button">
                 
+                    <a  class="sidebar-button-link " href="http://blog.patrickwu.cf/" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-book"></i>
+                    <span class="sidebar-button-desc">The Road I Choose</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
                     <a  class="sidebar-button-link " href="https://github.com/patrick330602" target="_blank">
                 
                     <i class="sidebar-button-icon fa fa-lg fa-github"></i>
@@ -273,41 +282,53 @@
             </div>
             
                 <div class="postShorten-excerpt" itemprop="articleBody">
-                    <p>&nbsp;</p>
-<p><table></p>
-<p><tbody></p>
-<p><tr class="firstRow"></p>
-<p><th>URI scheme</th></p>
-<p><th>Description</th><br></tr></p>
-<p><tr></p>
-<p><td nowrap="nowrap"><code>ms-battery</code></td></p>
-<p><td>Launches the Usage tab of the Battery Saver app.</td><br></tr></p>
-<p><tr></p>
-<p><td nowrap="nowrap"><code>ms-wallet</code></td></p>
-<p><td>Launches Wallet app.</td><br></tr></p>
-<p><tr></p>
-<p><td nowrap="nowrap"><code>ms-settings-camera</code></td></p>
-<p><td>Launches the Photos + Camera Settings app.</td><br></tr></p>
-<p><tr></p>
-<p><td nowrap="nowrap"><code>&lt;span style=&quot;background-color:#ffff00;&quot;&gt;ms-settings-networkprofileupdate&lt;/span&gt;</code></td></p>
-<p><td style="-ms-word-break:break-all;">Launches the Network Profile Update app.</p>
-<p>*这货不知道干啥用的</td><br></tr></p>
-<p><tr></p>
-<p><td nowrap="nowrap"><code>ms-settings-nfctransactions</code></td></p>
-<p><td>Launches the NFC Settings app.<sup><span style="font-size:12px;">1</span></sup></td><br></tr></p>
-<p><tr></p>
-<p><td nowrap="nowrap"><code>ms-settings-notifications</code></td></p>
-<p><td>Launches the Notifications + Actions Settings app.</td><br></tr></p>
-<p><tr></p>
-<p><td nowrap="nowrap"><code>ms-settings-proximity</code></td></p>
-<p><td>Launches the NFC Settings app.<sup><span style="font-size:12px;">1</span></sup></td><br></tr></p>
-<p><tr></p>
-<p><td nowrap="nowrap"><code>ms-settings-uicctoolkit</code></td></p>
-<p><td>Launches a SIM Applications related app. UICC appears to stand for Universal Integrated Circuit Card.<sup><span style="font-size:12px;">2</span></sup></td><br></tr></p>
-<p><tr></p>
-<p><td nowrap="nowrap"><code>ms-settings-workplace</code></td></p>
-<p><td>Launches the Workplace Settings app.</td><br></tr><br></tbody><br></table></p>
-<p><pre>Windows.System.Launcher.LaunchUriAsync( Uri(“ms-settings-bluetooth:”));</pre><br>
+                    <table>
+<thead>
+<tr>
+<th>URI scheme</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ms-battery</code></td>
+<td>Launches the Usage tab of the Battery Saver app.</td>
+</tr>
+<tr>
+<td><code>ms-wallet</code></td>
+<td>Launches Wallet app.</td>
+</tr>
+<tr>
+<td><code>ms-settings-camera</code></td>
+<td>Launches the Photos + Camera Settings app.</td>
+</tr>
+<tr>
+<td><code>ms-settings-networkprofileupdate</code></td>
+<td>Launches the Network Profile Update app.*这货不知道干啥用的</td>
+</tr>
+<tr>
+<td><code>ms-settings-nfctransactions</code></td>
+<td>Launches the NFC Settings app.<sup><span style="font-size:12px;">1</span></sup></td>
+</tr>
+<tr>
+<td><code>ms-settings-notifications</code></td>
+<td>Launches the Notifications + Actions Settings app.</td>
+</tr>
+<tr>
+<td><code>ms-settings-proximity</code></td>
+<td>Launches the NFC Settings app.<sup><span style="font-size:12px;">1</span></sup></td>
+</tr>
+<tr>
+<td><code>ms-settings-uicctoolkit</code></td>
+<td>Launches a SIM Applications related app. UICC appears to stand for Universal Integrated Circuit Card.<sup><span style="font-size:12px;">2</span></sup></td>
+</tr>
+<tr>
+<td><code>ms-settings-workplace</code></td>
+<td>Launches the Workplace Settings app.</td>
+</tr>
+</tbody>
+</table>
+<p><code>Windows.System.Launcher.LaunchUriAsync( Uri(“ms-settings-bluetooth:”));</code><br>
                     
                         <a href="/2014/07/URI-Info/" class="postShorten-excerpt_link link">
                             Continue reading
