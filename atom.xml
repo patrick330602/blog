@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.westudio.ml/"/>
-  <updated>2016-06-17T07:08:09.859Z</updated>
+  <updated>2016-06-17T07:22:28.327Z</updated>
   <id>http://www.westudio.ml/</id>
   
   <author>
@@ -20,18 +20,17 @@
     <link href="http://www.westudio.ml/2016/06/wecode-big-update-coming/"/>
     <id>http://www.westudio.ml/2016/06/wecode-big-update-coming/</id>
     <published>2016-06-16T00:00:00.000Z</published>
-    <updated>2016-06-17T07:08:09.859Z</updated>
+    <updated>2016-06-17T07:22:28.327Z</updated>
     
     <content type="html">&lt;p&gt;Developer tools For UWP is now WECode with 2.0 update!&lt;/p&gt;
+ &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;Improvements&quot;&gt;&lt;a href=&quot;#Improvements&quot; class=&quot;headerlink&quot; title=&quot;Improvements:&quot;&gt;&lt;/a&gt;Improvements:&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;new UI, logo and name; &lt;/li&gt;
 &lt;li&gt;Add Home;&lt;/li&gt;
 &lt;li&gt;Add Newest Build Information; &lt;/li&gt;
 &lt;li&gt;Update database of Segoe MDL2 Assets; &lt;/li&gt;
 &lt;li&gt;Improved About; &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Integration of Feedback Hub. &lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;/li&gt;
+&lt;li&gt;Integration of Feedback Hub. &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;Bug-Fixes&quot;&gt;&lt;a href=&quot;#Bug-Fixes&quot; class=&quot;headerlink&quot; title=&quot;Bug Fixes:&quot;&gt;&lt;/a&gt;Bug Fixes:&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;When you click test in URI Tester, the app no longer randomly crashes; &lt;/li&gt;
@@ -45,13 +44,6 @@
     <summary type="html">
     
       &lt;p&gt;Developer tools For UWP is now WECode with 2.0 update!&lt;/p&gt;
-&lt;h3 id=&quot;Improvements&quot;&gt;&lt;a href=&quot;#Improvements&quot; class=&quot;headerlink&quot; title=&quot;Improvements:&quot;&gt;&lt;/a&gt;Improvements:&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;new UI, logo and name; &lt;/li&gt;
-&lt;li&gt;Add Home;&lt;/li&gt;
-&lt;li&gt;Add Newest Build Information; &lt;/li&gt;
-&lt;li&gt;Update database of Segoe MDL2 Assets; &lt;/li&gt;
-&lt;li&gt;Improved About; &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Integration of Feedback Hub. &lt;/p&gt;
     
     </summary>
     
