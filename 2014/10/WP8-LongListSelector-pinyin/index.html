@@ -13,19 +13,16 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="Windows Phone 8的LongListSelector控件按拼音分组主要有两种方法，一个是在数据源里手工指定拼音首字母字段，作为index，这种方法效率高但会造成数据冗余不宜维护。另一个就是我今天介绍的方法，来自MSDN，虽然官网例子是针对是英文数据的首字母分组，但其实稍微改一下还是是支持中文的。
-实现方法很简单。首先你需要一个来自MSDN的AlphaKeyGroup类，代码如下：">
+    <meta name="description" content="Windows Phone 8的LongListSelector控件按拼音分组主要有两种方法，一个是在数据源里手工指定拼音首字母字段，作为index，这种方法效率高但会造成数据冗余不宜维护。另一个就是我今天介绍的方法，来自MSDN，虽然官网例子是针对是英文数据的首字母分组，但其实稍微改一下还是是支持中文的。">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Windows Phone 8 LongListSelector按拼音首字母分组">
 <meta property="og:url" content="http://www.westudio.ml/2014/10/WP8-LongListSelector-pinyin/index.html">
 <meta property="og:site_name" content="WE. Studio">
-<meta property="og:description" content="Windows Phone 8的LongListSelector控件按拼音分组主要有两种方法，一个是在数据源里手工指定拼音首字母字段，作为index，这种方法效率高但会造成数据冗余不宜维护。另一个就是我今天介绍的方法，来自MSDN，虽然官网例子是针对是英文数据的首字母分组，但其实稍微改一下还是是支持中文的。
-实现方法很简单。首先你需要一个来自MSDN的AlphaKeyGroup类，代码如下：">
-<meta property="og:updated_time" content="2016-06-17T06:09:31.849Z">
+<meta property="og:description" content="Windows Phone 8的LongListSelector控件按拼音分组主要有两种方法，一个是在数据源里手工指定拼音首字母字段，作为index，这种方法效率高但会造成数据冗余不宜维护。另一个就是我今天介绍的方法，来自MSDN，虽然官网例子是针对是英文数据的首字母分组，但其实稍微改一下还是是支持中文的。">
+<meta property="og:updated_time" content="2016-06-17T07:43:41.837Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows Phone 8 LongListSelector按拼音首字母分组">
-<meta name="twitter:description" content="Windows Phone 8的LongListSelector控件按拼音分组主要有两种方法，一个是在数据源里手工指定拼音首字母字段，作为index，这种方法效率高但会造成数据冗余不宜维护。另一个就是我今天介绍的方法，来自MSDN，虽然官网例子是针对是英文数据的首字母分组，但其实稍微改一下还是是支持中文的。
-实现方法很简单。首先你需要一个来自MSDN的AlphaKeyGroup类，代码如下：">
+<meta name="twitter:description" content="Windows Phone 8的LongListSelector控件按拼音分组主要有两种方法，一个是在数据源里手工指定拼音首字母字段，作为index，这种方法效率高但会造成数据冗余不宜维护。另一个就是我今天介绍的方法，来自MSDN，虽然官网例子是针对是英文数据的首字母分组，但其实稍微改一下还是是支持中文的。">
 <meta name="twitter:creator" content="@patrick330602">
     
     
@@ -144,12 +141,52 @@
                 </a>
         </li>
         
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
             <li class="sidebar-button">
                 
-                    <a  class="sidebar-button-link " href="http://ap.westudio.ml/" target="_blank">
+                    <a  class="sidebar-button-link " href="https://facebook.com/" target="_blank">
                 
-                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
-                    <span class="sidebar-button-desc">About</span>
+                    <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+                    <span class="sidebar-button-desc">Facebook</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://twitter.com/patrick330602" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                    <span class="sidebar-button-desc">Twitter</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.weibo.com/patrick330602" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-weibo"></i>
+                    <span class="sidebar-button-desc">weibo</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/patrick330602" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="mailto:pk.we.studio.com" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Mail</span>
                 </a>
         </li>
         
@@ -177,46 +214,22 @@
         
             <li class="sidebar-button">
                 
-                    <a  class="sidebar-button-link " href="https://github.com/patrick330602" target="_blank">
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
                 
-                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
-                    <span class="sidebar-button-desc">GitHub</span>
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
                 </a>
         </li>
         
             <li class="sidebar-button">
                 
-                    <a  class="sidebar-button-link " href="https://twitter.com/patrick330602" target="_blank">
+                    <a  class="sidebar-button-link " href="http://ap.westudio.ml/" target="_blank">
                 
-                    <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
-                    <span class="sidebar-button-desc">Twitter</span>
-                </a>
-        </li>
-        
-            <li class="sidebar-button">
-                
-                    <a  class="sidebar-button-link " href="https://www.weibo.com/patrick330602" target="_blank">
-                
-                    <i class="sidebar-button-icon fa fa-lg fa-weibo"></i>
-                    <span class="sidebar-button-desc">weibo</span>
-                </a>
-        </li>
-        
-            <li class="sidebar-button">
-                
-                    <a  class="sidebar-button-link " href="https://facebook.com/" target="_blank">
-                
-                    <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
-                    <span class="sidebar-button-desc">Facebook</span>
-                </a>
-        </li>
-        
-            <li class="sidebar-button">
-                
-                    <a  class="sidebar-button-link " href="mailto:pk.we.studio.com" target="_blank">
-                
-                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
-                    <span class="sidebar-button-desc">Mail</span>
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">About</span>
                 </a>
         </li>
         
@@ -259,8 +272,8 @@
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <p>Windows Phone 8的LongListSelector控件按拼音分组主要有两种方法，一个是在数据源里手工指定拼音首字母字段，作为index，这种方法效率高但会造成数据冗余不宜维护。另一个就是我今天介绍的方法，来自MSDN，虽然官网例子是针对是英文数据的首字母分组，但其实稍微改一下还是是支持中文的。</p>
-<p>实现方法很简单。首先你需要一个来自MSDN的AlphaKeyGroup类，代码如下：</p>
  <a id="more"></a>
+<p>实现方法很简单。首先你需要一个来自MSDN的AlphaKeyGroup类，代码如下：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">public class AlphaKeyGroup&lt;T&gt; : List&lt;T&gt;&#123;</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// The delegate that is used to get the key information.</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    /// &lt;param name="item"&gt;An object of type T&lt;/param&gt;</span><br><span class="line">    /// &lt;returns&gt;The key value to use for this object&lt;/returns&gt;</span><br><span class="line">    public delegate string GetKeyDelegate(T item);</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// The Key of this group.</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    public string Key &#123; get; private set; &#125;</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// Public constructor.</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    /// &lt;param name="key"&gt;The key for this group.&lt;/param&gt;</span><br><span class="line">    public AlphaKeyGroup(string key)</span><br><span class="line">    &#123;</span><br><span class="line">        Key = key;</span><br><span class="line">    &#125;</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// Create a list of AlphaGroup&lt;T&gt; with keys set by a SortedLocaleGrouping.</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    /// &lt;param name="slg"&gt;The &lt;/param&gt;</span><br><span class="line">    /// &lt;returns&gt;Theitems source for a LongListSelector&lt;/returns&gt;</span><br><span class="line">    private static List&lt;AlphaKeyGroup&lt;T&gt;&gt; CreateGroups(SortedLocaleGrouping slg)</span><br><span class="line">    &#123;</span><br><span class="line">        return slg.GroupDisplayNames.Select(key =&gt; new AlphaKeyGroup&lt;T&gt;(key)).ToList();</span><br><span class="line">    &#125;</span><br><span class="line">    /// &lt;summary&gt;</span><br><span class="line">    /// Create a list of AlphaGroup&lt;T&gt; with keys set by a SortedLocaleGrouping.</span><br><span class="line">    /// &lt;/summary&gt;</span><br><span class="line">    /// &lt;param name="items"&gt;The items to place in the groups.&lt;/param&gt;</span><br><span class="line">    /// &lt;param name="ci"&gt;The CultureInfo to group and sort by.&lt;/param&gt;</span><br><span class="line">    /// &lt;param name="getKey"&gt;A delegate to get the key from an item.&lt;/param&gt;</span><br><span class="line">    /// &lt;param name="sort"&gt;Will sort the data if true.&lt;/param&gt;</span><br><span class="line">    /// &lt;returns&gt;An items source for a LongListSelector&lt;/returns&gt;</span><br><span class="line">    public static List&lt;AlphaKeyGroup&lt;T&gt;&gt; CreateGroups(IEnumerable&lt;T&gt; items, CultureInfo ci, GetKeyDelegate getKey, bool sort)</span><br><span class="line">    &#123;</span><br><span class="line">        var slg = new SortedLocaleGrouping(ci);</span><br><span class="line">        var list = CreateGroups(slg);</span><br><span class="line">        foreach (var item in items)</span><br><span class="line">        &#123;</span><br><span class="line">            var index = 0;</span><br><span class="line">            if (slg.SupportsPhonetics)</span><br><span class="line">            &#123;</span><br><span class="line">                //check if your database has yomi string for item</span><br><span class="line">                //if it does not, then do you want to generate Yomi or ask the user for this item.</span><br><span class="line">                //index = slg.GetGroupIndex(getKey(Yomiof(item)));</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                index = slg.GetGroupIndex(getKey(item));</span><br><span class="line">            &#125;</span><br><span class="line">            if (index &gt;= 0 &amp;&amp; index &lt; list.Count)</span><br><span class="line">            &#123;</span><br><span class="line">                list[index].Add(item);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (!sort) return list;</span><br><span class="line">        foreach (var group in list)</span><br><span class="line">        &#123;</span><br><span class="line">            @group.Sort((c0, c1) =&gt; ci.CompareInfo.Compare(getKey(c0), getKey(c1)));</span><br><span class="line">        &#125;</span><br><span class="line">        return list;</span><br><span class="line">    &#125;&#125;</span><br></pre></td></tr></table></figure>
 <p>这个类里面主要的精髓就在于：</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> slg = <span class="keyword">new</span> SortedLocaleGrouping(ci);</span><br></pre></td></tr></table></figure>
