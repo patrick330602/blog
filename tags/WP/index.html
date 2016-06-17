@@ -294,6 +294,52 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title" itemprop="headline">
                     
+                        <a class="link-unstyled" href="/2014/10/wp8-81-disable-screenshot/">
+                            Windows Phone 8 APP中禁用截图
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" datetime="2014-10-15T22:39:45+08:00">
+	
+		    Oct 15, 2014
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Developing-Process/">Developing Process</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-excerpt" itemprop="articleBody">
+                    <p>Windows Phone 8 有系统自带的截图功能，快捷键：电源键+Win键，可以随意截图。</p>
+<p>Windows Phone 更新GDR2后新增了一个隐藏功能，允许APP禁用截图功能。</p>
+<pre class="brush:c#;toolbar:false">PhoneApplicationPage.IsScreenCaptureEnabled</pre>
+这个隐藏的属性需要通过反射来访问和修改状态。
+                    
+                        <a href="/2014/10/wp8-81-disable-screenshot/" class="postShorten-excerpt_link link">
+                            Continue reading
+                        </a>
+                        
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
                         <a class="link-unstyled" href="/2014/10/wp-feedback/">
                             Windows Phone 8 开发：应用崩溃时给作者发送错误报告邮件
                         </a>
@@ -322,6 +368,93 @@
 <p>打开App.xaml.cs，定位到Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)事件处理函数上。</p>
                     
                         <a href="/2014/10/wp-feedback/" class="postShorten-excerpt_link link">
+                            Continue reading
+                        </a>
+                        
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
+                        <a class="link-unstyled" href="/2014/07/wp8-device-camera/">
+                            Device（设备）之摄像头（硬件快门、自动对焦、实时修改捕获视频）
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" datetime="2014-07-21T07:38:22+08:00">
+	
+		    Jul 21, 2014
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Developing-Process/">Developing Process</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-excerpt" itemprop="articleBody">
+                    <h2 id="1、演示如何响应硬件快门HardwareShutter-xaml"><a href="#1、演示如何响应硬件快门HardwareShutter-xaml" class="headerlink" title="1、演示如何响应硬件快门HardwareShutter.xaml"></a>1、演示如何响应硬件快门HardwareShutter.xaml</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">phone:PhoneApplicationPage</span></span><br><span class="line">     <span class="attr">x:Class</span>=<span class="string">"Demo.Device.Camera.HardwareShutter"</span></span><br><span class="line">     <span class="attr">xmlns</span>=<span class="string">"[http://schemas.microsoft.com/winfx/2006/xaml/presentation](http://schemas.microsoft.com/winfx/2006/xaml/presentation)"</span></span><br><span class="line">     <span class="attr">xmlns:x</span>=<span class="string">"[http://schemas.microsoft.com/winfx/2006/xaml](http://schemas.microsoft.com/winfx/2006/xaml)"</span></span><br><span class="line">     <span class="attr">xmlns:phone</span>=<span class="string">"clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"</span></span><br><span class="line">     <span class="attr">xmlns:shell</span>=<span class="string">"clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"</span></span><br><span class="line">     <span class="attr">xmlns:d</span>=<span class="string">"[http://schemas.microsoft.com/expression/blend/2008](http://schemas.microsoft.com/expression/blend/2008)"</span></span><br><span class="line">     <span class="attr">xmlns:mc</span>=<span class="string">"[http://schemas.openxmlformats.org/markup-compatibility/2006](http://schemas.openxmlformats.org/markup-compatibility/2006)"</span></span><br><span class="line">     <span class="attr">FontFamily</span>=<span class="string">"&#123;StaticResource PhoneFontFamilyNormal&#125;"</span></span><br><span class="line">     <span class="attr">FontSize</span>=<span class="string">"&#123;StaticResource PhoneFontSizeNormal&#125;"</span></span><br><span class="line">     <span class="attr">Foreground</span>=<span class="string">"&#123;StaticResource PhoneForegroundBrush&#125;"</span></span><br><span class="line">     <span class="attr">SupportedOrientations</span>=<span class="string">"Portrait"</span> <span class="attr">Orientation</span>=<span class="string">"Portrait"</span></span><br><span class="line">     <span class="attr">mc:Ignorable</span>=<span class="string">"d"</span> <span class="attr">d:DesignHeight</span>=<span class="string">"768"</span> <span class="attr">d:DesignWidth</span>=<span class="string">"480"</span></span><br><span class="line">     <span class="attr">shell:SystemTray.IsVisible</span>=<span class="string">"True"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">     <span class="tag">&lt;<span class="name">Grid</span> <span class="attr">x:Name</span>=<span class="string">"LayoutRoot"</span> <span class="attr">Background</span>=<span class="string">"Transparent"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">StackPanel</span> <span class="attr">Orientation</span>=<span class="string">"Vertical"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">             <span class="tag">&lt;<span class="name">Canvas</span> <span class="attr">Width</span>=<span class="string">"480"</span> <span class="attr">Height</span>=<span class="string">"320"</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;<span class="name">Canvas.Background</span>&gt;</span></span><br><span class="line">                     <span class="tag">&lt;<span class="name">VideoBrush</span> <span class="attr">x:Name</span>=<span class="string">"videoBrush"</span>&gt;</span></span><br><span class="line">                         <span class="tag">&lt;<span class="name">VideoBrush.RelativeTransform</span>&gt;</span></span><br><span class="line">                             <span class="comment">&lt;!--把捕获到的图像正过来--&gt;</span></span><br><span class="line">                             <span class="tag">&lt;<span class="name">RotateTransform</span> <span class="attr">CenterX</span>=<span class="string">"0.5"</span> <span class="attr">CenterY</span>=<span class="string">"0.5"</span> <span class="attr">Angle</span>=<span class="string">"90"</span> /&gt;</span></span><br><span class="line">                         <span class="tag">&lt;/<span class="name">VideoBrush.RelativeTransform</span>&gt;</span></span><br><span class="line">                     <span class="tag">&lt;/<span class="name">VideoBrush</span>&gt;</span></span><br><span class="line">                 <span class="tag">&lt;/<span class="name">Canvas.Background</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;/<span class="name">Canvas</span>&gt;</span></span><br><span class="line"></span><br><span class="line">             <span class="tag">&lt;<span class="name">TextBlock</span> <span class="attr">Name</span>=<span class="string">"lblMsg"</span> <span class="attr">Text</span>=<span class="string">"通过按硬件快门来查看演示效果（半按压、全按压、释放）"</span> <span class="attr">TextWrapping</span>=<span class="string">"Wrap"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">         <span class="tag">&lt;/<span class="name">StackPanel</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">Grid</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">phone:PhoneApplicationPage</span>&gt;</span></span><br></pre></td></tr></table></figure>
+                    
+                        <a href="/2014/07/wp8-device-camera/" class="postShorten-excerpt_link link">
+                            Continue reading
+                        </a>
+                        
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
+                        <a class="link-unstyled" href="/2014/07/wp8-live-tile/">
+                            如何计划 Windows Phone 的磁贴更新
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" datetime="2014-07-06T11:21:26+08:00">
+	
+		    Jul 06, 2014
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Developing-Process/">Developing Process</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-excerpt" itemprop="articleBody">
+                    <p>&nbsp;</p>
+<div class="introduction"><br><br>本主题介绍使用 <a href="http://msdn.microsoft.com/zh-cn/library/microsoft.phone.shell.shelltileschedule(v=vs.92">ShellTileSchedule</a>.aspx) 更新应用程序磁贴的背景图像所需的步骤。<a href="http://msdn.microsoft.com/zh-cn/library/microsoft.phone.shell.shelltileschedule(v=vs.92">ShellTileSchedule</a>.aspx) 也可以用于更新次要磁贴。<a href="http://msdn.microsoft.com/zh-cn/library/hh202948(v=vs.92">Windows Phone 的磁贴概述</a>.aspx)包含磁贴属性以及可以用于更新磁贴的各种方法。<br><div class="alert"><br><table><br><tbody><br><tr class="firstRow"><br><th><img src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" alt="提示" title="提示"><strong>提示：</strong></th><br></tr><br><tr><br><td>磁贴正面的背景图像是唯一一个可以使用 ShellTileSchedule 进行更新的属性。</td><br></tr><br></tbody><br></table><br></div><br>可以在 <a href="http://msdn.microsoft.com/zh-cn/library/ff431744(v=vs.92">Windows Phone 的代码示例</a>.aspx)中找到这个已完成的示例。<br><br></div><br>
+                    
+                        <a href="/2014/07/wp8-live-tile/" class="postShorten-excerpt_link link">
                             Continue reading
                         </a>
                         
@@ -376,7 +509,7 @@
             <h5 id="about-card-job">
                 <i class="fa fa-briefcase"></i>
                 <br/>
-                <p>Developer，HKUST Student</p>
+                <p>Developer/Desinger/Student</p>
 
             </h5>
         
