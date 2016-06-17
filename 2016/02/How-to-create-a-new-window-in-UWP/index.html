@@ -14,23 +14,23 @@
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
     <meta name="description" content="Some friends of mine asked me how to create a window like this:
-
-I cannot say this is difficult or simple. In order to open a new window, You need to use CoreApplication.CreateNewView() to generate th">
+new window in UWP
+I cannot say this is difficult or simple. In order to open a new window, You need to use CoreApplication.CreateNewView">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="How to create a new window in UWP">
 <meta property="og:url" content="http://www.westudio.ml/2016/02/How-to-create-a-new-window-in-UWP/index.html">
 <meta property="og:site_name" content="WE. Studio">
 <meta property="og:description" content="Some friends of mine asked me how to create a window like this:
-
-I cannot say this is difficult or simple. In order to open a new window, You need to use CoreApplication.CreateNewView() to generate th">
-<meta property="og:image" content="http://www.westudio.ml/images/new-window.png">
-<meta property="og:updated_time" content="2016-06-16T03:15:44.620Z">
+new window in UWP
+I cannot say this is difficult or simple. In order to open a new window, You need to use CoreApplication.CreateNewView">
+<meta property="og:image" content="http://www.westudio.ml/assets/images/new-window.png">
+<meta property="og:updated_time" content="2016-06-17T06:53:07.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to create a new window in UWP">
 <meta name="twitter:description" content="Some friends of mine asked me how to create a window like this:
-
-I cannot say this is difficult or simple. In order to open a new window, You need to use CoreApplication.CreateNewView() to generate th">
-<meta name="twitter:image" content="http://www.westudio.ml/images/new-window.png">
+new window in UWP
+I cannot say this is difficult or simple. In order to open a new window, You need to use CoreApplication.CreateNewView">
+<meta name="twitter:image" content="http://www.westudio.ml/assets/images/new-window.png">
 <meta name="twitter:creator" content="@patrick330602">
     
     
@@ -39,6 +39,9 @@ I cannot say this is difficult or simple. In order to open a new window, You nee
     
         <meta property="og:image" content="http://ap.westudio.ml/sources/images/we-studio-icon.png"/>
     
+    
+        <meta property="og:image" content="http://www.westudio.ml/assets/images/new-window.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://www.westudio.ml/assets/images/new-window.png" />
     
     
     
@@ -65,12 +68,6 @@ I cannot say this is difficult or simple. In order to open a new window, You nee
             <!-- Define author's picture -->
 
 
-    
-        
-            
-        
-    
-
 <header id="header" data-behavior="3">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <h1 class="header-title">
@@ -78,11 +75,11 @@ I cannot say this is difficult or simple. In order to open a new window, You nee
     </h1>
     
         
-            <a  class="header-right-picture "
-                href="/">
+            <a  class="header-right-icon "
+                href="/atom.xml">
         
         
-            <img class="header-picture" src="http://ap.westudio.ml/sources/images/we-studio-icon.png"/>
+            <i class="fa fa-lg fa-rss"></i>
         
         </a>
     
@@ -233,22 +230,6 @@ I cannot say this is difficult or simple. In order to open a new window, You nee
         
     </ul>
     
-        <ul class="sidebar-buttons">
-        
-            <li class="sidebar-button">
-                
-                    <a  class="sidebar-button-link "
-                         href="/atom.xml"
-                        
-                    >
-                
-                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
-                    <span class="sidebar-button-desc">RSS</span>
-                </a>
-        </li>
-        
-    </ul>
-    
 </nav>
 
             
@@ -286,7 +267,7 @@ I cannot say this is difficult or simple. In order to open a new window, You nee
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
             <p>Some friends of mine asked me how to create a window like this:</p>
-<p><img src="/images/new-window.png" alt="new window in UWP"></p>
+</div><div class="figure figure--fullWidth"><img class="figure-img" src="/assets/images/new-window.png" alt="new window in UWP"><span class="caption">new window in UWP</span></div><div class="main-content-wrap">
 <p>I cannot say this is difficult or simple. In order to open a new window, You need to use CoreApplication.CreateNewView() to generate the Window, or view:</p>
  <a id="more"></a>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentAV = ApplicationView.GetForCurrentView();</span><br><span class="line"></span><br><span class="line"><span class="keyword">await</span> newAV.Dispatcher.RunAsync(</span><br><span class="line"> CoreDispatcherPriority.Normal,</span><br><span class="line"> <span class="keyword">async</span> () =&gt;</span><br><span class="line"> &#123;</span><br><span class="line"> <span class="keyword">var</span> newWindow = Window.Current;</span><br><span class="line"> <span class="keyword">var</span> newAppView = ApplicationView.GetForCurrentView();newAppView.Title = title;  <span class="comment">//The title of new windowvar frame = new Frame();</span></span><br><span class="line"> frame.Navigate(<span class="keyword">typeof</span>(Page), Datatosend); <span class="comment">//Navigation is here</span></span><br><span class="line"> newWindow.Content = frame;</span><br><span class="line"> newWindow.Activate();<span class="keyword">await</span> ApplicationViewSwitcher.TryShowAsStandaloneAsync(</span><br><span class="line">newAppView.Id,</span><br><span class="line"> ViewSizePreference.UseMinimum,</span><br><span class="line">currentAV.Id,</span><br><span class="line"> ViewSizePreference.UseMinimum);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
