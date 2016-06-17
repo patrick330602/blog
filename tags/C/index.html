@@ -425,6 +425,52 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title" itemprop="headline">
                     
+                        <a class="link-unstyled" href="/2014/10/wp8-81-disable-screenshot/">
+                            Windows Phone 8 APP中禁用截图
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" datetime="2014-10-15T22:39:45+08:00">
+	
+		    Oct 15, 2014
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Developing-Process/">Developing Process</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-excerpt" itemprop="articleBody">
+                    <p>Windows Phone 8 有系统自带的截图功能，快捷键：电源键+Win键，可以随意截图。</p>
+<p>Windows Phone 更新GDR2后新增了一个隐藏功能，允许APP禁用截图功能。</p>
+<pre class="brush:c#;toolbar:false">PhoneApplicationPage.IsScreenCaptureEnabled</pre>
+这个隐藏的属性需要通过反射来访问和修改状态。
+                    
+                        <a href="/2014/10/wp8-81-disable-screenshot/" class="postShorten-excerpt_link link">
+                            Continue reading
+                        </a>
+                        
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
                         <a class="link-unstyled" href="/2014/10/wp-feedback/">
                             Windows Phone 8 开发：应用崩溃时给作者发送错误报告邮件
                         </a>
@@ -507,11 +553,156 @@
         
     </article>
     
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
+                        <a class="link-unstyled" href="/2014/07/wp8-music-stop/">
+                            停止音乐实现办法
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" datetime="2014-07-08T21:49:56+08:00">
+	
+		    Jul 08, 2014
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Developing-Process/">Developing Process</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content" itemprop="articleBody">
+                    <p>和相机的LED灯一样，WP也没有提供相应的API供我们操作媒体播放器<br>　　当音乐打开后，WP是不会关闭音乐的(在锁屏界面和音量界面可以看到音乐的界面)，只有关机重启后，音乐才会被关闭，当然，不关闭音乐基本也不会占用内存<br>　　这里说的关闭音乐指的是：在锁屏和音量界面看不到音乐的界面<br>　　通过摸索，关闭音乐功能有三种途径<br>　　1、关机<br>　　2、打开一个视频，这样，系统会自动关闭后台的音乐功能，也可以实现关闭音乐的功能(尝试了一下，很难通过代码来实现，操作麻烦)<br>　　3、通过异常让系统关闭后台音乐功能(下面用此方法关闭音乐)<br>　　首先要用到系统的媒体播放器<br>　　使用媒体播放器播放应用程序的音乐文件的时候，当程序关闭或墓碑化时，音乐会停止播放，只有媒体库中的音乐才能在后台播放<br>　　首先准备一个音乐文件(用来辅助关闭音乐功能，越小越好)，假设为00.mp3<br>　　用到的类：　　MediaPlayer<br>　　添加引用：　　Microsoft.Xna.Framework<br>　　首先是MediaPlayer的用法<br>　　由于在XNA中每33fp就会更新画面一次，所以在Silverlight Application中需要透过指定一个定期执行 FrameworkDispatcher.Update() 的事件。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置定时器</span></span><br><span class="line">DispatcherTimer timer = <span class="keyword">new</span> DispatcherTimer();</span><br><span class="line">timer.Interval = TimeSpan.FromMilliseconds(<span class="number">33</span>);	  </span><br><span class="line">timer.Tick += <span class="keyword">delegate</span> &#123; </span><br><span class="line">  <span class="keyword">try</span> </span><br><span class="line">  &#123; </span><br><span class="line">    FrameworkDispatcher.Update(); </span><br><span class="line">  &#125; </span><br><span class="line">  <span class="keyword">catch</span> </span><br><span class="line">  &#123; </span><br><span class="line">  &#125; </span><br><span class="line">&#125;;	  </span><br><span class="line">timer.Start();　　<span class="comment">//接下来通过Song创建音频对象&lt;/pre&gt;</span></span><br></pre></td></tr></table></figure>
+<p>　　Song没有构造函数，通过静态函数FromUri创建<br>　　<code>Song song = Song.FromUri(&quot;MySong&quot;, new Uri(&quot;00.mp3&quot;, UriKind.Relative));</code><br>　　播放音乐<br>　　<code>MediaPlayer.Play(song);</code><br>　　MediaPlayer属性和方法(不支持快进/快退，不支持设置进度)<br>　　IsMuted　　　　　　　　　　静音设置<br>　　IsRepeating　　　　　　　　重复播放<br>　　IsShuffled　　　　　　　　　随机播放<br>　　MoveNext/MovePrevious　 下一曲/上一曲<br>　　Play/Stop　　　　　　　　 播放/停止<br>　　Pause/Resume　　　　　　 暂停/恢复<br>　　PlayPosition　　　　　　　　进度(只读)<br>　　State　　　　　　　　　　　状态<br>　　Song.FromUri创建Song对象的音频文件只能是资源文件，不能是独立存储中的文件。暂时没有API可以用<br>　　关闭音乐的思路：<br>　　把前面注册 FrameworkDispatcher.Update() 的事件去掉，这样在调用MediaPlayer播放器播放音乐的时候就会出现异常<br>　　通过两次调用，就可以关闭掉音乐服务，当然，程序也会关闭，可以写一个磁贴贴在Start界面上，关闭音乐后自动关闭程序<br>　　<code>MediaPlayer.Play(song);</code><br>　　<code>MediaPlayer.Play(song);</code></p>
+
+                    
+                        
+                    
+                    
+                        <p>
+                            <a href="/2014/07/wp8-music-stop/#post-footer" class="postShorten-excerpt_link link">
+                                Comment and share
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
+                        <a class="link-unstyled" href="/2014/07/wp8-live-tile/">
+                            如何计划 Windows Phone 的磁贴更新
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" datetime="2014-07-06T11:21:26+08:00">
+	
+		    Jul 06, 2014
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Developing-Process/">Developing Process</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-excerpt" itemprop="articleBody">
+                    <p>&nbsp;</p>
+<div class="introduction"><br><br>本主题介绍使用 <a href="http://msdn.microsoft.com/zh-cn/library/microsoft.phone.shell.shelltileschedule(v=vs.92">ShellTileSchedule</a>.aspx) 更新应用程序磁贴的背景图像所需的步骤。<a href="http://msdn.microsoft.com/zh-cn/library/microsoft.phone.shell.shelltileschedule(v=vs.92">ShellTileSchedule</a>.aspx) 也可以用于更新次要磁贴。<a href="http://msdn.microsoft.com/zh-cn/library/hh202948(v=vs.92">Windows Phone 的磁贴概述</a>.aspx)包含磁贴属性以及可以用于更新磁贴的各种方法。<br><div class="alert"><br><table><br><tbody><br><tr class="firstRow"><br><th><img src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" alt="提示" title="提示"><strong>提示：</strong></th><br></tr><br><tr><br><td>磁贴正面的背景图像是唯一一个可以使用 ShellTileSchedule 进行更新的属性。</td><br></tr><br></tbody><br></table><br></div><br>可以在 <a href="http://msdn.microsoft.com/zh-cn/library/ff431744(v=vs.92">Windows Phone 的代码示例</a>.aspx)中找到这个已完成的示例。<br><br></div><br>
+                    
+                        <a href="/2014/07/wp8-live-tile/" class="postShorten-excerpt_link link">
+                            Continue reading
+                        </a>
+                        
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
+                        <a class="link-unstyled" href="/2014/07/WP8-flashlight-code/">
+                            Window Phone 8手电筒代码
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" datetime="2014-07-06T11:16:28+08:00">
+	
+		    Jul 06, 2014
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Developing-Process/">Developing Process</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-excerpt" itemprop="articleBody">
+                    <p>&nbsp;</p>
+<p>我就想开发一个锁屏也能用的手电筒，发现找资料那是相当的困难。找到的代码基本都不能令人满意，有的需要使用照相机，有的需要使用录像机，感觉都不是很爽。<br>最后经过摸索，Ui界面只要一个按钮，就可以实现手电筒的开启和关闭，而且是常亮的，废话不多说了，上代码：
+                    
+                        <a href="/2014/07/WP8-flashlight-code/" class="postShorten-excerpt_link link">
+                            Continue reading
+                        </a>
+                        
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
     <div class="pagination-bar">
     <ul class="pagination">
         
         
-        <li class="pagination-number">page 1 of 1</li>
+        <li class="pagination-next">
+            <a class="btn btn--default btn--small" href="/tags/C/page/2/">
+                    <span>OLDER POSTS</span>
+                <i class="fa fa-angle-right text-base icon-ml"></i>
+            </a>
+        </li>
+        
+        <li class="pagination-number">page 1 of 2</li>
     </ul>
 </div>
 
@@ -551,7 +742,7 @@
             <h5 id="about-card-job">
                 <i class="fa fa-briefcase"></i>
                 <br/>
-                <p>Developer，HKUST Student</p>
+                <p>Developer/Desinger/Student</p>
 
             </h5>
         

@@ -1,0 +1,527 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="WE. Studio">
+    <title>如何计划 Windows Phone 的磁贴更新 - WE. Studio</title>
+    <meta name="author" content="Patrick J. Wu">
+    
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="&amp;nbsp;
+本主题介绍使用 ShellTileSchedule.aspx) 更新应用程序磁贴的背景图像所需的步骤。ShellTileSchedule.aspx) 也可以用于更新次要磁贴。Windows Phone 的磁贴概述.aspx)包含磁贴属性以及可以用于更新磁贴的各种方法。提示：磁贴正面的背景图像是唯一一个可以使用 ShellTileSchedule 进行更新的属性。可以在 Windows">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="如何计划 Windows Phone 的磁贴更新">
+<meta property="og:url" content="http://www.westudio.ml/2014/07/wp8-live-tile/index.html">
+<meta property="og:site_name" content="WE. Studio">
+<meta property="og:description" content="&amp;nbsp;
+本主题介绍使用 ShellTileSchedule.aspx) 更新应用程序磁贴的背景图像所需的步骤。ShellTileSchedule.aspx) 也可以用于更新次要磁贴。Windows Phone 的磁贴概述.aspx)包含磁贴属性以及可以用于更新磁贴的各种方法。提示：磁贴正面的背景图像是唯一一个可以使用 ShellTileSchedule 进行更新的属性。可以在 Windows">
+<meta property="og:image" content="http://i.msdn.microsoft.com/areas/global/content/clear.gif">
+<meta property="og:image" content="http://i.msdn.microsoft.com/dynimg/IC505451.jpg">
+<meta property="og:image" content="http://i.msdn.microsoft.com/areas/global/content/clear.gif">
+<meta property="og:image" content="http://i.msdn.microsoft.com/dynimg/IC505452.jpg">
+<meta property="og:updated_time" content="2016-06-17T02:05:25.495Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何计划 Windows Phone 的磁贴更新">
+<meta name="twitter:description" content="&amp;nbsp;
+本主题介绍使用 ShellTileSchedule.aspx) 更新应用程序磁贴的背景图像所需的步骤。ShellTileSchedule.aspx) 也可以用于更新次要磁贴。Windows Phone 的磁贴概述.aspx)包含磁贴属性以及可以用于更新磁贴的各种方法。提示：磁贴正面的背景图像是唯一一个可以使用 ShellTileSchedule 进行更新的属性。可以在 Windows">
+<meta name="twitter:image" content="http://i.msdn.microsoft.com/areas/global/content/clear.gif">
+<meta name="twitter:creator" content="@patrick330602">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://ap.westudio.ml/sources/images/we-studio-icon.png"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-nuvue6sithwirecbhvw3dkaobiojqvtadsnhguwi7k04xklybw5djl1smadp.min.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-44416732-4']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+</head>
+
+    <body>
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+            
+        
+    
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">WE. Studio</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="/">
+        
+        
+            <img class="header-picture" src="http://ap.westudio.ml/sources/images/we-studio-icon.png"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="http://ap.westudio.ml/sources/images/we-studio-icon.png"/>
+            </a>
+            <span class="sidebar-profile-name">Patrick J. Wu</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Home</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categories</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Archives</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="http://ap.westudio.ml/" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">About</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="http://patrickwu.cf/" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-cube"></i>
+                    <span class="sidebar-button-desc">ME.</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/patrick330602" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://twitter.com/patrick330602" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                    <span class="sidebar-button-desc">Twitter</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.weibo.com/patrick330602" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-weibo"></i>
+                    <span class="sidebar-button-desc">weibo</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://facebook.com/" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+                    <span class="sidebar-button-desc">Facebook</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="mailto:pk.we.studio.com" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Mail</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            如何计划 Windows Phone 的磁贴更新
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" datetime="2014-07-06T11:21:26+08:00">
+	
+		    Jul 06, 2014
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Developing-Process/">Developing Process</a>
+
+
+    
+</div>
+
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>&nbsp;</p>
+<div class="introduction"><br><br>本主题介绍使用 <a href="http://msdn.microsoft.com/zh-cn/library/microsoft.phone.shell.shelltileschedule(v=vs.92" target="_blank" rel="external">ShellTileSchedule</a>.aspx) 更新应用程序磁贴的背景图像所需的步骤。<a href="http://msdn.microsoft.com/zh-cn/library/microsoft.phone.shell.shelltileschedule(v=vs.92" target="_blank" rel="external">ShellTileSchedule</a>.aspx) 也可以用于更新次要磁贴。<a href="http://msdn.microsoft.com/zh-cn/library/hh202948(v=vs.92" target="_blank" rel="external">Windows Phone 的磁贴概述</a>.aspx)包含磁贴属性以及可以用于更新磁贴的各种方法。<br><div class="alert"><br><table><br><tbody><br><tr class="firstRow"><br><th><img src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" alt="提示" title="提示"><strong>提示：</strong></th><br></tr><br><tr><br><td>磁贴正面的背景图像是唯一一个可以使用 ShellTileSchedule 进行更新的属性。</td><br></tr><br></tbody><br></table><br></div><br>可以在 <a href="http://msdn.microsoft.com/zh-cn/library/ff431744(v=vs.92" target="_blank" rel="external">Windows Phone 的代码示例</a>.aspx)中找到这个已完成的示例。<br><br></div><br><a id="more"></a><br><div><br><div><a href="void(0"><span class="LW_CollapsibleArea_Title">设置磁贴计划</span></a> “单击以折叠。双击以全部折叠。”)<br><div class="LW_CollapsibleArea_HrDiv"><br><br><em> </em> <em><br><br></em></div><br></div><br><div class="sectionblock"><a id="sectionToggle0"></a><a href="http://msdn.microsoft.com/zh-cn/library/microsoft.phone.shell.shelltileschedule(v=vs.92" target="_blank" rel="external">ShellTileSchedule</a>.aspx) 允许您设置将更新磁贴的背景图像的一次性计划或定期计划。即使您的应用程序处于非活动状态，该计划仍然可以继续运行。ShellTileSchedule 还可以用于停止为您的应用程序运行的任何计划。每当应用程序由于计划失败而启动时，应用程序都应该存储其 <span class="input">ShellTileSchedule</span> 设置并启动该计划，即使应用程序不再运行，也可以取消计划。<br><br><a href="http://msdn.microsoft.com/zh-cn/library/microsoft.phone.shell.shelltileschedule(v=vs.92" target="_blank" rel="external">ShellTileSchedule</a>.aspx) 示例是一个具有四个按钮的简单程序。这四个按钮分别是：<br><br>1.  更新磁贴一次。<br>2.  创建一个更新磁贴次数不确定的计划。<br>3.  创建一个更新磁贴指定次数的计划。<br>4.  停止正在运行的任何计划。<br><img src="http://i.msdn.microsoft.com/dynimg/IC505451.jpg" alt="AP_Tiles_TileScheduleSample" title="AP_Tiles_TileScheduleSample"><br><div class="alert"><br><table><br><tbody><br><tr class="firstRow"><br><th><img src="http://i.msdn.microsoft.com/areas/global/content/clear.gif" alt="注意" title="注意"><em>*注意：</em></th><br></tr><br><tr><br><td>请记住，将应用程序的应用程序磁贴固定到“开始”屏幕以便测试磁贴更新功能。</td><br></tr><br></tbody><br></table><br></div>
+
+<h3 id="创建应用程序-UI"><a href="#创建应用程序-UI" class="headerlink" title="创建应用程序 UI"></a>创建应用程序 UI</h3><div class="subSection"><br><br>1.  在 Visual Studio 2010 Express for Windows Phone 中，通过选择<span class="label">“文件 | 新建项目”</span>菜单命令创建一个新项目。<br>2.  将显示“新建项目”窗口。展开 Visual C# 模板，然后选择<span class="label">“Silverlight for Windows Phone”</span>模板。<br>3.  选择<span class="label">“Windows Phone 应用程序”</span>模板。用您选择的名称填写“名称”。<br>4.  单击<span class="label">“确定”</span>。将显示“新建 Windows Phone 应用程序”窗口。<br>5.  在<span class="label">“Windows Phone OS 目标版本”</span>菜单中，确保<span class="label">“Windows Phone OS 7.1”</span>处于选定状态。<br>6.  单击<span class="label">“确定”</span>。一个新项目便创建完成，并在 Visual Studio 设计器窗口中打开 MainPage.xaml。<br>7.  在 MainPage.xaml 中，将名为 ContentPanel 的 Grid 替换为以下代码。该代码将为我们的 UI 创建四个按钮。<br><div id="code-snippet-1" class="codeSnippetContainer"><br><div class="codeSnippetContainerTabs"></div><br><div class="codeSnippetContainerCodeContainer"><br><div id="CodeSnippetContainerCode_2c8d0d52-3370-4aa2-9f51-e93836a4688a" class="codeSnippetContainerCode" dir="ltr"><br><div style="color:black;"><br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">        &lt;span style=<span class="string">"color:blue;"</span>&gt;&amp;lt;&lt;/span&gt;&lt;span style=<span class="string">"color:#a31515;"</span>&gt;Grid&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;x:Name&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;ContentPanel&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Grid.Row&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;1&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Margin&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;12,0,12,0&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;&amp;gt;&lt;/span&gt;</span><br><span class="line">&lt;span style=<span class="string">"color:blue;"</span>&gt;&amp;lt;&lt;/span&gt;&lt;span style=<span class="string">"color:#a31515;"</span>&gt;Button&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Content&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;Start One Time Schedule&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Height&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;72&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;HorizontalAlignment&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;Center&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Margin&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;38,42,38,0&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Name&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;buttonOneTime&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;VerticalAlignment&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;Top&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Width&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;400&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Click&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;buttonOneTime_Click&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:blue;"</span>&gt;/&amp;gt;&lt;/span&gt;</span><br><span class="line">&lt;span style=<span class="string">"color:blue;"</span>&gt;&amp;lt;&lt;/span&gt;&lt;span style=<span class="string">"color:#a31515;"</span>&gt;Button&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Content&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;Start Indefinite Schedule&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Height&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;72&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;HorizontalAlignment&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;Center&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt;  &lt;span style=<span class="string">"color:red;"</span>&gt;Margin&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;38,120,38,0&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Name&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;buttonIndefinite&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;VerticalAlignment&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;Top&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Width&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;400&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Click&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;buttonIndefinite_Click&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:blue;"</span>&gt;/&amp;gt;&lt;/span&gt;</span><br><span class="line">&lt;span style=<span class="string">"color:blue;"</span>&gt;&amp;lt;&lt;/span&gt;&lt;span style=<span class="string">"color:#a31515;"</span>&gt;Button&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Content&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;Start Defined Count Schedule&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Height&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;72&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;HorizontalAlignment&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;Center&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt;  &lt;span style=<span class="string">"color:red;"</span>&gt;Margin&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;38,198,38,0&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Name&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;buttonDefined&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;VerticalAlignment&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;Top&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Width&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;400&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt;  &lt;span style=<span class="string">"color:red;"</span>&gt;Click&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;buttonDefined_Click&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;/&amp;gt;&lt;/span&gt;</span><br><span class="line">&lt;span style=<span class="string">"color:blue;"</span>&gt;&amp;lt;&lt;/span&gt;&lt;span style=<span class="string">"color:#a31515;"</span>&gt;Button&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Content&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;Stop Schedule&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Height&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;72&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;HorizontalAlignment&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;Center&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Margin&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;38,276,38,0&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Name&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;buttonStop&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;VerticalAlignment&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;Top&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Width&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;400&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:red;"</span>&gt;Click&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;=&lt;/span&gt;&lt;span style=<span class="string">"color:black;"</span>&gt;<span class="string">"&lt;/span&gt;&lt;span style="</span>color:blue;<span class="string">"&gt;buttonStop_Click&lt;/span&gt;&lt;span style="</span>color:black;<span class="string">"&gt;"</span>&lt;/span&gt; &lt;span style=<span class="string">"color:blue;"</span>&gt;/&amp;gt;&lt;/span&gt;</span><br><span class="line">&lt;span style=<span class="string">"color:blue;"</span>&gt;&amp;lt;/&lt;/span&gt;&lt;span style=<span class="string">"color:#a31515;"</span>&gt;Grid&lt;/span&gt;&lt;span style=<span class="string">"color:blue;"</span>&gt;&amp;gt;&lt;/span&gt;</span><br></pre></td></tr></table></figure><br><br></div><br></div><br></div><br></div><br></div>
+
+<h3 id="创建磁贴计划"><a href="#创建磁贴计划" class="headerlink" title="创建磁贴计划"></a>创建磁贴计划</h3><div class="subSection"><br><br>1.  向 MainPage.xaml.cs 文件的顶部添加一个 using 指令并提供包含 <a href="http://msdn.microsoft.com/zh-cn/library/microsoft.phone.shell.shelltileschedule(v=vs.92" target="_blank" rel="external">ShellTileSchedule</a>.aspx) 的命名空间的名称。<br><br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> Microsoft.Phone.Shell;</span><br></pre></td></tr></table></figure><br><br>2.  声明并初始化用于计划和状态的变量。<br><br><br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    MainPage : PhoneApplicationPage</span><br><span class="line">&#123;</span><br><span class="line">    ShellTileSchedule SampleTileSchedule =  ShellTileSchedule();     TileScheduleRunning = ;</span><br></pre></td></tr></table></figure><br><br>3.  添加用于执行一次性更新的代码。<br><br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  buttonOneTime_Click( sender, RoutedEventArgs e)</span><br><span class="line">&#123;    </span><br><span class="line">    SampleTileSchedule.Recurrence = UpdateRecurrence.Onetime;    </span><br><span class="line">    SampleTileSchedule.StartTime = DateTime.Now;</span><br><span class="line">    SampleTileSchedule.RemoteImageUri =  Uri();</span><br><span class="line">    SampleTileSchedule.Start();</span><br><span class="line">    TileScheduleRunning = ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br>4.  添加用于设置运行次数不确定的计划的代码。请记住，如果该计划失败次数太多，将取消该计划。<br><br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  buttonIndefinite_Click( sender, RoutedEventArgs e)</span><br><span class="line">&#123;    </span><br><span class="line">    SampleTileSchedule.Recurrence = UpdateRecurrence.Interval;    </span><br><span class="line">    SampleTileSchedule.Interval = UpdateInterval.EveryHour;</span><br><span class="line">    SampleTileSchedule.RemoteImageUri =  Uri();</span><br><span class="line">    SampleTileSchedule.Start();</span><br><span class="line">    TileScheduleRunning = ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br>5.  添加用于设置某个计划的代码，该计划将更新磁贴无限次。同样，如果该计划失败次数太多，将取消该计划。<br><br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  buttonDefined_Click( sender, RoutedEventArgs e)</span><br><span class="line">&#123;    </span><br><span class="line">    SampleTileSchedule.Recurrence = UpdateRecurrence.Interval;    </span><br><span class="line">    SampleTileSchedule.Interval = UpdateInterval.EveryHour;    </span><br><span class="line">    SampleTileSchedule.MaxUpdateCount = <span class="number">50</span>;</span><br><span class="line">    SampleTileSchedule.RemoteImageUri =  Uri();</span><br><span class="line">    SampleTileSchedule.Start();</span><br><span class="line">    TileScheduleRunning = ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br>添加用于停止任何正在运行的计划的代码。请注意，我们如何通过首先启动计划来附加到该计划。<br><br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  buttonStop_Click( sender, RoutedEventArgs e)</span><br><span class="line">&#123;    </span><br><span class="line">     (!TileScheduleRunning)</span><br><span class="line">    &#123;</span><br><span class="line">        buttonIndefinite_Click(sender, e);</span><br><span class="line">    &#125;</span><br><span class="line">    SampleTileSchedule.Stop();</span><br><span class="line">    TileScheduleRunning = ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br>调试更新计划可能具有挑战性。为了省电，对更新进行批处理，因此可能需要多达约一小时的时间才能看到更新后的图像。当设备锁定时将不会进行更新，因为用户将看不到更新。<br><br>### 运行和调试应用程序的步骤<br><br><div class="subSection"><br><br>1.  通过选择<span class="label">“调试 | 启动调试”</span>菜单命令运行应用程序。<br>2.  当模拟器初始化并且您的程序正在运行时，按模拟器上的<span class="label">“开始”</span>按键以进入“开始”屏幕。导航到应用程序列表并找到您的应用程序。长按应用程序名称，然后从上下文菜单中选择<span class="label">“固定到‘开始’屏幕”</span>。应用程序磁贴便固定到“开始”屏幕。<br>3.  按<span class="label">“返回”</span>按键返回您的应用程序。按应用程序上的其中一个按钮启动某个计划。<br>4.  返回“开始”屏幕。等待该计划运行，以查看结果。请记住，此过程可能需要一小段时间，因为需要对更新进行批处理。<br><br>    <img src="http://i.msdn.microsoft.com/dynimg/IC505452.jpg" alt="AP_Tiles_TileScheduleResult" title="AP_Tiles_TileScheduleResult"><br></div><br></div><br></div><br><div><br><div><a href="void(0"><span class="LW_CollapsibleArea_Title">计划次要磁贴</span></a> “单击以折叠。双击以全部折叠。”)<br><div class="LW_CollapsibleArea_HrDiv"><br><br><em> </em> *<br><br></div><br></div><br><div class="sectionblock"><a id="sectionToggle1"></a>尽管该示例没有次要磁贴，但您也可以通过向 ShellTileSchedule 构造函数传递磁贴信息来为次要磁贴设置计划。下面的示例演示了如何为每个现有磁贴设置计划。<br><br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> (ShellTile TileToSchedule  ShellTile.ActiveTiles)</span><br><span class="line">&#123;</span><br><span class="line">    ShellTileSchedule mySchedule =  ShellTileSchedule(TileToSchedule);</span><br><span class="line">    mySchedule.Interval = UpdateInterval.EveryHour;</span><br><span class="line">    mySchedule.Recurrence = UpdateRecurrence.Interval;</span><br><span class="line">    mySchedule.RemoteImageUri = imageURI;</span><br><span class="line">    mySchedule.Start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><br></div></div></div>
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/NET/">.NET</a> <a class="tag tag--primary tag--small t-link" href="/tags/C/">C#</a> <a class="tag tag--primary tag--small t-link" href="/tags/Live-Tiles/">Live Tiles</a> <a class="tag tag--primary tag--small t-link" href="/tags/Sliverlight/">Sliverlight</a> <a class="tag tag--primary tag--small t-link" href="/tags/WP/">WP</a> <a class="tag tag--primary tag--small t-link" href="/tags/WP8/">WP8</a> <a class="tag tag--primary tag--small t-link" href="/tags/WP8-1/">WP8.1</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2014/07/wp8-music-stop/"  data-tooltip="停止音乐实现办法">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2014/07/WP8-flashlight-code/" data-tooltip="Window Phone 8手电筒代码">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.westudio.ml/2014/07/wp8-live-tile/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.westudio.ml/2014/07/wp8-live-tile/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.westudio.ml/2014/07/wp8-live-tile/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2016 Patrick J. Wu. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2014/07/wp8-music-stop/"  data-tooltip="停止音乐实现办法">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2014/07/WP8-flashlight-code/" data-tooltip="Window Phone 8手电筒代码">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.westudio.ml/2014/07/wp8-live-tile/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.westudio.ml/2014/07/wp8-live-tile/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.westudio.ml/2014/07/wp8-live-tile/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.westudio.ml/2014/07/wp8-live-tile/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.westudio.ml/2014/07/wp8-live-tile/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.westudio.ml/2014/07/wp8-live-tile/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="http://ap.westudio.ml/sources/images/we-studio-icon.png"/>
+        
+            <h4 id="about-card-name">Patrick J. Wu</h4>
+        
+            <h5 id="about-card-bio"><p>We need apps. That’s why I build them. This is the studio of all my work.</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Developer/Desinger/Student</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Hong Kong
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/script-i4qo6jx6jji9fg0dftpya6ivemizsbow4fhow76d8dwpm7m1wbvi378ssumx.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://www.westudio.ml/2014/07/wp8-live-tile/';
+                 
+                    this.page.identifier = '2014/07/wp8-live-tile/';
+                                  
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'westudio';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+
+</html>
