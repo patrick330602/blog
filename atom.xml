@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.westudio.ml/"/>
-  <updated>2016-06-17T07:22:28.327Z</updated>
+  <updated>2016-06-20T02:49:44.848Z</updated>
   <id>http://www.westudio.ml/</id>
   
   <author>
@@ -14,6 +14,114 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mαth App is now Open-sourced</title>
+    <link href="http://www.westudio.ml/2016/06/math-app-open-sourced/"/>
+    <id>http://www.westudio.ml/2016/06/math-app-open-sourced/</id>
+    <published>2016-06-20T02:35:12.000Z</published>
+    <updated>2016-06-20T02:49:44.848Z</updated>
+    
+    <content type="html">&lt;p&gt;​     Mαth is a powerful toolkits for solving math problem, but due to some personal reason, I discontinue the app. The code is allowed to distribute freely.&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;!-- endcontent --&gt;&lt;div class=&quot;figure figure--fullWidth&quot;&gt;&lt;img class=&quot;figure-img&quot; src=&quot;http://www.westudio.ml/assets/images/math-app.png&quot; alt=&quot;Mαth&quot;&gt;&lt;span class=&quot;caption&quot;&gt;Mαth&lt;/span&gt;&lt;/div&gt;&lt;!-- content --&gt;
+&lt;p&gt;You can download it here: &lt;a href=&quot;http://www.westudio.ml/Math/&quot;&gt;http://www.westudio.ml/Math/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Licenses-amp-Contributions&quot;&gt;&lt;a href=&quot;#Licenses-amp-Contributions&quot; class=&quot;headerlink&quot; title=&quot;Licenses &amp;amp; Contributions&quot;&gt;&lt;/a&gt;Licenses &amp;amp; Contributions&lt;/h3&gt;&lt;p&gt;This project is under &lt;a href=&quot;http://ap.westudio.ml/license/mit.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MIT License&lt;/a&gt;. You are free to fork, contribute or download it or learning or research.&lt;/p&gt;
+&lt;h3 id=&quot;Support-or-Contact&quot;&gt;&lt;a href=&quot;#Support-or-Contact&quot; class=&quot;headerlink&quot; title=&quot;Support or Contact&quot;&gt;&lt;/a&gt;Support or Contact&lt;/h3&gt;&lt;p&gt;Having trouble with App? Please contact me at &lt;a href=&quot;mailto:patrick.we.studio@outlook.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;patrick.we.studio@outlook.com&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;​     Mαth is a powerful toolkits for solving math problem, but due to some personal reason, I discontinue the app. The code is allowed to distribute freely.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Open Source Life" scheme="http://www.westudio.ml/categories/Open-Source-Life/"/>
+    
+    
+      <category term="C#" scheme="http://www.westudio.ml/tags/C/"/>
+    
+      <category term="UWP" scheme="http://www.westudio.ml/tags/UWP/"/>
+    
+      <category term="WP8.1" scheme="http://www.westudio.ml/tags/WP8-1/"/>
+    
+      <category term="Math" scheme="http://www.westudio.ml/tags/Math/"/>
+    
+      <category term="GitHub" scheme="http://www.westudio.ml/tags/GitHub/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Edge Extension Package released</title>
+    <link href="http://www.westudio.ml/2016/06/edge-extension-pack/"/>
+    <id>http://www.westudio.ml/2016/06/edge-extension-pack/</id>
+    <published>2016-06-20T01:23:15.000Z</published>
+    <updated>2016-06-20T02:43:16.134Z</updated>
+    
+    <content type="html">&lt;p&gt;  Recently I realize it is still a pain to find extensions for edge, but looking around GitHub and Stackflow, I actually cannot find anything that can easily install(or you can call register ) unoffical Edge extensions.  So, I made a windows batch file for easy deployment. Introducing the new &lt;a href=&quot;https://github.com/patrick330602/Edge-Extensions-Pack&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Edge Extensions Pack&lt;/a&gt;.&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;!-- endcontent --&gt;&lt;div class=&quot;figure figure--fullWidth&quot;&gt;&lt;img class=&quot;figure-img&quot; src=&quot;http://www.westudio.ml/assets/images/edge-extensions.png&quot; alt=&quot;Working Extensions&quot;&gt;&lt;span class=&quot;caption&quot;&gt;Working Extensions&lt;/span&gt;&lt;/div&gt;&lt;!-- content --&gt;
+&lt;p&gt;This is a pack of unoffical Edge extensions pack for easy install that currently included:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Breeze - New Tab&lt;/li&gt;
+&lt;li&gt;CatBlock For AdBlock&lt;/li&gt;
+&lt;li&gt;Flying YouTube&lt;/li&gt;
+&lt;li&gt;Instant Translate&lt;/li&gt;
+&lt;li&gt;Turn Off the Lights&lt;/li&gt;
+&lt;li&gt;Tweeten&lt;/li&gt;
+&lt;li&gt;Legacy Offical Extension(Not install by default)&lt;ul&gt;
+&lt;li&gt;Microsoft Translator&lt;/li&gt;
+&lt;li&gt;Mouse Gestures&lt;/li&gt;
+&lt;li&gt;OneNote Clipper&lt;/li&gt;
+&lt;li&gt;Pin It Button&lt;/li&gt;
+&lt;li&gt;Reddit Enhancement Suit (RES)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It is very easy to use:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dowload package or &lt;code&gt;git clone https://github.com/patrick330602/Edge-Extensions-Pack.git&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Click Setup.cmd&lt;/li&gt;
+&lt;li&gt;Use the method on the &lt;a href=&quot;https://developer.microsoft.com/en-us/microsoft-edge/platform/documentation/extensions/adding-and-removing-extensions/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Edge Extension Developer Website&lt;/a&gt; to add extensions&lt;/li&gt;
+&lt;li&gt;Done!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Also, if you don’t mind, you can access the command prompt for advance use.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Command&lt;/th&gt;
+&lt;th&gt;Usage&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;setup&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Normal install&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;setup -l&lt;/code&gt; &lt;code&gt;setup legacy&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Installing with legacy extensions&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;  Recently I realize it is still a pain to find extensions for edge, but looking around GitHub and Stackflow, I actually cannot find anything that can easily install(or you can call register ) unoffical Edge extensions.  So, I made a windows batch file for easy deployment. Introducing the new &lt;a href=&quot;https://github.com/patrick330602/Edge-Extensions-Pack&quot;&gt;Edge Extensions Pack&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Open Source Life" scheme="http://www.westudio.ml/categories/Open-Source-Life/"/>
+    
+    
+      <category term="Windows Batch" scheme="http://www.westudio.ml/tags/Windows-Batch/"/>
+    
+      <category term="Edge" scheme="http://www.westudio.ml/tags/Edge/"/>
+    
+      <category term="extensions" scheme="http://www.westudio.ml/tags/extensions/"/>
+    
+  </entry>
   
   <entry>
     <title>WeCode huge update is coming!</title>
@@ -469,15 +577,14 @@
     <link href="http://www.westudio.ml/2016/03/How-to-judge-whether-a-webpage-existed-in-a-fast-way/"/>
     <id>http://www.westudio.ml/2016/03/How-to-judge-whether-a-webpage-existed-in-a-fast-way/</id>
     <published>2016-03-09T00:00:00.000Z</published>
-    <updated>2016-06-17T06:50:20.951Z</updated>
+    <updated>2016-06-20T02:42:39.287Z</updated>
     
     <content type="html">&lt;p&gt;Recently I am coding a app for viewing newspaper. Because there are no API, I have to manually find whether the page ever existed. So I try to look on the Internet, and find a try catch way to judge it:&lt;/p&gt;
  &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;figure class=&quot;highlight csharp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;HttpWebResponse response = &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; request = (HttpWebRequest)WebRequest.Create(&lt;span class=&quot;comment&quot;&gt;/* url */&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; request.Method = “HEAD”;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; response = (HttpWebResponse)request.GetResponse();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (WebException ex)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;comment&quot;&gt;/* A WebException will be thrown if the status of the response is not `200 OK` */&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;finally&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;comment&quot;&gt;// Don’t forget to close your response.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (response != &lt;span class=&quot;literal&quot;&gt;null&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;response.Close()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;However, I find that GetResponse method now no longer existed in .NET framework 4.5.2. So I find a another one that worked. But it is very slow. So I come up with an idea-using the HTTP head to find out whether it exists, and it is a lot faster:&lt;/p&gt;
 &lt;figure class=&quot;highlight csharp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;HttpClient httpClient = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; HttpClient();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//Getting the Web Response.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; HttpResponseMessage httpResponse = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; HttpResponseMessage();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; HttpRequestMessage request = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; HttpRequestMessage(HttpMethod.Get, &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Uri(website));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; httpResponse = &lt;span class=&quot;keyword&quot;&gt;await&lt;/span&gt; httpClient.SendRequestAsync(request);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(httpResponse.ToString().Contains(“StatusCode: &lt;span class=&quot;number&quot;&gt;404&lt;/span&gt;”))&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;comment&quot;&gt;// do something when the page doesn’t exist&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;&quot;&gt;&lt;!-- endcontent --&gt;&lt;div class=&quot;figure figure--fullWidth&quot;&gt;&lt;img class=&quot;figure-img&quot; src=&quot;/assets/images/working-code.png&quot; alt=&quot;real working code&quot;&gt;&lt;span class=&quot;caption&quot;&gt;real working code&lt;/span&gt;&lt;/div&gt;&lt;!-- content --&gt;&lt;/p&gt;
-</content>
+&lt;!-- endcontent --&gt;&lt;div class=&quot;figure figure--fullWidth&quot;&gt;&lt;img class=&quot;figure-img&quot; src=&quot;http://www.westudio.ml/assets/images/working-code.png&quot; alt=&quot;real working code&quot;&gt;&lt;span class=&quot;caption&quot;&gt;real working code&lt;/span&gt;&lt;/div&gt;&lt;!-- content --&gt;</content>
     
     <summary type="html">
     
@@ -503,11 +610,11 @@
     <link href="http://www.westudio.ml/2016/02/How-to-create-a-new-window-in-UWP/"/>
     <id>http://www.westudio.ml/2016/02/How-to-create-a-new-window-in-UWP/</id>
     <published>2016-02-07T00:00:00.000Z</published>
-    <updated>2016-06-17T07:27:51.739Z</updated>
+    <updated>2016-06-20T02:42:19.743Z</updated>
     
     <content type="html">&lt;p&gt;Some friends of mine asked me how to create a window in UWP just like winform or UWP, to make their app more desktop-like. Actually, it is pretty simple.&lt;/p&gt;
  &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;!-- endcontent --&gt;&lt;div class=&quot;figure figure--fullWidth&quot;&gt;&lt;img class=&quot;figure-img&quot; src=&quot;/assets/images/new-window.png&quot; alt=&quot;new window in UWP&quot;&gt;&lt;span class=&quot;caption&quot;&gt;new window in UWP&lt;/span&gt;&lt;/div&gt;&lt;!-- content --&gt;
+&lt;!-- endcontent --&gt;&lt;div class=&quot;figure figure--fullWidth&quot;&gt;&lt;img class=&quot;figure-img&quot; src=&quot;http://www.westudio.ml/assets/images/new-window.png&quot; alt=&quot;new window in UWP&quot;&gt;&lt;span class=&quot;caption&quot;&gt;new window in UWP&lt;/span&gt;&lt;/div&gt;&lt;!-- content --&gt;
 &lt;p&gt;I cannot say this is difficult or simple. In order to open a new window, You need to use CoreApplication.CreateNewView() to generate the Window, or view:&lt;/p&gt;
 &lt;figure class=&quot;highlight csharp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; currentAV = ApplicationView.GetForCurrentView();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;await&lt;/span&gt; newAV.Dispatcher.RunAsync(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; CoreDispatcherPriority.Normal,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;async&lt;/span&gt; () =&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; newWindow = Window.Current;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; newAppView = ApplicationView.GetForCurrentView();newAppView.Title = title;  &lt;span class=&quot;comment&quot;&gt;//The title of new windowvar frame = new Frame();&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; frame.Navigate(&lt;span class=&quot;keyword&quot;&gt;typeof&lt;/span&gt;(Page), Datatosend); &lt;span class=&quot;comment&quot;&gt;//Navigation is here&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; newWindow.Content = frame;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; newWindow.Activate();&lt;span class=&quot;keyword&quot;&gt;await&lt;/span&gt; ApplicationViewSwitcher.TryShowAsStandaloneAsync(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;newAppView.Id,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; ViewSizePreference.UseMinimum,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;currentAV.Id,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; ViewSizePreference.UseMinimum);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
     
