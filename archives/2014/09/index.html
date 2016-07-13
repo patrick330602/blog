@@ -3,7 +3,7 @@
 <html lang="en">
     
 <head>
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="WE. Studio">
     <title>Archives: 2014/9 - WE. Studio</title>
@@ -46,13 +46,13 @@
             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
-    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </script>
 
     
 </head>
 
     <body>
-        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="blog">
+        <div id="blog">
             <!-- Define author's picture -->
 
 
@@ -277,7 +277,7 @@
             
                 <div class="postShorten-excerpt" itemprop="articleBody">
                     <p>今天做8.1程序时彻底弄混了IRandomAcessStream和Stream。。。于是乎，我找了一个可用的不同类型转换。。。。</p>
-<h3 id="Stream-转IRandomAccessStream"><a href="#Stream-转IRandomAccessStream" class="headerlink" title="Stream 转IRandomAccessStream"></a>Stream 转IRandomAccessStream</h3><h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">byte</span>[] bytes = StreamToBytes(stream);</span><br><span class="line">InMemoryRandomAccessStream memoryStream = <span class="keyword">new</span> InMemoryRandomAccessStream();</span><br><span class="line">DataWriter datawriter = <span class="keyword">new</span> DataWriter(memoryStream.GetOutputStreamAt(<span class="number">0</span>));</span><br><span class="line">datawriter.WriteBytes(bytes);</span><br><span class="line"><span class="keyword">await</span> datawriter.StoreAsync();</span><br></pre></td></tr></table></figure>
+<h3 id="Stream-转IRandomAccessStream"><a href="#Stream-转IRandomAccessStream" class="headerlink" title="Stream 转IRandomAccessStream"></a>Stream 转IRandomAccessStream</h3><h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">byte</span>[] bytes = StreamToBytes(stream);</div><div class="line">InMemoryRandomAccessStream memoryStream = <span class="keyword">new</span> InMemoryRandomAccessStream();</div><div class="line">DataWriter datawriter = <span class="keyword">new</span> DataWriter(memoryStream.GetOutputStreamAt(<span class="number">0</span>));</div><div class="line">datawriter.WriteBytes(bytes);</div><div class="line"><span class="keyword">await</span> datawriter.StoreAsync();</div></pre></td></tr></table></figure>
                     
                         <a href="/2014/09/Byte-Stream-Ibuffer-conversion/" class="postShorten-excerpt_link link">
                             Continue reading
@@ -350,7 +350,7 @@
 </div>
 
         
-<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
     </body>
     <!--SCRIPTS--> 
 <script src="/assets/js/script-i4qo6jx6jji9fg0dftpya6ivemizsbow4fhow76d8dwpm7m1wbvi378ssumx.min.js"></script>

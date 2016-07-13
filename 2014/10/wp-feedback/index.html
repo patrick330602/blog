@@ -3,7 +3,7 @@
 <html lang="en">
     
 <head>
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="WE. Studio">
     <title>Windows Phone 8 开发：应用崩溃时给作者发送错误报告邮件 - WE. Studio</title>
@@ -47,13 +47,13 @@
             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
-    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </script>
 
     
 </head>
 
     <body>
-        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="blog">
+        <div id="blog">
             <!-- Define author's picture -->
 
 
@@ -276,12 +276,12 @@
 <p>打开App.xaml.cs，定位到Application_UnhandledException(object sender, ApplicationUnhandledExceptionEventArgs e)事件处理函数上。</p>
  <a id="more"></a>
 <p>当任何未处理的异常产生时，这个函数都会被call到。我们的任务是发送邮件给应用作者（通常就是你自己），所以我们可以把项目模板中默认的代码给去掉，删除这些代码：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span></span><br><span class="line"> (Debugger.IsAttached)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// An unhandled exception has occurred; break into the debugger</span></span><br><span class="line">    Debugger.Break();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span></div><div class="line"> (Debugger.IsAttached)</div><div class="line">&#123;</div><div class="line"></div><div class="line">    <span class="comment">// An unhandled exception has occurred; break into the debugger</span></div><div class="line">    Debugger.Break();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>然后换成我们自己代码：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = MessageBox.Show(<span class="string">"程序不小心爆掉了。点击确定发送错误详情给软件作者以帮助改进软件。"</span>,  <span class="string">"注定孤独一生"</span>,MessageBoxButton.OKCancel);</span><br><span class="line"><span class="keyword">if</span></span><br><span class="line"> (result == MessageBoxResult.OK)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> msg = e.ExceptionObject.Message;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">null</span> != e.ExceptionObject.InnerException)</span><br><span class="line">    &#123;</span><br><span class="line">        e.ExceptionObject = e.ExceptionObject.InnerException;</span><br><span class="line">        msg += (e.ExceptionObject.Message + Environment.NewLine);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">    <span class="keyword">var</span> emailComposeTask = <span class="keyword">new</span> EmailComposeTask</span><br><span class="line">    &#123;</span><br><span class="line">        Subject = <span class="keyword">string</span>.Format(<span class="string">"《你的应用名称》应用异常报告"</span>),</span><br><span class="line">        Body = <span class="string">"Message: "</span> + msg,</span><br><span class="line">      To =<span class="string">"你的Email地址"</span></span><br><span class="line">    &#125;;</span><br><span class="line">    emailComposeTask.Show();</span><br><span class="line">&#125;</span><br><span class="line">e.Handled = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> result = MessageBox.Show(<span class="string">"程序不小心爆掉了。点击确定发送错误详情给软件作者以帮助改进软件。"</span>,  <span class="string">"注定孤独一生"</span>,MessageBoxButton.OKCancel);</div><div class="line"><span class="keyword">if</span></div><div class="line"> (result == MessageBoxResult.OK)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> msg = e.ExceptionObject.Message;</div><div class="line">    <span class="keyword">while</span>(<span class="literal">null</span> != e.ExceptionObject.InnerException)</div><div class="line">    &#123;</div><div class="line">        e.ExceptionObject = e.ExceptionObject.InnerException;</div><div class="line">        msg += (e.ExceptionObject.Message + Environment.NewLine);</div><div class="line"></div><div class="line">&#125;</div><div class="line">    <span class="keyword">var</span> emailComposeTask = <span class="keyword">new</span> EmailComposeTask</div><div class="line">    &#123;</div><div class="line">        Subject = <span class="keyword">string</span>.Format(<span class="string">"《你的应用名称》应用异常报告"</span>),</div><div class="line">        Body = <span class="string">"Message: "</span> + msg,</div><div class="line">      To =<span class="string">"你的Email地址"</span></div><div class="line">    &#125;;</div><div class="line">    emailComposeTask.Show();</div><div class="line">&#125;</div><div class="line">e.Handled = <span class="literal">true</span>;</div></pre></td></tr></table></figure>
 <p>代码比较直接，首先，用MessageBox给用户弹了个框，让用户自己选择是否发送错误报告。如果用户选择了“确定”，就开始收集异常详情。ApplicationUnhandledExceptionEventArgs这个参数的ExceptionObject类型就是System.Exception，所以获取最上层的异常消息做法就像平时try…catch里通常写的ex.Message类似，可以通过Exception对象Message属性获得<br>e.ExceptionObject.Message。</p>
 <p>然而，异常并不通常只有一层，有时候我们会遇到exception里还包着一个innerexception的情况，并且我们不知道是不是包了两层就结束了，有可能innerexception里还有innerexception，所以就得写个循环来遍历直到最底层的innerexception，于是就有了这段代码：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span></span><br><span class="line">(<span class="literal">null</span> != e.ExceptionObject.InnerException)</span><br><span class="line">&#123;</span><br><span class="line">    e.ExceptionObject = e.ExceptionObject.InnerException;</span><br><span class="line">    msg += (e.ExceptionObject.Message + Environment.NewLine);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span></div><div class="line">(<span class="literal">null</span> != e.ExceptionObject.InnerException)</div><div class="line">&#123;</div><div class="line">    e.ExceptionObject = e.ExceptionObject.InnerException;</div><div class="line">    msg += (e.ExceptionObject.Message + Environment.NewLine);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>其中，“Environment.NewLine”的意思是换行，目的是提高邮件的可阅读性。</p>
 <p>收集完异常信息后，我们要调用WP系统提供的发送邮件的task来发送异常报告。我们的应用调用系统任务，比如发邮件、打电话、发短信都是通过Task来完成的，email的用法在MSDN上可以找到：<a href="http://msdn.microsoft.com/en-US/library/windowsphone/develop/hh394003%28v=vs.105%29.aspx" target="_blank" rel="external">http://msdn.microsoft.com/en-US/library/windowsphone/develop/hh394003%28v=vs.105%29.aspx</a> 这个网页里你也能找到其他task的用法。</p>
 <p>Subject是邮件的主题，Body是正文，To是收件人。当然，如果你需要，你还可以增加Bcc(密件抄送)和Cc(抄送)。</p>
@@ -502,7 +502,7 @@
 </div>
 
         
-<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
     </body>
     <!--SCRIPTS--> 
 <script src="/assets/js/script-i4qo6jx6jji9fg0dftpya6ivemizsbow4fhow76d8dwpm7m1wbvi378ssumx.min.js"></script>

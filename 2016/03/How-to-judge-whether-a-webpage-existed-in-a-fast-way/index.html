@@ -3,7 +3,7 @@
 <html lang="en">
     
 <head>
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="WE. Studio">
     <title>How to judge whether a webpage existed in a fast way - WE. Studio</title>
@@ -52,13 +52,13 @@
             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
-    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </script>
 
     
 </head>
 
     <body>
-        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="blog">
+        <div id="blog">
             <!-- Define author's picture -->
 
 
@@ -278,9 +278,9 @@
         <div class="main-content-wrap">
             <p>Recently I am coding a app for viewing newspaper. Because there are no API, I have to manually find whether the page ever existed. So I try to look on the Internet, and find a try catch way to judge it:</p>
  <a id="more"></a>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">HttpWebResponse response = <span class="literal">null</span>;</span><br><span class="line"> <span class="keyword">var</span> request = (HttpWebRequest)WebRequest.Create(<span class="comment">/* url */</span>);</span><br><span class="line"> request.Method = “HEAD”;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span></span><br><span class="line"> &#123;</span><br><span class="line"> response = (HttpWebResponse)request.GetResponse();</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">catch</span> (WebException ex)</span><br><span class="line"> &#123;</span><br><span class="line"> <span class="comment">/* A WebException will be thrown if the status of the response is not `200 OK` */</span></span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">finally</span></span><br><span class="line"> &#123;</span><br><span class="line"> <span class="comment">// Don’t forget to close your response.</span></span><br><span class="line"> <span class="keyword">if</span> (response != <span class="literal">null</span>)</span><br><span class="line"> &#123;</span><br><span class="line">response.Close()</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">HttpWebResponse response = <span class="literal">null</span>;</div><div class="line"> <span class="keyword">var</span> request = (HttpWebRequest)WebRequest.Create(<span class="comment">/* url */</span>);</div><div class="line"> request.Method = “HEAD”;</div><div class="line"></div><div class="line"><span class="keyword">try</span></div><div class="line"> &#123;</div><div class="line"> response = (HttpWebResponse)request.GetResponse();</div><div class="line"> &#125;</div><div class="line"> <span class="keyword">catch</span> (WebException ex)</div><div class="line"> &#123;</div><div class="line"> <span class="comment">/* A WebException will be thrown if the status of the response is not `200 OK` */</span></div><div class="line"> &#125;</div><div class="line"> <span class="keyword">finally</span></div><div class="line"> &#123;</div><div class="line"> <span class="comment">// Don’t forget to close your response.</span></div><div class="line"> <span class="keyword">if</span> (response != <span class="literal">null</span>)</div><div class="line"> &#123;</div><div class="line">response.Close()</div><div class="line"> &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
 <p>However, I find that GetResponse method now no longer existed in .NET framework 4.5.2. So I find a another one that worked. But it is very slow. So I come up with an idea-using the HTTP head to find out whether it exists, and it is a lot faster:</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HttpClient httpClient = <span class="keyword">new</span> HttpClient();</span><br><span class="line"></span><br><span class="line"><span class="comment">//Getting the Web Response.</span></span><br><span class="line"> HttpResponseMessage httpResponse = <span class="keyword">new</span> HttpResponseMessage();</span><br><span class="line"> HttpRequestMessage request = <span class="keyword">new</span> HttpRequestMessage(HttpMethod.Get, <span class="keyword">new</span> Uri(website));</span><br><span class="line"> httpResponse = <span class="keyword">await</span> httpClient.SendRequestAsync(request);</span><br><span class="line"> <span class="keyword">if</span>(httpResponse.ToString().Contains(“StatusCode: <span class="number">404</span>”))</span><br><span class="line"> &#123;</span><br><span class="line"> <span class="comment">// do something when the page doesn’t exist</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">HttpClient httpClient = <span class="keyword">new</span> HttpClient();</div><div class="line"></div><div class="line"><span class="comment">//Getting the Web Response.</span></div><div class="line"> HttpResponseMessage httpResponse = <span class="keyword">new</span> HttpResponseMessage();</div><div class="line"> HttpRequestMessage request = <span class="keyword">new</span> HttpRequestMessage(HttpMethod.Get, <span class="keyword">new</span> Uri(website));</div><div class="line"> httpResponse = <span class="keyword">await</span> httpClient.SendRequestAsync(request);</div><div class="line"> <span class="keyword">if</span>(httpResponse.ToString().Contains(“StatusCode: <span class="number">404</span>”))</div><div class="line"> &#123;</div><div class="line"> <span class="comment">// do something when the page doesn’t exist</span></div><div class="line"> &#125;</div></pre></td></tr></table></figure>
 </div><div class="figure figure--fullWidth"><img class="figure-img" src="http://www.westudio.ml/assets/images/working-code.png" alt="real working code"><span class="caption">real working code</span></div><div class="main-content-wrap">
             
         </div>
@@ -497,7 +497,7 @@
 </div>
 
         
-<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
     </body>
     <!--SCRIPTS--> 
 <script src="/assets/js/script-i4qo6jx6jji9fg0dftpya6ivemizsbow4fhow76d8dwpm7m1wbvi378ssumx.min.js"></script>

@@ -3,7 +3,7 @@
 <html lang="en">
     
 <head>
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="WE. Studio">
     <title>How to create a new window in UWP - WE. Studio</title>
@@ -52,13 +52,13 @@
             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
-    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </script>
 
     
 </head>
 
     <body>
-        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="blog">
+        <div id="blog">
             <!-- Define author's picture -->
 
 
@@ -280,7 +280,7 @@
  <a id="more"></a>
 </div><div class="figure figure--fullWidth"><img class="figure-img" src="http://www.westudio.ml/assets/images/new-window.png" alt="new window in UWP"><span class="caption">new window in UWP</span></div><div class="main-content-wrap">
 <p>I cannot say this is difficult or simple. In order to open a new window, You need to use CoreApplication.CreateNewView() to generate the Window, or view:</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentAV = ApplicationView.GetForCurrentView();</span><br><span class="line"></span><br><span class="line"><span class="keyword">await</span> newAV.Dispatcher.RunAsync(</span><br><span class="line"> CoreDispatcherPriority.Normal,</span><br><span class="line"> <span class="keyword">async</span> () =&gt;</span><br><span class="line"> &#123;</span><br><span class="line"> <span class="keyword">var</span> newWindow = Window.Current;</span><br><span class="line"> <span class="keyword">var</span> newAppView = ApplicationView.GetForCurrentView();newAppView.Title = title;  <span class="comment">//The title of new windowvar frame = new Frame();</span></span><br><span class="line"> frame.Navigate(<span class="keyword">typeof</span>(Page), Datatosend); <span class="comment">//Navigation is here</span></span><br><span class="line"> newWindow.Content = frame;</span><br><span class="line"> newWindow.Activate();<span class="keyword">await</span> ApplicationViewSwitcher.TryShowAsStandaloneAsync(</span><br><span class="line">newAppView.Id,</span><br><span class="line"> ViewSizePreference.UseMinimum,</span><br><span class="line">currentAV.Id,</span><br><span class="line"> ViewSizePreference.UseMinimum);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> currentAV = ApplicationView.GetForCurrentView();</div><div class="line"></div><div class="line"><span class="keyword">await</span> newAV.Dispatcher.RunAsync(</div><div class="line"> CoreDispatcherPriority.Normal,</div><div class="line"> <span class="keyword">async</span> () =&gt;</div><div class="line"> &#123;</div><div class="line"> <span class="keyword">var</span> newWindow = Window.Current;</div><div class="line"> <span class="keyword">var</span> newAppView = ApplicationView.GetForCurrentView();newAppView.Title = title;  <span class="comment">//The title of new windowvar frame = new Frame();</span></div><div class="line"> frame.Navigate(<span class="keyword">typeof</span>(Page), Datatosend); <span class="comment">//Navigation is here</span></div><div class="line"> newWindow.Content = frame;</div><div class="line"> newWindow.Activate();<span class="keyword">await</span> ApplicationViewSwitcher.TryShowAsStandaloneAsync(</div><div class="line">newAppView.Id,</div><div class="line"> ViewSizePreference.UseMinimum,</div><div class="line">currentAV.Id,</div><div class="line"> ViewSizePreference.UseMinimum);</div><div class="line"> &#125;);</div></pre></td></tr></table></figure>
             
         </div>
     </div>
@@ -496,7 +496,7 @@
 </div>
 
         
-<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
     </body>
     <!--SCRIPTS--> 
 <script src="/assets/js/script-i4qo6jx6jji9fg0dftpya6ivemizsbow4fhow76d8dwpm7m1wbvi378ssumx.min.js"></script>
