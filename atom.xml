@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.westudio.ml/"/>
-  <updated>2016-07-13T15:59:34.948Z</updated>
+  <updated>2016-07-13T16:14:05.227Z</updated>
   <id>http://www.westudio.ml/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.westudio.ml/2016/07/ubuntu-desktop-on-windows-with-ch-translation/"/>
     <id>http://www.westudio.ml/2016/07/ubuntu-desktop-on-windows-with-ch-translation/</id>
     <published>2016-07-13T13:19:02.000Z</published>
-    <updated>2016-07-13T15:59:34.948Z</updated>
+    <updated>2016-07-13T16:14:05.227Z</updated>
     
     <content type="html">&lt;p&gt;Right now, using X server, CCSM, Compiz and other components with Bash On Ubuntu On Windows, You can now run Linux desktop environment from Windows desktop.&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;!-- endcontent --&gt;&lt;div class=&quot;figure figure--fullWidth&quot;&gt;&lt;img class=&quot;figure-img&quot; src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/main.png&quot; alt=&quot;Coding In xface4&quot;&gt;&lt;span class=&quot;caption&quot;&gt;Coding In xface4&lt;/span&gt;&lt;/div&gt;&lt;!-- content --&gt;&lt;/p&gt;
 &lt;div class=&quot;alert info&quot;&gt;&lt;p&gt;Retrieved from &lt;a href=&quot;https://github.com/Microsoft/BashOnWindows/issues/637&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;this post&lt;/a&gt; in BashOnWindows GitHub site. &lt;/p&gt;
@@ -40,9 +40,9 @@
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;export DISPLAY=localhost:0&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;and open &lt;strong&gt;ccsm&lt;/strong&gt;.&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Inside ccsm mouse pointer may be not visible due to icon not loaded. Enable the following plugins.&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/3.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/4.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Inside ccsm mouse pointer may be not visible due to icon not loaded. Enable the following plugins.&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/3.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/3.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/4.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/4.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Now close ccsm and open &lt;strong&gt;compiz&lt;/strong&gt;.&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/5.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;br&gt; Compiz will load and seconds later unity will show up.&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/6.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;Now close ccsm and open &lt;strong&gt;compiz&lt;/strong&gt;.&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/5.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/5.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;br&gt; Compiz will load and seconds later unity will show up.&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/6.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/6.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;To exit from unity close bash or kill compiz, the only way of closing unity.&lt;/p&gt;
 &lt;h3 id=&quot;For-XFCE&quot;&gt;&lt;a href=&quot;#For-XFCE&quot; class=&quot;headerlink&quot; title=&quot;For XFCE:&quot;&gt;&lt;/a&gt;For XFCE:&lt;/h3&gt;&lt;/li&gt;
@@ -72,9 +72,9 @@
 &lt;p&gt;并打开&lt;strong&gt;ccsm&lt;/strong&gt;。&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;ccsm&lt;/strong&gt;中可能显示不出鼠标指针，因为没有加载玩所有内容。如图选择插件。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/3.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/4.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/3.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/3.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/4.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/4.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;现在关闭ccsm并打开 &lt;strong&gt;compiz&lt;/strong&gt;.&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/5.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;br&gt; Compiz会花些时间载入，稍稍等待下桌面环境就会出现&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/6.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;现在关闭ccsm并打开 &lt;strong&gt;compiz&lt;/strong&gt;.&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/5.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/5.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;br&gt; Compiz会花些时间载入，稍稍等待下桌面环境就会出现&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/6.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/6.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;关闭桌面环境的方法只能是关闭bash窗口，或者杀Compiz进程。&lt;/p&gt;
 &lt;h3 id=&quot;XFCE桌面环境：&quot;&gt;&lt;a href=&quot;#XFCE桌面环境：&quot; class=&quot;headerlink&quot; title=&quot;XFCE桌面环境：&quot;&gt;&lt;/a&gt;XFCE桌面环境：&lt;/h3&gt;&lt;/li&gt;
@@ -95,11 +95,11 @@
       <category term="Open Source Life" scheme="http://www.westudio.ml/categories/Open-Source-Life/"/>
     
     
+      <category term="GitHub" scheme="http://www.westudio.ml/tags/GitHub/"/>
+    
       <category term="Bash" scheme="http://www.westudio.ml/tags/Bash/"/>
     
       <category term="Linux" scheme="http://www.westudio.ml/tags/Linux/"/>
-    
-      <category term="GitHub" scheme="http://www.westudio.ml/tags/GitHub/"/>
     
       <category term="中文" scheme="http://www.westudio.ml/tags/%E4%B8%AD%E6%96%87/"/>
     
@@ -110,7 +110,7 @@
     <link href="http://www.westudio.ml/2016/07/github-multiple-email-change/"/>
     <id>http://www.westudio.ml/2016/07/github-multiple-email-change/</id>
     <published>2016-07-13T03:08:56.000Z</published>
-    <updated>2016-07-13T12:21:20.254Z</updated>
+    <updated>2016-07-13T16:13:25.108Z</updated>
     
     <content type="html">&lt;p&gt; Recently, I am programming an app on GitHub (Yes, it is WeCode as you have guessed), but I suddenly realized the commits are not properly shown in my dashboard:&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/github-bug.PNG&quot; alt=&quot;GitHub Dashboard&quot;&gt;&lt;/p&gt;
@@ -118,11 +118,10 @@
 &lt;p&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/well-done-microsoft.png&quot; alt=&quot;Well Done, Microsoft&quot;&gt;&lt;/p&gt;
 &lt;p&gt; Well done, Microsoft.&lt;/p&gt;
 &lt;p&gt; GitHub actually provides you with a feature to &lt;a href=&quot;https://help.github.com/articles/changing-author-info/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;change author info &lt;/a&gt;. However, I found it misleading and confusing to the newbies, while only support only one email address. So I decided to write a new instruction for newbies for better understanding.&lt;/p&gt;
-&lt;p&gt;##Changing author info&lt;/p&gt;
-&lt;p&gt;To change the name and/or email address recorded in existing commits, you must rewrite the entire history of your Git repository.&lt;/p&gt;
+&lt;h2 id=&quot;Changing-author-info&quot;&gt;&lt;a href=&quot;#Changing-author-info&quot; class=&quot;headerlink&quot; title=&quot;Changing author info&quot;&gt;&lt;/a&gt;Changing author info&lt;/h2&gt;&lt;p&gt;To change the name and/or email address recorded in existing commits, you must rewrite the entire history of your Git repository.&lt;/p&gt;
 &lt;div class=&quot;alert warning&quot;&gt;&lt;p&gt;This action is destructive to your repository’s history. If you’re collaborating on a repository with others, it’s considered bad practice to rewrite published history. You should only do this in an emergency.&lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;###Changing the Git history of your repository using a script&lt;br&gt;We’ve created a script that will change any commits that previously had the old email address in its author or committer fields to use the correct name and email address.&lt;/p&gt;
+&lt;h3 id=&quot;Changing-the-Git-history-of-your-repository-using-a-script&quot;&gt;&lt;a href=&quot;#Changing-the-Git-history-of-your-repository-using-a-script&quot; class=&quot;headerlink&quot; title=&quot;Changing the Git history of your repository using a script&quot;&gt;&lt;/a&gt;Changing the Git history of your repository using a script&lt;/h3&gt;&lt;p&gt;We’ve created a script that will change any commits that previously had the old email address in its author or committer fields to use the correct name and email address.&lt;/p&gt;
 &lt;div class=&quot;alert info&quot;&gt;&lt;p&gt;Running this script rewrites history for all repository collaborators. After completing these steps, any person with forks or clones must fetch the rewritten history and rebase any local changes into the rewritten history.&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Before running this script, you’ll need:&lt;/p&gt;
@@ -199,9 +198,9 @@
     
       <category term="C#" scheme="http://www.westudio.ml/tags/C/"/>
     
-      <category term="UWP" scheme="http://www.westudio.ml/tags/UWP/"/>
-    
       <category term="WP8.1" scheme="http://www.westudio.ml/tags/WP8-1/"/>
+    
+      <category term="UWP" scheme="http://www.westudio.ml/tags/UWP/"/>
     
       <category term="GitHub" scheme="http://www.westudio.ml/tags/GitHub/"/>
     

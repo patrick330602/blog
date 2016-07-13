@@ -21,7 +21,7 @@
 <meta property="og:description" content="Recently, I am programming an app on GitHub (Yes, it is WeCode as you have guessed), but I suddenly realized the commits are not properly shown in my dashboard:">
 <meta property="og:image" content="http://www.westudio.ml/assets/images/github-bug.PNG">
 <meta property="og:image" content="http://www.westudio.ml/assets/images/well-done-microsoft.png">
-<meta property="og:updated_time" content="2016-07-13T12:21:20.254Z">
+<meta property="og:updated_time" content="2016-07-13T16:13:25.108Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to change multiple Mails in Your Repos">
 <meta name="twitter:description" content="Recently, I am programming an app on GitHub (Yes, it is WeCode as you have guessed), but I suddenly realized the commits are not properly shown in my dashboard:">
@@ -283,11 +283,10 @@
 <p><img src="http://www.westudio.ml/assets/images/well-done-microsoft.png" alt="Well Done, Microsoft"></p>
 <p> Well done, Microsoft.</p>
 <p> GitHub actually provides you with a feature to <a href="https://help.github.com/articles/changing-author-info/" target="_blank" rel="external">change author info </a>. However, I found it misleading and confusing to the newbies, while only support only one email address. So I decided to write a new instruction for newbies for better understanding.</p>
-<p>##Changing author info</p>
-<p>To change the name and/or email address recorded in existing commits, you must rewrite the entire history of your Git repository.</p>
+<h2 id="Changing-author-info"><a href="#Changing-author-info" class="headerlink" title="Changing author info"></a>Changing author info</h2><p>To change the name and/or email address recorded in existing commits, you must rewrite the entire history of your Git repository.</p>
 <div class="alert warning"><p>This action is destructive to your repository’s history. If you’re collaborating on a repository with others, it’s considered bad practice to rewrite published history. You should only do this in an emergency.</p>
 </div>
-<p>###Changing the Git history of your repository using a script<br>We’ve created a script that will change any commits that previously had the old email address in its author or committer fields to use the correct name and email address.</p>
+<h3 id="Changing-the-Git-history-of-your-repository-using-a-script"><a href="#Changing-the-Git-history-of-your-repository-using-a-script" class="headerlink" title="Changing the Git history of your repository using a script"></a>Changing the Git history of your repository using a script</h3><p>We’ve created a script that will change any commits that previously had the old email address in its author or committer fields to use the correct name and email address.</p>
 <div class="alert info"><p>Running this script rewrites history for all repository collaborators. After completing these steps, any person with forks or clones must fetch the rewritten history and rebase any local changes into the rewritten history.</p>
 </div>
 <p>Before running this script, you’ll need:</p>
