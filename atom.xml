@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.westudio.ml/"/>
-  <updated>2016-07-13T03:48:31.624Z</updated>
+  <updated>2016-07-13T15:59:34.948Z</updated>
   <id>http://www.westudio.ml/</id>
   
   <author>
@@ -16,11 +16,101 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Enable Linux Desktop Environment On Windows 10(with Chinese)</title>
+    <link href="http://www.westudio.ml/2016/07/ubuntu-desktop-on-windows-with-ch-translation/"/>
+    <id>http://www.westudio.ml/2016/07/ubuntu-desktop-on-windows-with-ch-translation/</id>
+    <published>2016-07-13T13:19:02.000Z</published>
+    <updated>2016-07-13T15:59:34.948Z</updated>
+    
+    <content type="html">&lt;p&gt;Right now, using X server, CCSM, Compiz and other components with Bash On Ubuntu On Windows, You can now run Linux desktop environment from Windows desktop.&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;!-- endcontent --&gt;&lt;div class=&quot;figure figure--fullWidth&quot;&gt;&lt;img class=&quot;figure-img&quot; src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/main.png&quot; alt=&quot;Coding In xface4&quot;&gt;&lt;span class=&quot;caption&quot;&gt;Coding In xface4&lt;/span&gt;&lt;/div&gt;&lt;!-- content --&gt;&lt;/p&gt;
+&lt;div class=&quot;alert info&quot;&gt;&lt;p&gt;Retrieved from &lt;a href=&quot;https://github.com/Microsoft/BashOnWindows/issues/637&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;this post&lt;/a&gt; in BashOnWindows GitHub site. &lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;alert info&quot;&gt;&lt;p&gt;Chinese Translation is after English.&lt;br&gt;下方有中文翻译。&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;For-Unity&quot;&gt;&lt;a href=&quot;#For-Unity&quot; class=&quot;headerlink&quot; title=&quot;For Unity:&quot;&gt;&lt;/a&gt;For Unity:&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Run following code on Bash On Windows:&lt;/p&gt;
+&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;export DISPLAY=:0.0&quot;&lt;/span&gt; &amp;gt;&amp;gt; ~/.bashrc&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo sed -i &lt;span class=&quot;string&quot;&gt;&#39;s$&amp;lt;listen&amp;gt;.*&amp;lt;/listen&amp;gt;$&amp;lt;listen&amp;gt;tcp:host=localhost,port=0&amp;lt;/listen&amp;gt;$&#39;&lt;/span&gt; /etc/dbus-1/session.conf&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Install VcXsrv and open &lt;strong&gt;XLaunch&lt;/strong&gt;. Choose “One large window” with display number as 0  like this:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/1.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/1.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;br&gt;Other settings leave as default and finish the configuration.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Now open bash, install &lt;strong&gt;ubuntu-desktop&lt;/strong&gt;, &lt;strong&gt;unity&lt;/strong&gt; and &lt;strong&gt;ccsm&lt;/strong&gt;:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install ubuntu-desktop unity compizconfig-settings-manager&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Export the display:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;export DISPLAY=localhost:0&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;and open &lt;strong&gt;ccsm&lt;/strong&gt;.&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Inside ccsm mouse pointer may be not visible due to icon not loaded. Enable the following plugins.&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/3.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/4.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Now close ccsm and open &lt;strong&gt;compiz&lt;/strong&gt;.&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/5.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;br&gt; Compiz will load and seconds later unity will show up.&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/6.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;To exit from unity close bash or kill compiz, the only way of closing unity.&lt;/p&gt;
+&lt;h3 id=&quot;For-XFCE&quot;&gt;&lt;a href=&quot;#For-XFCE&quot; class=&quot;headerlink&quot; title=&quot;For XFCE:&quot;&gt;&lt;/a&gt;For XFCE:&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The same configuration for VcXsrv applies here.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Install &lt;strong&gt;xfce4-session&lt;/strong&gt;:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install xfce4-session&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;and run &lt;strong&gt;xfce4-session&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;在Windows10上启用Linux桌面环境&quot;&gt;&lt;a href=&quot;#在Windows10上启用Linux桌面环境&quot; class=&quot;headerlink&quot; title=&quot;在Windows10上启用Linux桌面环境&quot;&gt;&lt;/a&gt;在Windows10上启用Linux桌面环境&lt;/h2&gt;&lt;div class=&quot;alert info&quot;&gt;&lt;p&gt;从BashOnWindows GitHub网站上的&lt;a href=&quot;https://github.com/Microsoft/BashOnWindows/issues/637&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;文章&lt;/a&gt; 进行整理和翻译。&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;现在，只要你利用X server, CCSM, Compiz和其他组件，与Bash On Ubuntu On Windows相互配合，你现在可以在Windows 10上直接运行Linux桌面环境.&lt;/p&gt;
+&lt;div class=&quot;alert warning&quot;&gt;&lt;p&gt;除非你是Linux发烧友，不建议使用此Linux桌面环境。&lt;/p&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;Unity桌面环境：&quot;&gt;&lt;a href=&quot;#Unity桌面环境：&quot; class=&quot;headerlink&quot; title=&quot;Unity桌面环境：&quot;&gt;&lt;/a&gt;Unity桌面环境：&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;在 Bash On Windows运行以下代码:&lt;/p&gt;
+&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;export DISPLAY=:0.0&quot;&lt;/span&gt; &amp;gt;&amp;gt; ~/.bashrc&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;sudo sed -i &lt;span class=&quot;string&quot;&gt;&#39;s$&amp;lt;listen&amp;gt;.*&amp;lt;/listen&amp;gt;$&amp;lt;listen&amp;gt;tcp:host=localhost,port=0&amp;lt;/listen&amp;gt;$&#39;&lt;/span&gt; /etc/dbus-1/session.conf&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装VcXsrv并打开&lt;strong&gt;XLaunch&lt;/strong&gt;。 选择 “One large window” 并在&lt;strong&gt;display number&lt;/strong&gt; 输入0，如图：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/1.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/1.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;br&gt;一路next下去就行，直到他完成配置&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;打开Bash On Windows并安装 &lt;strong&gt;ubuntu-desktop&lt;/strong&gt;，&lt;strong&gt;unity&lt;/strong&gt; 和 &lt;strong&gt;ccsm&lt;/strong&gt;：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install ubuntu-desktop unity compizconfig-settings-manager&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;输出显示：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;export DISPLAY=localhost:0&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;并打开&lt;strong&gt;ccsm&lt;/strong&gt;。&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;ccsm&lt;/strong&gt;中可能显示不出鼠标指针，因为没有加载玩所有内容。如图选择插件。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/3.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/4.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;现在关闭ccsm并打开 &lt;strong&gt;compiz&lt;/strong&gt;.&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/5.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;br&gt; Compiz会花些时间载入，稍稍等待下桌面环境就会出现&lt;br&gt;&lt;a href=&quot;http://www.westudio.ml/assets/images/lde-on-win10/6.png&quot;&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/lde-on-win10/2.png&quot; alt=&quot;&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;关闭桌面环境的方法只能是关闭bash窗口，或者杀Compiz进程。&lt;/p&gt;
+&lt;h3 id=&quot;XFCE桌面环境：&quot;&gt;&lt;a href=&quot;#XFCE桌面环境：&quot; class=&quot;headerlink&quot; title=&quot;XFCE桌面环境：&quot;&gt;&lt;/a&gt;XFCE桌面环境：&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;使用与Unity同样的方法配置VcXsrv。（1-4步）&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装&lt;strong&gt;xfce4-session&lt;/strong&gt;：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo apt-get install xfce4-session&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;并运行&lt;strong&gt;xfce4-session&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Right now, using X server, CCSM, Compiz and other components with Bash On Ubuntu On Windows, You can now run Linux desktop environment from Windows desktop.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Open Source Life" scheme="http://www.westudio.ml/categories/Open-Source-Life/"/>
+    
+    
+      <category term="Bash" scheme="http://www.westudio.ml/tags/Bash/"/>
+    
+      <category term="Linux" scheme="http://www.westudio.ml/tags/Linux/"/>
+    
+      <category term="GitHub" scheme="http://www.westudio.ml/tags/GitHub/"/>
+    
+      <category term="中文" scheme="http://www.westudio.ml/tags/%E4%B8%AD%E6%96%87/"/>
+    
+  </entry>
+  
+  <entry>
     <title>How to change multiple Mails in Your Repos</title>
     <link href="http://www.westudio.ml/2016/07/github-multiple-email-change/"/>
     <id>http://www.westudio.ml/2016/07/github-multiple-email-change/</id>
     <published>2016-07-13T03:08:56.000Z</published>
-    <updated>2016-07-13T03:48:31.624Z</updated>
+    <updated>2016-07-13T12:21:20.254Z</updated>
     
     <content type="html">&lt;p&gt; Recently, I am programming an app on GitHub (Yes, it is WeCode as you have guessed), but I suddenly realized the commits are not properly shown in my dashboard:&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/github-bug.PNG&quot; alt=&quot;GitHub Dashboard&quot;&gt;&lt;/p&gt;
@@ -28,43 +118,46 @@
 &lt;p&gt;&lt;img src=&quot;http://www.westudio.ml/assets/images/well-done-microsoft.png&quot; alt=&quot;Well Done, Microsoft&quot;&gt;&lt;/p&gt;
 &lt;p&gt; Well done, Microsoft.&lt;/p&gt;
 &lt;p&gt; GitHub actually provides you with a feature to &lt;a href=&quot;https://help.github.com/articles/changing-author-info/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;change author info &lt;/a&gt;. However, I found it misleading and confusing to the newbies, while only support only one email address. So I decided to write a new instruction for newbies for better understanding.&lt;/p&gt;
-&lt;blockquote&gt;
 &lt;p&gt;##Changing author info&lt;/p&gt;
 &lt;p&gt;To change the name and/or email address recorded in existing commits, you must rewrite the entire history of your Git repository.&lt;/p&gt;
-&lt;div class=&quot;alert warning&quot;&gt;&lt;blockquote&gt;
-&lt;p&gt;This action is destructive to your repository’s history. If you’re collaborating on a repository with others, it’s considered bad practice to rewrite published history. You should only do this in an emergency.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;div class=&quot;alert warning&quot;&gt;&lt;p&gt;This action is destructive to your repository’s history. If you’re collaborating on a repository with others, it’s considered bad practice to rewrite published history. You should only do this in an emergency.&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;###Changing the Git history of your repository using a script&lt;br&gt;We’ve created a script that will change any commits that previously had the old email address in its author or committer fields to use the correct name and email address.&lt;/p&gt;
-&lt;div class=&quot;alert info&quot;&gt;&lt;blockquote&gt;
-&lt;p&gt;Running this script rewrites history for all repository collaborators. After completing these steps, any person with forks or clones must fetch the rewritten history and rebase any local changes into the rewritten history.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;div class=&quot;alert info&quot;&gt;&lt;p&gt;Running this script rewrites history for all repository collaborators. After completing these steps, any person with forks or clones must fetch the rewritten history and rebase any local changes into the rewritten history.&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Before running this script, you’ll need:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The old email address that appears in the author/committer fields that you want to change&lt;/li&gt;
 &lt;li&gt;The correct name and email address that you would like such commits to be attributed to&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;###Instruction:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Open Git Bash.&lt;/li&gt;
-&lt;li&gt;Create a fresh, bare clone of your repository:&lt;br&gt;&lt;code&gt;git clone --bare https://github.com/*user*/*repo*.git&lt;/code&gt;&lt;br&gt;&lt;code&gt;cd *repo*.git&lt;/code&gt;&lt;/li&gt;
+&lt;h3 id=&quot;Instruction&quot;&gt;&lt;a href=&quot;#Instruction&quot; class=&quot;headerlink&quot; title=&quot;Instruction:&quot;&gt;&lt;/a&gt;Instruction:&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Open Git Bash.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Create a fresh, bare clone of your repository:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git clone --bare https://github.com/*user*/*repo*.git&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;cd *repo*.git&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Copy and paste the script in a text editor, replacing the following variables based on the information you gathered:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;OLD_EMAIL&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;CORRECT_NAME&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;CORRECT_EMAIL&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;    #!/bin/sh&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;    # see https://help.github.com/articles/changing-author-info/&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;    git filter-branch --env-filter &amp;apos;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;    OLD_EMAIL=(&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;        &amp;quot;your-old-email@example.com&amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;        &amp;quot;another-old-email@example.com&amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;        &amp;quot;your-git-email@users.noreply.github.com&amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;    )&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;    CORRECT_NAME=&amp;quot;Your Correct Name&amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;    CORRECT_EMAIL=&amp;quot;your-correct-email@example.com&amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;    for NEW_EMAIL in $&amp;#123;OLD_EMAIL[@]&amp;#125;; do&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;        if [ &amp;quot;$GIT_COMMITTER_EMAIL&amp;quot; == &amp;quot;$NEW_EMAIL&amp;quot; ]; then&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;            export GIT_COMMITTER_NAME=&amp;quot;$CORRECT_NAME&amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;            export GIT_COMMITTER_EMAIL=&amp;quot;$CORRECT_EMAIL&amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;        fi&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;        if [ &amp;quot;$GIT_AUTHOR_EMAIL&amp;quot; == &amp;quot;$NEW_EMAIL&amp;quot; ]; then&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;            export GIT_AUTHOR_NAME=&amp;quot;$CORRECT_NAME&amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;            export GIT_AUTHOR_EMAIL=&amp;quot;$CORRECT_EMAIL&amp;quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;        fi&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;    done&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;    &amp;apos; --tag-name-filter cat -- --branches --tags&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#!/bin/sh&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# see https://help.github.com/articles/changing-author-info/&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;git filter-branch --env-filter &lt;span class=&quot;string&quot;&gt;&#39;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;OLD_EMAIL=(&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &quot;your-old-email@example.com&quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &quot;another-old-email@example.com&quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &quot;your-git-email@users.noreply.github.com&quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;CORRECT_NAME=&quot;Your Correct Name&quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;CORRECT_EMAIL=&quot;your-correct-email@example.com&quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;for NEW_EMAIL in $&amp;#123;OLD_EMAIL[@]&amp;#125;; do&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    if [ &quot;$GIT_COMMITTER_EMAIL&quot; == &quot;$NEW_EMAIL&quot; ]; then&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        export GIT_COMMITTER_NAME=&quot;$CORRECT_NAME&quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        export GIT_COMMITTER_EMAIL=&quot;$CORRECT_EMAIL&quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    fi&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    if [ &quot;$GIT_AUTHOR_EMAIL&quot; == &quot;$NEW_EMAIL&quot; ]; then&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        export GIT_AUTHOR_NAME=&quot;$CORRECT_NAME&quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        export GIT_AUTHOR_EMAIL=&quot;$CORRECT_EMAIL&quot;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    fi&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;done&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&#39; --tag-name-filter cat -- --branches --tags&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Save the script in the repository folder just created as &lt;strong&gt;git-author-rewrite.sh&lt;/strong&gt;.&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;In Git Bash, run &lt;code&gt;sh git-author-rewrite.sh&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Review the new Git history for errors.&lt;/li&gt;
-&lt;li&gt;Push the corrected history to GitHub:&lt;br&gt;&lt;code&gt;git push --force --tags origin &amp;#39;refs/heads/*&amp;#39;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Clean up the temporary clone:&lt;br&gt;&lt;code&gt;cd ..&lt;/code&gt;&lt;br&gt;&lt;code&gt;rm -rf *repo*.git&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;In Git Bash, run following code:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sh git-author-rewrite.sh&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Review the new Git history for errors.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Push the corrected history to GitHub:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git push --force --tags origin &amp;apos;refs/heads/*&amp;apos;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Clean up the temporary clone:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;cd ..&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;rm -rf *repo*.git&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-&lt;/blockquote&gt;
 </content>
     
     <summary type="html">

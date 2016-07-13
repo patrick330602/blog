@@ -1,0 +1,596 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="WE. Studio">
+    <title>Enable Linux Desktop Environment On Windows 10(with Chinese) - WE. Studio</title>
+    <meta name="author" content="Patrick J. Wu">
+    
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="Right now, using X server, CCSM, Compiz and other components with Bash On Ubuntu On Windows, You can now run Linux desktop environment from Windows desktop.">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Enable Linux Desktop Environment On Windows 10(with Chinese)">
+<meta property="og:url" content="http://www.westudio.ml/2016/07/ubuntu-desktop-on-windows-with-ch-translation/index.html">
+<meta property="og:site_name" content="WE. Studio">
+<meta property="og:description" content="Right now, using X server, CCSM, Compiz and other components with Bash On Ubuntu On Windows, You can now run Linux desktop environment from Windows desktop.">
+<meta property="og:image" content="http://www.westudio.ml/assets/images/lde-on-win10/main.png">
+<meta property="og:image" content="http://www.westudio.ml/assets/images/lde-on-win10/1.png">
+<meta property="og:image" content="http://www.westudio.ml/assets/images/lde-on-win10/2.png">
+<meta property="og:image" content="http://www.westudio.ml/assets/images/lde-on-win10/2.png">
+<meta property="og:image" content="http://www.westudio.ml/assets/images/lde-on-win10/2.png">
+<meta property="og:image" content="http://www.westudio.ml/assets/images/lde-on-win10/2.png">
+<meta property="og:image" content="http://www.westudio.ml/assets/images/lde-on-win10/2.png">
+<meta property="og:image" content="http://www.westudio.ml/assets/images/lde-on-win10/1.png">
+<meta property="og:image" content="http://www.westudio.ml/assets/images/lde-on-win10/2.png">
+<meta property="og:image" content="http://www.westudio.ml/assets/images/lde-on-win10/2.png">
+<meta property="og:image" content="http://www.westudio.ml/assets/images/lde-on-win10/2.png">
+<meta property="og:image" content="http://www.westudio.ml/assets/images/lde-on-win10/2.png">
+<meta property="og:image" content="http://www.westudio.ml/assets/images/lde-on-win10/2.png">
+<meta property="og:updated_time" content="2016-07-13T15:59:34.948Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Enable Linux Desktop Environment On Windows 10(with Chinese)">
+<meta name="twitter:description" content="Right now, using X server, CCSM, Compiz and other components with Bash On Ubuntu On Windows, You can now run Linux desktop environment from Windows desktop.">
+<meta name="twitter:image" content="http://www.westudio.ml/assets/images/lde-on-win10/main.png">
+<meta name="twitter:creator" content="@patrick330602">
+    
+    
+        
+    
+    
+        <meta property="og:image" content="http://ap.westudio.ml/sources/images/we-studio-icon.png"/>
+    
+    
+        <meta property="og:image" content="http://www.westudio.ml/assets/images/lde-on-win10/main.png"/>
+        <meta class="swiftype" name="image" data-type="enum" content="http://www.westudio.ml/assets/images/lde-on-win10/main.png" />
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-nuvue6sithwirecbhvw3dkaobiojqvtadsnhguwi7k04xklybw5djl1smadp.min.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-44416732-4']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+<header id="header" data-behavior="3">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">WE. Studio</a>
+    </h1>
+    
+        
+            <a  class="header-right-icon "
+                href="/atom.xml">
+        
+        
+            <i class="fa fa-lg fa-rss"></i>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+
+        
+    
+
+<nav id="sidebar" data-behavior="3">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="http://ap.westudio.ml/sources/images/we-studio-icon.png"/>
+            </a>
+            <span class="sidebar-profile-name">Patrick J. Wu</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Home</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categories</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Archives</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://facebook.com/" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-facebook"></i>
+                    <span class="sidebar-button-desc">Facebook</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://twitter.com/patrick330602" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                    <span class="sidebar-button-desc">Twitter</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://www.weibo.com/patrick330602" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-weibo"></i>
+                    <span class="sidebar-button-desc">weibo</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/patrick330602" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="mailto:pk.we.studio.com" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Mail</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="http://patrickwu.cf/" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-cube"></i>
+                    <span class="sidebar-button-desc">ME.</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="http://blog.patrickwu.cf/" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-book"></i>
+                    <span class="sidebar-button-desc">The Road I Choose</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="http://ap.westudio.ml/" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+                    <span class="sidebar-button-desc">About</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="3"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Enable Linux Desktop Environment On Windows 10(with Chinese)
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" datetime="2016-07-13T21:19:02+08:00">
+	
+		    Jul 13, 2016
+    	
+    </time>
+    
+        <span>in </span>
+        
+    <a class="category-link" href="/categories/Open-Source-Life/">Open Source Life</a>
+
+
+    
+</div>
+
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>Right now, using X server, CCSM, Compiz and other components with Bash On Ubuntu On Windows, You can now run Linux desktop environment from Windows desktop.<br><a id="more"></a><br></div><div class="figure figure--fullWidth"><img class="figure-img" src="http://www.westudio.ml/assets/images/lde-on-win10/main.png" alt="Coding In xface4"><span class="caption">Coding In xface4</span></div><div class="main-content-wrap"></p>
+<div class="alert info"><p>Retrieved from <a href="https://github.com/Microsoft/BashOnWindows/issues/637" target="_blank" rel="external">this post</a> in BashOnWindows GitHub site. </p>
+</div>
+<div class="alert info"><p>Chinese Translation is after English.<br>下方有中文翻译。</p>
+</div>
+<h2 id="For-Unity"><a href="#For-Unity" class="headerlink" title="For Unity:"></a>For Unity:</h2><ol>
+<li><p>Run following code on Bash On Windows:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"export DISPLAY=:0.0"</span> &gt;&gt; ~/.bashrc</div><div class="line">sudo sed -i <span class="string">'s$&lt;listen&gt;.*&lt;/listen&gt;$&lt;listen&gt;tcp:host=localhost,port=0&lt;/listen&gt;$'</span> /etc/dbus-1/session.conf</div></pre></td></tr></table></figure>
+</li>
+<li><p>Install VcXsrv and open <strong>XLaunch</strong>. Choose “One large window” with display number as 0  like this:</p>
+<p><a href="http://www.westudio.ml/assets/images/lde-on-win10/1.png"><img src="http://www.westudio.ml/assets/images/lde-on-win10/1.png" alt=""></a><br>Other settings leave as default and finish the configuration.</p>
+</li>
+<li><p>Now open bash, install <strong>ubuntu-desktop</strong>, <strong>unity</strong> and <strong>ccsm</strong>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install ubuntu-desktop unity compizconfig-settings-manager</div></pre></td></tr></table></figure>
+<p>Export the display:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export DISPLAY=localhost:0</div></pre></td></tr></table></figure>
+<p>and open <strong>ccsm</strong>.<br><a href="http://www.westudio.ml/assets/images/lde-on-win10/2.png"><img src="http://www.westudio.ml/assets/images/lde-on-win10/2.png" alt=""></a></p>
+</li>
+<li><p>Inside ccsm mouse pointer may be not visible due to icon not loaded. Enable the following plugins.<br><a href="http://www.westudio.ml/assets/images/lde-on-win10/3.png"><img src="http://www.westudio.ml/assets/images/lde-on-win10/2.png" alt=""></a><br><a href="http://www.westudio.ml/assets/images/lde-on-win10/4.png"><img src="http://www.westudio.ml/assets/images/lde-on-win10/2.png" alt=""></a></p>
+</li>
+<li><p>Now close ccsm and open <strong>compiz</strong>.<br><a href="http://www.westudio.ml/assets/images/lde-on-win10/5.png"><img src="http://www.westudio.ml/assets/images/lde-on-win10/2.png" alt=""></a><br> Compiz will load and seconds later unity will show up.<br><a href="http://www.westudio.ml/assets/images/lde-on-win10/6.png"><img src="http://www.westudio.ml/assets/images/lde-on-win10/2.png" alt=""></a></p>
+</li>
+<li><p>To exit from unity close bash or kill compiz, the only way of closing unity.</p>
+<h3 id="For-XFCE"><a href="#For-XFCE" class="headerlink" title="For XFCE:"></a>For XFCE:</h3></li>
+<li><p>The same configuration for VcXsrv applies here.</p>
+</li>
+<li><p>Install <strong>xfce4-session</strong>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install xfce4-session</div></pre></td></tr></table></figure>
+<p>and run <strong>xfce4-session</strong>.</p>
+</li>
+</ol>
+<h2 id="在Windows10上启用Linux桌面环境"><a href="#在Windows10上启用Linux桌面环境" class="headerlink" title="在Windows10上启用Linux桌面环境"></a>在Windows10上启用Linux桌面环境</h2><div class="alert info"><p>从BashOnWindows GitHub网站上的<a href="https://github.com/Microsoft/BashOnWindows/issues/637" target="_blank" rel="external">文章</a> 进行整理和翻译。</p>
+</div>
+<p>现在，只要你利用X server, CCSM, Compiz和其他组件，与Bash On Ubuntu On Windows相互配合，你现在可以在Windows 10上直接运行Linux桌面环境.</p>
+<div class="alert warning"><p>除非你是Linux发烧友，不建议使用此Linux桌面环境。</p>
+</div>
+<h3 id="Unity桌面环境："><a href="#Unity桌面环境：" class="headerlink" title="Unity桌面环境："></a>Unity桌面环境：</h3><ol>
+<li><p>在 Bash On Windows运行以下代码:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"export DISPLAY=:0.0"</span> &gt;&gt; ~/.bashrc</div><div class="line">sudo sed -i <span class="string">'s$&lt;listen&gt;.*&lt;/listen&gt;$&lt;listen&gt;tcp:host=localhost,port=0&lt;/listen&gt;$'</span> /etc/dbus-1/session.conf</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装VcXsrv并打开<strong>XLaunch</strong>。 选择 “One large window” 并在<strong>display number</strong> 输入0，如图：</p>
+<p><a href="http://www.westudio.ml/assets/images/lde-on-win10/1.png"><img src="http://www.westudio.ml/assets/images/lde-on-win10/1.png" alt=""></a><br>一路next下去就行，直到他完成配置</p>
+</li>
+<li><p>打开Bash On Windows并安装 <strong>ubuntu-desktop</strong>，<strong>unity</strong> 和 <strong>ccsm</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install ubuntu-desktop unity compizconfig-settings-manager</div></pre></td></tr></table></figure>
+<p>输出显示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export DISPLAY=localhost:0</div></pre></td></tr></table></figure>
+<p>并打开<strong>ccsm</strong>。<br><a href="http://www.westudio.ml/assets/images/lde-on-win10/2.png"><img src="http://www.westudio.ml/assets/images/lde-on-win10/2.png" alt=""></a></p>
+</li>
+<li><p><strong>ccsm</strong>中可能显示不出鼠标指针，因为没有加载玩所有内容。如图选择插件。</p>
+<p><a href="http://www.westudio.ml/assets/images/lde-on-win10/3.png"><img src="http://www.westudio.ml/assets/images/lde-on-win10/2.png" alt=""></a><br><a href="http://www.westudio.ml/assets/images/lde-on-win10/4.png"><img src="http://www.westudio.ml/assets/images/lde-on-win10/2.png" alt=""></a></p>
+</li>
+<li><p>现在关闭ccsm并打开 <strong>compiz</strong>.<br><a href="http://www.westudio.ml/assets/images/lde-on-win10/5.png"><img src="http://www.westudio.ml/assets/images/lde-on-win10/2.png" alt=""></a><br> Compiz会花些时间载入，稍稍等待下桌面环境就会出现<br><a href="http://www.westudio.ml/assets/images/lde-on-win10/6.png"><img src="http://www.westudio.ml/assets/images/lde-on-win10/2.png" alt=""></a></p>
+</li>
+<li><p>关闭桌面环境的方法只能是关闭bash窗口，或者杀Compiz进程。</p>
+<h3 id="XFCE桌面环境："><a href="#XFCE桌面环境：" class="headerlink" title="XFCE桌面环境："></a>XFCE桌面环境：</h3></li>
+<li>使用与Unity同样的方法配置VcXsrv。（1-4步）</li>
+<li><p>安装<strong>xfce4-session</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install xfce4-session</div></pre></td></tr></table></figure>
+<p>并运行<strong>xfce4-session</strong>.</p>
+</li>
+</ol>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">TAGGED IN</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/Bash/">Bash</a> <a class="tag tag--primary tag--small t-link" href="/tags/GitHub/">GitHub</a> <a class="tag tag--primary tag--small t-link" href="/tags/Linux/">Linux</a> <a class="tag tag--primary tag--small t-link" href="/tags/中文/">中文</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/07/github-multiple-email-change/" data-tooltip="How to change multiple Mails in Your Repos">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.westudio.ml/2016/07/ubuntu-desktop-on-windows-with-ch-translation/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.westudio.ml/2016/07/ubuntu-desktop-on-windows-with-ch-translation/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.westudio.ml/2016/07/ubuntu-desktop-on-windows-with-ch-translation/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2016 Patrick J. Wu. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="3">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/07/github-multiple-email-change/" data-tooltip="How to change multiple Mails in Your Repos">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.westudio.ml/2016/07/ubuntu-desktop-on-windows-with-ch-translation/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.westudio.ml/2016/07/ubuntu-desktop-on-windows-with-ch-translation/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.westudio.ml/2016/07/ubuntu-desktop-on-windows-with-ch-translation/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="3">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.westudio.ml/2016/07/ubuntu-desktop-on-windows-with-ch-translation/">
+                <i class="fa fa-google-plus"></i><span class="">Share on Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.westudio.ml/2016/07/ubuntu-desktop-on-windows-with-ch-translation/">
+                <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.westudio.ml/2016/07/ubuntu-desktop-on-windows-with-ch-translation/">
+                <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        
+
+
+    
+        
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="http://ap.westudio.ml/sources/images/we-studio-icon.png"/>
+        
+            <h4 id="about-card-name">Patrick J. Wu</h4>
+        
+            <h5 id="about-card-bio"><p>We need apps. That’s why I build them. This is the studio of all my work.</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Developer/Desinger/Student</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Hong Kong
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS--> 
+<script src="/assets/js/script-i4qo6jx6jji9fg0dftpya6ivemizsbow4fhow76d8dwpm7m1wbvi378ssumx.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://www.westudio.ml/2016/07/ubuntu-desktop-on-windows-with-ch-translation/';
+                 
+                    this.page.identifier = '2016/07/ubuntu-desktop-on-windows-with-ch-translation/';
+                                  
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'westudio';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+
+</html>
