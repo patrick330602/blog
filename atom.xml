@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.westudio.ml/"/>
-  <updated>2016-07-13T16:14:05.227Z</updated>
+  <updated>2016-07-16T07:40:08.157Z</updated>
   <id>http://www.westudio.ml/</id>
   
   <author>
@@ -14,6 +14,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WeCode 2.2 is about to live!</title>
+    <link href="http://www.westudio.ml/2016/07/wecode-2-2/"/>
+    <id>http://www.westudio.ml/2016/07/wecode-2-2/</id>
+    <published>2016-07-16T07:25:55.000Z</published>
+    <updated>2016-07-16T07:40:08.157Z</updated>
+    
+    <content type="html">&lt;p&gt;WeCode with 2.2 update is about to alive!&lt;/p&gt;
+ &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;div class=&quot;alert info&quot;&gt;&lt;p&gt;This version will delete your fonticon history.&lt;/p&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;Improvements&quot;&gt;&lt;a href=&quot;#Improvements&quot; class=&quot;headerlink&quot; title=&quot;Improvements:&quot;&gt;&lt;/a&gt;Improvements:&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Migrate code to new core;&lt;/li&gt;
+&lt;li&gt;Segoe MDL2 Assets Browser is updated to Fonticon Browser now;&lt;/li&gt;
+&lt;li&gt;New update notification;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;Bug-Fixes&quot;&gt;&lt;a href=&quot;#Bug-Fixes&quot; class=&quot;headerlink&quot; title=&quot;Bug Fixes:&quot;&gt;&lt;/a&gt;Bug Fixes:&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Internet is no longer a requirement to open the app;&lt;/li&gt;
+&lt;li&gt;You can now view Build Information even you are offine;&lt;/li&gt;
+&lt;li&gt;Fixed the crash that might happen after update.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Get it now!&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.microsoft.com/store/apps/9nblggh5p90f&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;img src=&quot;http://ap.westudio.ml/sources/images/get-app-win10.png&quot; height=&quot;80px&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;WeCode with 2.2 update is about to alive!&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="App Release" scheme="http://www.westudio.ml/categories/App-Release/"/>
+    
+    
+      <category term="UWP" scheme="http://www.westudio.ml/tags/UWP/"/>
+    
+      <category term="Developer Tools For UWP" scheme="http://www.westudio.ml/tags/Developer-Tools-For-UWP/"/>
+    
+      <category term="WeCode" scheme="http://www.westudio.ml/tags/WeCode/"/>
+    
+  </entry>
   
   <entry>
     <title>Enable Linux Desktop Environment On Windows 10(with Chinese)</title>
@@ -198,13 +240,13 @@
     
       <category term="C#" scheme="http://www.westudio.ml/tags/C/"/>
     
-      <category term="WP8.1" scheme="http://www.westudio.ml/tags/WP8-1/"/>
-    
       <category term="UWP" scheme="http://www.westudio.ml/tags/UWP/"/>
     
-      <category term="GitHub" scheme="http://www.westudio.ml/tags/GitHub/"/>
+      <category term="WP8.1" scheme="http://www.westudio.ml/tags/WP8-1/"/>
     
       <category term="Math" scheme="http://www.westudio.ml/tags/Math/"/>
+    
+      <category term="GitHub" scheme="http://www.westudio.ml/tags/GitHub/"/>
     
   </entry>
   
@@ -285,9 +327,9 @@
     <link href="http://www.westudio.ml/2016/06/wecode-big-update-coming/"/>
     <id>http://www.westudio.ml/2016/06/wecode-big-update-coming/</id>
     <published>2016-06-16T00:00:00.000Z</published>
-    <updated>2016-06-17T07:22:28.327Z</updated>
+    <updated>2016-07-16T07:36:06.715Z</updated>
     
-    <content type="html">&lt;p&gt;Developer tools For UWP is now WECode with 2.0 update!&lt;/p&gt;
+    <content type="html">&lt;p&gt;Developer tools For UWP is now WeCode with 2.0 update!&lt;/p&gt;
  &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;Improvements&quot;&gt;&lt;a href=&quot;#Improvements&quot; class=&quot;headerlink&quot; title=&quot;Improvements:&quot;&gt;&lt;/a&gt;Improvements:&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;new UI, logo and name; &lt;/li&gt;
@@ -308,7 +350,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;Developer tools For UWP is now WECode with 2.0 update!&lt;/p&gt;
+      &lt;p&gt;Developer tools For UWP is now WeCode with 2.0 update!&lt;/p&gt;
     
     </summary>
     
