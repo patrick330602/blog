@@ -4740,44 +4740,94 @@ figure.highlight,
   .codeblock.yml .number {
     color: #0086b3; }
 
-/*
-// Default code block
 pre > code {
-    background: ;
-    color: ;
-}
+  background: #f7f8f8;
+  color: #333; }
 
-// Default inline code
 code {
-    background-color: ;
-}
+  background-color: #f7f8f8; }
 
-// Tabbed code block tab
-// If your theme is dark then use a lighter background
-// to see clearly which tab is active
 .codeblock--tabbed figcaption .tab.active {
-    background: ;
-    color: ;
-}
+  background: #349ef3;
+  color: white; }
 
-// highlight code block
 figure.highlight,
 .codeblock {
-    background: ;
-    color: ;
-
-    figcaption {
-        background: ;
-        color: ;
-    }
-    .gutter {
-        background: ;
-        border-right-color: ;
-        .line {
-            color: ;
-        }
-    }
-    // PUT YOUR THEME HERE
-
-}
-*/
+  background: #f7f8f8;
+  color: #333; }
+  figure.highlight figcaption,
+  .codeblock figcaption {
+    background: #f7f8f8;
+    color: #999999; }
+  figure.highlight .gutter,
+  .codeblock .gutter {
+    background: #f7f8f8;
+    border-right-color: #e6e6e6; }
+    figure.highlight .gutter .line,
+    .codeblock .gutter .line {
+      color: #aaaaaa; }
+  figure.highlight.cs .code .comment,
+  figure.highlight.cs .code .quote,
+  figure.highlight.cs .code .variable,
+  .codeblock.cs .code .comment,
+  .codeblock.cs .code .quote,
+  .codeblock.cs .code .variable {
+    color: #008000; }
+  figure.highlight.cs .code .keyword,
+  figure.highlight.cs .code .selector-tag,
+  figure.highlight.cs .code .built_in,
+  figure.highlight.cs .code .name,
+  figure.highlight.cs .code .tag,
+  .codeblock.cs .code .keyword,
+  .codeblock.cs .code .selector-tag,
+  .codeblock.cs .code .built_in,
+  .codeblock.cs .code .name,
+  .codeblock.cs .code .tag {
+    color: #00f; }
+  figure.highlight.cs .code .string,
+  figure.highlight.cs .code .title,
+  figure.highlight.cs .code .section,
+  figure.highlight.cs .code .attribute,
+  figure.highlight.cs .code .literal,
+  figure.highlight.cs .code .template-tag,
+  figure.highlight.cs .code .template-variable,
+  figure.highlight.cs .code .type,
+  figure.highlight.cs .code .addition,
+  .codeblock.cs .code .string,
+  .codeblock.cs .code .title,
+  .codeblock.cs .code .section,
+  .codeblock.cs .code .attribute,
+  .codeblock.cs .code .literal,
+  .codeblock.cs .code .template-tag,
+  .codeblock.cs .code .template-variable,
+  .codeblock.cs .code .type,
+  .codeblock.cs .code .addition {
+    color: #a31515; }
+  figure.highlight.cs .code .deletion,
+  figure.highlight.cs .code .selector-attr,
+  figure.highlight.cs .code .selector-pseudo,
+  figure.highlight.cs .code .meta,
+  .codeblock.cs .code .deletion,
+  .codeblock.cs .code .selector-attr,
+  .codeblock.cs .code .selector-pseudo,
+  .codeblock.cs .code .meta {
+    color: #2b91af; }
+  figure.highlight.cs .code .doctag,
+  .codeblock.cs .code .doctag {
+    color: #808080; }
+  figure.highlight.cs .code .attr,
+  .codeblock.cs .code .attr {
+    color: #f00; }
+  figure.highlight.cs .code .symbol,
+  figure.highlight.cs .code .bullet,
+  figure.highlight.cs .code .link,
+  .codeblock.cs .code .symbol,
+  .codeblock.cs .code .bullet,
+  .codeblock.cs .code .link {
+    color: #00b0e8; }
+  figure.highlight.cs .code .emphasis,
+  .codeblock.cs .code .emphasis {
+    font-style: italic; }
+  figure.highlight.cs .code .strong,
+  .codeblock.cs .code .strong {
+    font-weight: bold; }

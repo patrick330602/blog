@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.westudio.ml/"/>
-  <updated>2016-07-16T07:40:08.157Z</updated>
+  <updated>2016-07-20T10:18:40.271Z</updated>
   <id>http://www.westudio.ml/</id>
   
   <author>
@@ -20,18 +20,16 @@
     <link href="http://www.westudio.ml/2016/07/wecode-2-2/"/>
     <id>http://www.westudio.ml/2016/07/wecode-2-2/</id>
     <published>2016-07-16T07:25:55.000Z</published>
-    <updated>2016-07-16T07:40:08.157Z</updated>
+    <updated>2016-07-20T10:18:40.271Z</updated>
     
-    <content type="html">&lt;p&gt;WeCode with 2.2 update is about to alive!&lt;/p&gt;
+    <content type="html">&lt;p&gt;WeCode with 2.2 update is about to alive! This update contains some fixes and improvements for WeCode 2.&lt;/p&gt;
  &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;div class=&quot;alert info&quot;&gt;&lt;p&gt;This version will delete your fonticon history.&lt;/p&gt;
 &lt;/div&gt;
-&lt;h3 id=&quot;Improvements&quot;&gt;&lt;a href=&quot;#Improvements&quot; class=&quot;headerlink&quot; title=&quot;Improvements:&quot;&gt;&lt;/a&gt;Improvements:&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id=&quot;What’s-New&quot;&gt;&lt;a href=&quot;#What’s-New&quot; class=&quot;headerlink&quot; title=&quot;What’s New&quot;&gt;&lt;/a&gt;What’s New&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;Migrate code to new core;&lt;/li&gt;
 &lt;li&gt;Segoe MDL2 Assets Browser is updated to Fonticon Browser now;&lt;/li&gt;
 &lt;li&gt;New update notification;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;Bug-Fixes&quot;&gt;&lt;a href=&quot;#Bug-Fixes&quot; class=&quot;headerlink&quot; title=&quot;Bug Fixes:&quot;&gt;&lt;/a&gt;Bug Fixes:&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;Internet is no longer a requirement to open the app;&lt;/li&gt;
 &lt;li&gt;You can now view Build Information even you are offine;&lt;/li&gt;
 &lt;li&gt;Fixed the crash that might happen after update.&lt;/li&gt;
@@ -42,7 +40,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;WeCode with 2.2 update is about to alive!&lt;/p&gt;
+      &lt;p&gt;WeCode with 2.2 update is about to alive! This update contains some fixes and improvements for WeCode 2.&lt;/p&gt;
     
     </summary>
     
@@ -986,11 +984,11 @@
     
       <category term="WP8" scheme="http://www.westudio.ml/tags/WP8/"/>
     
-      <category term="WP8.1" scheme="http://www.westudio.ml/tags/WP8-1/"/>
-    
       <category term="WP" scheme="http://www.westudio.ml/tags/WP/"/>
     
       <category term="Sliverlight" scheme="http://www.westudio.ml/tags/Sliverlight/"/>
+    
+      <category term="WP8.1" scheme="http://www.westudio.ml/tags/WP8-1/"/>
     
   </entry>
   
@@ -1226,11 +1224,11 @@
     
       <category term="WP8" scheme="http://www.westudio.ml/tags/WP8/"/>
     
-      <category term="WP8.1" scheme="http://www.westudio.ml/tags/WP8-1/"/>
-    
       <category term="WP" scheme="http://www.westudio.ml/tags/WP/"/>
     
       <category term="Sliverlight" scheme="http://www.westudio.ml/tags/Sliverlight/"/>
+    
+      <category term="WP8.1" scheme="http://www.westudio.ml/tags/WP8-1/"/>
     
       <category term="Live Tiles" scheme="http://www.westudio.ml/tags/Live-Tiles/"/>
     
