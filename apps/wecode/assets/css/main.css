@@ -1313,7 +1313,7 @@
 		background-color: #EFD6AE;
 		background-image: url("images/overlay.png"), url("../../images/bg.jpg");
 		background-repeat: repeat, no-repeat;
-		background-size: auto, auto;
+		background-size: auto, cover;
 		background-position: top left, center 0;
 		background-attachment: fixed, fixed;
 		font-family: 'Source Sans Pro', sans-serif;
@@ -2239,7 +2239,7 @@
 
 			#banner {
 				padding: 4em 0 4em 0;
-				background-size: auto, 175% auto;
+				background-size: auto,cover;
 			}
 
 	}
@@ -2254,7 +2254,7 @@
 				background-color: #203936;
 				background-image: url("images/overlay.png"), url("../../images/bg-alt.jpg");
 				background-repeat: repeat, no-repeat;
-				background-size: auto, 100% auto;
+				background-size: auto, cover;
 				background-position: top left, top center;
 				background-attachment: scroll, scroll;
 				font-size: 14pt;
