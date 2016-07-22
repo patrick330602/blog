@@ -1310,10 +1310,10 @@
 /* Basic */
 
 	body {
-		background-color: #183026;
+		background-color: #EFD6AE;
 		background-image: url("images/overlay.png"), url("../../images/bg.jpg");
 		background-repeat: repeat, no-repeat;
-		background-size: auto, cover;
+		background-size: auto, auto;
 		background-position: top left, center 0;
 		background-attachment: fixed, fixed;
 		font-family: 'Source Sans Pro', sans-serif;
