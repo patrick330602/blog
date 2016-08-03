@@ -13,17 +13,17 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="Recently, I try to migrate my Hexo and Jekyll system to Bash On Windows, and find it harder to be done as I have expected. But luckily, I soled these problems.">
+    <meta name="description" content="Recently, I try to migrate my Hexo and Jekyll system to Bash On Windows, and find it hard to be done as I have expected.">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Install Hexo and Jekyll on Bash On Windows 10">
 <meta property="og:url" content="http://www.westudio.ml/2016/08/install-hexo-or-jekyll-on-bash-on-windows/index.html">
 <meta property="og:site_name" content="WE. Studio">
-<meta property="og:description" content="Recently, I try to migrate my Hexo and Jekyll system to Bash On Windows, and find it harder to be done as I have expected. But luckily, I soled these problems.">
+<meta property="og:description" content="Recently, I try to migrate my Hexo and Jekyll system to Bash On Windows, and find it hard to be done as I have expected.">
 <meta property="og:image" content="http://www.westudio.ml/assets/images/haj.png">
-<meta property="og:updated_time" content="2016-08-03T06:24:14.835Z">
+<meta property="og:updated_time" content="2016-08-03T07:08:55.803Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Install Hexo and Jekyll on Bash On Windows 10">
-<meta name="twitter:description" content="Recently, I try to migrate my Hexo and Jekyll system to Bash On Windows, and find it harder to be done as I have expected. But luckily, I soled these problems.">
+<meta name="twitter:description" content="Recently, I try to migrate my Hexo and Jekyll system to Bash On Windows, and find it hard to be done as I have expected.">
 <meta name="twitter:image" content="http://www.westudio.ml/assets/images/haj.png">
 <meta name="twitter:creator" content="@patrick330602">
     
@@ -284,11 +284,16 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>Recently, I try to migrate my Hexo and Jekyll system to Bash On Windows, and find it harder to be done as I have expected. But luckily, I soled these problems.</p>
+            <p>Recently, I try to migrate my Hexo and Jekyll system to Bash On Windows, and find it hard to be done as I have expected. </p>
 <a id="more"></a>
 <p>I therefore made two SH script for Bash for easy Installation:</p>
 <p><a href="http://www.westudio.ml/assets/sh/jekyll.sh">jekyll.sh</a> <a href="http://www.westudio.ml/assets/sh/hexo.sh">hexo.sh</a></p>
+<p><strong>Update:</strong></p>
+<p>I made a even easier way to install:</p>
+<p>To Install Hexo, run:<br><code>bash &lt;(wget -qO- http://ap.westudio.ml/sources/sh/hexo.sh)</code></p>
+<p>To Install Jekyll, run:<br><code>bash &lt;(wget -qO- http://ap.westudio.ml/sources/sh/jekyll.sh)</code></p>
 <p><img src="http://www.westudio.ml/assets/images/haj.png" alt="Script Running"></p>
+<p>But if you want to install by yourself, you can try the following steps.</p>
 <h2 id="Steps-to-install-the-latest-version-of-the-Jekyll-static-site-blog-generator-on-Ubuntu-on-Windows"><a href="#Steps-to-install-the-latest-version-of-the-Jekyll-static-site-blog-generator-on-Ubuntu-on-Windows" class="headerlink" title="Steps to install the latest version of the Jekyll static site/blog generator on Ubuntu on Windows"></a>Steps to install the latest version of the Jekyll static site/blog generator on Ubuntu on Windows</h2><h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h3><p><strong>Step 0: Add the brightbox repository</strong><br><code>sudo apt-add-repository ppa:brightbox/ruby-ng</code><br><code>sudo apt-get update</code><br><strong>Step 1: Install ruby 2.3 and -dev package</strong><br><code>sudo apt-get install ruby2.3 ruby2.3-dev</code><br>Verify the install by running <code>ruby -v</code><br>You should get something similar to<br><em>ruby 2.3.1p112 (2016-04-26 revision 54768)</em><br><strong>Step 2: update ruby gems</strong><br><code>sudo gem update --system</code><br><strong>Step 3: install build-essential</strong><br><code>sudo apt-get install build-essential --no-install-recommends</code><br><strong>Step 4: install jekyll itself</strong><br><code>sudo gem install jekyll</code><br>Verify the install by running <code>jekyll -v</code><br>You should get something similar to<br><em>jekyll 3.1.6</em></p>
 <h3 id="Bonus-steps"><a href="#Bonus-steps" class="headerlink" title="Bonus steps"></a>Bonus steps</h3><ul>
 <li><p>If you’re using pagination:</p>
