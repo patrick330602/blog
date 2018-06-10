@@ -1,29 +1,31 @@
 ---
-title: "Dev Navigation 开发导航"
+title: "Projects 项目"
 comments: false
 shares: false
 ---
 
-## Cheatsheets
+| Name        |     Description                                 |             Action      |
+| :------------ | ---------------------------------------- | :--------------------------------------: |
+| UWP DevKit        | A simple but complete dev toolkit for UWP developers. | [GitHub](https://github.com/WEdotStudio/UWP-DevKit) |
+| Fcus          | Focus Writing; Mark Done.                | [GitHub](https://github.com/patrick330602/Fcus-UWP) |
+| arr-course-to-json       | A python script for conversion course info to json file               | [GitHub](https://github.com/patrick330602/spiders/tree/master/ust_course_to_json) |
+| wslu | a collection of tools for WSL          | [GitHub](https://github.com/patrick330602/wslu) |
+| Electron Microsoft Todo | Electron Version of Microsoft To-Do | [GitHub](https://github.com/patrick330602/electron-microsoft-todo) |
+| Linuxer       | A powerful Oh-My-Zsh Theme               | [GitHub](https://github.com/patrick330602/linuxer) |
+| Termuxer       | A powerful Oh-My-Zsh Theme for Termux   | [GitHub](https://github.com/patrick330602/termuxer) |
+| Jekyll-WSL    | Jekyll Installer For WSL                 | [GitHub](https://github.com/patrick330602/Jekyll-Installer-For-WSL) |
+| Hexo-WSL      | Hexo Installer For WSL                   | [GitHub](https://github.com/patrick330602/Hexo-Installer-For-WSL) |
+| Chains                | Chains ╾╼ A oh-my-zsh theme              | [GitHub](https://github.com/patrick330602/chains) |
+| edge-ext-installer    | An unofficial Edge extensions package Installer | [GitHub](https://github.com/patrick330602/Edge-Extensions-Pack) |
+| WeFile                | A WeChat File Sender For WP8.1           |                 [View*](https://www.microsoft.com/store/apps/9nblgggz56z4)                 |
+| Love Search           | A powerful search tool on Windows Phone  | [GitHub](https://github.com/patrick330602/Love_Search) |
+| One Night At Freddy's | My first ever C# game based on FNAF1     |                [GitHub](https://github.com/patrick330602/One-Night-At-Freddy-s)  |
+| MicroMsg Toolbox      | A toolbox For WeChat on Windows Phone    |                [GitHub](https://github.com/patrick330602/MicroMsg_ToolBox)   |
+| WPerfect              | WPerfect Offical Client                  |                [View*](https://www.microsoft.com/store/apps/9wzdncrdrbc7)                 |
+| HKEAA(Unoffical)      | An Unoffical HKEAA News Reader           |                [View*](https://www.microsoft.com/store/apps/9wzdncrdrbcc)                 |
+| Ningbo                | Introduction App For Ningbo              |                [View*](https://www.microsoft.com/store/apps/9NBLGGGZKTTB)                 |
+| News Smile 8          | A Simple WP News App For Windows Phone 8 |                [View*](https://www.microsoft.com/store/apps/9nblgggxx9q4)                 |
+| News Smile 7          | A Simple WP News App For Windows Phone 7 |                [View*](https://www.microsoft.com/store/apps/9nblggh0fx46)                 |
+| Fun Smile             | A Simple WP Multimedia App For Windows Phone 8 |                [View*](https://www.microsoft.com/store/apps/9nblggh0fx5n)                 |
 
-[KaTeX](https://khan.github.io/KaTeX/function-support.html) | [FontAwesome](https://fontawesome.com/icons) | [MathJax](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference)
-
-## Documentation
-
-[Docker(Chinese)](https://www.gitbook.com/book/yeasy/docker_practice/details) | [Esolang](https://esolangs.org/wiki/Main_Page) | [ArchWiki](https://wiki.archlinux.org/) | [LINEBot](https://developers.line.me/en/docs/messaging-api/reference/) | [NodeJS](https://www.w3schools.com/nodejs/nodejs_modules.asp)
-
-## Online Debugger & Tester
-
-[RegExr](http://regexr.com/) | [Brainfuck](https://copy.sh/brainfuck/) | [The Floyd-Warshall algorithm](https://www-m9.ma.tum.de/graph-algorithms/spp-floyd-warshall/index_en.html)
-
-## Web
-
-[HTML5 UP](https://html5up.net/) | [W3Schools](https://www.w3schools.com/)
-
-## Machine Learning
-
-[UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php) | [NIPS Proceedings β](https://papers.nips.cc/) | [Proceedings of Machine Learning Research](http://proceedings.mlr.press/index.html) | [Stanford CS224d](http://cs224d.stanford.edu/) | [MIT Deep Learning](http://www.deeplearningbook.org/) | [Metacademy](https://metacademy.org/)
-
-## Others
-
-[HackerRank](https://www.hackerrank.com/) | [Linux From Scratch](http://www.linuxfromscratch.org/lfs/) | [Linux Distro Timeline](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Linux_Distribution_Timeline.svg/2720px-Linux_Distribution_Timeline.svg.png) | [Computer Simulation and History Project](http://simh.trailing-edge.com/)
+*: the app is unpublished so that the link redirects to nowhere.
