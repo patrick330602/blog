@@ -6,19 +6,26 @@ install:
   - npm install
   - npm install nodejieba
 
+before_script:
+  - git config --global user.name "Patrick Wu J M"
+  - git config --global user.email "wotingwu@live.com"
+
 script:
   - hexo cl
   - hexo g
 
-after_script:
-  - cd ./public
-  - git init
-  - git config user.name "Patrick Wu J M"
-  - git config user.email "wotingwu@live.com"
+after_success:
+  - mkdir .deploy
+  - cd .deploy
+  - git clone --depth 1 --branch master --single-branch https://${GH_TOKEN}@${GH_REF} . || (git init && git remote add -t master origin https://${GH_TOKEN}@${GH_REF})
+  - rm -rf ./*
+  - cp -r ../public/* .
+  - git add -A .
   - tmp_time=`date +%D-%T`
-  - git add .
   - git commit -m "Updated at ${tmp_time}"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+  - git branch -m master
+  - git push -q -u origin master
+
 
 branches:
   only:
