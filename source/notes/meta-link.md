@@ -5,7 +5,7 @@ shares: false
 ---
 ## TL;DR
 
-Here is some good `<meta>` and `<link>` tag that can be used in `<header>` tag in HTML to enhance the websites.
+Here is some good `<meta>` and `<link>` tag that can be used in `<head>` tag in HTML to enhance the websites.
 
 ## Icons
 
