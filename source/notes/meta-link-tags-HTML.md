@@ -1,13 +1,12 @@
 ---
-title: Useful meta and link tags in HTML
-date: 2018-04-23 17:25:42
-tags:
-- HTML
+title: meta and link tags in HTML
+comments: false
+shares: false
 ---
 ## TL;DR
 
 Here is some good `<meta>` and `<link>` tag that can be used in `<header>` tag in HTML to enhance the websites.
-<!--more-->
+
 ## Icons
 
 ### Chrome & Opera

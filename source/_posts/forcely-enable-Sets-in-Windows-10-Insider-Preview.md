@@ -12,7 +12,7 @@ This article is a more detailed tutorial comparing to [this on reddit](https://w
 
 <!--more-->
 
-## Let's Start!
+## How-To
 
 Download `mach2` from its [release](https://github.com/riverar/mach2/releases). For 32 bit system, download x86, for 64 bit system, download x64. Extract the downloaded file, and open the folder where `mach2.exe` located. Open Powershell window using Administrator previliges under this folder.
 
@@ -49,5 +49,6 @@ Then, run the following code and restart, then you can see Sets now:
 .\mach2.exe enable 13849566 -v 1
 .\mach2.exe enable 10727725 -v 1
 ```
+## Fixing
 
 Actually, you might found Sets disppearing after some times, and this is because the variant value for `13849566` is changed. By running `.\mach2.exe display`, you might find `13849566  (variant: 63)` in **Enabled** section. If this happened, remove the entry `13849566` and readd it, then reboot. 
