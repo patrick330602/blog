@@ -1,8 +1,5 @@
 ---
 title: GoLang Notes
-date: 2018-04-25 14:11:55
-tags:
-- GoLang
 mathjax: true
 ---
 

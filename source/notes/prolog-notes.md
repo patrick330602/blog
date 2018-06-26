@@ -1,8 +1,5 @@
 ---
 title: Prolog Notes
-date: 2018-04-20 15:24:20
-tags:
-- Prolog
 mathjax: true
 ---
 

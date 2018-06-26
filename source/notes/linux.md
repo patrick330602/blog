@@ -93,3 +93,9 @@ To keep it safe, Here is a Ubuntu font config:
 | Monospace     |    Ubuntu Mono |
 
 ![Font Setting](/images/antergos-font-settings.png)
+
+## SSH folder permission
+
+ - `.ssh` folder: `700`
+ - `*.pub`: `644`
+ - pravate keys, config, known_hosts: `600`

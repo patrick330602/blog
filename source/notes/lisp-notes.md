@@ -1,8 +1,5 @@
 ---
 title: Lisp Notes
-date: 2018-04-20 13:30:57
-tags:
-- Lisp
 mathjax: true
 ---
 ## TL;DR
