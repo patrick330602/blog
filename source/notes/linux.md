@@ -1,5 +1,8 @@
-# Linux
-
+---
+title: "Linux"
+comments: false
+shares: false
+---
 ## Automatic Device Mount
 
 Make sure the drive/partition you would like to attach is attached to your system and is turned on.
