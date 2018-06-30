@@ -4,11 +4,11 @@ tags:
   - ssr
 date: 2018-06-30 15:44:24
 ---
-
-
 # TL;DR
 
 This article is about how to configure Shadowsocks R properly in Windows 10 Linux Subsystem, UWP and more, and some extra stuff I want to talk about.
+
+<!--more-->
 
 ## Some key notes first
 
@@ -62,11 +62,11 @@ chmod +x shadowsocksR.sh
 }
 ```
 
-### Client
+### Clients
 
-Install the right client for your device. I have already help you test it and they all works.
-
-[Windows(ShadowsocksR)](https://github.com/shadowsocksrr/shadowsocksr-csharp/releases/) | [Android(SSRR)](https://github.com/shadowsocksrr/shadowsocksr-android/releases/) | [iOS(Shadowrocket)](https://itunes.apple.com/us/app/shadowrocket/id932747118)
+- [Windows(ShadowsocksR)](https://github.com/shadowsocksrr/shadowsocksr-csharp/releases/) 
+- [Android(SSRR)](https://github.com/shadowsocksrr/shadowsocksr-android/releases/) 
+- [iOS(Shadowrocket)](https://itunes.apple.com/us/app/shadowrocket/id932747118)
 
 ## Some fixes
 
