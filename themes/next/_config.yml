@@ -554,14 +554,14 @@ gitment:
 needmoreshare2:
   enable: true
   postbottom:
-    enable: false
+    enable: true
     options:
-      iconStyle: default
+      iconStyle: box
       boxForm: horizontal
       position: bottomCenter
       networks: Weibo,Wechat,QQZone,Twitter,Facebook,Reddit
   float:
-    enable: true
+    enable: false
     options:
       iconStyle: box
       boxForm: horizontal
