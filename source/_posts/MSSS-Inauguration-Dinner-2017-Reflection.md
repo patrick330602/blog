@@ -5,9 +5,7 @@ tags:
   - MSSS
   - Reflection
   - Self-Directed Leadership Project
-categories:
-- Footsteps 足迹
-- REDBird
+  - REDBird
 ---
 
 Recently, I helped organize the event for the MSSS. it is a inauguration dinner event collaborating with FooPar, a startup food delivering service from HKUST.

@@ -1,7 +1,5 @@
 ---
 title: 請你永遠記住這裡是教室
-categories:
-  - Footsteps 足迹
 tags:
   - Random
 date: 2017-06-10 07:17:28

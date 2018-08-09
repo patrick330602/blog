@@ -1,7 +1,5 @@
 ---
 title: 幻想鄉今天沒什麼新聞
-categories:
-  - Footsteps 足迹
 tags:
   - Random
 date: 2017-06-24 16:29:40

@@ -4,8 +4,6 @@ date: 2017-04-06 21:36:14
 tags:
 - Self-Directed Leadership Project
 - Proposal
-categories:
-- Footsteps 足迹
 - REDBird
 ---
 This proposal(6th Edition) is about the photograph competition ***20 Anniversary of Reunification of Hong Kong: Find the Beauty of Hong Kong*** that will be held in early April from MSSS, HKUST. Edition is highlighted with bold text.
