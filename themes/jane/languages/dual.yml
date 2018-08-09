@@ -1,0 +1,34 @@
+Menu:
+  home: Home·家
+  categories: Categories·类
+  tags: Tags·签
+  archives: Archives·档
+  about: About·我
+  friends: Friends·友
+  search: Search·搜
+Page:
+  Archives: Archives·档
+  Categories: Categories·类
+  Tags: Tags·签
+  About: About·我
+  friends: Friends·友
+
+Post:
+  Donate: Donate·捐
+  Share: Share·享
+  Prev: Prev·前
+  Next: Next·后
+  
+  
+Paginator: 
+  Prev: Prev·前
+  Next: Next·后
+
+
+Contents: Contents·
+ReadMore: Continue·续
+Untitled: Untitled·空
+
+Search:
+  Sidebar_words: Search·搜
+  input_words: Search...搜……

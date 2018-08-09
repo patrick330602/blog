@@ -1,17 +1,12 @@
 ---
-title: ME.
-description: It's the road I choose. | 己择之路，终不愿改
+title: about
 layout: about
-comments: false
-sidebar: custom
 ---
-<center>{% youtube BUbbbKwD9QI %}</center>
-
 **Programmer, Photographer, HKUST Student**
 
 Love capturing the perfect moment; 
 and translate the apps to the world. 
-Love ACG, Just... Don't kill me :P
+Love ACG, but never trying to hide it ;)
 
 Love Computing, Learning Machine learning;
 Have been volunteering at CSSAHK and HKCIEA, Internship at IBM/AdavanPro, IT Director of HKUST MSSS right now;
@@ -35,6 +30,3 @@ C#/C++/Python/Shell Script为主，爱折腾Node和JS，PHP/ASP/Perl/Java/SQL
 github上挂着20+ Project,主要干wslu
 
 试过其他的事，但果然还是计算机适合我啊。**己择之路，终不愿改。**
-
-![](/images/me-intro.jpg)
-<center><b>Me with friends in MSSS | 我与MSSS的伙伴们</b></center>

@@ -1,0 +1,13 @@
+<section>
+    <span class="page-title"><%=  __('Page.friends') %></span> 
+    <div>
+        <% site.data.links.forEach(function (link) { %>
+            <div class="links-item">
+                <div class="links-info">
+                    <h4><a href="<%- link.link %>" target="_blank"><span><%= link.name %></span></a></h4>
+                    <span><%= link.desc %></span>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</section>

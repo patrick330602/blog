@@ -1,6 +1,6 @@
 # blog
 
-This is my blog hosting repo. The master repo is the current generated using Hexo with theme Next heavily modified. 
+This is my blog hosting repo. The master repo is the current generated using Hexo.
 
 ## branch
 
