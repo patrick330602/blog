@@ -12,7 +12,7 @@ thumbnail: /images/hg/0.png
 
 ## 前言
 
-Hexo是一个{% ruby 简单易懂|烧脑麻烦 %}的静态Blog生成器，他与GitHub Pages配合，可以说是非常完美的免费Blog平台。但是，对于小白来说，Hexo的使用和配置还是很复杂，所以特此在前面声明：
+Hexo是一个简单易懂(呸)的静态Blog生成器，他与GitHub Pages配合，可以说是非常完美的免费Blog平台。但是，对于小白来说，Hexo的使用和配置还是很复杂，所以特此在前面声明：
 
 1. Hexo非常折腾，需要耐心；
 2. 也需要一定的学习能力和钻研精神；
@@ -253,7 +253,7 @@ tags:
 > 会使分类`Life`成为`Diary`的子分类，而不是并列分类。因此，有必要为您的文章选择尽可能准确的分类。
 
 ### 内容
-内容以Markdown和{% ruby 标签|"tag plugin" %}来输入。此处附上一份[Markdown说明手册](http://blog.leanote.com/post/freewalk/Markdown-语法手册)和[官方的插件说明](https://hexo.io/zh-cn/docs/tag-plugins.html)给大家*其实是懒得打了（滑稽*。
+内容以Markdown和标签(tag plugin)来输入。此处附上一份[Markdown说明手册](http://blog.leanote.com/post/freewalk/Markdown-语法手册)和[官方的插件说明](https://hexo.io/zh-cn/docs/tag-plugins.html)给大家*其实是懒得打了（滑稽*。
 
 ## 发布
 
@@ -281,7 +281,7 @@ deploy:
 
 ## Introduction
 
-Hexo is an {% ruby easy|hard %} generator for Hexo blog, with help of GitHub Pages, it will be a perfect platform for blogging. However, to newbies, Hexo is still hard to use and configure, so I am here to claim first:
+Hexo is an easy(nope) generator for Hexo blog, with help of GitHub Pages, it will be a perfect platform for blogging. However, to newbies, Hexo is still hard to use and configure, so I am here to claim first:
 
 1. Hexo is hard, you need to patience to learn;
 2. You have also be willing to learn and solve problems;
