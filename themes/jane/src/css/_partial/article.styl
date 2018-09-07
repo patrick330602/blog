@@ -18,18 +18,27 @@
         & .article-title
             display block   
             margin-bottom 6px
-            font-size 1.75rem      
+            font-size 1.75rem
+            &:link,&:visited,&:active 
+                color rgba(0,0,0,.75)
+            &:hover
+                color $thr-clr
         & .article-meta  
             display flex
-            height 50px 
+            height 44px 
             align-items center
-            font-size 0.75rem
+            font-size 0.7rem
+            font-weight 400
             & > span
                 display inline-block
                 padding 8px 6px           
             & > .article-tag        
                 @extend $item   
                 font-size 0.75rem  
+                &:link,&:visited,&:active 
+                    color rgba(0,0,0,.7)
+                &:hover
+                    color $thr-clr
     & .article-excerpt
         margin 1rem 1.2rem    
     & .article-bottom
@@ -38,36 +47,44 @@
         height 44px         
         & .article-readmore  
             @extend $fade        
-            font-size .85rem      
+            font-size .8rem      
             padding 8px 12px 
-            border-radius 40px
+            border-radius 4px
             border 1px solid $line-clr
             box-sizing content-box
             text-align center
   
-
 .thumb
-    margin 0 .8rem  
-    display flex   
+    margin 0 0.8rem  
+    width 100%
+    display flex
     @media mq-mobile 
       flex-wrap wrap
       margin .5rem
+    @media mq-mobile 
+      height 12rem
+    @media mq-tablet
+      height 22rem
+    @media mq-middle 
+      height 23rem
+    @media mq-normal
+      height 24rem
+    @media mq-desktop 
+      height 26rem
 
 .banner    
     position relative
-    left -1%   
-    width 102%
-    height 22.5rem  
-    background-size cover
-    background-position center
+    height 100%
+    width 100%
+    background-size 100% 100%
+    background-position center center
     background-repeat no-repeat
     border-radius 3px
-    @media mq-mobile 
-      width 100%
-      max-height 12rem
-  
+    cursor pointer
+   
+
 .gallery-thumb 
-    margin 0 .8rem  
+    margin 0 2px  
     display flex   
     @media mq-mobile 
       flex-wrap wrap
@@ -81,6 +98,7 @@
     background-size cover
     background-position center
     background-repeat no-repeat
+    cursor pointer
     &:before 
         content ""
         display inline-block

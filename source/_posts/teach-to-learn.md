@@ -4,7 +4,6 @@ tags:
 - SMARTe Goals
 - REDBird
 date: 2016-04-24 07:42:56
-thumbnail: /images/165367370320121218121655.jpg
 ---
 
 Recently, My father assigned a special task for me - to teach one of the child of his friend; however, what pressures me the most is that the child is in the same age as I am, but he is learning in The United States Of America. This made me nervous, because I have never tried teaching before. I am really nervous. However, It turns out to be quite good. I love it.

@@ -2,8 +2,6 @@
 // toc
 //---------
 
-import Utils from './utils'
-
 exports.init = () => {
 
 	initClickListener();
@@ -14,14 +12,8 @@ exports.init = () => {
 function initClickListener() {
 
 	const $tc = $('.toc-title'),
-		$tl = $('.toc'),
-		$sb = $(".sidebar");
-
-	if($tl.length != 0){
-		$sb.show()
-	}else{
-		return;
-	}
+		$tl = $('.toc-list')
+		
 
 	$tc.click(() => {
 		if ($tl.is(':visible')) {
@@ -73,8 +65,8 @@ function initFollow() {
 
 function highLight(text) {
 
-	let $toc_text = $('.toc-text');
-
+	let $toc_text = $('.toc-inner li');
+	
 	$toc_text.each(function () {
 		if ($(this).text() === text) {
 			$(this).addClass('toc-active');

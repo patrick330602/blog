@@ -3,25 +3,40 @@
 
 .header-nav   
   margin 0 auto  
-  max-width 58%
   height 4rem
   line-height 4rem  
-  display flex  
-  align-items center
-  justify-content flex-end
+  @media mq-middle
+      max-width 100%    
+  @media mq-tablet
+      max-width 100% 
+  @media mq-middle 
+      max-width 100%
+  @media mq-normal
+      max-width 54% 
+  @media mq-desktop 
+      max-width 54%
+
            
 .header-menu
-    display flex
-    justify-content flex-end
-    white-space nowrap  
+    float right
+    text-align right 
+    height 100%
+    overflow hidden
     
 .header-menu-link  
     @extend $oneline    
-    margin 0 .85rem 
+    margin 0 .86rem 
     font-size .9rem
     display inline-block 
     letter-spacing 1px 
-    
+    cursor pointer
+    & i
+        width 44px
+        margin-right 8px
+        font-size 1.2rem
+  
+
+
 //---------js  
 .header-static
   position static

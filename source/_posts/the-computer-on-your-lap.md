@@ -7,7 +7,7 @@ date: 2016-02-26 07:47:39
 
 When Alan Kay first introduced his first computer “Dynabook”, a “personal, portable information manipulator” and a “personal computer for children of all ages”, also known
 
-![The Dynabook's original illustration in Alan C. Kay's 1972 Paper](/images/dynabook.png)
+![The Dynabook's original illustration in Alan C. Kay's 1972 Paper](/images/essay/dynabook.png)
 <!--more-->
 as first prototype of laptop in 1972 (Kay, 1972), he never expected that laptop will be so well-known among people, and it has rooted deeply into people’s life. According to IDC, the shipments of laptops grows in a dramatic percentage of 33% in just one year, from 2006 to 2007. (Chen &amp; Tsai, 2008). And its development is so fast that it evolves into more forms such as subnotebook, netbook and laplet. Laptop just deserves the name of “Game Changer”. Then why it is so popular? The following article will look into the reasons of its success, the condition under its success and the lasting impact of the laptop.
 
@@ -18,7 +18,7 @@ And, the need of portability and the grown of the Internet leads the laptops to 
 The impact of laptops are huge and time-lapsing. With the help of the laptop, new technology of network connection such as Bluetooth and wireless hotspot are widely used. (Relatively Interesting, 2012) At the same time, more and more computer users choose to get a laptop than a desktop computer. (Pew Research Center, 2015)  Also, the laptop are so widely used that it evolved into a lot other forms to match people’s want. For example, netbook, invented by Intel, is a new form of laptops which is intended to provide public with simple internet access. (K@W Global Focus, 2008). What’s more important, it is continuing evolving until now. The newest form of laptops is laplet, also called 2-in-1 laptop, from Surface Series by Microsoft to iPad Pro by Apple, starting to occupy the market. (Peckham, 2015)
 
 
-![Surface Pro 3 from Microsoft](/images/e69caae591bde5908d.png)
+![Surface Pro 3 from Microsoft](/images/essay/surfacepro.png)
 
 The laptop will continue evolving, benefiting people’s lives.  Although tablet seems to have a more and more important role in the computer family, and desktop computer is still essential for heavy work, the laptop can finally be in a form of combining all benefits of tablets and all great features of desktop computers, to be a real portable ultimate utility to help people get done real work. (Eadicicco, 2013) The future of the laptops will be bright and it will be rooted deeper in our daily lives. It will be on more people’s lap.
 

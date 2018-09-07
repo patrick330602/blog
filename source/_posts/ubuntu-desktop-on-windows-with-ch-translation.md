@@ -4,7 +4,7 @@ date: 2016-07-13 21:19:02
 tags:
 - WSL
 chinese: true
-thumbnail: /images/lde-on-win10/main.png
+thumbnail: /images/wsl/lde-on-win10/main.png
 ---
 *Dual Language Article. To change the language, select in TOC at the left.*
 *双语文章。若要修改语言，选择左侧的目录进行切换。*
@@ -13,7 +13,7 @@ thumbnail: /images/lde-on-win10/main.png
 
 Right now, using X server, CCSM, Compiz and other components with Bash On Ubuntu On Windows, You can now run Linux desktop environment from Windows desktop.
 <!-- more -->
-![Coding In xface4](/images/lde-on-win10/main.png)
+![Coding In xface4](/images/wsl/lde-on-win10/main.png)
 
 > Retrieved from [this post](https://github.com/Microsoft/BashOnWindows/issues/637) in BashOnWindows GitHub site. 
 
@@ -27,7 +27,7 @@ Right now, using X server, CCSM, Compiz and other components with Bash On Ubuntu
 
 2. Install VcXsrv and open **XLaunch**. Choose "One large window" with display number as 0  like this:
 
-   [![](/images/lde-on-win10/1.png)](/images/lde-on-win10/1.png)
+   [![](/images/wsl/lde-on-win10/1.png)](/images/wsl/lde-on-win10/1.png)
    Other settings leave as default and finish the configuration.
 
 3. Now open bash, install **ubuntu-desktop**, **unity** and **ccsm**:
@@ -39,16 +39,16 @@ Right now, using X server, CCSM, Compiz and other components with Bash On Ubuntu
    export DISPLAY=localhost:0
    ```
    and open **ccsm**.
-   [![](/images/lde-on-win10/2.png)](/images/lde-on-win10/2.png)
+   [![](/images/wsl/lde-on-win10/2.png)](/images/wsl/lde-on-win10/2.png)
 
 4. Inside ccsm mouse pointer may be not visible due to icon not loaded. Enable the following plugins.
-   [![](/images/lde-on-win10/3.png)](/images/lde-on-win10/3.png)
-   [![](/images/lde-on-win10/4.png)](/images/lde-on-win10/4.png)
+   [![](/images/wsl/lde-on-win10/3.png)](/images/wsl/lde-on-win10/3.png)
+   [![](/images/wsl/lde-on-win10/4.png)](/images/wsl/lde-on-win10/4.png)
 
 5. Now close ccsm and open **compiz**. 
-   [![](/images/lde-on-win10/5.png)](/images/lde-on-win10/5.png)
+   [![](/images/wsl/lde-on-win10/5.png)](/images/wsl/lde-on-win10/5.png)
     Compiz will load and seconds later unity will show up.
-   [![](/images/lde-on-win10/6.png)](/images/lde-on-win10/6.png)
+   [![](/images/wsl/lde-on-win10/6.png)](/images/wsl/lde-on-win10/6.png)
 
 6. To exit from unity close bash or kill compiz, the only way of closing unity.
 ### For XFCE:
@@ -79,7 +79,7 @@ Right now, using X server, CCSM, Compiz and other components with Bash On Ubuntu
 
 2. 安装VcXsrv并打开**XLaunch**。 选择 "One large window" 并在**display number** 输入0，如图：
 
-   [![](/images/lde-on-win10/1.png)](/images/lde-on-win10/1.png)
+   [![](/images/wsl/lde-on-win10/1.png)](/images/wsl/lde-on-win10/1.png)
    一路next下去就行，直到他完成配置
 
 3. 打开Bash On Windows并安装 **ubuntu-desktop**，**unity** 和 **ccsm**：
@@ -95,17 +95,17 @@ Right now, using X server, CCSM, Compiz and other components with Bash On Ubuntu
    ```
 
    并打开**ccsm**。
-   [![](/images/lde-on-win10/2.png)](/images/lde-on-win10/2.png)
+   [![](/images/wsl/lde-on-win10/2.png)](/images/wsl/lde-on-win10/2.png)
 
 4. **ccsm**中可能显示不出鼠标指针，因为没有加载玩所有内容。如图选择插件。
 
-   [![](/images/lde-on-win10/3.png)](/images/lde-on-win10/3.png)
-   [![](/images/lde-on-win10/4.png)](/images/lde-on-win10/4.png)
+   [![](/images/wsl/lde-on-win10/3.png)](/images/wsl/lde-on-win10/3.png)
+   [![](/images/wsl/lde-on-win10/4.png)](/images/wsl/lde-on-win10/4.png)
 
 5. 现在关闭ccsm并打开 **compiz**. 
-   [![](/images/lde-on-win10/5.png)](/images/lde-on-win10/5.png)
+   [![](/images/wsl/lde-on-win10/5.png)](/images/wsl/lde-on-win10/5.png)
     Compiz会花些时间载入，稍稍等待下桌面环境就会出现
-   [![](/images/lde-on-win10/6.png)](/images/lde-on-win10/6.png)
+   [![](/images/wsl/lde-on-win10/6.png)](/images/wsl/lde-on-win10/6.png)
 
 6. 关闭桌面环境的方法只能是关闭bash窗口，或者杀Compiz进程。
 

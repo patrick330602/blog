@@ -5,7 +5,6 @@ tags:
 - WP8
 - WP8.1
 - Interop
-thumbnail: /images/Interop-Unlock-WP.jpg
 ---
 # 需要环境
 

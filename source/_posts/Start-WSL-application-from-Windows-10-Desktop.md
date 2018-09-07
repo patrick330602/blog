@@ -13,5 +13,7 @@ First, left click Desktop and select New->Shortcut. Then, in the address, type t
 
 Replace command `command-to-execute` to desired application. Next next and change the name to the application name. Click Finish and Boom! you completed creating a shortcut! now you can change the icon if you want.
 
+![](/images/wsl/wsl-shortcuts.png)
+
 
 

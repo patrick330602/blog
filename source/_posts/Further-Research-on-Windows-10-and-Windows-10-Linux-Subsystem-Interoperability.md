@@ -3,7 +3,6 @@ title: "Further Research on WSL Interoperability"
 date: 2017-05-28 21:44:54
 tags:
 - WSL
-thumbnail: /images/wsl-path-2.png
 ---
 The Windows Subsystem for Linux can invoke native Windows binaries and be invoked from a Windows command line since build 14951. This feature allows us to have a better experience between Windows 10 and WSL. To use it better, I did some research on path since I try to build a collection of utility of WSL. Here are some of the result from my little research.
 
@@ -16,7 +15,7 @@ Some of the apps have a behavior similar to Linux apps such as Java that their p
 
 Sometimes, if command executed in something like `cmd.exe` do not execute well, the command prompt will remains like:
 
-![](/images/wsl-path-2.png)
+![](/images/wsl/wsl-path-2.png)
 
 To solve this add a exit at the every end of the line, or do not use `/k` parameter instead of `/c`:
 
@@ -40,7 +39,7 @@ Some of the application cannot be called through Bash. Although Official Website
 
 However, this is not working if you want to execute apps that requires admin privileges. A 'Permission denied' will be shown if you exec directly.
 
-![](/images/wsl-path-1.png)
+![](/images/wsl/wsl-path-1.png)
 
 However, after some investigations, I find a way of executing such applications. the code is pretty simple:
 

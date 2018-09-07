@@ -5,7 +5,6 @@ tags:
 - WSL
 - Hexo
 - Jekyll
-thumbnailImage: /images/haj.png
 ---
 
 Recently, I try to migrate my Hexo and Jekyll system to Bash On Windows, and find it hard to be done as I have expected. 

@@ -1,73 +1,46 @@
-# header nav
-# 菜单路径
 menu:
   home: /
   archives: archives
   tags: tags
   about: about
-  friends: friends
   search: search
 
-# site title 
-# 页面的标题
-# title为空时 Hexo/_config.yml 配置有效
-title:
+title: 
 
-# author profile
-# source/imgaes/
-# 作者信息
-# author为空时 Hexo/_config.yml 配置有效
 profile: 
-  author:
-  avatar: /images/me.jpg  
+  author: 
+  logo: /images/logo.png
+  avatar: /images/base/me.jpg  
   description: Call Me PK | 请叫我PK
 
-# site favicon
-# source/imgaes/
-# 站点图标
 favicon: /images/logo160.png
 
-# social link
 social:  
   Github: https://github.com/patrick330602
-# Weibo:
-# Zhihu:
-# Facebook:
-  Twitter:
-  Instagram:
-#  LinkedIn:
+  Twitter: https://twitter.com/patrick330602
+  Instagram: https://www.instagram.com/patrick330602
 
-
-# toc
-# 文章的目录 
-toc:
-    false
-
-# site analytics 
-# 站点访问统计
-# [ analytics id ]
 baidu_analytics:
 google_analytics: 
 
-# comment
 
-# disqus(https://disqus.com/)
 disqus:
   comment: false
-  shortname: lemonreds
+  shortname: 
 
 # valine(https://github.com/xCss/Valine)
 # 创建 leancloud 应用 获取 id|key 填入即可
 leancloud:  
   comment: false
-  app_id:
-  app_key:
+  app_id: 
+  app_key: 
 
 # mob share(http://www.mob.com)
 # 文章分享功能
 mob_share:
   true
 
+# 支持的分享类型
 share_item:
 - qq
 - weixin
@@ -78,38 +51,60 @@ share_item:
 - tumblr
 - google
 
-
 # donate
 # 捐赠功能
-# source/imgaes/
+# 图片放置于主题目录下: source/imgaes/
 donate:
   enable: true
   word: World is nice, and so are you
-  wechat: /images/wechatpay.jpg
-  alipay: /images/alipay.jpg
+  wechat: /images/base/wechatpay.jpg
+  alipay: /images/base/alipay.jpg
+
+
+# toc
+# 全局控制文章的概要是否显示
+# 可以在单个文章设置是否显示toc (参见下方说明)
+toc:
+  true
 
 # mathjax 
 # 渲染LateX公式
-# 在post文章头部添加:
-#   mathjax: true
-# 即可在当前post开启mathjax
+# 全局开启后,在你需要显示LateX公式的文章头部增加配置 
+# mathjax: true (参见下方说明)
 mathjax:
   enable: true
   
-# excerpt_ignore [boolean]
-# increase at the top of your article
-# Does this article need to hide the excerpt ?
-# 在文章头部中增加此配置 
-# 文章是否需要显示摘要 默认为显示
+# 在你的文章头部支持的配置有:
+  # example:
+  # ---
+  # title: hexo-theme-nayo
+  # date: 2018-02-08 21:44:25
+  #
+  # hide_toc: true | false
+  # hide_excerpt: true | false
+  # banner: /assets/05.jpg
+  # mathjax: true
+  # photos:
+  # - /assets/01.jpg
+  # - /assets/02.jpg
+  # - /assets/03.jpg
+  # - /assets/04.jpg
+# ---
+
+# 文章详情页面生效的配置
+# hide_toc [boolean] 是否隐藏此文章的[TOC],默认为false
+# hide_excerpt [boolean] 是否隐藏此[文章摘要](摘要只显示在首页,不显示在文章页),默认为false
+# mathjax [boolean] 是否在此文章[渲染LateX公式]
+# photos [array] 文章画廊展示图片
 
 # footer
-# 底部信息
+# 网站底部信息
 footer:
   author: Patrick WU Jinming
   since: 2008
 
 
 # theme version
-#
+# enjoy it!
 version:
-  0.3.0
+  0.3.3

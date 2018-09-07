@@ -76,7 +76,9 @@
      plugins: [
          new ExtractTextPlugin('nayo.min.css'),
          new CleanPlugin('./source', {
-             exclude: ['images', 'fonts']
+            // 一般图标不需要清空
+            exclude: ['images', 'fonts']
+            // exclude: ['images']
          }),
          new webpack.optimize.OccurrenceOrderPlugin(),
          new webpack.optimize.UglifyJsPlugin()

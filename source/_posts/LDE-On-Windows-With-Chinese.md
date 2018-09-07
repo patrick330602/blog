@@ -3,7 +3,6 @@ title: Install LDE On windows 10(Updated) 在Windows10上安装Linux桌面环境
 date: 2016-08-23 21:38:08
 tags:
 - WSL
-thumbnailImage: /images/lde-on-win10/main.png
 ---
 *Dual Language Article. To change the language, select in TOC at the left.*
 *双语文章。若要修改语言，选择左侧的目录进行切换。*
@@ -12,7 +11,7 @@ thumbnailImage: /images/lde-on-win10/main.png
 
 Previously, I wrote a article about how to use X server, CCSM, Compiz and other components with Bash On Ubuntu On Windows to run Linux desktop environment from Windows desktop. Recently, I find a improved way of installing the LDE. 
 <!-- more -->
-![Coding In xface4](/images/lde-on-win10/main.png)
+![Coding In xface4](/images/wsl/lde-on-win10/main.png)
 
 
 > Retrieved from [this post](https://github.com/Microsoft/BashOnWindows/issues/637) in BashOnWindows GitHub site. 
@@ -45,8 +44,8 @@ sudo sed -i 's$<listen>.*</listen>$<listen>tcp:host=localhost,port=0</listen>$' 
    and type `ccsm` to open Compiz Configuration Settings Manager.
 
 3. Inside ccsm mouse pointer may be not visible due to icon not loaded. Enable the following plugins.
-   [![](/images/lde-on-win10/3.png)](/images/lde-on-win10/3.png)
-   [![](/images/lde-on-win10/4.png)](/images/lde-on-win10/4.png)
+   [![](/images/wsl/lde-on-win10/3.png)](/images/wsl/lde-on-win10/3.png)
+   [![](/images/wsl/lde-on-win10/4.png)](/images/wsl/lde-on-win10/4.png)
 
 5. Now close ccsm and open ``compiz`` to start Unity Linux Desktop Environment.   
 
@@ -95,7 +94,7 @@ sudo sed -i 's$<listen>.*</listen>$<listen>tcp:host=localhost,port=0</listen>$' 
 
 1. 安装VcXsrv并打开**XLaunch**。 选择 "One large window" 并在**display number** 输入0，如图：
 
-   [![](/images/lde-on-win10/1.png)](/images/lde-on-win10/1.png)
+   [![](/images/wsl/lde-on-win10/1.png)](/images/wsl/lde-on-win10/1.png)
    一路next下去就行，直到他完成配置
 
 2. 打开Bash On Windows并安装 **ubuntu-desktop**，**unity** 和 **ccsm**：
@@ -111,17 +110,17 @@ sudo sed -i 's$<listen>.*</listen>$<listen>tcp:host=localhost,port=0</listen>$' 
    ```
 
    并打开**ccsm**。
-   [![](/images/lde-on-win10/2.png)](/images/lde-on-win10/2.png)
+   [![](/images/wsl/lde-on-win10/2.png)](/images/wsl/lde-on-win10/2.png)
 
 3. **ccsm**中可能显示不出鼠标指针，因为没有加载玩所有内容。如图选择插件。
 
-   [![](/images/lde-on-win10/3.png)](/images/lde-on-win10/3.png)
-   [![](/images/lde-on-win10/4.png)](/images/lde-on-win10/4.png)
+   [![](/images/wsl/lde-on-win10/3.png)](/images/wsl/lde-on-win10/3.png)
+   [![](/images/wsl/lde-on-win10/4.png)](/images/wsl/lde-on-win10/4.png)
 
 4. 现在关闭ccsm并打开 **compiz**. 
-   [![](/images/lde-on-win10/5.png)](/images/lde-on-win10/5.png)
+   [![](/images/wsl/lde-on-win10/5.png)](/images/wsl/lde-on-win10/5.png)
     Compiz会花些时间载入，稍稍等待下桌面环境就会出现
-   [![](/images/lde-on-win10/6.png)](/images/lde-on-win10/6.png)
+   [![](/images/wsl/lde-on-win10/6.png)](/images/wsl/lde-on-win10/6.png)
 
 5. 关闭桌面环境的方法只能是关闭bash窗口，或者杀Compiz进程。
 
@@ -129,7 +128,7 @@ sudo sed -i 's$<listen>.*</listen>$<listen>tcp:host=localhost,port=0</listen>$' 
 
 1. 安装VcXsrv并打开**XLaunch**。 选择 "One large window" 并在**display number** 输入0，如图：
 
-   [![](/images/lde-on-win10/1.png)](/images/lde-on-win10/1.png)
+   [![](/images/wsl/lde-on-win10/1.png)](/images/wsl/lde-on-win10/1.png)
    一路next下去就行，直到他完成配置
 
 2. 安装xorg和xubuntu:

@@ -8,7 +8,7 @@ tags:
 
 When using [this method](https://www.patrickwu.ml/2017/05/10/Start-WSL-application-from-Windows-10-Desktop/) to start application from desktop, a command prompt will always started at the back:
 
-![](/images/wsl-window.png)
+![](/images/wsl/wsl-window.png)
 
 So there is a solution to the problem to stop command prompt to be shown along the apps.
 <!--more-->

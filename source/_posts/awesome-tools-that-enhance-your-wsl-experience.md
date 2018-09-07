@@ -3,11 +3,10 @@ title: Awesome tools that enhance your WSL experience
 date: 2017-02-24 09:22:43
 tags:
 - WSL
-thumbnail: /images/wsl-tools/mine.png
 ---
 I have been trying to use X11 apps using Bash on Ubuntu on Windows 10 [before](http://www.patrickwu.cf/2016/08/LDE-On-Windows-With-Chinese/) using VcXsrv. However, since [Microsoft update Ubuntu to 16.04 since build 14936](http://www.omgubuntu.co.uk/2016/10/windows-10-linux-subsystem-ubuntu-16-04), this method no longer work. However, with the correct setup and awesome tools, Bash on Ubuntu on Windows 10(WSL) can be still as awesome as you will expected.
 
-![My Personal Setup](/images/wsl-tools/mine.png)
+![My Personal Setup](/images/wsl/mine.png)
 <!--more-->
 ## WSLtty
 
@@ -15,7 +14,7 @@ I have been trying to use X11 apps using Bash on Ubuntu on Windows 10 [before](h
 
 WSLtty is a sub-project by MinTTY. This tool use minTTY as a terminal of Bash on Ubuntu on Windows/WSL.
 
-![WSLtty](/images/wsl-tools/WSLtty.png)
+![WSLtty](/images/wsl/WSLtty.png)
 
 Using WSLtty, you can:
 
@@ -86,7 +85,7 @@ This is an set of python Scripts to replace the distribution behind Windows Subs
 
 Install Jekyll can be hard in WSL, since Ruby cannot be installed properly using rvm or apt-get. I personally wrote this script for install Jekyll easier with one line of code.
 
-![Jekyll Installer For Windows Subsystem for Linux](/images/wsl-tools/jiwsl.png)
+![Jekyll Installer For Windows Subsystem for Linux](/images/wsl/jiwsl.png)
 
 ## Hexo Installer For WSL
 
@@ -94,4 +93,4 @@ Install Jekyll can be hard in WSL, since Ruby cannot be installed properly using
 
 Just like Jekyll, Hexo also cannot be installed using normal method, with nvm or apt-get. Again, I personally wrote this script for install Hexo easier with one line of code. But be careful that this script is not supported in Build 15031 due to a known bug.
 
-![Hexo Installer For Windows Subsystem for Linux](/images/wsl-tools/hiwsl.png)
+![Hexo Installer For Windows Subsystem for Linux](/images/wsl/hiwsl.png)

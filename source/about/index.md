@@ -2,6 +2,8 @@
 title: about
 layout: about
 ---
+![]()
+
 **Programmer, Photographer, HKUST Student**
 
 Love capturing the perfect moment; 
@@ -30,3 +32,10 @@ C#/C++/Python/Shell Script为主，爱折腾Node和JS，PHP/ASP/Perl/Java/SQL
 github上挂着20+ Project,主要干wslu
 
 试过其他的事，但果然还是计算机适合我啊。**己择之路，终不愿改。**
+
+
+## Friends 朋友们
+
+[非攻的博客](http://feigong.ga/) - 一个人要拼搏奋斗，动力绝不来自于敬重，而是恐惧。
+[Waipak's Blog](http://yehwaipak.azurewebsites.net/) - 苟利国家生死以 岂因祸福避趋之
+

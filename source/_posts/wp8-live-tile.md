@@ -5,7 +5,6 @@ tags:
 - WP8
 - WP8.1
 date: 2014-07-06 11:21:26
-thumbnail: /images/IC505451.jpg
 ---
 
 本主题介绍使用 [ShellTileSchedule](http://msdn.microsoft.com/zh-cn/library/microsoft.phone.shell.shelltileschedule.aspx) 更新应用程序磁贴的背景图像所需的步骤。[ShellTileSchedule](http://msdn.microsoft.com/zh-cn/library/microsoft.phone.shell.shelltileschedule.aspx) 也可以用于更新次要磁贴。[Windows Phone 的磁贴概述](http://msdn.microsoft.com/zh-cn/library/hh202948.aspx)包含磁贴属性以及可以用于更新磁贴的各种方法。

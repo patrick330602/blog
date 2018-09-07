@@ -9,10 +9,6 @@
 
 ## [0.1.1]
 
-### Fixed
-- 代码块样式错误
-- Social links 错误
-
 ### Changed
 - 调整了(paginator)样式
 - 图片居中显示了
@@ -21,9 +17,6 @@
 
 ### Added
 - 图标的hover效果
-
-### Changed
-- 调整了样式
 
 ### Removed
 - 删除了部分配置
@@ -34,17 +27,14 @@
 - gallery.js
 - 支持繁体
 ### Changed
+
 - 文章摘要过短 隐藏tag/cate/word
-- 修改代码块样式
 
 ## [0.1.4]
 
 ### Added
 - tips样式
 - 可配置footer信息
-
-### Removed
-- 删除了一些样式
 
 ## [0.1.5]
 
@@ -54,15 +44,10 @@
 ### Fixed
 - 遮罩层显示bug
 
-## [0.1.7]
-
-### Changed
-- 调整了大部分样式
-
 ## [0.1.8]
 
 ### Added
-- 重新支持 Lazyload.js
+- 支持 Lazyload.js
 
 ### Changed
 - 重做了部分样式
@@ -88,7 +73,6 @@
 
 ### Changed
 - logo文字显示
-- 修改部分样式
 
 ### Fixed
 - header显示错误
@@ -102,3 +86,33 @@
 
 ### Added
 - Hi,3.0
+
+## [0.3.1] 20180815
+
+### Fixed
+- 搜索栏按钮样式错误
+
+### Changed
+
+- 修改了标题的颜色
+- 调整许多样式
+- 重构代码块样式
+
+## [0.3.2] 20180823
+
+### Added
+
+- 新增两个social link 图标(#50)
+- 支持在特定文章中隐藏摘要和TOC。
+
+
+### Fixed
+
+- 隐藏了TOC的序号
+
+## [0.3.3] 20180830
+
+### Changed
+
+- 导航栏修改为图标
+- 其他细节调整

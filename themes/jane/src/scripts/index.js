@@ -24,7 +24,7 @@ function initActiveMenu() {
         acitveClass = 'header-menu-active',
         activeMenuItem = 'home';
 
-    let pagesType = ['home', 'archives', 'categories', 'tags', 'about', 'friends'];
+    let pagesType = ['home', 'archives', 'categories', 'tags', 'about'];
 
     for (let type of pagesType) {
 
@@ -129,3 +129,4 @@ function fixedHeader() {
 
 // just say hi....
 console.log('Hexo Theme Nayo, By Lemonreds.');
+console.log('@see [https://github.com/Lemonreds/hexo-theme-nayo]');
