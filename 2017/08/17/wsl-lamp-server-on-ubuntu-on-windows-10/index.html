@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2017/08/17/wsl-lamp-server-on-ubuntu-on-windows-10/" />
+  <meta property="og:title" content="Setup LAMP Server on Ubuntu on Windows 10 the Right Way | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Setup LAMP Server on Ubuntu on Windows 10 the Right Way | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Setup LAMP Server on Ubuntu on Windows 10 the Right Way</h1>
+
+	---<br />
+	date: Aug 17, 2017<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/LAMP/" rel="tag">LAMP</a><br />- <a class="tag-link" href="/tags/PHP/" rel="tag">PHP</a><br />- <a class="tag-link" href="/tags/WSL/" rel="tag">WSL</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>I have tried to find a proper guide online to set up the LAMP environement on WSL, but most of them are incompelete or outdated, so here I decided to make a tutorial on how lamp can be properly setup on Bash On Windows aka WSL.</p>
+<h1 id="but-wait-what-is-lamp"><a class="markdownIt-Anchor" href="#but-wait-what-is-lamp"></a> But wait… What is LAMP?</h1>
+<p>LAMP is a term for a software bundle, that is :</p>
+<blockquote>
+<p><strong>L</strong>inux <strong>A</strong>pache <strong>M</strong>ySQL <strong>P</strong>HP</p>
+</blockquote>
+<p>LAMP is commonly used as the dafult setup of most of the server, and there are more alternatives available to them. More specifically, a LAMP server structure contains a server operating system(Linux/Unix/FreeBSD), a http server(Apache/Nginx), a database management system(MySQL/MariaDB/Drizzle) and a scripting language(PHP/Perl/Python).</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/LAMP.svg" alt="LAMP structure explained" /></p>
+<a id="more"></a>
+<h1 id="lets-begin"><a class="markdownIt-Anchor" href="#lets-begin"></a> Let’s begin!</h1>
+<ol>
+<li>
+<p>Keep everything up-to-date:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Install LAMP server:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install lamp-server^</span><br></pre></td></tr></table></figure>
+<p>This will install Apache2, MySQL and Perl, but usually we use PHP, so we will install it later.<br />
+During the installation, MySQL will ask to set the default password for <code>root</code> account.</p>
+</li>
+<li>
+<p>Install PHP:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:ondrej/php</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Setup MySQL security option:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysql_secure_installation</span><br></pre></td></tr></table></figure>
+<p>something like this will be popup:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Securing the MySQL server deployment.</span><br><span class="line"></span><br><span class="line">Enter password for user root:</span><br><span class="line"></span><br><span class="line">VALIDATE PASSWORD PLUGIN can be used to test passwords</span><br><span class="line">and improve security. It checks the strength of password</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>I suggest you to choose wisely, I mean, really.</p>
+</li>
+<li>
+<p>Change the listening port if you want:<br />
+If you are also using IIS on Windows, you might also want to change the port. to change the port, change the line <code>listen 80</code> to <code>listen &lt;the port you want&gt;</code> in file <code>/etc/apache2/ports.conf</code>.</p>
+</li>
+<li>
+<p>Start server:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo service apache2 start</span><br><span class="line">sudo service mysql start</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2017/10/30/comp3711-introduction/">
+      無處不在的算法——算法的設計及應用（COMP3711）
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2017/08/12/python-combine-relative-path-with-absolute-path/">
+        Combine relative path with absolute path in Python
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

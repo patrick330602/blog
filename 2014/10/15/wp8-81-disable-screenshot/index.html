@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2014/10/15/wp8-81-disable-screenshot/" />
+  <meta property="og:title" content="Windows Phone 8 APP中禁用截图 | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Windows Phone 8 APP中禁用截图 | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Windows Phone 8 APP中禁用截图</h1>
+
+	---<br />
+	date: Oct 15, 2014<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/C/" rel="tag">C#</a><br />- <a class="tag-link" href="/tags/WP8/" rel="tag">WP8</a><br />- <a class="tag-link" href="/tags/WP8-1/" rel="tag">WP8.1</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>Windows Phone 8 有系统自带的截图功能，快捷键：电源键+Win键，可以随意截图。</p>
+<p>Windows Phone 更新GDR2后新增了一个隐藏功能，允许APP禁用截图功能。<br />
+<code>PhoneApplicationPage.IsScreenCaptureEnabled</code>这个隐藏的属性需要通过反射来访问和修改状态。</p>
+<a id="more"></a>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">PhoneApplicationPageExtensionMethods</span></span><br><span class="line">    &#123;</span><br><span class="line">　　　　<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">CanSetScreenCaptureEnabled</span>(<span class="params"><span class="keyword">this</span> PhoneApplicationPage page</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">    <span class="keyword">return</span> Environment.OSVersion.Version &amp;gt;= <span class="keyword">new</span> Version(<span class="number">8</span>, <span class="number">0</span>, <span class="number">10322</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SetScreenCaptureEnabled</span>(<span class="params"><span class="keyword">this</span> PhoneApplicationPage page, <span class="keyword">bool</span> enabled</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">    <span class="keyword">var</span> propertyInfo = <span class="keyword">typeof</span>(PhoneApplicationPage).GetProperty(<span class="string">"IsScreenCaptureEnabled"</span>);</span><br><span class="line">    <span class="keyword">if</span> (propertyInfo == <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NotSupportedException(<span class="string">"Not supported in this Windows Phone version!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    propertyInfo.SetValue(page, enabled);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">GetScreenCaptureEnabled</span>(<span class="params"><span class="keyword">this</span> PhoneApplicationPage page</span>)</span></span><br><span class="line"><span class="function"></span>        &#123;</span><br><span class="line">    <span class="keyword">var</span> propertyInfo = <span class="keyword">typeof</span>(PhoneApplicationPage).GetProperty(<span class="string">"IsScreenCaptureEnabled"</span>);</span><br><span class="line">    <span class="keyword">if</span> (propertyInfo == <span class="literal">null</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NotSupportedException(<span class="string">"Not supported in this Windows Phone version!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">bool</span>)propertyInfo.GetValue(page);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用<code>CanSetScreenCaptureEnabled()</code>方法检测Windows Phone版本是否符合要求（version 8.0.10322以上）。符合条件，然后就通过扩展方法<code>GetScreenCaptureEnabled()</code>和<code>SetScreenCaptureEnabled()</code>来修改<code>PhoneApplicationPage.IsScreenCaptureEnabled</code>属性。<br />
+使用：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构造函数</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">MainPage</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    InitializeComponent();</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.CanSetScreenCaptureEnabled())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">this</span>.SetScreenCaptureEnabled(<span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wp/stop-wp8-screenshot.jpg" alt="效果" /></p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2014/10/16/wp8-longlistselector-pinyin/">
+      Windows Phone 8 LongListSelector按拼音首字母分组
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2014/10/15/wp8-feedback/">
+        Windows Phone 8 开发：应用崩溃时给作者发送错误报告邮件
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

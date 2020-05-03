@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2017/05/10/wsl-enable-sound/" />
+  <meta property="og:title" content="Enable Sound in the Linux Subsystem in Windows 10 | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Enable Sound in the Linux Subsystem in Windows 10 | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Enable sound in the Linux Subsystem in Windows 10</h1>
+
+	---<br />
+	date: May 10, 2017<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/WSL/" rel="tag">WSL</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>Linux Subsystem of Windows is awesome, but it seems missing something… Yes, it misses sound, and several apps I am developing requires the sound to be played. Luckily, someone have found a solution to solve this problem by creating a link of pulseaudio between Windows 10 and Linux Subsystem. Here I got a summary of the solution, since the original is a mess to be read.</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/music_on_bash.png" alt="Music can be played normally thorugh CMUS" /></p>
+<a id="more"></a>
+<p>On the Linux Subsystem side:</p>
+<ol>
+<li>Add repository by command<code>add-apt-repository ppa:aseering/wsl-pulseaudio</code></li>
+<li>If you are running Ubuntu 16.04 instead of 14.04, open <code>/etc/apt/sources.list.d/aseering-ubuntu-wsl-pulseaudio-xenial.list</code> and change <code>xenial</code> to <code>trusty</code></li>
+<li>Install pulseaudio by command <code>sudo apt-get update &amp;&amp; sudo apt-get install pulseaudio</code></li>
+</ol>
+<p>On Windows side:</p>
+<ol>
+<li>Download PulseAudio <a href="http://bosmans.ch/pulseaudio/pulseaudio-1.1.zip" target="_blank" rel="noopener">here</a> on Windows.</li>
+<li>Extract all the files to <code>%AppData%\PulseAudio</code>.</li>
+<li>Press Win+R, type <code>shell:startup</code> and create a file named <code>start_pulseaudio.vbe</code> with following contents:</li>
+</ol>
+<figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> ws=wscript.createobject(<span class="string">"wscript.shell"</span>) </span><br><span class="line">ws.run <span class="string">"C:\Users\Patrick\AppData\Roaming\PulseAudio\bin\pulseaudio.exe --exit-idle-time=-1"</span>,<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>Open <code>%AppData%\PulseAudio\etc\pulse\default.pa</code>, and add this line to the end of the file:<br />
+<code>load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1 auth-anonymous=1</code></li>
+<li>Run <code>start_pulseaudio.vbe</code> and do not allow ‘pulseaudio’ access to any of your networks sine it doesn’t need access.</li>
+</ol>
+<p>Now everything is done. Enjoy the music!</p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2017/05/28/wsl-research-interop/">
+      Further Research on WSL Interoperability
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2017/05/10/wsl-windows-10-shortcut/">
+        Start WSL application from Windows 10 Desktop
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2016/08/23/wsl-lde-on-windows/" />
+  <meta property="og:title" content="Install LDE on Windows 10(Updated) | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Install LDE on Windows 10(Updated) | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Install LDE On windows 10(Updated)</h1>
+
+	---<br />
+	date: Aug 23, 2016<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/WSL/" rel="tag">WSL</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>Previously, I wrote a article about how to use X server, CCSM, Compiz and other components with Bash On Ubuntu On Windows to run Linux desktop environment from Windows desktop. Recently, I find a improved way of installing the LDE.</p>
+<a id="more"></a>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/lde-on-win10/main.png" alt="Coding In xface4" /></p>
+<blockquote>
+<p>Retrieved from <a href="https://github.com/Microsoft/BashOnWindows/issues/637" target="_blank" rel="noopener">this post</a> in BashOnWindows GitHub site.</p>
+</blockquote>
+<h2 id="first-things-first"><a class="markdownIt-Anchor" href="#first-things-first"></a> First things first…</h2>
+<p>Run following code on Bash On Windows:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"export DISPLAY=:0.0"</span> &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>And run the following code as root user:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sed -i <span class="string">'s$&lt;listen&gt;.*&lt;/listen&gt;$&lt;listen&gt;tcp:host=localhost,port=0&lt;/listen&gt;$'</span> /etc/dbus-1/session.conf</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>it is really important to run the code as root user, otherwise the code won’t work</p>
+</blockquote>
+<h2 id="for-ubuntu"><a class="markdownIt-Anchor" href="#for-ubuntu"></a> For Ubuntu</h2>
+<ol>
+<li>
+<p>Install VcXsrv and open <strong>XLaunch</strong>. Choose “One large window” with display number as 0.<br />
+Other settings leave as default and finish the configuration.</p>
+</li>
+<li>
+<p>Now open bash, install <strong>Ubuntu Dekstop Environment</strong>, <strong>Unity</strong> and <strong>Compiz Config Settings Manager</strong>:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ubuntu-desktop unity compizconfig-settings-manager</span><br></pre></td></tr></table></figure>
+<p>and type <code>ccsm</code> to open Compiz Configuration Settings Manager.</p>
+</li>
+<li>
+<p>Inside ccsm mouse pointer may be not visible due to icon not loaded. Enable the following plugins.<br />
+<img src="https://cdn.patrickwu.space/posts/dev/wsl/lde-on-win10/3.png" alt="" /><br />
+<img src="https://cdn.patrickwu.space/posts/dev/wsl/lde-on-win10/4.png" alt="" /></p>
+</li>
+<li>
+<p>Now close ccsm and open <code>compiz</code> to start Unity Linux Desktop Environment.</p>
+</li>
+<li>
+<p>To exit from Ubuntu close bash or kill compiz, the only way of closing Ubuntu.</p>
+</li>
+</ol>
+<h2 id="for-xubuntu"><a class="markdownIt-Anchor" href="#for-xubuntu"></a> For XUbuntu</h2>
+<ol>
+<li>
+<p>Install <strong>VcXsrv</strong> and open <strong>XLaunch</strong>. Choose “One large window” or other options you like with display number as 0.<br />
+Other settings leave as default and finish the configuration.</p>
+</li>
+<li>
+<p>Install xorg and xubuntu:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install xorg xubuntu-desktop</span><br></pre></td></tr></table></figure>
+<p>This might take a while to complete.</p>
+</li>
+<li>
+<p>After success installation, open <code>xfce4-session</code> to start Xubuntu Desktop Environment.</p>
+</li>
+<li>
+<p>To exit from XUbuntu close bash, the only way of closing xubuntu.</p>
+</li>
+</ol>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2016/08/23/wsl-lde-on-windows-ch/">
+      在Windows10上安装Linux桌面环境(更新)
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2016/08/03/install-hexo-or-jekyll-on-bash-on-windows/">
+        Install Hexo and Jekyll on Bash On Windows 10
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2018/05/26/make-rpm-packing-simple/" />
+  <meta property="og:title" content="Packaging .Rpm Using a Simple Script: Explained | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Packaging .Rpm Using a Simple Script: Explained | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Packaging .rpm using a simple script: Explained</h1>
+
+	---<br />
+	date: May 26, 2018<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Linux-Packaging/" rel="tag">Linux Packaging</a><br />- <a class="tag-link" href="/tags/OpenSUSE/" rel="tag">OpenSUSE</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<h1 id="tldr"><a class="markdownIt-Anchor" href="#tldr"></a> TL;DR</h1>
+<p>This post goes over the creation of a rpm package containing only executives using the only the built-in commands and <code>rpmbuild</code> to build packages. I created this article since I have read several articles like <a href="https://stackoverflow.com/questions/880227/what-is-the-minimum-i-have-to-do-to-create-an-rpm-file" target="_blank" rel="noopener">this</a> and <a href="https://eureka.ykyuen.info/2009/12/28/opensuse-build-a-rpm-package/" target="_blank" rel="noopener">this</a> trying to simplify the process of packaging, but as I created <a href="https://www.patrickwu.ml/2018/05/25/make-deb-packing-simple/" target="_blank" rel="noopener">my own script to create debian package</a>, this inspired me to create one using this. The script posted belongs to my project <a href="https://github.com/patrick330602/wslu/blob/master/scripts/builder-rpm.sh" target="_blank" rel="noopener">wslu</a>.</p>
+<a id="more"></a>
+<h2 id="the-script"><a class="markdownIt-Anchor" href="#the-script"></a> the script</h2>
+<figure class="highlight bash"><figcaption><span>make-rpm.sh</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line">BUILD_VER=`grep <span class="string">'version='</span> ../src/wslu | cut -d<span class="string">'='</span> -f 2 | xargs`</span><br><span class="line">CURRENT_DIR=`<span class="built_in">pwd</span>`</span><br><span class="line"></span><br><span class="line">mkdir -p ~/rpm_wslu/&#123;BUILD/,RPMS/,SOURCES/,SPECS/,SRPMS/&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mkdir ~/rpm_wslu/SOURCES/wslu-<span class="variable">$BUILD_VER</span></span><br><span class="line">cp ../src/wsl* ~/rpm_wslu/SOURCES/wslu-<span class="variable">$BUILD_VER</span></span><br><span class="line"><span class="built_in">cd</span> ~/rpm_wslu/SOURCES</span><br><span class="line">tar -czvf wslu-<span class="variable">$&#123;BUILD_VER&#125;</span>.tar.gz wslu-<span class="variable">$BUILD_VER</span></span><br><span class="line">rm -rf tmp</span><br><span class="line"></span><br><span class="line">cat &lt;&lt;EOF &gt;&gt; ~/rpm_wslu/SPECS/wslu-<span class="variable">$BUILD_VER</span>.spec</span><br><span class="line">%define packager       patrick330602 &lt;wotingwu@live.com&gt;</span><br><span class="line"></span><br><span class="line">%define _topdir        <span class="variable">$HOME</span>/rpm_wslu</span><br><span class="line">%define _tmppath       /var/tmp</span><br><span class="line"> </span><br><span class="line">%define _rpmtopdir     %&#123;_topdir&#125;</span><br><span class="line">%define _builddir      %&#123;_rpmtopdir&#125;/BUILD</span><br><span class="line">%define _rpmdir        %&#123;_rpmtopdir&#125;/RPMS</span><br><span class="line">%define _sourcedir     %&#123;_rpmtopdir&#125;/SOURCES</span><br><span class="line">%define _specdir       %&#123;_rpmtopdir&#125;/SPECS</span><br><span class="line">%define _srcrpmdir     %&#123;_rpmtopdir&#125;/SRPMS</span><br><span class="line">Summary: Windows 10 Linux Subsystem Utilities</span><br><span class="line">Name: wslu</span><br><span class="line">Version: <span class="variable">$BUILD_VER</span></span><br><span class="line">Release: 1</span><br><span class="line">Source: wslu-<span class="variable">$BUILD_VER</span>.tar.gz</span><br><span class="line">Requires: bc lsb-release hostname wget unzip</span><br><span class="line">URL: https://github.com/patrick330602/wslu/</span><br><span class="line">License: GPL</span><br><span class="line">%description</span><br><span class="line">This is a collection of utilities <span class="keyword">for</span> Windows 10 Linux Subsystem, such as enabling sound <span class="keyword">in</span> WSL or creating your favorite linux app shortcuts on Windows 10 Desktop. Requires Windows 10 Creators Update and higher.</span><br><span class="line">%prep</span><br><span class="line">%setup</span><br><span class="line">%build</span><br><span class="line"></span><br><span class="line">%install</span><br><span class="line">rm -rf \<span class="variable">$RPM_BUILD_ROOT</span></span><br><span class="line">mkdir -p \<span class="variable">$&#123;RPM_BUILD_ROOT&#125;</span>/usr/bin</span><br><span class="line">install -m 755 wsl* \<span class="variable">$&#123;RPM_BUILD_ROOT&#125;</span>%&#123;_bindir&#125;</span><br><span class="line">%clean</span><br><span class="line">rm -rf \<span class="variable">$RPM_BUILD_ROOT</span></span><br><span class="line">%files</span><br><span class="line">%defattr(-,root,root)</span><br><span class="line">%attr(755,root,root) %&#123;_bindir&#125;/wslu</span><br><span class="line">%attr(755,root,root) %&#123;_bindir&#125;/wslusc</span><br><span class="line">%attr(755,root,root) %&#123;_bindir&#125;/wslfetch</span><br><span class="line">%attr(755,root,root) %&#123;_bindir&#125;/wslpkg</span><br><span class="line">%attr(755,root,root) %&#123;_bindir&#125;/wslsys</span><br><span class="line">%attr(755,root,root) %&#123;_bindir&#125;/wslupath</span><br><span class="line">%changelog</span><br><span class="line">* Fri May 11 2018 patrick330602 &lt;wotingwu@live.com&gt;</span><br><span class="line">- First rpm build of wslu.</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ~/rpm_wslu/SPECS</span><br><span class="line">sudo rpmbuild -ba wslu-<span class="variable">$BUILD_VER</span>.spec</span><br><span class="line"></span><br><span class="line">cp ~/rpm_wslu/RPMS/x86_64/*.rpm <span class="variable">$CURRENT_DIR</span>/../release/rpm/</span><br><span class="line">cp ~/rpm_wslu/SRPMS/*.rpm <span class="variable">$CURRENT_DIR</span>/../release/rpm/</span><br><span class="line">sudo rm -rf ~/rpm_wslu/</span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$CURRENT_DIR</span></span><br></pre></td></tr></table></figure>
+<p>build script by executing the command: <code>sudo ./make-rpm.sh</code>.</p>
+<h2 id="explained"><a class="markdownIt-Anchor" href="#explained"></a> Explained</h2>
+<h3 id="set-variables-and-create-build-structure"><a class="markdownIt-Anchor" href="#set-variables-and-create-build-structure"></a> Set variables and create build structure</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BUILD_VER=`grep <span class="string">'version='</span> ../src/wslu | cut -d<span class="string">'='</span> -f 2 | xargs`</span><br><span class="line">CURRENT_DIR=`<span class="built_in">pwd</span>`</span><br><span class="line"></span><br><span class="line">mkdir -p ~/rpm_wslu/&#123;BUILD/,RPMS/,SOURCES/,SPECS/,SRPMS/&#125;</span><br></pre></td></tr></table></figure>
+<p><code>BUILD_VER</code> will get the version number from my script. You can set your own version here.</p>
+<p><code>CURRENT_DIR</code> will get the current folder just because I still don’t know how <code>popd</code> and <code>pushd</code> work.(Just… don’t blame me here)</p>
+<p>unlike building deb packages, we need a certain folder structures under your home folder. the <code>mkdir</code> command is doing that thing.</p>
+<h3 id="copy-executables-and-create-tarball-for-the-package"><a class="markdownIt-Anchor" href="#copy-executables-and-create-tarball-for-the-package"></a> Copy executables and create tarball for the package</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/rpm_wslu/SOURCES/wslu-<span class="variable">$BUILD_VER</span></span><br><span class="line">cp ../src/wsl* ~/rpm_wslu/SOURCES/wslu-<span class="variable">$BUILD_VER</span></span><br><span class="line"><span class="built_in">cd</span> ~/rpm_wslu/SOURCES</span><br><span class="line">tar -czvf wslu-<span class="variable">$&#123;BUILD_VER&#125;</span>.tar.gz wslu-<span class="variable">$BUILD_VER</span></span><br></pre></td></tr></table></figure>
+<p>The first <code>mkdir</code> will tries to create a folder with app name and verion using the style of <code>name-version</code> under <code>SOURCES</code> folder.</p>
+<p>Then, it will copy the executables under the folder and create a taarball using <code>tar</code> command.</p>
+<h3 id="creating-spec-file"><a class="markdownIt-Anchor" href="#creating-spec-file"></a> creating .spec file</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt;EOF &gt;&gt; ~/rpm_wslu/SPECS/wslu-<span class="variable">$BUILD_VER</span>.spec</span><br><span class="line">%define packager       patrick330602 &lt;wotingwu@live.com&gt;</span><br><span class="line"></span><br><span class="line">%define _topdir        <span class="variable">$HOME</span>/rpm_wslu</span><br><span class="line">%define _tmppath       /var/tmp</span><br><span class="line"> </span><br><span class="line">%define _rpmtopdir     %&#123;_topdir&#125;</span><br><span class="line">%define _builddir      %&#123;_rpmtopdir&#125;/BUILD</span><br><span class="line">%define _rpmdir        %&#123;_rpmtopdir&#125;/RPMS</span><br><span class="line">%define _sourcedir     %&#123;_rpmtopdir&#125;/SOURCES</span><br><span class="line">%define _specdir       %&#123;_rpmtopdir&#125;/SPECS</span><br><span class="line">%define _srcrpmdir     %&#123;_rpmtopdir&#125;/SRPMS</span><br><span class="line">Summary: Windows 10 Linux Subsystem Utilities</span><br><span class="line">Name: wslu</span><br><span class="line">Version: <span class="variable">$BUILD_VER</span></span><br><span class="line">Release: 1</span><br><span class="line">Source: wslu-<span class="variable">$BUILD_VER</span>.tar.gz</span><br><span class="line">Requires: bc lsb-release hostname wget unzip</span><br><span class="line">URL: https://github.com/patrick330602/wslu/</span><br><span class="line">License: GPL</span><br><span class="line">%description</span><br><span class="line">This is a collection of utilities <span class="keyword">for</span> Windows 10 Linux Subsystem, such as enabling sound <span class="keyword">in</span> WSL or creating your favorite linux app shortcuts on Windows 10 Desktop. Requires Windows 10 Creators Update and higher.</span><br><span class="line">%prep</span><br><span class="line">%setup</span><br><span class="line">%build</span><br><span class="line"></span><br><span class="line">%install</span><br><span class="line">rm -rf \<span class="variable">$RPM_BUILD_ROOT</span></span><br><span class="line">mkdir -p \<span class="variable">$&#123;RPM_BUILD_ROOT&#125;</span>/usr/bin</span><br><span class="line">install -m 755 wsl* \<span class="variable">$&#123;RPM_BUILD_ROOT&#125;</span>%&#123;_bindir&#125;</span><br><span class="line">%clean</span><br><span class="line">rm -rf \<span class="variable">$RPM_BUILD_ROOT</span></span><br><span class="line">%files</span><br><span class="line">%defattr(-,root,root)</span><br><span class="line">%attr(755,root,root) %&#123;_bindir&#125;/wslu</span><br><span class="line">%attr(755,root,root) %&#123;_bindir&#125;/wslusc</span><br><span class="line">%attr(755,root,root) %&#123;_bindir&#125;/wslfetch</span><br><span class="line">%attr(755,root,root) %&#123;_bindir&#125;/wslpkg</span><br><span class="line">%attr(755,root,root) %&#123;_bindir&#125;/wslsys</span><br><span class="line">%attr(755,root,root) %&#123;_bindir&#125;/wslupath</span><br><span class="line">%changelog</span><br><span class="line">* Fri May 11 2018 patrick330602 &lt;wotingwu@live.com&gt;</span><br><span class="line">- First rpm build of wslu.</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<p>This is actually a lot different from most of the .spec files online so be very careful in this part, as I combined several files into one.</p>
+<p>This .spec file have two parts: <strong>definition</strong> and <strong>specification</strong>.</p>
+<p><strong>Definition</strong> is the <code>%define</code> part, as they are used for define the temp build folder location and the information of yours.</p>
+<p><strong>Specification</strong> is the real build part, and for this part I suggest you to read the <a href="https://docs.fedoraproject.org/quick-docs/en-US/creating-rpm-packages.html#con_rpm-spec-file-overview" target="_blank" rel="noopener">Fedora Quick Docs</a>. There is just one more thing to be specified: <code>$</code> and <code>\\$</code> is different. <code>$</code> will pass the variable from the script to the .spec file, but if you want to use something like <code>$RPM_BUILD_ROOT</code>, please make sure you use <code>\\$</code> instead.</p>
+<h2 id="build-and-copy-the-rpm-packages"><a class="markdownIt-Anchor" href="#build-and-copy-the-rpm-packages"></a> Build and copy the rpm packages</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/rpm_wslu/SPECS</span><br><span class="line">sudo rpmbuild -ba wslu-<span class="variable">$BUILD_VER</span>.spec</span><br><span class="line"></span><br><span class="line">cp ~/rpm_wslu/RPMS/x86_64/*.rpm <span class="variable">$CURRENT_DIR</span>/../release/rpm/</span><br><span class="line">cp ~/rpm_wslu/SRPMS/*.rpm <span class="variable">$CURRENT_DIR</span>/../release/rpm/</span><br><span class="line">sudo rm -rf ~/rpm_wslu/</span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$CURRENT_DIR</span></span><br></pre></td></tr></table></figure>
+<p>This is pretty obivious. you build and copy the rpm packages and copy them to the desired destination. Just one more thing to be noticed: there is two version of packages: binary packages under <code>SRPMS</code> and normal packages under <code>RPMS</code>.</p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2018/05/26/forcely-enable-Sets-in-Windows-10-Insider-Preview/">
+      forcely enable Sets in Windows 10 Insider Preview
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2018/05/25/make-deb-packing-simple/">
+        Packaging .deb using a simple script: Explained
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

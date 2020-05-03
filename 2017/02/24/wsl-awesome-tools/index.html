@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2017/02/24/wsl-awesome-tools/" />
+  <meta property="og:title" content="Awesome Tools That Enhance Your WSL Experience | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Awesome Tools That Enhance Your WSL Experience | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Awesome tools that enhance your WSL experience</h1>
+
+	---<br />
+	date: Feb 24, 2017<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a><br />- <a class="tag-link" href="/tags/WSL/" rel="tag">WSL</a><br />- <a class="tag-link" href="/tags/Windows/" rel="tag">Windows</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>I have been trying to use X11 apps using Bash on Ubuntu on Windows 10 <a href="http://www.patrickwu.cf/2016/08/LDE-On-Windows-With-Chinese/" target="_blank" rel="noopener">before</a> using VcXsrv. However, since <a href="http://www.omgubuntu.co.uk/2016/10/windows-10-linux-subsystem-ubuntu-16-04" target="_blank" rel="noopener">Microsoft update Ubuntu to 16.04 since build 14936</a>, this method no longer work. However, with the correct setup and awesome tools, Bash on Ubuntu on Windows 10(WSL) can be still as awesome as you will expected.</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/mine.png" alt="My Personal Setup" /></p>
+<a id="more"></a>
+<h2 id="wsltty"><a class="markdownIt-Anchor" href="#wsltty"></a> WSLtty</h2>
+<p><a href="https://github.com/mintty/wsltty" target="_blank" rel="noopener">https://github.com/mintty/wsltty</a></p>
+<p>WSLtty is a sub-project by MinTTY. This tool use minTTY as a terminal of Bash on Ubuntu on Windows/WSL.</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/WSLtty.png" alt="WSLtty" /></p>
+<p>Using WSLtty, you can:</p>
+<ul>
+<li>Replace command prompt with minTTY;</li>
+<li>Start a WSL bash in the current folder/directory with one click;</li>
+<li>Start a WSL bash in the WSL user home with one click;</li>
+<li>Start a WSL login bash with one click;</li>
+<li>Start a WSL bash in the Windows %USERPROFILE% home with one click;</li>
+</ul>
+<h2 id="wsl-terminal"><a class="markdownIt-Anchor" href="#wsl-terminal"></a> wsl-terminal</h2>
+<p><a href="https://github.com/goreliu/wsl-terminal" target="_blank" rel="noopener">https://github.com/goreliu/wsl-terminal</a></p>
+<p>An alternatives to WSLtty. it is more simple compared to WSLtty.</p>
+<p><img src="https://raw.githubusercontent.com/wiki/goreliu/wsl-terminal/images/wsl-terminal-3.png" alt="wsl-terminal" /></p>
+<p>Using wsl-terminal, you can:</p>
+<ul>
+<li>Open a WSL terminal in current directory using <code>open-wsl.exe</code>;</li>
+<li>Add a <code>Open WSL Here</code> context menu to explorer.exe using <code>tools/add-open-wsl-here-menu.js</code> (and run <code>tools/remove-open-wsl-here-menu.js</code> to remove it);</li>
+<li>Can run any .sh (and any others like .py/.pl/.php) script files in wsl-terminal using <code>run-wsl-file.exe</code>, support <code>Open With</code> context menu in explorer.exe;</li>
+<li>Open any text files in vim (in wsl-terminal) using <code>vim.exe</code>, support <code>Open With</code> context menu in explorer.exe. <code>vim.exe</code> can be renamed to <code>emacs.exe/nvim.exe/nano.exe/...</code> to open files in <code>emacs/nvim/nano/...</code>.</li>
+</ul>
+<h2 id="wslbridge"><a class="markdownIt-Anchor" href="#wslbridge"></a> WSLBridge</h2>
+<p><a href="https://github.com/rprichard/wslbridge" target="_blank" rel="noopener">https://github.com/rprichard/wslbridge</a></p>
+<p>wslbridge is a Cygwin program that allows connecting to the WSL command-line environment over TCP sockets, as with ssh, but without the overhead of configuring an SSH server.</p>
+<p>WSLtty actually uses it to achieve the connection.</p>
+<h2 id="cbwin"><a class="markdownIt-Anchor" href="#cbwin"></a> cbwin</h2>
+<p><a href="https://github.com/xilun/cbwin" target="_blank" rel="noopener">https://github.com/xilun/cbwin</a></p>
+<p>cbwin is a tool to launch Windows programs from “Bash on Ubuntu on Windows” (WSL).</p>
+<p>Using cbwin, you can:</p>
+<ul>
+<li>Win32 command line tools in the console, invoked from WSL</li>
+<li>Win32 command line tools with redirections to WSL (stdin/stdout/stderr to or from pipe/file)</li>
+<li>suspend/resume propagation (Ctrl-Z suspends the Win32 processes, <code>fg</code> resumes them)</li>
+<li>exit codes propagation</li>
+<li>launch “detached” GUI Windows programs (uses <code>start</code> of <code>cmd</code>)</li>
+</ul>
+<h2 id="alwsl"><a class="markdownIt-Anchor" href="#alwsl"></a> alwsl</h2>
+<p><a href="https://github.com/alwsl/alwsl" target="_blank" rel="noopener">https://github.com/alwsl/alwsl</a></p>
+<p>I am a extreme fan of Arch, so as you can see, I feel pretty disappointed when WSL is using Debian. However, this will be no longer a problem by using alwsl. alwsl is a tool to install Arch Linux as the WSL (Windows Subsystem for Linux) host.</p>
+<p><img src="http://imgur.com/1T2dyE5.png" alt="alwsl" /></p>
+<h2 id="wsl-distribution-switcher"><a class="markdownIt-Anchor" href="#wsl-distribution-switcher"></a> WSL-Distribution-Switcher</h2>
+<p><a href="https://github.com/RoliSoft/WSL-Distribution-Switcher" target="_blank" rel="noopener">https://github.com/RoliSoft/WSL-Distribution-Switcher</a></p>
+<p>This is an set of python Scripts to replace the distribution behind Windows Subsystem for Linux with any other Linux distribution published on Docker Hub. It support a wild range of Distribution including Fedora, Debian, CentOS and more.</p>
+<p><img src="https://lab.rolisoft.net/images/wslswitcher/install.png" alt="Windows Subsystem for Linux Distribution Switcher" /></p>
+<h2 id="jekyll-installer-for-wsl"><a class="markdownIt-Anchor" href="#jekyll-installer-for-wsl"></a> Jekyll Installer For WSL</h2>
+<p><a href="https://github.com/patrick330602/Jekyll-Installer-For-WSL" target="_blank" rel="noopener">https://github.com/patrick330602/Jekyll-Installer-For-WSL</a></p>
+<p>Install Jekyll can be hard in WSL, since Ruby cannot be installed properly using rvm or apt-get. I personally wrote this script for install Jekyll easier with one line of code.</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/jiwsl.png" alt="Jekyll Installer For Windows Subsystem for Linux" /></p>
+<h2 id="hexo-installer-for-wsl"><a class="markdownIt-Anchor" href="#hexo-installer-for-wsl"></a> Hexo Installer For WSL</h2>
+<p><a href="https://github.com/patrick330602/Hexo-Installer-For-WSL" target="_blank" rel="noopener">https://github.com/patrick330602/Hexo-Installer-For-WSL</a></p>
+<p>Just like Jekyll, Hexo also cannot be installed using normal method, with nvm or apt-get. Again, I personally wrote this script for install Hexo easier with one line of code. But be careful that this script is not supported in Build 15031 due to a known bug.</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/hiwsl.png" alt="Hexo Installer For Windows Subsystem for Linux" /></p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2017/02/24/New-ideas-with-my-REDBird-project/">
+      New ideas with my REDBird project
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2017/02/20/surfacelinux-wallpaper/">
+        /r/SurfaceLinux Wallpaper
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

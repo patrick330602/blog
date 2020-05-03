@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2018/03/18/ubuntu-android-studio-emulator-i965-driver-issue/" />
+  <meta property="og:title" content="解决Ubuntu 17.10下Android Studio模拟器无法运行的问题 | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  解决Ubuntu 17.10下Android Studio模拟器无法运行的问题 | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>解决Ubuntu 17.10下Android Studio模拟器无法运行的问题</h1>
+
+	---<br />
+	date: Mar 18, 2018<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Android/" rel="tag">Android</a><br />- <a class="tag-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>因为Windows下WSL的兼容性我还是不满足，于是乎又在我的Surafce Book上装回了Ubuntu 17.10，但在运行Android Studio时发现Android模拟器启动不了，log里则有这个提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">libGL error: unable to load driver: i965_dri.so</span><br><span class="line">libGL error: driver pointer missing</span><br></pre></td></tr></table></figure>
+<p>网上搜索了一番，发现这个问题在不同版本Ubuntu 16.10+都有出现，原因很简单：谷歌为了防止在不同系统上为了防止出现兼容性问题，用了自己的<code>libstdc++</code>包，但这些写死的包却不一定支持用户所对应的系统，比如我就是用的自定义的Surface Book内核。虽然这个问题是<a href="https://code.google.com/p/android/issues/detail?id=197254" target="_blank" rel="noopener">已知</a>的，但谷歌似乎还是没能给出一个完美的解决方案。其实，解决问题很简单：使用系统的<code>libstdc+</code>就行了。</p>
+<a id="more"></a>
+<ul>
+<li>首先，安装系统的<code>libstdc++</code>和其他的依赖项：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install lib64stdc++6:i386 mesa-utils</span><br></pre></td></tr></table></figure>
+</li>
+<li>然后创建软链接：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$HOME</span>/Android/Sdk/emulator/lib64 <span class="comment">#旧版请使用$HOME/Android/Sdk/tools/lib64</span></span><br><span class="line">mv libstdc++/ libstdc++.bak</span><br><span class="line">ln -s /usr/lib64/libstdc++.so.6  libstdc++</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>然后模拟器就可以正常启动啦！</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/running-emulator.png" alt="" /></p>
+<p>话说Linux也是很麻烦啊。。。（不，只是我喜欢作死用预览版而已</p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2018/04/12/wsl-kali-linux-apt-warning-solution/">
+      Fix the apt warning on Kali Linux on Windows 10
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2018/02/16/notice-2018-02-16/">
+        Announcement Regarding Domain Change
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

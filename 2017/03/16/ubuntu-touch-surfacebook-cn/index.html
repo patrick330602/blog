@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2017/03/16/ubuntu-touch-surfacebook-cn/" />
+  <meta property="og:title" content="启用Surface Book上Ubuntu的触屏 | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  启用Surface Book上Ubuntu的触屏 | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>启用Surface Book上Ubuntu的触屏</h1>
+
+	---<br />
+	date: Mar 16, 2017<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Linux/" rel="tag">Linux</a><br />- <a class="tag-link" href="/tags/Surface/" rel="tag">Surface</a><br />- <a class="tag-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>我以前曾经尝试着启用Surface Book上Ubuntu的触屏但是失败了。幸运的是，有人发现了启用触屏的方法。。。针对于Surface Pro 4的。 但基于他的方法，我进行了一些修改，成功的启用了Surface Book上Ubuntu的触屏。现在除了休眠时会睡死，一切正常。</p>
+<p>在此，我会使用/u/cantenna1的kernel。</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/music_on_bash.png" alt="" /></p>
+<blockquote>
+<p>从Reddit /r/SurfaceLinux上的<a href="https://www.reddit.com/r/SurfaceLinux/comments/4t64zt/getting_the_sp4_running_with_ubuntu_1604/" target="_blank" rel="noopener">文章</a>进行整理，修改和翻译。</p>
+</blockquote>
+<h3 id="1压缩硬盘空间"><a class="markdownIt-Anchor" href="#1压缩硬盘空间"></a> 1.压缩硬盘空间</h3>
+<p>右键开始菜单-&gt;磁盘管理，接着右键C盘分区，选择压缩卷，压缩至你想要用的大小（我的最多可压缩至120GB）。</p>
+<h3 id="2创建ubuntu引导盘"><a class="markdownIt-Anchor" href="#2创建ubuntu引导盘"></a> 2.创建Ubuntu引导盘</h3>
+<p>参见<a href="http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-windows" target="_blank" rel="noopener">http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-windows</a></p>
+<h3 id="3插入外接键鼠可选"><a class="markdownIt-Anchor" href="#3插入外接键鼠可选"></a> 3.插入外接键鼠（可选）</h3>
+<p>键盘和触控板在安装和后续步骤是会不可用， 所以你需要插入外接键鼠。如果你闲的蛋疼，你可以使用Ubuntu安装盘内置的OnBoard键盘（设置-&gt; 通用辅助功能-&gt; 打字 -&gt; 屏幕键盘)</p>
+<h3 id="4从usb启动并安装ubuntu"><a class="markdownIt-Anchor" href="#4从usb启动并安装ubuntu"></a> 4.从USB启动并安装Ubuntu</h3>
+<p>关闭Surface， 按住电源和音量上键进入BIOS。修改启动顺序，使U盘先启动。</p>
+<p>然后可以从U盘启动了。虽然原作者在安装时全部选择了默认选项，我还是建议进行自己分区（将<code>/boot</code>进行独立分区）以防止破坏EFI分区（不要问我为什么知道的，血的教训啊）。</p>
+<h3 id="5安装kernel"><a class="markdownIt-Anchor" href="#5安装kernel"></a> 5.安装Kernel</h3>
+<p>现在，你可以正常进入Ubuntu了。但是，现在还是有很多问题，比如键鼠不能用。你现在需要使用新的Kernel。我个人使用的是/u/cantenna1的kernel：</p>
+<p>这个kernel可以触屏，但是物理键会无法使用。同时，外接显示器会有严重的显示问题。</p>
+<p>更加详细的资料片可查看<a href="https://www.reddit.com/r/SurfaceLinux/comments/4vbzki/androidx86_with_the_new_ipts_driver/d5xs969" target="_blank" rel="noopener">https://www.reddit.com/r/SurfaceLinux/comments/4vbzki/androidx86_with_the_new_ipts_driver/d5xs969</a> 和其中/u/cantenna1与/u/arda_coskunses的评论。详细的触屏支持请查看<a href="https://github.com/ipts-linux-org/ipts-linux/wiki" target="_blank" rel="noopener">https://github.com/ipts-linux-org/ipts-linux/wiki</a>。WiFi驱动来自<a href="https://github.com/matthewwardrop/linux-surfacepro3/blob/master/wifi.patch" target="_blank" rel="noopener">https://github.com/matthewwardrop/linux-surfacepro3/blob/master/wifi.patch</a> 。</p>
+<p>安装的话，请下载<a href="https://mega.nz/#!nJJ2DSJZ!4BYSRvzp3hb6NxU5X6_38xFkpuUEmSNvRo2px2TCDqc" target="_blank" rel="noopener">https://mega.nz/#!nJJ2DSJZ!4BYSRvzp3hb6NxU5X6_38xFkpuUEmSNvRo2px2TCDqc</a>并解压文件。 打开终端，cd到文件夹并输入以下指令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i <span class="string">'./linux-headers-4.4.0-rc8touchkernel+_1_amd64.deb'</span></span><br><span class="line">sudo dpkg -i <span class="string">'./linux-image-4.4.0-rc8touchkernel+_1_amd64.deb'</span></span><br></pre></td></tr></table></figure>
+<h3 id="6拷贝触屏驱动"><a class="markdownIt-Anchor" href="#6拷贝触屏驱动"></a> 6.拷贝触屏驱动</h3>
+<p>要让触屏工作，我们需要Windows分区的触屏驱动。我们需要将这些文件从Windows分区拷贝到Ubuntu分区，以保证可以找到驱动。</p>
+<blockquote>
+<p>注：如果你找不到或者删掉了Windows分区的话你可以从此下载<a href="https://www.microsoft.com/en-us/download/details.aspx?id=49498" target="_blank" rel="noopener">https://www.microsoft.com/en-us/download/details.aspx?id=49498</a>。选择zip格式，然后你可以在Drivers/System/SurfaceTouchServicingML下找到触屏驱动。</p>
+</blockquote>
+<p>首先确保你的Windows分区已经挂载（最简单的方法是在资源管理器里直接挂载）。现在在根目录创建名为itouch的文件夹，并将驱动拷贝进去。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /itouch</span><br><span class="line">sudo cp /media/用户名/磁盘名/Windows/INF/PreciseTouch/Intel/* /itouch</span><br></pre></td></tr></table></figure>
+<p>你现在需要创建链接使驱动可以被搜索到。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -sf /itouch/SurfaceTouchServicingKernelSKLMSHW0076.bin /itouch/vendor_kernel_skl.bin</span><br><span class="line">sudo ln -sf /itouch/SurfaceTouchServicingSFTConfigMSHW0076.bin /itouch/integ_sft_cfg_skl.bin</span><br><span class="line">sudo ln -sf /itouch/SurfaceTouchServicingDescriptorMSHW0076.bin /itouch/vendor_descriptor.bin</span><br><span class="line">sudo ln -sf /itouch/iaPreciseTouchDescriptor.bin /itouch/integ_descriptor.bin</span><br></pre></td></tr></table></figure>
+<h3 id="7修改默认kernel"><a class="markdownIt-Anchor" href="#7修改默认kernel"></a> 7.修改默认Kernel</h3>
+<p>所有驱动已经安装完，但是系统不一定会启动到正确的Kernel。你可以在启动时在grub手动选择Advanced options for Ubuntu -&gt; Ubuntu, with Linux 4.4.0-rc8touchkernel+。要改变默认的Kernel你需要修改grub（我用的是-customizer: <a href="http://www.howtogeek.com/howto/43471/how-to-configure-the-linux-grub2-boot-menu-the-easy-way/" target="_blank" rel="noopener">http://www.howtogeek.com/howto/43471/how-to-configure-the-linux-grub2-boot-menu-the-easy-way/</a>)。</p>
+<h3 id="8防止自动休眠"><a class="markdownIt-Anchor" href="#8防止自动休眠"></a> 8.防止自动休眠</h3>
+<p>一旦休眠，你的电脑会睡的死死的。要防止盖上后自动休眠，输入以下指令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/UPower/UPower.conf</span><br></pre></td></tr></table></figure>
+<p>然后把<code>IgnoreLid=false</code>改成<code>IgnoreLid=true</code>。</p>
+<p>对于Gnome，你需要在<code>gnome-tweak-tool</code>关闭休眠。</p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2017/04/01/Reflection-on-Self-directed-Journey-Early-Phase/">
+      Reflection on Self-directed Journey(Before Event)
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2017/03/16/ubuntu-touch-surfacebook/">
+        Enable touch on Ubuntu on Surface Book 启用Surface Book上Ubu...
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

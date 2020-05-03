@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2014/10/16/wp8-longlistselector-pinyin/" />
+  <meta property="og:title" content="Windows Phone 8 LongListSelector按拼音首字母分组 | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Windows Phone 8 LongListSelector按拼音首字母分组 | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Windows Phone 8 LongListSelector按拼音首字母分组</h1>
+
+	---<br />
+	date: Oct 16, 2014<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/C/" rel="tag">C#</a><br />- <a class="tag-link" href="/tags/WP8/" rel="tag">WP8</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>Windows Phone 8的LongListSelector控件按拼音分组主要有两种方法，一个是在数据源里手工指定拼音首字母字段，作为index，这种方法效率高但会造成数据冗余不宜维护。另一个就是我今天介绍的方法，来自MSDN，虽然官网例子是针对是英文数据的首字母分组，但其实稍微改一下还是是支持中文的。</p>
+ <a id="more"></a>
+<p>实现方法很简单。首先你需要一个来自MSDN的AlphaKeyGroup类，代码如下：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">public class AlphaKeyGroup&lt;T&gt; : List&lt;T&gt;&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> The delegate that is used to get the key information.</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="item"&gt;</span>An object of type T<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>The key value to use for this object<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">delegate</span> <span class="keyword">string</span> <span class="title">GetKeyDelegate</span>(<span class="params">T item</span>)</span>;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> The Key of this group.</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Key &#123; <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> Public constructor.</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="key"&gt;</span>The key for this group.<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AlphaKeyGroup</span>(<span class="params"><span class="keyword">string</span> key</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Key = key;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> Create a list of AlphaGroup<span class="doctag">&lt;T&gt;</span> with keys set by a SortedLocaleGrouping.</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="slg"&gt;</span>The <span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>Theitems source for a LongListSelector<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> List&lt;AlphaKeyGroup&lt;T&gt;&gt; CreateGroups(SortedLocaleGrouping slg)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> slg.GroupDisplayNames.Select(key =&gt; <span class="keyword">new</span> AlphaKeyGroup&lt;T&gt;(key)).ToList();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> Create a list of AlphaGroup<span class="doctag">&lt;T&gt;</span> with keys set by a SortedLocaleGrouping.</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="items"&gt;</span>The items to place in the groups.<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="ci"&gt;</span>The CultureInfo to group and sort by.<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="getKey"&gt;</span>A delegate to get the key from an item.<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name="sort"&gt;</span>Will sort the data if true.<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>An items source for a LongListSelector<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> List&lt;AlphaKeyGroup&lt;T&gt;&gt; CreateGroups(IEnumerable&lt;T&gt; items, CultureInfo ci, GetKeyDelegate getKey, <span class="keyword">bool</span> sort)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> slg = <span class="keyword">new</span> SortedLocaleGrouping(ci);</span><br><span class="line">        <span class="keyword">var</span> list = CreateGroups(slg);</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> item <span class="keyword">in</span> items)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">var</span> index = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (slg.SupportsPhonetics)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//check if your database has yomi string for item</span></span><br><span class="line">                <span class="comment">//if it does not, then do you want to generate Yomi or ask the user for this item.</span></span><br><span class="line">                <span class="comment">//index = slg.GetGroupIndex(getKey(Yomiof(item)));</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                index = slg.GetGroupIndex(getKey(item));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (index &gt;= <span class="number">0</span> &amp;&amp; index &lt; list.Count)</span><br><span class="line">            &#123;</span><br><span class="line">                list[index].Add(item);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!sort) <span class="keyword">return</span> list;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">var</span> <span class="keyword">group</span> <span class="keyword">in</span> list)</span><br><span class="line">        &#123;</span><br><span class="line">            @<span class="keyword">group</span>.Sort((c0, c1) =&gt; ci.CompareInfo.Compare(getKey(c0), getKey(c1)));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>这个类里面主要的精髓就在于：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> slg = <span class="keyword">new</span> SortedLocaleGrouping(ci);</span><br></pre></td></tr></table></figure>
+<p>SortedLocaleGrouping可以根据传入的传入的CultureInfo返回经过排序的组标头。</p>
+<p>要按照拼音首字母排序，我们只要传入中国大陆的CultureInfo就可以了，也就是zh-CN。在中文环境的Windows Phone系统上，当然也可以用当前UI线程的CultureInfo去获得<br />
+System.Threading.Thread.CurrentThread.CurrentUICulture</p>
+<p>但是为了保证我们的拼音排序能在任何语言设置下都统一，我还是建议写死zh-CN在里面。</p>
+<p>在我的应用里，我需要按地铁站点(Station类)的地铁站名首字母(Station.StationName)分组，所以我绑定的集合要用AlphaKeyGroup包一下：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> ObservableCollection&lt;AlphaKeyGroup&lt;Station&gt;&gt; GroupedStations &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+<p>然后，在给这个集合赋值的地方写Group的具体逻辑：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GroupedStations = AlphaKeyGroup&lt;Station&gt;.CreateGroups(</span><br><span class="line">    AllStations,</span><br><span class="line">    <span class="keyword">new</span> CultureInfo(<span class="string">"zh-CN"</span>),</span><br><span class="line">    s =&gt; s.StationName.Substring(<span class="number">0</span>, <span class="number">1</span>),</span><br><span class="line">    <span class="literal">true</span>).ToObservableCollection();</span><br></pre></td></tr></table></figure>
+<p>第一个参数AllStations是原始数据，一个普通的IEnumerable<Station>集合。</p>
+<p>第二个参数是最重要的，按哪种Culture进行分组，一定要传入zh-CN，简体中文。</p>
+<p>第三个参数是个lambda表达式，这个委托负责分组字段的具体逻辑，在这里我们要按Station.StationName的第一个字的拼音首字母排序，所以需要取Substring(0,1)，返回Station.StationName的第一个字，之后SortedLocaleGrouping就可以自动进行拼音首字母分组了。</p>
+<p>第四个参数表示经过分组的排序结果需不需要排序，true表示需要排序，这也是我们通常的需求。</p>
+<p>至此，后端代码的工作就全部搞定了。前台xaml上的数据绑定还是和普通的LongListSelector没啥区别。</p>
+<p>XAML:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">phone:LongListSelector</span></span></span><br><span class="line"><span class="tag">    <span class="attr">x:Name</span>=<span class="string">"StationListSelector"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">ItemsSource</span>=<span class="string">"&#123;Binding GroupedStations, Mode=TwoWay&#125;"</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">JumpListStyle</span>=<span class="string">"&#123;StaticResource StationListJumpListStyle&#125;"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">IsGroupingEnabled</span>=<span class="string">"True"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">HideEmptyGroups</span>=<span class="string">"True"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">SelectionChanged</span>=<span class="string">"SelectStation"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">toolkit:TiltEffect.IsTiltEnabled</span>=<span class="string">"True"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">phone:LongListSelector.GroupHeaderTemplate</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">DataTemplate</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">Border</span> </span></span><br><span class="line"><span class="tag">                <span class="attr">BorderBrush</span>=<span class="string">"&#123;StaticResource PhoneAccentBrush&#125;"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">Padding</span>=<span class="string">"15,0"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">Width</span>=<span class="string">"75"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">Height</span>=<span class="string">"75"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">Margin</span>=<span class="string">"0,0,0,10"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">BorderThickness</span>=<span class="string">"2"</span></span></span><br><span class="line"><span class="tag">                <span class="attr">HorizontalAlignment</span>=<span class="string">"Left"</span> </span></span><br><span class="line"><span class="tag">                    <span class="attr">Background</span>=<span class="string">"White"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">TextBlock</span> <span class="attr">Text</span>=<span class="string">"&#123;Binding Key&#125;"</span> </span></span><br><span class="line"><span class="tag">                           <span class="attr">FontSize</span>=<span class="string">"48"</span></span></span><br><span class="line"><span class="tag">                           <span class="attr">Foreground</span>=<span class="string">"&#123;StaticResource PhoneAccentBrush&#125;"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">TextBlock</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">Border</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">DataTemplate</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">phone:LongListSelector.GroupHeaderTemplate</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>App.xaml里的Style:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Style</span> <span class="attr">x:Key</span>=<span class="string">"StationListJumpListStyle"</span> <span class="attr">TargetType</span>=<span class="string">"phone:LongListSelector"</span>&gt;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">Setter</span> <span class="attr">Property</span>=<span class="string">"GridCellSize"</span>  <span class="attr">Value</span>=<span class="string">"113,113"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">Setter</span> <span class="attr">Property</span>=<span class="string">"LayoutMode"</span> <span class="attr">Value</span>=<span class="string">"Grid"</span> /&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">Setter</span> <span class="attr">Property</span>=<span class="string">"ItemTemplate"</span>&gt;</span></span></span><br><span class="line"><span class="css">        &lt;<span class="selector-tag">Setter</span><span class="selector-class">.Value</span>&gt;</span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">DataTemplate</span>&gt;</span></span></span><br><span class="line"><span class="xml">                <span class="tag">&lt;<span class="name">Border</span> <span class="attr">Background</span>=<span class="string">"&#123;StaticResource PhoneAccentBrush&#125;"</span> <span class="attr">Width</span>=<span class="string">"113"</span> <span class="attr">Height</span>=<span class="string">"113"</span> <span class="attr">Margin</span>=<span class="string">"6"</span> &gt;</span></span></span><br><span class="line"><span class="xml">                    <span class="tag">&lt;<span class="name">TextBlock</span> <span class="attr">Text</span>=<span class="string">"&#123;Binding Key&#125;"</span> <span class="attr">FontFamily</span>=<span class="string">"&#123;StaticResource PhoneFontFamilySemiBold&#125;"</span> <span class="attr">FontSize</span>=<span class="string">"48"</span> <span class="attr">Padding</span>=<span class="string">"6"</span></span></span></span><br><span class="line">       Foreground="&#123;StaticResource PhoneForegroundBrush&#125;" VerticalAlignment="Center"/&gt;</span><br><span class="line"><span class="xml">                <span class="tag">&lt;/<span class="name">Border</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">DataTemplate</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">Setter.Value</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">Setter</span>&gt;</span></span><span class="tag">&lt;/<span class="name">Style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>转自：<a href="http://diaosbook.com/Post/2014/2/22/longlistselector-group-by-py-wp8" target="_blank" rel="noopener">http://diaosbook.com/Post/2014/2/22/longlistselector-group-by-py-wp8</a></p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2014/12/31/wp8-interop/">
+      完美解锁WP8手机方法
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2014/10/15/wp8-81-disable-screenshot/">
+        Windows Phone 8 APP中禁用截图
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

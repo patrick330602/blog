@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2014/07/06/wp8-81-uri-info/" />
+  <meta property="og:title" content="Windows Phone URI Scheme | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Windows Phone URI Scheme | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Windows Phone URI scheme</h1>
+
+	---<br />
+	date: Jul 06, 2014<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/C/" rel="tag">C#</a><br />- <a class="tag-link" href="/tags/WP8/" rel="tag">WP8</a><br />- <a class="tag-link" href="/tags/WP8-1/" rel="tag">WP8.1</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<table>
+<thead>
+<tr>
+<th>URI scheme</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ms-battery</code></td>
+<td>Launches the Usage tab of the Battery Saver app.</td>
+</tr>
+<tr>
+<td><code>ms-wallet</code></td>
+<td>Launches Wallet app.</td>
+</tr>
+<tr>
+<td><code>ms-settings-camera</code></td>
+<td>Launches the Photos + Camera Settings app.</td>
+</tr>
+<tr>
+<td><code>ms-settings-networkprofileupdate</code></td>
+<td>Launches the Network Profile Update app.*这货不知道干啥用的</td>
+</tr>
+<tr>
+<td><code>ms-settings-nfctransactions</code></td>
+<td>Launches the NFC Settings app.<sup><span style="font-size:12px;">1</span></sup></td>
+</tr>
+<tr>
+<td><code>ms-settings-notifications</code></td>
+<td>Launches the Notifications + Actions Settings app.</td>
+</tr>
+<tr>
+<td><code>ms-settings-proximity</code></td>
+<td>Launches the NFC Settings app.<sup><span style="font-size:12px;">1</span></sup></td>
+</tr>
+<tr>
+<td><code>ms-settings-uicctoolkit</code></td>
+<td>Launches a SIM Applications related app. UICC appears to stand for Universal Integrated Circuit Card.<sup><span style="font-size:12px;">2</span></sup></td>
+</tr>
+<tr>
+<td><code>ms-settings-workplace</code></td>
+<td>Launches the Workplace Settings app.</td>
+</tr>
+</tbody>
+</table>
+<p><code>Windows.System.Launcher.LaunchUriAsync( Uri(“ms-settings-bluetooth:”));</code></p>
+<a id="more"></a>
+<p>托管的应用 和 Direct3D 应用 都支持此内置应用启动方法。</p>
+<h2 id="uri-方案列表"><a class="markdownIt-Anchor" href="#uri-方案列表"></a> URI 方案列表</h2>
+<hr />
+<p>下表列出了用于启动内置应用的 URI 方案。</p>
+<table>
+<thead>
+<tr>
+<th>URI 方案</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>http:[URL]</code></td>
+<td>启动 Web 浏览器并导航到特定的 URL。</td>
+</tr>
+<tr>
+<td><code>mailto:[email address]</code></td>
+<td>启动电子邮件应用并使用“收件人”一行上特定的电子邮件地址创建新邮件。请注意，电子邮件不会发送直到用户点按发送。</td>
+</tr>
+<tr>
+<td><code>ms-settings-airplanemode：</code></td>
+<td>启动飞行模式设置应用。</td>
+</tr>
+<tr>
+<td><code>ms-settings-bluetooth：</code></td>
+<td>启动蓝牙设置应用。</td>
+</tr>
+<tr>
+<td><code>ms-settings-cellular：</code></td>
+<td>启动手机网络设置应用。</td>
+</tr>
+<tr>
+<td><code>ms-settings-emailandaccounts：</code></td>
+<td>启动电子邮件和帐户设置应用。</td>
+</tr>
+<tr>
+<td><code>ms-settings-location：</code></td>
+<td>启动位置设置应用。</td>
+</tr>
+<tr>
+<td><code>ms-settings-lock：</code></td>
+<td>启动锁屏设置应用。</td>
+</tr>
+<tr>
+<td><code>ms-settings-power：</code></td>
+<td>启动节电模式设置应用。</td>
+</tr>
+<tr>
+<td><code>ms-settings-screenrotation：</code></td>
+<td>启动屏幕旋转设置应用。</td>
+</tr>
+<tr>
+<td><code>ms-settings-wifi：</code></td>
+<td>启动 Wi-Fi 设置应用。</td>
+</tr>
+<tr>
+<td><code>zune:navigate?appid=[app ID]</code></td>
+<td>启动 Windows Phone 商店 并显示特定应用的详细信息页面。</td>
+</tr>
+<tr>
+<td><code>zune:reviewapp</code></td>
+<td>启动 商店 并显示调用应用的查看页面。</td>
+</tr>
+<tr>
+<td><code>zune:reviewapp?appid=app[app ID]</code></td>
+<td>启动 商店 并显示特定应用的查看页面。请注意，您必须在指定应用的 ID 前面加上“app”。例如，检查 ID 为 fdf05477-814e-41d4-86cd-25d5a50ab2d8 的应用时，URI 为 <code>zune:reviewapp?appid=appfdf05477-814e-41d4-86cd-25d5a50ab2d8</code></td>
+</tr>
+<tr>
+<td><code>zune:search?keyword=[search keyword]&amp;amp;publisher=[publisher name]&amp;amp;contenttype=app</code></td>
+<td>启动 商店 并搜索特定的内容。所有参数都是可选的。指定“contenttype=app”将限制对应用的搜索。省略此参数将搜索所有内容。</td>
+</tr>
+<tr>
+<td><code>zune:search?keyword=[search keyword]&amp;amp;contenttype=app</code></td>
+<td>启动 商店 并按关键字搜索应用。</td>
+</tr>
+<tr>
+<td><code>zune:search?publisher=[publisher name]</code></td>
+<td>启动 商店 并按发布者名称搜索项目。</td>
+</tr>
+</tbody>
+</table>
+<p>有两种保留 URI 方案名称：为 Windows Phone 内置应用保留的 URI 方案名称和为操作系统保留的 URI 方案名称。如果 URI 包含为内置应用保留的 URI 方案名称，那么启动该 URI 时，只有内置应用会启动。任何利用该 URI 方案名称注册应用的企图都会被忽略。同样，任何利用为操作系统保留的 URI 方案名称注册应用的企图也会被忽略。</p>
+<h3 id="为内置应用保留的-uri-方案名称"><a class="markdownIt-Anchor" href="#为内置应用保留的-uri-方案名称"></a> 为内置应用保留的 URI 方案名称</h3>
+<p>Windows Phone 为内置应用保留以下 URI 方案名称。</p>
+<table>
+<thead>
+<tr>
+<th>URI</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bing</td>
+<td>*特殊的bing</td>
+</tr>
+<tr>
+<td>ms-settings-emailandaccounts</td>
+<td></td>
+</tr>
+<tr>
+<td>callto</td>
+<td></td>
+</tr>
+<tr>
+<td>ms-settings-location</td>
+<td></td>
+</tr>
+<tr>
+<td>dtmf</td>
+<td></td>
+</tr>
+<tr>
+<td>ms-settings-lock</td>
+<td></td>
+</tr>
+<tr>
+<td>http</td>
+<td></td>
+</tr>
+<tr>
+<td>ms-settings-wifi</td>
+<td></td>
+</tr>
+<tr>
+<td>https</td>
+<td></td>
+</tr>
+<tr>
+<td>ms-word</td>
+<td></td>
+</tr>
+<tr>
+<td>mailto</td>
+<td></td>
+</tr>
+<tr>
+<td>office</td>
+<td></td>
+</tr>
+<tr>
+<td>maps</td>
+<td>*地图。需要加上位置</td>
+</tr>
+<tr>
+<td>onenote</td>
+<td></td>
+</tr>
+<tr>
+<td>ms-excel</td>
+<td></td>
+</tr>
+<tr>
+<td>tel</td>
+<td></td>
+</tr>
+<tr>
+<td>ms-powerpoint</td>
+<td></td>
+</tr>
+<tr>
+<td>wallet</td>
+<td></td>
+</tr>
+<tr>
+<td>ms-settings-airplanemode</td>
+<td></td>
+</tr>
+<tr>
+<td>xbls</td>
+<td>游戏中心</td>
+</tr>
+<tr>
+<td>ms-settings-bluetooth</td>
+<td></td>
+</tr>
+<tr>
+<td>zune</td>
+<td>音乐</td>
+</tr>
+<tr>
+<td>ms-settings-cellular</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2014/07/06/wp8-flashlight-code/">
+      Window Phone 8手电筒代码
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2014/05/14/not-un-reachable/">
+        不是遙不可及
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

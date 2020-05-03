@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2019/02/16/hyper-v-hvc-command/" />
+  <meta property="og:title" content="Make Hyper-v Great Again -- Hvc Command | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Make Hyper-v Great Again -- Hvc Command | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Make Hyper-V great again -- hvc command</h1>
+
+	---<br />
+	date: Feb 16, 2019<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Hyper-V/" rel="tag">Hyper-V</a><br />- <a class="tag-link" href="/tags/Linux/" rel="tag">Linux</a><br />- <a class="tag-link" href="/tags/Windows/" rel="tag">Windows</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<h1 id="tldr"><a class="markdownIt-Anchor" href="#tldr"></a> TL;DR</h1>
+<p>Hyper-V is an awesome native hypervisor for Windows, and It works surprisingy well with not only Windows but also Linux, freeBSD and Docker. But when using Hyper-V, it used to be not easy when you want to get information about your VMs and interact them with SSH. But now, with <code>hvc</code> command, these problems can be solved really easily.</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/hvc/1.png" alt="My Virtual Machines" /></p>
+<h2 id="before-we-start"><a class="markdownIt-Anchor" href="#before-we-start"></a> Before we start…</h2>
+<p>Not all feature is available to the platform. This tutorial only tested with Windows Server 2016, Windows Server 2019, Ubuntu and Debian. Please try yourself whether your VM works.</p>
+<p>Also, use an elevated console when executing the command. The easiest why you can simplify this process is to download <a href="https://scoop.sh" target="_blank" rel="noopener">scoop</a> and install <code>sudo</code> using <code>scoop install sudo</code>. Now you can simply type <code>sudo hvc</code> instead of opening an elevated console.</p>
+<h2 id="vm-imformation"><a class="markdownIt-Anchor" href="#vm-imformation"></a> VM Imformation</h2>
+<p><code>hvc</code> allows you to show basic information about your VMs. Using <code>hvc list</code> can show you a list of Virutal machines you have:</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/hvc/2.png" alt="VM information" /></p>
+<p>You can also get specific inforamtion about your VM such as VM ID, its IP address and its current status using <code>hvc id &lt;Name of VM&gt;</code>, <code>hvc ip &lt;Name of VM&gt;</code> and <code>hvc state &lt;Name of VM&gt;</code>:</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/hvc/3.png" alt="VM specific information" /></p>
+<p>As for the name, if your VM have a name that contains space, you shoud quote it:</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/hvc/4.png" alt="VM information but with a complicated name" /></p>
+<h2 id="vm-mangement"><a class="markdownIt-Anchor" href="#vm-mangement"></a> VM Mangement</h2>
+<p>You can complete some simple management of your VM such as start or stop using <code>hvc &lt;command&gt; &lt;name of VM&gt;</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start</td>
+<td>Starts a VM.</td>
+</tr>
+<tr>
+<td>stop</td>
+<td>Shuts down a VM.</td>
+</tr>
+<tr>
+<td>kill</td>
+<td>Powers off a VM.</td>
+</tr>
+<tr>
+<td>restart</td>
+<td>Reboots a VM.</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>Issues a hard reset to a VM.</td>
+</tr>
+</tbody>
+</table>
+<p>But keep in mind that nothing will be shown if the action is successful.</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/hvc/5.png" alt="Successful and unsuccessful command execution" /></p>
+<h2 id="vm-connection"><a class="markdownIt-Anchor" href="#vm-connection"></a> VM Connection</h2>
+<p>You can connect to your virtual machine using different ways via <code>hvc</code>, like socket or ssh.</p>
+<p>You can connect to your VM’s serial port using <code>hvc serial &lt;VM&gt;</code>; You can also connect to your VM via a socket connection using <code>hvc nc [options] &lt;VM&gt; &lt;port&gt;</code>; You can also directly open the VM Graphic Console using <code>hvc console &lt;VM&gt;</code>.</p>
+<p>Here I will mainly talk about its feature on SSH. <code>hvc</code> provides <code>ssh</code> and <code>scp</code>, which works just like normal <code>ssh</code> and <code>scp</code> but you can just input its VM name instead of its IP address. Here is a small demo:</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/hvc/6.png" alt="hvc SSH demo" /></p>
+<p>To use this command, the only thing you have to do is to setup SSH server on your VM. for Windows, you just have to install OpenSSH Server to start; for Linux, besides normal SSH server setup, don’t forget that install Hyper-V tools before using the command. For example, Debian 9 need <code>hyperv-daemons</code> package for <code>hvc ssh</code> to work. For other Linux, please check <a href="https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/supported-linux-and-freebsd-virtual-machines-for-hyper-v-on-windows" target="_blank" rel="noopener">here</a> for the supported Linux distros.</p>
+<h2 id="final-thoughts"><a class="markdownIt-Anchor" href="#final-thoughts"></a> Final thoughts</h2>
+<p>These command really simplified my life and I no longer need to pin Hyper-V Manager in the taskbar. Just have a try, you will love it.</p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2019/05/10/build-2019/">
+      Microsft build 2019: My Tiny Little Summary
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2019/01/18/memory-destruction/">
+        拆除的記憶
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

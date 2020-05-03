@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/wslconf/index.html" />
+  <meta property="og:title" content="Scripting With WSL Interoperability: Tips &amp; Tricks | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Scripting With WSL Interoperability: Tips &amp; Tricks | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	 
+	<h1>Scripting with WSL interoperability: Tips &amp; Tricks</h1>
+
+    ---<br />
+		action: <a href="javascript:history.back()"> Back 返回</a><br/>
+		date: Apr 28, 2020<br/>
+		---
+</div>
+
+	  <div>
+
+		
+
+			
+					<p>This is the resource page for things I have talked about or not talked about on the session <em><strong>Scripting with WSL interoperability: Tips &amp; Tricks</strong></em>.</p>
+<p>You can get the ppt here: <a href="https://cdn.patrickwu.space/wslconf/wslconf-wsl-interop.pptx" target="_blank" rel="noopener">https://cdn.patrickwu.space/wslconf/wslconf-wsl-interop.pptx</a>.</p>
+<p>You can find the source code here: <a href="https://github.com/patrick330602/wslconf" target="_blank" rel="noopener">https://github.com/patrick330602/wslconf</a>.</p>
+<h2 id="wsl-feature-availability"><a class="markdownIt-Anchor" href="#wsl-feature-availability"></a> WSL Feature Availability</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"></th>
+<th style="text-align:center">1607</th>
+<th style="text-align:center">1703</th>
+<th style="text-align:center">1709</th>
+<th style="text-align:center">1803, 1809</th>
+<th style="text-align:center">1903, 1909</th>
+<th style="text-align:center">2004</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">lxrun.exe</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:right">bash.exe/wslconfig.exe</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓*1</td>
+<td style="text-align:center">✓*1</td>
+<td style="text-align:center">✓*1</td>
+<td style="text-align:center">✓*1</td>
+</tr>
+<tr>
+<td style="text-align:right">&lt;distro&gt;.exe</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td style="text-align:right">wsl.exe</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓*2</td>
+<td style="text-align:center">✓*2</td>
+</tr>
+<tr>
+<td style="text-align:right">WSL Interoperability</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td style="text-align:right">DrvFS Mounting</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td style="text-align:right">wsl.conf</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓*2</td>
+<td style="text-align:center">✓*2</td>
+</tr>
+<tr>
+<td style="text-align:right">$WSL_DISTRO_NAME</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td style="text-align:right">$WSLENV</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td style="text-align:right">\\wsl$\</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">✓</td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td style="text-align:right">WSL2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">✓</td>
+</tr>
+<tr>
+<td style="text-align:right">/mnt/wsl/</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">✓</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>*1: Kept for backward compatibility<br />
+*2: feature of the function extended in these builds</p>
+</blockquote>
+<h2 id="check-wsl-interoperability"><a class="markdownIt-Anchor" href="#check-wsl-interoperability"></a> Check WSL Interoperability</h2>
+<p><code>grep ^enabled /proc/sys/fs/binfmt_misc/WSLInterop</code> will print <code>enabled</code> if WSL interoperability is enabled, otherwise it will be a empty output.</p>
+<p>Also, you can use the file <code>/proc/sys/fs/binfmt_misc/WSLInterop</code> to check whether the script/program is running in WSL or Linux.</p>
+<h2 id="using-wslconf-to-get-windows-mounting-location-and-system-drive-location"><a class="markdownIt-Anchor" href="#using-wslconf-to-get-windows-mounting-location-and-system-drive-location"></a> Using <code>wsl.conf</code> to get Windows mounting location and system drive location</h2>
+<p>You can find reference for the <code>wsl.conf</code> <a href="https://docs.microsoft.com/en-us/windows/wsl/wsl-config#set-wsl-launch-settings" target="_blank" rel="noopener">here</a>.</p>
+<p>To get the mount location, you can use <code>root</code> in option in <code>[automount]</code> section to get the location. By default, it will use <code>/mnt/</code>, and the logic can be something like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">If &#x2F;etc&#x2F;wsl.conf exists and if root under [automount] is defined</span><br><span class="line">	use the root as the mount location</span><br><span class="line">Else</span><br><span class="line">	use the &#x2F;mnt&#x2F; as the mount location</span><br><span class="line">End</span><br></pre></td></tr></table></figure>
+<p>After finding the mount location, you can scan through the already mounted drive to find where the Windows install location is, as %SystemRoot% is sometimes not defined properly.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">For already mounted drive in mount location</span><br><span class="line">	If found Windows install location</span><br><span class="line">		use the location</span><br><span class="line">	End</span><br><span class="line">End</span><br><span class="line"></span><br><span class="line">If not found:</span><br><span class="line">	fallback to C Drive, the default location</span><br><span class="line">End</span><br></pre></td></tr></table></figure>
+<h2 id="executing-windows-commands-on-wsl"><a class="markdownIt-Anchor" href="#executing-windows-commands-on-wsl"></a> Executing Windows commands on WSL</h2>
+<p>It is suggested to running them using the full path in case the Windows Path does not append properly on the Windows side.</p>
+<h3 id="individual-tools-eg-regexe"><a class="markdownIt-Anchor" href="#individual-tools-eg-regexe"></a> individual Tools (e.g., reg.exe)</h3>
+<p><strong>Pros</strong>:</p>
+<ul>
+<li>straight forward and fast</li>
+</ul>
+<p><strong>Cons</strong>:</p>
+<ul>
+<li>Possibly problematic with UNC path(which includes WSL file access, which locates at <code>\\wsl$\DistroName</code>)but no error will possibly going to be shown.</li>
+</ul>
+<h3 id="cmdexe"><a class="markdownIt-Anchor" href="#cmdexe"></a> cmd.exe</h3>
+<p>Commands can be executed using <code>cmd.exe /C “Command”</code>.</p>
+<p><strong>Pros</strong>:</p>
+<ul>
+<li><code>cmd.exe</code> script support (such as <code>echo</code>, <code>dir</code>)</li>
+<li>Run under Windows environment, easier to pass environment variables</li>
+</ul>
+<p><strong>Cons</strong>:</p>
+<ul>
+<li>
+<p>UNC path is not supported and an error will be shown as the following one when executing:<br />
+S</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">‘\\just\a\UNC\path’</span><br><span class="line">CMD.EXE was started with the above path as the current directory.</span><br><span class="line">UNC paths are not supported.  Defaulting to Windows directory.</span><br></pre></td></tr></table></figure>
+<p>To solve this, you can just move to a Windows folder in WSL before executing the command, for example, your C Drive (<code>/mnt/c</code> by default)</p>
+</li>
+</ul>
+<h3 id="powershellexe"><a class="markdownIt-Anchor" href="#powershellexe"></a> powershell.exe</h3>
+<ul>
+<li>Allows you to execute <code>powershell</code> commands and scripts</li>
+<li>Windows PowerShell is suggested not PowerShell Core for Maximum compatibility</li>
+</ul>
+<p>Execute commands/scripts using <code>powershell.exe -NoProfile -NonInteractive -Command &quot;&lt;Command&gt;&quot;</code> for faster speed.</p>
+<p>Include <code>-ExecutionPolicy ByPass</code> if you want to execute the command.</p>
+<p>For the raster font problem, you can refer to my article <a href="https://patrickwu.space/2019/08/03/wsl-powershell-raster-font-problem/">here</a> to fix the problem.</p>
+<h3 id="performance"><a class="markdownIt-Anchor" href="#performance"></a> Performance</h3>
+<p>These three options have some speed difference.<br />
+Running individual tools directly are usually the fastest; and then the <code>cmd.exe</code>; and <code>powershell.exe</code> is slowest. Here is a benchmark video:</p>
+<style>.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+  }
+  .embed-container iframe, .embed-container object, .embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  </style>
+
+<div class="embed-container"><iframe src="https://www.youtube.com/embed/LaPB8GRqKUk" allowfullscreen frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe></div>
+<h2 id="executing-wsl-commands-on-windows-side"><a class="markdownIt-Anchor" href="#executing-wsl-commands-on-windows-side"></a> Executing WSL commands on Windows Side</h2>
+<h3 id="bashexe"><a class="markdownIt-Anchor" href="#bashexe"></a> bash.exe</h3>
+<p>This is the legacy of the origin of WSL (<strong>Bash</strong> on Ubuntu on Windows). <code>bash.exe</code> will start a <strong>bash</strong> login shell of your default WSL Linux distribution.</p>
+<p><code>bash.exe</code> uses the Linux bash command-line arguments, and just like linux bash, you need to execute a command like the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash.exe -c &quot;&lt;COMMAND&gt;&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="wslexe"><a class="markdownIt-Anchor" href="#wslexe"></a> wsl.exe</h3>
+<p>Merged feature from <code>wslconfig.exe</code>, <code>wsl.exe</code> is the one that allows you to run and manage WSL distros. It also has allows you to run WSL with different distro with different users: <code>wsl [-d &lt;distro&gt;] [-u &lt;user&gt;] [-e] &lt;Command&gt;</code>:</p>
+<p><code>-e</code> is the interesting part here:</p>
+<ul>
+<li><code>wsl.exe</code> executes commands <strong>with the default login shell</strong> of your WSL distribution.</li>
+<li><code>wsl.exe -e</code> executes commands on your WSL distribution <strong>without any shell</strong>.</li>
+</ul>
+<style>.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+  }
+  .embed-container iframe, .embed-container object, .embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  </style>
+
+<div class="embed-container"><iframe src="https://www.youtube.com/embed/uP5YR3GIFzo" allowfullscreen frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe></div>
+<h3 id="distroexe"><a class="markdownIt-Anchor" href="#distroexe"></a> <distro>.exe</h3>
+<p><code>&lt;distro&gt;.exe</code> allows you to interact with a specific distro. However, it has some interesting behaviors that you need to pay attention:</p>
+<ul>
+<li><code>&lt;distro&gt;.exe</code> with no arguments launches the user’s default shell in the user’s home directory;</li>
+<li><code>&lt;distro&gt;.exe run</code> launches the user’s default shell in the current working directory;</li>
+<li><code>&lt;distro&gt;.exe run [Command]</code> run the provided command line in the current working directory with user’s default shell.</li>
+</ul>
+<p>But there are some issues:</p>
+<ul>
+<li>Imported distributions don’t have <code>&lt;distro&gt;.exe</code></li>
+<li><distro>.exe can be different from distribution registered name.</li>
+</ul>
+<h2 id="bonus-section"><a class="markdownIt-Anchor" href="#bonus-section"></a> Bonus Section</h2>
+<p>I am not able to cover everything in WSLConf, so here are some additional tips and tricks you might be interested in:</p>
+<h3 id="start-wsl-gui-apps-without-command-prompt"><a class="markdownIt-Anchor" href="#start-wsl-gui-apps-without-command-prompt"></a> Start WSL GUI apps without command prompt</h3>
+<p>I have posted a post about this topic before. You can view it <a href="https://patrickwu.space/2018/04/20/wsl-shortcut-without-cmd-window/">here</a>.</p>
+<h3 id="wsl-related-registry-a-small-dive"><a class="markdownIt-Anchor" href="#wsl-related-registry-a-small-dive"></a> WSL-related Registry: a small dive</h3>
+<blockquote>
+<p>Due to the lack of documentation, some of the information is possibly not complete.</p>
+</blockquote>
+<p>Information of WSL distributions store here: <code>HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Lxss</code>.</p>
+<h4 id="overview"><a class="markdownIt-Anchor" href="#overview"></a> Overview</h4>
+<p><img src="https://cdn.patrickwu.space/works/wslconf/images/top_key.png" alt="Overview of the key" /></p>
+<ul>
+<li>Subkeys are the definition of single WSL distributions. They are named using GUID.</li>
+<li><code>DafaultDistribution</code>, RGE_SZ: This defines the default distribution used when using <code>bash.exe</code> and <code>wsl.exe</code>. The value passed is a GUID. By default, it’s the first distribution installed.</li>
+<li><code>DefaultVersion</code>, REG_DWORD: (WSL2 Only) This defines the default WSL version that would be used for new WSL distributions.  Value for WSL1 is 0x1(1); for WSL2, 0x2(2).</li>
+</ul>
+<h4 id="store-distribution-key"><a class="markdownIt-Anchor" href="#store-distribution-key"></a> Store Distribution Key</h4>
+<p><img src="https://cdn.patrickwu.space/works/wslconf/images/store_distro_key.png" alt="View of a sample store distribution key" /></p>
+<p>Here are the details of the key values:</p>
+<ul>
+<li><code>BasePath</code>, REG_SZ: This defines where the WSL distribution source location is.</li>
+<li><code>DefaultEnvironment</code>, REG_MULTI_SZ: This defines the default environment value that passed to WSL Distribution when opening the WSL distribution.</li>
+<li><code>DefaultUid</code>, REG_DWORD: This defines the default user for the distro. The value uses the <code>uid</code> in Linux, for example, <code>root</code> is always <code>0</code>.</li>
+<li><code>DistributionName</code>, REG_SZ: This defines the registered name of the WSL distribution. This will be used in <code>wsl.exe --list</code> and in <code>wsl.exe -d</code>.</li>
+<li><code>Flags</code>, REG_DWORD: This defines the behavior of a distribution registered with the Windows Subsystem for Linux. The value passed is numeral combination of enumeration <code>WSL_DISTRIBUTION_FLAGS</code> , which is used by function <code>WslConfigureDistribution</code> in <code>wslapi.h</code>.  The default value is <code>WSL_DISTRIBUTION_FLAGS_DEFAULT</code>, which is 0x7(7) in older version and 0xf(15) in newer version. Known available single options are the following:
+<ul>
+<li>
+<p><code>WSL_DISTRIBUTION_FLAGS_NONE</code>: 0x0(0)</p>
+</li>
+<li>
+<p><code>WSL_DISTRIBUTION_FLAGS_ENABLE_INTEROP</code>: 0x1(1)</p>
+</li>
+<li>
+<p><code>WSL_DISTRIBUTION_FLAGS_APPEND_NT_PATH</code>: 0x2(2)</p>
+</li>
+<li>
+<p><code>WSL_DISTRIBUTION_FLAGS_ENABLE_DRIVE_MOUNTING</code>: 0x4(4)</p>
+<p>There is also one unknown undocumented flag with value 0x8(8) in the newer version. Related issue here: <a href="https://github.com/microsoft/WSL/issues/4251" target="_blank" rel="noopener">https://github.com/microsoft/WSL/issues/4251</a> (I personally suspect this is related to case-sensitive)</p>
+</li>
+</ul>
+</li>
+<li><code>KernelCommandLine</code>, REG_SZ: (2004 Only) This defines the command passed to WSL2 Kernel.</li>
+<li><code>PackageFamilyName</code>, REG_SZ: This defines the WSL distribution’s UWP package Family name.</li>
+<li><code>State</code>, REG_DWORD: This defines the state of WSL distribution. By default, it is in normal state 0x1(1). Here are also some other states:
+<ul>
+<li>Normal: 0x1(1)</li>
+<li>Installing: 0x3(3)</li>
+<li>Uninstalling: 0x4(4)</li>
+</ul>
+</li>
+<li><code>Version</code>, REG_DWORD: (2004 Only) This defines whether you are using WSL1 or WSL2. Value for WSL1 is 0x1(1); for WSL2, 0x2(2).</li>
+</ul>
+<h4 id="imported-distribution-key"><a class="markdownIt-Anchor" href="#imported-distribution-key"></a> Imported Distribution Key</h4>
+<p><img src="https://cdn.patrickwu.space/works/wslconf/images/imported_distro_key.png" alt="View of a sample imported distribution key" /></p>
+<p>As you can see, by default imported distribution do not have <code>DefaultEnvironment</code>‌, <code>KernelCommandLine</code> and <code>PackageFamilyName</code>. Also by default, <code>DefaultUid</code> will be <code>0</code> which is root.</p>
+<h3 id="execute-windows-executables-using-administrator-in-wsl"><a class="markdownIt-Anchor" href="#execute-windows-executables-using-administrator-in-wsl"></a> Execute Windows executables using Administrator in WSL</h3>
+<p>You can start using the <code>Start-Process</code> command in powershell, which will become something like the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell.exe -NonInteractive -NoProfile -Command &quot;Start-Process -FilePath powershell.exe -WorkingDirectory \&quot;$(wslpath -w $(pwd))\&quot; -ArgumentList &quot;-NonInteractive -NoProfile -Command &lt;Command&gt;&quot; -Verb RunAs&quot;</span><br></pre></td></tr></table></figure>
+<p>You might also want to tweak the line for your needs.</p>
+<p>If you find this is a bit too long or it is a bit complicated, you can use the following script from scoop creator Luke Sampson to do the thing: <a href="https://github.com/lukesampson/psutils/blob/master/sudo.ps1" target="_blank" rel="noopener">https://github.com/lukesampson/psutils/blob/master/sudo.ps1</a>. TO use this one, <code>-ExecutionPolicy ByPass</code> is suggested to use.</p>
+  	
+					
+	  </div>     
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

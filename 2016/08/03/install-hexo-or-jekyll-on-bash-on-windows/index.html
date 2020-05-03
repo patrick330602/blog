@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2016/08/03/install-hexo-or-jekyll-on-bash-on-windows/" />
+  <meta property="og:title" content="Install Hexo and Jekyll on Bash on Windows 10 | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Install Hexo and Jekyll on Bash on Windows 10 | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Install Hexo and Jekyll on Bash On Windows 10</h1>
+
+	---<br />
+	date: Aug 03, 2016<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Hexo/" rel="tag">Hexo</a><br />- <a class="tag-link" href="/tags/Jekyll/" rel="tag">Jekyll</a><br />- <a class="tag-link" href="/tags/WSL/" rel="tag">WSL</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>Recently, I try to migrate my Hexo and Jekyll system to Bash On Windows, and find it hard to be done as I have expected.</p>
+<a id="more"></a>
+<p>I therefore made two SH script for Bash for easy Installation:</p>
+<p><a href="https://raw.githubusercontent.com/patrick330602/jekyll-wsl-installer/master/jekyll.sh" target="_blank" rel="noopener">jekyll.sh</a> <a href="https://raw.githubusercontent.com/patrick330602/hexo-wsl-installer/master/hexo.sh" target="_blank" rel="noopener">hexo.sh</a></p>
+<p><strong>Update:</strong></p>
+<p>I made a even easier way to install:</p>
+<p>To Install Hexo, run:	<br />
+<code>bash &lt;(wget -qO- https://raw.githubusercontent.com/patrick330602/hexo-wsl-installer/master/hexo.sh)</code></p>
+<p>To Install Jekyll, run:	<br />
+<code>bash &lt;(wget -qO- https://raw.githubusercontent.com/patrick330602/jekyll-wsl-installer/master/jekyll.sh)</code></p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/haj.png" alt="Script Running" /></p>
+<p>But if you want to install by yourself, you can try the following steps.</p>
+<h2 id="steps-to-install-the-latest-version-of-the-jekyll-static-siteblog-generator-on-ubuntu-on-windows"><a class="markdownIt-Anchor" href="#steps-to-install-the-latest-version-of-the-jekyll-static-siteblog-generator-on-ubuntu-on-windows"></a> Steps to install the latest version of the Jekyll static site/blog generator on Ubuntu on Windows</h2>
+<h3 id="steps"><a class="markdownIt-Anchor" href="#steps"></a> Steps</h3>
+<p><strong>Step 0: Add the brightbox repository</strong><br />
+<code>sudo apt-add-repository ppa:brightbox/ruby-ng</code><br />
+<code>sudo apt-get update</code><br />
+<strong>Step 1: Install ruby 2.3 and -dev package</strong><br />
+<code>sudo apt-get install ruby2.3 ruby2.3-dev</code><br />
+Verify the install by running <code>ruby -v</code><br />
+You should get something similar to<br />
+<em>ruby 2.3.1p112 (2016-04-26 revision 54768)</em><br />
+<strong>Step 2: update ruby gems</strong><br />
+<code>sudo gem update --system</code><br />
+<strong>Step 3: install build-essential</strong><br />
+<code>sudo apt-get install build-essential --no-install-recommends</code><br />
+<strong>Step 4: install jekyll itself</strong><br />
+<code>sudo gem install jekyll</code><br />
+Verify the install by running <code>jekyll -v</code><br />
+You should get something similar to<br />
+<em>jekyll 3.1.6</em></p>
+<h3 id="bonus-steps"><a class="markdownIt-Anchor" href="#bonus-steps"></a> Bonus steps</h3>
+<ul>
+<li>
+<p>If you’re using pagination:</p>
+<p><code>sudo gem install jekyll-paginate</code></p>
+</li>
+<li>
+<p>To save yourself some typing add the following to your .bashrc</p>
+<p><code>alias jek='jekyll serve --force_polling --incremental'</code></p>
+</li>
+</ul>
+<p>That’s all - happy blogging!</p>
+<h3 id="anti-steps"><a class="markdownIt-Anchor" href="#anti-steps"></a> Anti-steps</h3>
+<ul>
+<li>Don’t <code>apt-get install jekyll</code> - it’s version 0.11.2 from 2011, while the latest gem is 3.1.6 as of May 2016.</li>
+<li>Don’t <code>apt-get install ruby</code> - it’s version 1.9 and Jekyll 3 requires ruby &gt;= 2.0.</li>
+<li>Don’t run jekyll with –watch - inotify is not (yet) working properly.</li>
+</ul>
+<h3 id="credits"><a class="markdownIt-Anchor" href="#credits"></a> Credits</h3>
+<p><a href="https://www.brightbox.com/blog/2016/01/06/ruby-2-3-ubuntu-packages/" target="_blank" rel="noopener">https://www.brightbox.com/blog/2016/01/06/ruby-2-3-ubuntu-packages/</a><br />
+<a href="https://talk.jekyllrb.com/t/error-failed-to-build-gem-native-extension/997" target="_blank" rel="noopener">https://talk.jekyllrb.com/t/error-failed-to-build-gem-native-extension/997</a><br />
+<a href="https://github.com/Microsoft/BashOnWindows/issues/433" target="_blank" rel="noopener">https://github.com/Microsoft/BashOnWindows/issues/433</a></p>
+<p>Retrieve from:<a href="http://biserkov.com/blog/2016/06/04/Steps-to-install-Jekyll-on-Ubuntu-on-Windows/" target="_blank" rel="noopener">http://biserkov.com/blog/2016/06/04/Steps-to-install-Jekyll-on-Ubuntu-on-Windows/</a></p>
+<h2 id="steps-to-install-the-latest-version-of-hexo-on-ubuntu-on-windows"><a class="markdownIt-Anchor" href="#steps-to-install-the-latest-version-of-hexo-on-ubuntu-on-windows"></a> Steps to install the latest version of Hexo on Ubuntu on Windows</h2>
+<h3 id="steps-2"><a class="markdownIt-Anchor" href="#steps-2"></a> Steps</h3>
+<p><strong>Step 1: Install node.js and npm from apt-get</strong><br />
+<code>sudo apt-get install nodejs npm</code><br />
+<strong>Step 2:Create a symbolic link for node</strong><br />
+<code>sudo ln -s /usr/bin/nodejs /usr/bin/node</code><br />
+<strong>Step 3:Update Node Package Manager</strong><br />
+<code>sudo npm install npm -g</code><br />
+<em>Note: You might need to run the code twice</em><br />
+<strong>Step 4:Install Module n</strong><br />
+<code>sudo npm install n -g</code><br />
+<strong>Step 5:Update Node.js using module n</strong><br />
+<code>sudo n stable</code><br />
+<strong>Step 6:Finally, you can install Hexo without problem</strong><br />
+<code>sudo npm install -g hexo-cli</code></p>
+<h3 id="anti-steps-2"><a class="markdownIt-Anchor" href="#anti-steps-2"></a> Anti-steps</h3>
+<p>Don’t run hexo server or run hexo  with -watch - inotify is not (yet) working properly.</p>
+<h3 id="credits-2"><a class="markdownIt-Anchor" href="#credits-2"></a> Credits</h3>
+<p><a href="http://stackoverflow.com/questions/10075990/upgrading-node-js-to-latest-version" target="_blank" rel="noopener">http://stackoverflow.com/questions/10075990/upgrading-node-js-to-latest-version</a><br />
+<a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank" rel="noopener">https://docs.npmjs.com/getting-started/installing-node</a></p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2016/08/23/wsl-lde-on-windows/">
+      Install LDE On windows 10(Updated)
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2016/07/13/wsl-ubuntu-desktop-on-windows/">
+        Enable Ubuntu Desktop Environment On Windows 10
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2019/10/28/wsl-fcitx-setup-cn/" />
+  <meta property="og:title" content="在WSL上配置输入法 | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  在WSL上配置输入法 | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>在WSL上配置输入法</h1>
+
+	---<br />
+	date: Oct 28, 2019<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/WSL/" rel="tag">WSL</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<h1 id="tldr"><a class="markdownIt-Anchor" href="#tldr"></a> TL;DR</h1>
+<p>这篇文章会简述如何在WSL上配置输入法,以进行中日韩输入。安装以 Ubuntu 为例。</p>
+<h2 id="为啥"><a class="markdownIt-Anchor" href="#为啥"></a> 为啥?</h2>
+<p>WSL 在 GUI 下并不支持 Windows CJK 输入法的直接输入，所以要配置独立的输入法。这种方法既适用于Linux桌面环境，也适用于多窗口。</p>
+<h2 id="安装-fcitx-小企鹅输入法"><a class="markdownIt-Anchor" href="#安装-fcitx-小企鹅输入法"></a> 安装 fcitx （小企鹅输入法）</h2>
+<p>输入以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install fcitx fonts-noto-cjk fonts-noto-color-emoji dbus-x11</span><br></pre></td></tr></table></figure>
+<p>这会安装 CJK 字体和 fcitx 核心。</p>
+<p>然后,安装你想要使用的输入法。下表列出了一些比较常用的 fcitx 输入法：</p>
+<table>
+<thead>
+<tr>
+<th>语言</th>
+<th>输入法</th>
+<th>安装包名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中文</td>
+<td>基于<code>sunpinyin</code>引擎的拼音输入法</td>
+<td><code>fcitx-sunpinyin</code></td>
+</tr>
+<tr>
+<td>中文</td>
+<td>基于<code>libpinyin</code>引擎的拼音输入法</td>
+<td><code>fcitx-libpinyin</code></td>
+</tr>
+<tr>
+<td>中文</td>
+<td>谷歌拼音输入法</td>
+<td><code>fcitx-googlepinyin</code></td>
+</tr>
+<tr>
+<td>中文</td>
+<td>基于<code>rime</code>引擎的输入法</td>
+<td><code>fcitx-rime</code></td>
+</tr>
+<tr>
+<td>中文</td>
+<td>新酷音输入法</td>
+<td><code>fcitx-chewing</code></td>
+</tr>
+<tr>
+<td>日文</td>
+<td>基于<code>Anthy</code>引擎的日文输入法</td>
+<td><code>fcitx-anthy</code></td>
+</tr>
+<tr>
+<td>日文</td>
+<td>基于<code>mozc</code>引擎的日文输入法</td>
+<td><code>fcitx-mozc</code></td>
+</tr>
+<tr>
+<td>日文</td>
+<td>假名-汉字转换器(kkc)日文输入法</td>
+<td><code>fcitx-kkc</code> <code>fcitx-kkc-dev</code></td>
+</tr>
+<tr>
+<td>韩文</td>
+<td>韩语输入法</td>
+<td><code>fcitx-hangul</code></td>
+</tr>
+<tr>
+<td>越南文</td>
+<td>基于<code>unikey</code>引擎的越南文输入法</td>
+<td><code>fcitx-unikey</code></td>
+</tr>
+<tr>
+<td>僧伽罗文</td>
+<td>僧伽罗文输入法</td>
+<td><code>fcitx-sayura</code></td>
+</tr>
+<tr>
+<td>-</td>
+<td>码表类输入法</td>
+<td><code>fcitx-table</code> <code>fcitx-table-all</code></td>
+</tr>
+</tbody>
+</table>
+<p>使用 <code>sudo apt install &lt;安装包名称&gt;</code>进行安装。</p>
+<h2 id="配置输入环境"><a class="markdownIt-Anchor" href="#配置输入环境"></a> 配置输入环境</h2>
+<p>首先使用root账号生成dbus机器码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dbus-uuidgen &gt; /var/lib/dbus/machine-id</span><br></pre></td></tr></table></figure>
+<p>用<code>root</code>账号创建<code>/etc/profile.d/fcitx.sh</code>文件, 内容如下:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">export QT_IM_MODULE=fcitx</span><br><span class="line">export GTK_IM_MODULE=fcitx</span><br><span class="line">export XMODIFIERS=@im=fcitx</span><br><span class="line">export DefaultIMModule=fcitx</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">可选，fcitx 自启</span></span><br><span class="line">fcitx-autostart &amp;&gt;/dev/null</span><br></pre></td></tr></table></figure>
+<h2 id="初期配置"><a class="markdownIt-Anchor" href="#初期配置"></a> 初期配置</h2>
+<p>首先确保你的 X 服务器已启动，并配置好了<code>DISPLAY</code>。WSL2 的话，请确保 WSL2 的公共 IP 可以与 X 服务器建立连接。</p>
+<p>运行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export GTK_IM_MODULE=fcitx</span><br><span class="line">export QT_IM_MODULE=fcitx</span><br><span class="line">export XMODIFIERS=@im=fcitx</span><br><span class="line">export DefaultIMModule=fcitx</span><br><span class="line">fcitx-autostart &amp;&gt;/dev/null</span><br></pre></td></tr></table></figure>
+<p><strong>fcitx</strong> 会启动。</p>
+<p>运行 <code>fcitx-config-gtk3</code>,会出现如图的界面：</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/fcitx-1.png" alt="" /></p>
+<p>安装好后，如果没有看见输入法，点击左下角的**+**，搜索安装好的输入法：</p>
+<p><img src="//cdn.patrickwu.space/posts/dev/wsl/fcitx-2.png" alt="" /></p>
+<p>选择点击 OK 即可添加。</p>
+<p>然后选择 <strong>Global Config</strong> ，将 <strong>Trigger Input Method</strong> 与 <strong>Scroll between Input Method</strong> 的快捷键修改掉（与微软拼音输入法快捷键冲突）：</p>
+<p><img src="//cdn.patrickwu.space/posts/dev/wsl/fcitx-3.png" alt="" /></p>
+<p>至此，配置完成！</p>
+<h2 id="效果"><a class="markdownIt-Anchor" href="#效果"></a> 效果</h2>
+<p>在任意GUI应用用 <strong>Trigger Input</strong> 设置的快捷键启用输入法，用 <strong>Scroll between Input Method</strong> 的快捷键切换输入法，效果如下：</p>
+<p><img src="//cdn.patrickwu.space/posts/dev/wsl/fcitx-4.png" alt="" /></p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2019/10/29/wsl2-darling-build-cn/">
+      在WSL2上编译并使用Darling
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2019/10/28/wsl-fcitx-setup/">
+        Setup Input Method for WSL
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

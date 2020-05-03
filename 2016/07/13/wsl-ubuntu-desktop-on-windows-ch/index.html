@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2016/07/13/wsl-ubuntu-desktop-on-windows-ch/" />
+  <meta property="og:title" content="在Windows 10下启用Ubuntu桌面环境 | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  在Windows 10下启用Ubuntu桌面环境 | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>在Windows 10下启用Ubuntu桌面环境</h1>
+
+	---<br />
+	date: Jul 13, 2016<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/WSL/" rel="tag">WSL</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<blockquote>
+<p>从BashOnWindows GitHub网站上的<a href="https://github.com/Microsoft/BashOnWindows/issues/637" target="_blank" rel="noopener">文章</a> 进行整理和翻译。</p>
+</blockquote>
+<p>现在，只要你利用X server, CCSM, Compiz和其他组件，与Bash On Ubuntu On Windows相互配合，你现在可以在Windows 10上直接运行Linux桌面环境.</p>
+<blockquote>
+<p>除非你是Linux发烧友，不建议使用此Linux桌面环境。</p>
+</blockquote>
+<h2 id="unity桌面环境"><a class="markdownIt-Anchor" href="#unity桌面环境"></a> Unity桌面环境</h2>
+<ol>
+<li>
+<p>在 Bash On Windows运行以下代码:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"export DISPLAY=:0.0"</span> &gt;&gt; ~/.bashrc</span><br><span class="line">sudo sed -i <span class="string">'s$&lt;listen&gt;.*&lt;/listen&gt;$&lt;listen&gt;tcp:host=localhost,port=0&lt;/listen&gt;$'</span> /etc/dbus-1/session.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>安装VcXsrv并打开<strong>XLaunch</strong>。 选择 “One large window” 并在<strong>display number</strong> 输入0，如图：</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/lde-on-win10/1.png" alt="" /><br />
+一路next下去就行，直到他完成配置</p>
+</li>
+<li>
+<p>打开Bash On Windows并安装 <strong>ubuntu-desktop</strong>，<strong>unity</strong> 和 <strong>ccsm</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ubuntu-desktop unity compizconfig-settings-manager</span><br></pre></td></tr></table></figure>
+<p>输出显示：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export DISPLAY=localhost:0</span><br></pre></td></tr></table></figure>
+<p>并打开<strong>ccsm</strong>。<br />
+<img src="https://cdn.patrickwu.space/posts/dev/wsl/lde-on-win10/2.png" alt="" /></p>
+</li>
+<li>
+<p><strong>ccsm</strong>中可能显示不出鼠标指针，因为没有加载玩所有内容。如图选择插件。</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/lde-on-win10/3.png" alt="" /><br />
+<img src="https://cdn.patrickwu.space/posts/dev/wsl/lde-on-win10/4.png" alt="" /></p>
+</li>
+<li>
+<p>现在关闭ccsm并打开 <strong>compiz</strong>.<br />
+<img src="https://cdn.patrickwu.space/posts/dev/wsl/lde-on-win10/5.png" alt="" /><br />
+Compiz会花些时间载入，稍稍等待下桌面环境就会出现<br />
+<img src="https://cdn.patrickwu.space/posts/dev/wsl/lde-on-win10/6.png" alt="" /></p>
+</li>
+<li>
+<p>关闭桌面环境的方法只能是关闭bash窗口，或者杀Compiz进程。</p>
+</li>
+</ol>
+<h2 id="xfce桌面环境"><a class="markdownIt-Anchor" href="#xfce桌面环境"></a> XFCE桌面环境</h2>
+<ol>
+<li>使用与Unity同样的方法配置VcXsrv。（1-4步）</li>
+<li>安装<strong>xfce4-session</strong>：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install xfce4-session</span><br></pre></td></tr></table></figure>
+并运行<strong>xfce4-session</strong>.</li>
+</ol>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2016/07/13/wsl-ubuntu-desktop-on-windows/">
+      Enable Ubuntu Desktop Environment On Windows 10
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2016/07/13/github-multiple-email-change-cn/">
+        如何批量更改commit的郵箱
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

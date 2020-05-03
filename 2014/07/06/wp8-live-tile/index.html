@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2014/07/06/wp8-live-tile/" />
+  <meta property="og:title" content="如何计划 Windows Phone 的磁贴更新 | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  如何计划 Windows Phone 的磁贴更新 | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>如何计划 Windows Phone 的磁贴更新</h1>
+
+	---<br />
+	date: Jul 06, 2014<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/C/" rel="tag">C#</a><br />- <a class="tag-link" href="/tags/WP8/" rel="tag">WP8</a><br />- <a class="tag-link" href="/tags/WP8-1/" rel="tag">WP8.1</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>本主题介绍使用 <a href="http://msdn.microsoft.com/zh-cn/library/microsoft.phone.shell.shelltileschedule.aspx" target="_blank" rel="noopener">ShellTileSchedule</a> 更新应用程序磁贴的背景图像所需的步骤。<a href="http://msdn.microsoft.com/zh-cn/library/microsoft.phone.shell.shelltileschedule.aspx" target="_blank" rel="noopener">ShellTileSchedule</a> 也可以用于更新次要磁贴。<a href="http://msdn.microsoft.com/zh-cn/library/hh202948.aspx" target="_blank" rel="noopener">Windows Phone 的磁贴概述</a>包含磁贴属性以及可以用于更新磁贴的各种方法。</p>
+<blockquote>
+<p>磁贴正面的背景图像是唯一一个可以使用 ShellTileSchedule 进行更新的属性。</p>
+</blockquote>
+<p>可以在 <a href="http://msdn.microsoft.com/zhcn/library/ff431744.aspx" target="_blank" rel="noopener">Windows Phone 的代码示例</a>中找到这个已完成的示例。</p>
+<a id="more"></a>
+<h2 id="设置磁贴计划"><a class="markdownIt-Anchor" href="#设置磁贴计划"></a> 设置磁贴计划</h2>
+<p><a href="http://msdn.microsoft.com/zh-cn/library/microsoft.phone.shell.shelltileschedule.aspx" target="_blank" rel="noopener">ShellTileSchedule</a> 允许您设置将更新磁贴的背景图像的一次性计划或定期计划。即使您的应用程序处于非活动状态，该计划仍然可以继续运行。ShellTileSchedule 还可以用于停止为您的应用程序运行的任何计划。每当应用程序由于计划失败而启动时，应用程序都应该存储其 ShellTileSchedule 设置并启动该计划，即使应用程序不再运行，也可以取消计划。</p>
+<p><a href="http://msdn.microsoft.com/zh-cn/library/microsoft.phone.shell.shelltileschedule.aspx" target="_blank" rel="noopener">ShellTileSchedule</a> 示例是一个具有四个按钮的简单程序。这四个按钮分别是：</p>
+<ol>
+<li>更新磁贴一次。</li>
+<li>创建一个更新磁贴次数不确定的计划。</li>
+<li>创建一个更新磁贴指定次数的计划。</li>
+<li>停止正在运行的任何计划。</li>
+</ol>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wp/IC505451.jpg" alt="AP_Tiles_TileScheduleSample" /></p>
+<blockquote>
+<p>请记住，将应用程序的应用程序磁贴固定到“开始”屏幕以便测试磁贴更新功能。</p>
+</blockquote>
+<h2 id="创建应用程序-ui"><a class="markdownIt-Anchor" href="#创建应用程序-ui"></a> 创建应用程序 UI</h2>
+<ol>
+<li>在 Visual Studio 2010 Express for Windows Phone 中，通过选择**“文件 | 新建项目”**菜单命令创建一个新项目。</li>
+<li>将显示“新建项目”窗口。展开 Visual C# 模板，然后选择**“Silverlight for Windows Phone”**模板。</li>
+<li>选择**“Windows Phone 应用程序”**模板。用您选择的名称填写“名称”。</li>
+<li>单击**“确定”**。将显示“新建 Windows Phone 应用程序”窗口。</li>
+<li>在**“Windows Phone OS 目标版本”<strong>菜单中，确保</strong>“Windows Phone OS 7.1”**处于选定状态。</li>
+<li>单击**“确定”**。一个新项目便创建完成，并在 Visual Studio 设计器窗口中打开 MainPage.xaml。</li>
+<li>在 MainPage.xaml 中，将名为 ContentPanel 的 Grid 替换为以下代码。该代码将为我们的 UI 创建四个按钮。</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Grid</span> <span class="attr">x:Name</span>=<span class="string">"ContentPanel"</span> <span class="attr">Grid.Row</span>=<span class="string">"1"</span> <span class="attr">Margin</span>=<span class="string">"12,0,12,0"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Button</span> <span class="attr">Content</span>=<span class="string">"Start One Time Schedule"</span> <span class="attr">Height</span>=<span class="string">"72"</span> <span class="attr">HorizontalAlignment</span>=<span class="string">"Center"</span> <span class="attr">Margin</span>=<span class="string">"38,42,38,0"</span> <span class="attr">Name</span>=<span class="string">"buttonOneTime"</span> <span class="attr">VerticalAlignment</span>=<span class="string">"Top"</span> <span class="attr">Width</span>=<span class="string">"400"</span> <span class="attr">Click</span>=<span class="string">"buttonOneTime_Click"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Button</span> <span class="attr">Content</span>=<span class="string">"Start Indefinite Schedule"</span> <span class="attr">Height</span>=<span class="string">"72"</span> <span class="attr">HorizontalAlignment</span>=<span class="string">"Center"</span>  <span class="attr">Margin</span>=<span class="string">"38,120,38,0"</span> <span class="attr">Name</span>=<span class="string">"buttonIndefinite"</span> <span class="attr">VerticalAlignment</span>=<span class="string">"Top"</span> <span class="attr">Width</span>=<span class="string">"400"</span> <span class="attr">Click</span>=<span class="string">"buttonIndefinite_Click"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Button</span> <span class="attr">Content</span>=<span class="string">"Start Defined Count Schedule"</span> <span class="attr">Height</span>=<span class="string">"72"</span> <span class="attr">HorizontalAlignment</span>=<span class="string">"Center"</span>  <span class="attr">Margin</span>=<span class="string">"38,198,38,0"</span> <span class="attr">Name</span>=<span class="string">"buttonDefined"</span> <span class="attr">VerticalAlignment</span>=<span class="string">"Top"</span> <span class="attr">Width</span>=<span class="string">"400"</span>  <span class="attr">Click</span>=<span class="string">"buttonDefined_Click"</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Button</span> <span class="attr">Content</span>=<span class="string">"Stop Schedule"</span> <span class="attr">Height</span>=<span class="string">"72"</span> <span class="attr">HorizontalAlignment</span>=<span class="string">"Center"</span> <span class="attr">Margin</span>=<span class="string">"38,276,38,0"</span> <span class="attr">Name</span>=<span class="string">"buttonStop"</span> <span class="attr">VerticalAlignment</span>=<span class="string">"Top"</span> <span class="attr">Width</span>=<span class="string">"400"</span> <span class="attr">Click</span>=<span class="string">"buttonStop_Click"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Grid</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="创建磁贴计划"><a class="markdownIt-Anchor" href="#创建磁贴计划"></a> 创建磁贴计划</h3>
+<ol>
+<li>向 MainPage.xaml.cs 文件的顶部添加一个 using 指令并提供包含 <a href="http://msdn.microsoft.com/zh-cn/library/microsoft.phone.shell.shelltileschedule.aspx" target="_blank" rel="noopener">ShellTileSchedule</a> 的命名空间的名称。</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> Microsoft.Phone.Shell;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>声明并初始化用于计划和状态的变量。</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    MainPage : PhoneApplicationPage</span><br><span class="line">&#123;</span><br><span class="line">    ShellTileSchedule SampleTileSchedule =  ShellTileSchedule();     TileScheduleRunning = ;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>添加用于执行一次性更新的代码。</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  buttonOneTime_Click( sender, RoutedEventArgs e)</span><br><span class="line">&#123;    </span><br><span class="line">    SampleTileSchedule.Recurrence = UpdateRecurrence.Onetime;    </span><br><span class="line">    SampleTileSchedule.StartTime = DateTime.Now;</span><br><span class="line">    SampleTileSchedule.RemoteImageUri =  Uri();</span><br><span class="line">    SampleTileSchedule.Start();</span><br><span class="line">    TileScheduleRunning = ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>添加用于设置运行次数不确定的计划的代码。请记住，如果该计划失败次数太多，将取消该计划。</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  buttonIndefinite_Click( sender, RoutedEventArgs e)</span><br><span class="line">&#123;    </span><br><span class="line">    SampleTileSchedule.Recurrence = UpdateRecurrence.Interval;    </span><br><span class="line">    SampleTileSchedule.Interval = UpdateInterval.EveryHour;</span><br><span class="line">    SampleTileSchedule.RemoteImageUri =  Uri();</span><br><span class="line">    SampleTileSchedule.Start();</span><br><span class="line">    TileScheduleRunning = ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>添加用于设置某个计划的代码，该计划将更新磁贴无限次。同样，如果该计划失败次数太多，将取消该计划。</li>
+</ol>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  buttonDefined_Click( sender, RoutedEventArgs e)</span><br><span class="line">&#123;    </span><br><span class="line">    SampleTileSchedule.Recurrence = UpdateRecurrence.Interval;    </span><br><span class="line">    SampleTileSchedule.Interval = UpdateInterval.EveryHour;    </span><br><span class="line">    SampleTileSchedule.MaxUpdateCount = <span class="number">50</span>;</span><br><span class="line">    SampleTileSchedule.RemoteImageUri =  Uri();</span><br><span class="line">    SampleTileSchedule.Start();</span><br><span class="line">    TileScheduleRunning = ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>添加用于停止任何正在运行的计划的代码。请注意，我们如何通过首先启动计划来附加到该计划。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  buttonStop_Click( sender, RoutedEventArgs e)</span><br><span class="line">&#123;    </span><br><span class="line">     (!TileScheduleRunning)</span><br><span class="line">    &#123;</span><br><span class="line">        buttonIndefinite_Click(sender, e);</span><br><span class="line">    &#125;</span><br><span class="line">    SampleTileSchedule.Stop();</span><br><span class="line">    TileScheduleRunning = ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调试更新计划可能具有挑战性。为了省电，对更新进行批处理，因此可能需要多达约一小时的时间才能看到更新后的图像。当设备锁定时将不会进行更新，因为用户将看不到更新。</p>
+<h3 id="运行和调试应用程序的步骤"><a class="markdownIt-Anchor" href="#运行和调试应用程序的步骤"></a> 运行和调试应用程序的步骤</h3>
+<ol>
+<li>通过选择**“调试 | 启动调试”**菜单命令运行应用程序。</li>
+<li>当模拟器初始化并且您的程序正在运行时，按模拟器上的**“开始”<strong>按键以进入“开始”屏幕。导航到应用程序列表并找到您的应用程序。长按应用程序名称，然后从上下文菜单中选择</strong>“固定到‘开始’屏幕”**。应用程序磁贴便固定到“开始”屏幕。</li>
+<li>按**“返回”**按键返回您的应用程序。按应用程序上的其中一个按钮启动某个计划。</li>
+<li>返回“开始”屏幕。等待该计划运行，以查看结果。请记住，此过程可能需要一小段时间，因为需要对更新进行批处理。</li>
+</ol>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wp/IC505452.jpg" alt="AP_Tiles_TileScheduleResult" /></p>
+<h2 id="计划次要磁贴"><a class="markdownIt-Anchor" href="#计划次要磁贴"></a> 计划次要磁贴</h2>
+<p>尽管该示例没有次要磁贴，但您也可以通过向 ShellTileSchedule 构造函数传递磁贴信息来为次要磁贴设置计划。下面的示例演示了如何为每个现有磁贴设置计划。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> (ShellTile TileToSchedule  ShellTile.ActiveTiles)</span><br><span class="line">&#123;</span><br><span class="line">    ShellTileSchedule mySchedule =  ShellTileSchedule(TileToSchedule);</span><br><span class="line">    mySchedule.Interval = UpdateInterval.EveryHour;</span><br><span class="line">    mySchedule.Recurrence = UpdateRecurrence.Interval;</span><br><span class="line">    mySchedule.RemoteImageUri = imageURI;</span><br><span class="line">    mySchedule.Start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2014/07/08/wp8-music-stop/">
+      WP8停止音乐实现办法
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2014/07/06/wp8-flashlight-code/">
+        Window Phone 8手电筒代码
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

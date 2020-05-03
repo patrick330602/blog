@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2017/03/16/ubuntu-touch-surfacebook/" />
+  <meta property="og:title" content="Enable Touch on Ubuntu on Surface Book 启用Surface Book上Ubuntu的触屏 | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Enable Touch on Ubuntu on Surface Book 启用Surface Book上Ubuntu的触屏 | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Enable touch on Ubuntu on Surface Book 启用Surface Book上Ubuntu的触屏</h1>
+
+	---<br />
+	date: Mar 16, 2017<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Linux/" rel="tag">Linux</a><br />- <a class="tag-link" href="/tags/Surface/" rel="tag">Surface</a><br />- <a class="tag-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>I used to try to enable the touch screen on Surface Book but failed. Fortunately, someone find out a way to enable touch… on Surface Pro 4. Using his idea with some modification, I successfully enabled touch on Surface Book. Now everything work except hibernating system since it sleeps like dead.</p>
+<a id="more"></a>
+<p>I will be using /u/cantenna1’s kernel in this post.</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/music_on_bash.png" alt="" /></p>
+<blockquote>
+<p>Retrived from <a href="https://www.reddit.com/r/SurfaceLinux/comments/4t64zt/getting_the_sp4_running_with_ubuntu_1604/" target="_blank" rel="noopener">post</a> in Reddit /r/SurfaceLinux and modified</p>
+</blockquote>
+<h3 id="1shrink-the-windows-partition"><a class="markdownIt-Anchor" href="#1shrink-the-windows-partition"></a> 1.Shrink the windows partition</h3>
+<p>Right click Start -&gt; Disk Management. Then right click on the windows partition and go shrink volume and reduce it as much as it will let you (Mine let me shrink to 120 GB).</p>
+<h3 id="2make-a-bootable-ubuntu-usb-drive"><a class="markdownIt-Anchor" href="#2make-a-bootable-ubuntu-usb-drive"></a> 2.Make a bootable Ubuntu usb drive</h3>
+<p>See <a href="http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-windows" target="_blank" rel="noopener">http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-windows</a></p>
+<h3 id="3plug-in-a-usb-hub"><a class="markdownIt-Anchor" href="#3plug-in-a-usb-hub"></a> 3.Plug in a usb hub</h3>
+<p>The keyboard and touch pad won’t work for the next few steps so I needed a usb hub to plug in a usb keyboard, mouse and the bootable usb drive. Or if you think you are not tired or you are bored, you can use on screen typing with OnBoard built-in Ubuntu Installer(Settings -&gt; Universal Access -&gt; Typing -&gt; OnScreen Keyboard)</p>
+<h3 id="4boot-from-usb-and-install-ubuntu"><a class="markdownIt-Anchor" href="#4boot-from-usb-and-install-ubuntu"></a> 4.Boot from usb and install Ubuntu</h3>
+<p>Turn the surface off and then hold the volume down button while powering on to boot to BIOS. There change the boot order so that usb drives boot before the internal drive.</p>
+<p>then you should be able to boot off the Ubuntu usb stick now. Although the original writer chose all the default options and installed alongside windows, I personally suggest using custom drive partition, i.e, separate <code>/boot</code> to prevent direct corruption to the system EFI partition.</p>
+<h3 id="5install-a-patched-kernel"><a class="markdownIt-Anchor" href="#5install-a-patched-kernel"></a> 5.Install a patched kernel</h3>
+<p>You should hopefully now be able to boot to a working Ubuntu, albeit with a ton of issues (no keyboard / touch pad among other things). You now have to update the kernel to one that has support for these features. I personally uses /u/cantenna1’s kernel.</p>
+<p>This kernel gets the touchscreen working, but the physical buttons will not work and the i915 GuC version used is a little buggy and caused me some issues with external monitors.</p>
+<p>Further details on this kernel can be found in this post <a href="https://www.reddit.com/r/SurfaceLinux/comments/4vbzki/androidx86_with_the_new_ipts_driver/d5xs969" target="_blank" rel="noopener">https://www.reddit.com/r/SurfaceLinux/comments/4vbzki/androidx86_with_the_new_ipts_driver/d5xs969</a> and in the comments by /u/cantenna1 and /u/arda_coskunses in this post. Details on the patch for the touch support can be found at <a href="https://github.com/ipts-linux-org/ipts-linux/wiki" target="_blank" rel="noopener">https://github.com/ipts-linux-org/ipts-linux/wiki</a>. The patch for WIFI is from <a href="https://github.com/matthewwardrop/linux-surfacepro3/blob/master/wifi.patch" target="_blank" rel="noopener">https://github.com/matthewwardrop/linux-surfacepro3/blob/master/wifi.patch</a>.</p>
+<p>To install the kernel download this file <a href="https://mega.nz/#!nJJ2DSJZ!4BYSRvzp3hb6NxU5X6_38xFkpuUEmSNvRo2px2TCDqc" target="_blank" rel="noopener">https://mega.nz/#!nJJ2DSJZ!4BYSRvzp3hb6NxU5X6_38xFkpuUEmSNvRo2px2TCDqc</a> and extract its contents. Now open a terminal cd to the location of the files and install them by going</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i <span class="string">'./linux-headers-4.4.0-rc8touchkernel+_1_amd64.deb'</span></span><br><span class="line">sudo dpkg -i <span class="string">'./linux-image-4.4.0-rc8touchkernel+_1_amd64.deb'</span></span><br></pre></td></tr></table></figure>
+<h3 id="6copy-binary-files-needed-by-the-touch-drivers"><a class="markdownIt-Anchor" href="#6copy-binary-files-needed-by-the-touch-drivers"></a> 6.Copy binary files needed by the touch drivers</h3>
+<p>To work, the touch drivers need some information stored in binaries on your windows partition. You now need to copy them over to the Ubuntu partition and ensure the drivers can find them.</p>
+<blockquote>
+<p>Note: If you cannot find the files or have deleted your windows partition you can download them here <a href="https://www.microsoft.com/en-us/download/details.aspx?id=49498" target="_blank" rel="noopener">https://www.microsoft.com/en-us/download/details.aspx?id=49498</a>. Select the zip download option and once downloaded you will find the files in the Drivers/System/SurfaceTouchServicingML folder.</p>
+</blockquote>
+<p>To do this first ensure your windows partition is mounted (the easiest way to do this is just to open it in the files browser). Now create a folder named ‘itouch’ in your root directory and copy the binaries to it</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /itouch</span><br><span class="line">sudo cp /media/YOUR_USERNAME_HERE/YOUR_DRIVE_NAME_HERE/Windows/INF/PreciseTouch/Intel/* /itouch</span><br></pre></td></tr></table></figure>
+<p>You now need to create links to the files giving them names that match what the driver will search for</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -sf /itouch/SurfaceTouchServicingKernelSKLMSHW0076.bin /itouch/vendor_kernel_skl.bin</span><br><span class="line">sudo ln -sf /itouch/SurfaceTouchServicingSFTConfigMSHW0076.bin /itouch/integ_sft_cfg_skl.bin</span><br><span class="line">sudo ln -sf /itouch/SurfaceTouchServicingDescriptorMSHW0076.bin /itouch/vendor_descriptor.bin</span><br><span class="line">sudo ln -sf /itouch/iaPreciseTouchDescriptor.bin /itouch/integ_descriptor.bin</span><br></pre></td></tr></table></figure>
+<h3 id="7change-the-kernel-that-boots-by-default"><a class="markdownIt-Anchor" href="#7change-the-kernel-that-boots-by-default"></a> 7.Change the kernel that boots by default</h3>
+<p>Everything is now installed, however there is a good chance that your laptop won’t boot the right kernel by default. You can select it manually in grub at boot by going Advanced options for Ubuntu -&gt; Ubuntu, with Linux 4.4.0-rc8touchkernel+. To switch out the default you will need to edit grub (I did this with grub-customizer <a href="http://www.howtogeek.com/howto/43471/how-to-configure-the-linux-grub2-boot-menu-the-easy-way/" target="_blank" rel="noopener">http://www.howtogeek.com/howto/43471/how-to-configure-the-linux-grub2-boot-menu-the-easy-way/</a> followed by sudo update-grub)</p>
+<h3 id="8prevent-the-laptop-suspending-when-the-lid-closes"><a class="markdownIt-Anchor" href="#8prevent-the-laptop-suspending-when-the-lid-closes"></a> 8.Prevent the laptop suspending when the lid closes.</h3>
+<p>Once suspended it currently cannot wake, to get around this I prevent closing the lid from doing anything. To do this go</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/UPower/UPower.conf</span><br></pre></td></tr></table></figure>
+<p>and change <code>IgnoreLid=false</code> to <code>IgnoreLid=true</code>.</p>
+<p>For GNOME, you also have to turn off the suspending in the <code>gnome-tweak-tool</code>.</p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2017/03/16/ubuntu-touch-surfacebook-cn/">
+      启用Surface Book上Ubuntu的触屏
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2017/03/15/MSSS-photograph-competition/">
+        MSSS攝影大賽計劃書（第三版）
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2018/06/30/lets-talk-about-ssr/" />
+  <meta property="og:title" content="Let&#39;s Talk About Shadowsocks R | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Let&#39;s Talk About Shadowsocks R | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Let&#39;s talk about Shadowsocks R</h1>
+
+	---<br />
+	date: Jun 30, 2018<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/SSR/" rel="tag">SSR</a><br />- <a class="tag-link" href="/tags/Server/" rel="tag">Server</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<h1 id="tldr"><a class="markdownIt-Anchor" href="#tldr"></a> TL;DR</h1>
+<p>This article is about how to configure Shadowsocks R properly in Windows 10 Linux Subsystem, UWP and more, and some extra stuff I want to talk about.</p>
+<a id="more"></a>
+<h2 id="some-key-notes-first"><a class="markdownIt-Anchor" href="#some-key-notes-first"></a> Some key notes first</h2>
+<h3 id="install"><a class="markdownIt-Anchor" href="#install"></a> Install</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh</span><br><span class="line">chmod +x shadowsocksR.sh</span><br><span class="line">./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log</span><br></pre></td></tr></table></figure>
+<h3 id="uninstall"><a class="markdownIt-Anchor" href="#uninstall"></a> Uninstall</h3>
+<p>./shadowsocksR.sh uninstall</p>
+<h3 id="commands"><a class="markdownIt-Anchor" href="#commands"></a> Commands</h3>
+<ul>
+<li><strong>Start</strong> - <code>/etc/init.d/shadowsocks start</code></li>
+<li><strong>Stop</strong> - <code>/etc/init.d/shadowsocks stop</code></li>
+<li><strong>Restart</strong> - <code>/etc/init.d/shadowsocks restart</code></li>
+<li><strong>Status</strong> - <code>/etc/init.d/shadowsocks status</code></li>
+</ul>
+<h3 id="path"><a class="markdownIt-Anchor" href="#path"></a> Path</h3>
+<ul>
+<li><strong>Configuration File</strong> - <code>/etc/shadowsocks.json</code></li>
+<li><strong>Log File</strong> - <code>/var/log/shadowsocks.log</code></li>
+<li><strong>Installation Location</strong> - <code>/usr/local/shadowsocks</code></li>
+</ul>
+<h3 id="sample-configuration"><a class="markdownIt-Anchor" href="#sample-configuration"></a> Sample Configuration</h3>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">"server"</span>:<span class="string">"0.0.0.0"</span>,</span><br><span class="line"><span class="attr">"server_ipv6"</span>: <span class="string">"[::]"</span>,</span><br><span class="line"><span class="attr">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</span><br><span class="line"><span class="attr">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line"><span class="attr">"port_password"</span>:&#123;</span><br><span class="line">    <span class="attr">"8989"</span>:<span class="string">"password1"</span>,</span><br><span class="line">    <span class="attr">"8990"</span>:<span class="string">"password2"</span>,</span><br><span class="line">    <span class="attr">"8991"</span>:<span class="string">"password3"</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">"timeout"</span>:<span class="number">300</span>,</span><br><span class="line"><span class="attr">"method"</span>:<span class="string">"aes-256-cfb"</span>,</span><br><span class="line"><span class="attr">"protocol"</span>: <span class="string">"origin"</span>,</span><br><span class="line"><span class="attr">"protocol_param"</span>: <span class="string">""</span>,</span><br><span class="line"><span class="attr">"obfs"</span>: <span class="string">"plain"</span>,</span><br><span class="line"><span class="attr">"obfs_param"</span>: <span class="string">""</span>,</span><br><span class="line"><span class="attr">"redirect"</span>: <span class="string">""</span>,</span><br><span class="line"><span class="attr">"dns_ipv6"</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="attr">"fast_open"</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="attr">"workers"</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="clients"><a class="markdownIt-Anchor" href="#clients"></a> Clients</h3>
+<ul>
+<li><a href="https://github.com/shadowsocksrr/shadowsocksr-csharp/releases/" target="_blank" rel="noopener">Windows(ShadowsocksR)</a></li>
+<li><a href="https://github.com/shadowsocksrr/shadowsocksr-android/releases/" target="_blank" rel="noopener">Android(SSRR)</a></li>
+<li><a href="https://itunes.apple.com/us/app/shadowrocket/id932747118" target="_blank" rel="noopener">iOS(Shadowrocket)</a></li>
+</ul>
+<h2 id="some-fixes"><a class="markdownIt-Anchor" href="#some-fixes"></a> Some fixes</h2>
+<h3 id="uwp"><a class="markdownIt-Anchor" href="#uwp"></a> UWP</h3>
+<p>Most of UWP apps cannot use proxy to connect with SSR since they are not allowed to connect to <code>locahost</code>, In order to remove the Loopback restriction, install <strong>Fiddler4</strong>, and when you open the app and UWP Loopback is not enabled, there will be a notification to tell you enable, or if not showing up, you can clicking the <code>WinConfig</code>, or you can directly run it from <code>C:\Users\&lt;username&gt;\AppData\Local\Programs\Fiddler\EnableLoopback.exe</code>. Click <code>Exempt All</code> and then click <code>Save Changes</code>. Now UWP can use localhost proxy without any issues.</p>
+<h3 id="windows-10-linux-subsystem"><a class="markdownIt-Anchor" href="#windows-10-linux-subsystem"></a> Windows 10 Linux Subsystem</h3>
+<p>Windows 10 Linux Subsystem can use loopback without issue of course, but the proxy is not properly applied. In order to do that, add this to your configuration files such as <code>.bashrc</code>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> socks=<span class="string">'ALL_PROXY=socks5://127.0.0.1:1080/ \</span></span><br><span class="line"><span class="string">        http_proxy=http://127.0.0.1:1080/ \</span></span><br><span class="line"><span class="string">        https_proxy=http://127.0.0.1:1080/ \</span></span><br><span class="line"><span class="string">        HTTP_PROXY=http://127.0.0.1:1080/ \</span></span><br><span class="line"><span class="string">        HTTPS_PROXY=http://127.0.0.1:1080/'</span></span><br></pre></td></tr></table></figure>
+<p>source the file, and you can run <code>socks</code> to set all application to bypass proxy, or you can run things like <code>socks wget</code> to use it per command.</p>
+<h2 id="and-some-more-things"><a class="markdownIt-Anchor" href="#and-some-more-things"></a> And some more things</h2>
+<p>Now, let’s talk about Shadowsocks R and GFW. GFW is banning more and more IP, and my Google Cloud Server did not survive too. It is harder and harder to use VPN in China, and more are banned, even include the VPN and VDI of my school (It is now fine, seems they just pollute the IP). I have been never this angry. If they really have to blame westerners not giving them the latest technology, just look at themselves. They block CRAN. They block Tensorflow. They corrupt Ubuntu, Debian, PiPY and OpenSUSE’s server. Programmers, engineers, data scientists and students like me need a reliable connection to reach latest technologies, and you know what? They block them, how funny it is. What? You say using Ali or PKU server? No, I will not. They are unsafe, with limited packages. Ubuntu archive server in China is not even with the Official archive server. It’s NOT reliable. Deepin? They even cannot survive. CEO just quit several months ago, and using Deepin makes you fell into the dependency hell. “Azure Powered By 21Vianet”, “iCloud in Guizhou”, “China LinkedIn”, big corporation compromised. But for small individuals, we have a choice. Shadowsocks R® is still the most reliable way to bypassing GFW, sadly Shadowsocks R is so dead. Shadowsocks is saved by community, and the author of SSRR is criticized because a propaganda the author made. It’s hard to bypass GFW, but you know what? Life is also hard. deal with it.</p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2018/08/13/Listener/">
+      Listener.
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2018/06/11/travel-adventure/">
+        旅游·冒险
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

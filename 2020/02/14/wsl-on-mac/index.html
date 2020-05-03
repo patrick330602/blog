@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2020/02/14/wsl-on-mac/" />
+  <meta property="og:title" content="Blursed WSL: Use WSL on Mac via Parallels Desktop | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Blursed WSL: Use WSL on Mac via Parallels Desktop | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Blursed WSL: use WSL on Mac via Parallels Desktop</h1>
+
+	---<br />
+	date: Feb 14, 2020<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/OSX/" rel="tag">OSX</a><br />- <a class="tag-link" href="/tags/WSL/" rel="tag">WSL</a><br />- <a class="tag-link" href="/tags/WSL2/" rel="tag">WSL2</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<h2 id="some-background"><a class="markdownIt-Anchor" href="#some-background"></a> Some background…</h2>
+<p>I recently switched to Mac because of something requires me to use MacOS. I got a 2019 16 inch model of MacBook Pro, and I am pretty satisfied with it<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>.</p>
+<p>As I am still developing for WSL (and also UWP), I used Parallels Desktop for running Windows on Mac, because I hate Boot Camp. After setting up Windows 10 on Parallels Desktop with come tweaks, successfully set up WSL/WSL2 with Mac.</p>
+<div class="twitter-wrapper"><blockquote class="twitter-tweet"><a href="https://twitter.com/callmepkwu/status/1199257722270601216" target="_blank" rel="noopener"></a></blockquote></div><script async defer src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<h2 id="use-parallels-feature-wisely"><a class="markdownIt-Anchor" href="#use-parallels-feature-wisely"></a> Use Parallels feature wisely</h2>
+<p>Two important feature in Parallels Desktop is used: Coherence Mode and Nested Virtualization.</p>
+<p>Using Coherence mode, you can use Windows applications and UWPs such as Windows Terminal just like native apps:</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/mac/1.png" alt="Windows Terminal on Mac" /></p>
+<p>Using Nested Virtualization is essential to use WSL2 and the brand new Windows Docker for WSL2. Some people might afraid that enabling it has little impact on my laptop. You can enable the feature here in Parallels Desktop:</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/mac/2.png" alt="Nested virtualization in Parallels Configure Menu" /></p>
+<h2 id="auto-mounting-mac-partition-on-wsl"><a class="markdownIt-Anchor" href="#auto-mounting-mac-partition-on-wsl"></a> Auto-mounting Mac partition on WSL</h2>
+<p>WSL has been providing drive mounting feature using <strong>DrvFs</strong> for some times<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>. Mounting with <strong>DrvFs</strong> is super easy; Without mounting your Windows drive, you can just:</p>
+<ul>
+<li>use <code>sudo mkdir /mnt/d &amp;&amp; sudo mount -t drvfs D: /mnt/d/</code> to mount your D drive;</li>
+<li>use <code>sudo mount -t drvfs '\\server\share' /mnt/share</code> to mount netowork location <code>\\server\share</code>.</li>
+</ul>
+<p>You can even auto-mount using <code>fstab</code>.</p>
+<p>However, auto-mounting with Mac partition requires something more than documentation provided, otherwise you might have trouble accessing the files.</p>
+<p>Before mounting, the file-sharing should be enabled in Parallels Configuration:</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/mac/3.png" alt="Files Sharing in Parallels Configure Menu" /></p>
+<p>It is suggested to use just the network location as drives can be unmounted automatically by Parallels and thus unpredictable.</p>
+<p>Now, check the folder you want to mount. In my case, I tried to mount <code>\\Mac\Home\</code>. So I created a folder <code>/mnt/mac</code> and in my <code>/etc/fstab</code>, I input the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\\Mac\Home\      &#x2F;mnt&#x2F;mac        drvfs   metadata,uid&#x3D;1000,gid&#x3D;1000,umask&#x3D;0022,fmask&#x3D;11,case&#x3D;off 0       0</span><br></pre></td></tr></table></figure>
+<p>Restart the distribution by using <code>wsl -t</code>, and drive will automatically be mounted:</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/mac/4.png" alt="Mounted drive in /mnt/mac" /></p>
+<h2 id="opening-websitefile-from-wsl-to-mac-browser"><a class="markdownIt-Anchor" href="#opening-websitefile-from-wsl-to-mac-browser"></a> Opening website/file from WSL to Mac browser</h2>
+<p>This one is pretty easy to configure. If you used my <a href="https://github.com/wslutilities/wslu" target="_blank" rel="noopener">WSL Utilities</a>, you can already open website using <code>wslview</code>. Then setup <strong>Web pages</strong> to <strong>Open in Mac</strong> in the Parallels Configuration:</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/mac/5.png" alt="Webpage pages option in Parallels Desktop Configuration " /></p>
+<p>Then everything is now ready. When you launch a website using <code>wslview</code>, it will open in the default Mac web browser.</p>
+<p>Here is a little demo:</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/mac/6.gif" alt="Demo for Opening website in Mac from WSL" /></p>
+<h2 id="wsl-desktop-shortcut-on-mac"><a class="markdownIt-Anchor" href="#wsl-desktop-shortcut-on-mac"></a> WSL Desktop Shortcut On Mac</h2>
+<p>The component <code>wslusc</code> in my <a href="https://github.com/wslutilities/wslu" target="_blank" rel="noopener">WSL Utilities</a> allows you to create shortcuts on Windows Desktop. Combining with Parallels Desktop’s feature, you can launch WSL GUI application right from your Mac Desktop.</p>
+<p>Here is how it looks:</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/mac/7.gif" alt="Demo for Windows Shortcut on Mac" /></p>
+<p>To achieve this, We should enable Desktop Mapping in the Parallels Desktop with the following steps:</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/mac/8.png" alt="Step 1 for enabling Desktop Mapping" /><br />
+<img src="https://cdn.patrickwu.space/posts/dev/wsl/mac/9.png" alt="Step 2 for enabling Desktop Mapping" /></p>
+<p>Afterward, the desktop should show the shortcut created on the Windows 10 Desktop. However, they won’t look good; But we can do some small modification to make it better like the following:</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/mac/10.png" alt="Effects on Icon edition" /></p>
+<p>Here is how to modify it:</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/mac/11.png" alt="Steps on how to change the icon" /></p>
+<h2 id="to-conclude"><a class="markdownIt-Anchor" href="#to-conclude"></a> To conclude…</h2>
+<p>The experience is not perfect, but this allows me to use Ubuntu without creating extra Virtual Machine on my MBP, which means a save on system memory when I need to run Windows and Ubuntu at the same time.</p>
+<p>This sure is a great experience using WSL on Mac.</p>
+<p>I am also going to present a session on WSLConf 😉</p>
+<hr class="footnotes-sep" />
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>A review is coming 😉 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Good place to start with <strong>DrvFs</strong>: <a href="https://docs.microsoft.com/en-gb/archive/blogs/wsl/file-system-improvements-to-the-windows-subsystem-for-linux" target="_blank" rel="noopener">https://docs.microsoft.com/en-gb/archive/blogs/wsl/file-system-improvements-to-the-windows-subsystem-for-linux</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2020/03/28/idesktop-review/">
+      iSoft Desktop: What’s the deal?
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2020/01/04/a-even-better-motherfing-website/">
+        An even better motherf**king website
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

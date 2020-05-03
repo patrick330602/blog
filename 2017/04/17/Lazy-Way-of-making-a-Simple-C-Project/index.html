@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2017/04/17/Lazy-Way-of-making-a-Simple-C-Project/" />
+  <meta property="og:title" content="Lazy Way of Making a Simple C++ Project | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Lazy Way of Making a Simple C++ Project | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Lazy Way of making a Simple C++ Project</h1>
+
+	---<br />
+	date: Apr 17, 2017<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/C/" rel="tag">C++</a><br />- <a class="tag-link" href="/tags/Makefile/" rel="tag">Makefile</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>Sometimes, when I try to do a lab project, I have to copy the makefile from each previous project to make my life easier and more lazy. However, I think I should be more lazy-so what I do is modified my Makefile a little bit, so that it can be easier, that I don’t really need to modify the code any more, I just need to copy makefile and build my project 😉</p>
+<a id="more"></a>
+<p>Here is the code for my makefile, it is actually pretty simple:</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">TARGET=<span class="variable">$(<span class="built_in">shell</span> <span class="built_in">basename</span> <span class="variable">$(PWD)</span>)</span></span><br><span class="line"><span class="section">create:</span></span><br><span class="line">        g++ -g -o <span class="variable">$(TARGET)</span> *.cpp *.h</span><br><span class="line"></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">        /bin/rm -f <span class="variable">$(TARGET)</span></span><br><span class="line">        clear</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.patrickwu.space/posts/dev/cpp-makefile-lazy.png" alt="" /></p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2017/05/10/order-eclipse-hidpi/">
+      Enable HiDPI On Order version of Eclipse
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2017/04/16/Reflection-on-Self-directed-Journey-End-Phase/">
+        Reflection on Self-directed Journey(After Event)
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

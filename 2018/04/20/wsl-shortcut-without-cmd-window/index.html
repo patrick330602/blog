@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2018/04/20/wsl-shortcut-without-cmd-window/" />
+  <meta property="og:title" content="Start WSL GUI Apps Without Command Prompt | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Start WSL GUI Apps Without Command Prompt | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Start WSL GUI apps without command prompt</h1>
+
+	---<br />
+	date: Apr 20, 2018<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/GUI/" rel="tag">GUI</a><br />- <a class="tag-link" href="/tags/WSL/" rel="tag">WSL</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>When using <a href="https://www.patrickwu.ml/2017/05/10/Start-WSL-application-from-Windows-10-Desktop/" target="_blank" rel="noopener">this method</a> to start application from desktop, a command prompt will always started at the back:</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/wsl-window.png" alt="" /></p>
+<p>So there is a solution to the problem to stop command prompt to be shown along the apps.</p>
+<a id="more"></a>
+<p>Firstly, create a file with name <code>runHidden.vbs</code> with following content (CRLF style required), and place it at some proper place:</p>
+<figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">' Simple command-line help.</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">case</span> WScript.Arguments(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">case</span> <span class="string">"-?"</span>, <span class="string">"/?"</span>, <span class="string">"-h"</span>, <span class="string">"--help"</span></span><br><span class="line">  WScript.echo <span class="string">"Usage: runHidden executable [...]"</span> &amp; vbNewLine &amp; vbNewLine &amp; <span class="string">"Runs the specified command hidden (without a visible window)."</span></span><br><span class="line">  WScript.Quit(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">end</span> <span class="keyword">select</span></span><br><span class="line"></span><br><span class="line"><span class="comment">' Separate the arguments into the executable name</span></span><br><span class="line"><span class="comment">' and a single string containing all arguments.</span></span><br><span class="line">exe = WScript.Arguments(<span class="number">0</span>)</span><br><span class="line">sep = <span class="string">""</span></span><br><span class="line"><span class="keyword">for</span> i = <span class="number">1</span> <span class="keyword">to</span> WScript.Arguments.Count <span class="number">-1</span></span><br><span class="line">  <span class="comment">' Enclose arguments in "..." to preserve their original partitioning.</span></span><br><span class="line">  args = args &amp; sep &amp; <span class="string">""""</span> &amp; WScript.Arguments(i) &amp; <span class="string">""""</span></span><br><span class="line">  sep = <span class="string">" "</span></span><br><span class="line"><span class="keyword">next</span></span><br><span class="line"></span><br><span class="line"><span class="comment">' Execute the command with its window *hidden* (0)</span></span><br><span class="line">WScript.CreateObject(<span class="string">"Shell.Application"</span>).ShellExecute exe, args, <span class="string">""</span>, <span class="string">"open"</span>, <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>Then you can launch your GUI application using the command below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; wscript Address\to\runHidden.vbs bash -c &lt;GUI application&gt;</span><br></pre></td></tr></table></figure>
+<p>This feature will also be included in the future release of <a href="https://github.com/patrick330602/wslu" target="_blank" rel="noopener">wslu</a>.</p>
+<blockquote>
+<p>Source: <a href="https://stackoverflow.com/questions/41225711/wsl-run-linux-from-windows-without-spawning-a-cmd-window" target="_blank" rel="noopener">https://stackoverflow.com/questions/41225711/wsl-run-linux-from-windows-without-spawning-a-cmd-window</a><br />
+Credit to <a href="https://stackoverflow.com/users/45375/mklement0" target="_blank" rel="noopener">mklement0</a></p>
+</blockquote>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2018/05/14/wsl-research-interop-2/">
+      Even More Research on WSL Interoperability
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2018/04/12/wsl-kali-linux-apt-warning-solution/">
+        Fix the apt warning on Kali Linux on Windows 10
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

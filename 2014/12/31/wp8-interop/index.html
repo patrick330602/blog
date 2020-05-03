@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2014/12/31/wp8-interop/" />
+  <meta property="og:title" content="完美解锁WP8手机方法 | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  完美解锁WP8手机方法 | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>完美解锁WP8手机方法</h1>
+
+	---<br />
+	date: Dec 31, 2014<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Interop/" rel="tag">Interop</a><br />- <a class="tag-link" href="/tags/WP8/" rel="tag">WP8</a><br />- <a class="tag-link" href="/tags/WP8-1/" rel="tag">WP8.1</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<h1 id="需要环境"><a class="markdownIt-Anchor" href="#需要环境"></a> 需要环境</h1>
+<ul>
+<li>带sd卡且开发者解锁的wp8手机</li>
+<li>带有部署的windows电脑</li>
+</ul>
+<h1 id="需要工具"><a class="markdownIt-Anchor" href="#需要工具"></a> 需要工具</h1>
+<ul>
+<li>CustomPFD(需部署)</li>
+<li>Preview For Developers</li>
+<li>Pocket File Manager</li>
+<li>Metro Commander</li>
+<li>WPsystem Folder Unlocker(需部署)</li>
+</ul>
+<a id="more"></a>
+<h1 id="步骤"><a class="markdownIt-Anchor" href="#步骤"></a> 步骤</h1>
+<ol>
+<li>安装所有程序与手机内存之中，然后用储存感知移动Preview For Developers和CustomPFD到SD卡中，所有程序都暂时不要打开</li>
+<li>运行WPSystem Folder Unlocker，点击Unlock WPSystem Folder(SD Card)</li>
+<li>用Pocket File Manager打开<code>SD Card\WPSystem</code>,将apps文件夹（也可能叫Apps）改名为Appx</li>
+<li>然后进入appx文件夹，删除Preview for developers应用文件夹<code>{178ac8a1-6519-4a0b-960c-038393741e96}</code>里面的所有文件</li>
+<li>把名字改回去（Apps或apps）</li>
+<li>打开Metro Commander,左边界面移到<code>WPSystem\apps\{27d6a090-50d2-4337-88cb-41d97597757a}</code>文件夹（CutomPFD的文件夹），右边界面移到<code>WPSystem\apps\{178ac8a1-6519-4a0b-960c-038393741e96}</code>文件夹（Preview for developer的文件夹）</li>
+<li>激活左边窗口，点击SELECT ALL，然后点击COPY，然后他就会把CutomPFD的程序内容全部拷到Preview For Developers的根目录之下</li>
+<li>完毕！现在运行Preview For Developers便是注册表编辑器咯！</li>
+</ol>
+<h1 id="原理"><a class="markdownIt-Anchor" href="#原理"></a> 原理</h1>
+<p>因为Preview For Developers是在市场中极少见的拥有读取WP8注册表权限的应用程序，直接覆盖他的源码会很方便的拥有和这个应用相同的权利</p>
+<h1 id="部署包"><a class="markdownIt-Anchor" href="#部署包"></a> 部署包</h1>
+<p><a href="http://pan.baidu.com/s/1pJmdU7x" target="_blank" rel="noopener">http://pan.baidu.com/s/1pJmdU7x</a> 密码：bmep</p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2015/04/16/csharp-get-weekday-using-only-date/">
+      Get WeekDay Using Pure Date in C#
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2014/10/16/wp8-longlistselector-pinyin/">
+        Windows Phone 8 LongListSelector按拼音首字母分组
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

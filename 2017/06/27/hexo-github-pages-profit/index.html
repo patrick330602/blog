@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2017/06/27/hexo-github-pages-profit/" />
+  <meta property="og:title" content="Hexo + GitHub Pages + ??? = Profit | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Hexo + GitHub Pages + ??? = Profit | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Hexo + GitHub Pages + ??? = Profit</h1>
+
+	---<br />
+	date: Jun 27, 2017<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Hexo/" rel="tag">Hexo</a><br />- <a class="tag-link" href="/tags/Shell/" rel="tag">Shell</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+<p>Hexo is an easy(nope) generator for Hexo blog, with help of GitHub Pages, it will be a perfect platform for blogging. However, to newbies, Hexo is still hard to use and configure, so I am here to claim first:</p>
+<ol>
+<li>Hexo is hard, you need to patience to learn;</li>
+<li>You have also be willing to learn and solve problems;</li>
+<li>You don’t need to understand HTML, actually.</li>
+</ol>
+<h2 id="create-github-pages"><a class="markdownIt-Anchor" href="#create-github-pages"></a> Create GitHub Pages</h2>
+<ol>
+<li>Open &lt;<a href="http://github.com" target="_blank" rel="noopener">github.com</a>&gt;, choose the plus icon at top left corner and choose “new repository”;</li>
+</ol>
+<p><img src="https://cdn.patrickwu.space/posts/dev/hg/1.png" alt="" /></p>
+<ol start="2">
+<li>Type “<yourname>.github.io” in Repository Name. if you name is <code>dalao</code>, you should type <a href="http://dalao.github.io" target="_blank" rel="noopener">dalao.github.io</a>, tick “Initialize this repository with a README”, and the click “Create Repository”;</li>
+</ol>
+<p><img src="https://cdn.patrickwu.space/posts/dev/hg/2.png" alt="" /></p>
+<ol start="3">
+<li>Then you repository is ready. Choose “Settings”, untick the “Wikis”, “Issues” and “Projects” under “Feature”.</li>
+</ol>
+<p><img src="https://cdn.patrickwu.space/posts/dev/hg/3.png" alt="" /></p>
+<p>Now, your GitHub Pages is ready.</p>
+<h2 id="install-hexo"><a class="markdownIt-Anchor" href="#install-hexo"></a> Install Hexo</h2>
+<ol>
+<li>Download <a href="https://desktop.github.com" target="_blank" rel="noopener">GitHub Client</a> and install, open it and log in first;</li>
+</ol>
+<p><img src="https://cdn.patrickwu.space/posts/dev/hg/4.png" alt="" /></p>
+<ol start="2">
+<li>Go to <a href="https://nodejs.org/" target="_blank" rel="noopener">NodeJS Website</a>,Download and install Current or LTS version;</li>
+</ol>
+<p><img src="https://cdn.patrickwu.space/posts/dev/hg/5.png" alt="" /></p>
+<ol start="3">
+<li>Open a command prompt or Powershell with administration rights, type <code>npm install -g hexo-cli</code> and waiting for it to complete;</li>
+<li>Create a folder for your website base, and copy its address, like <em>C:\Files\Desktop\website</em>;</li>
+<li>Open a command prompt or Powershell with administration rights,type<code>cd &quot;your copied address&quot;</code> and type enter, then type <code>hexo init</code>and then <code>npm install</code>to create the website.</li>
+</ol>
+<p><img src="https://cdn.patrickwu.space/posts/dev/hg/6.png" alt="" /></p>
+<h2 id="hexo-framework"><a class="markdownIt-Anchor" href="#hexo-framework"></a> Hexo Framework</h2>
+<p>Once initialised, here’s what your project folder will look like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
+<h3 id="_configyml"><a class="markdownIt-Anchor" href="#_configyml"></a> _config.yml</h3>
+<p>Site <a href="https://hexo.io/docs/configuration.html" target="_blank" rel="noopener">configuration</a> file. You can configure most settings here.</p>
+<h3 id="packagejson"><a class="markdownIt-Anchor" href="#packagejson"></a> package.json</h3>
+<p>Application data. The <a href="http://embeddedjs.com/" target="_blank" rel="noopener">EJS</a>, <a href="http://learnboost.github.io/stylus/" target="_blank" rel="noopener">Stylus</a> and <a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="noopener">Markdown</a> renderers are installed by default. If you want, you can uninstall them later.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"hexo-site"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"0.0.0"</span>,</span><br><span class="line">  <span class="attr">"private"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"hexo"</span>: &#123;</span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">""</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"hexo"</span>: <span class="string">"^3.0.0"</span>,</span><br><span class="line">    <span class="attr">"hexo-generator-archive"</span>: <span class="string">"^0.1.0"</span>,</span><br><span class="line">    <span class="attr">"hexo-generator-category"</span>: <span class="string">"^0.1.0"</span>,</span><br><span class="line">    <span class="attr">"hexo-generator-index"</span>: <span class="string">"^0.1.0"</span>,</span><br><span class="line">    <span class="attr">"hexo-generator-tag"</span>: <span class="string">"^0.1.0"</span>,</span><br><span class="line">    <span class="attr">"hexo-renderer-ejs"</span>: <span class="string">"^0.1.0"</span>,</span><br><span class="line">    <span class="attr">"hexo-renderer-stylus"</span>: <span class="string">"^0.2.0"</span>,</span><br><span class="line">    <span class="attr">"hexo-renderer-marked"</span>: <span class="string">"^0.2.4"</span>,</span><br><span class="line">    <span class="attr">"hexo-server"</span>: <span class="string">"^0.1.2"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="scaffolds"><a class="markdownIt-Anchor" href="#scaffolds"></a> scaffolds</h3>
+<p><a href="https://hexo.io/docs/writing.html#Scaffolds" target="_blank" rel="noopener">Scaffold</a> folder. When you create a new post, Hexo bases the new file on the scaffold.</p>
+<h3 id="source"><a class="markdownIt-Anchor" href="#source"></a> source</h3>
+<p>Source folder. This is where you put your site’s content. Hexo ignores hidden files and files or folders whose names are prefixed with <code>_</code> (underscore) - except the <code>_posts</code> folder. Renderable files (e.g. Markdown, HTML) will be processed and put into the <code>public</code> folder, while other files will simply be copied.</p>
+<h3 id="themes"><a class="markdownIt-Anchor" href="#themes"></a> themes</h3>
+<p><a href="https://hexo.io/docs/themes.html" target="_blank" rel="noopener">Theme</a> folder. Hexo generates a static website by combining the site contents with the theme.</p>
+<h2 id="configure-your-websites"><a class="markdownIt-Anchor" href="#configure-your-websites"></a> Configure your Websites</h2>
+<p>You can modify site settings in <code>_config.yml</code> or in an <a href="https://hexo.io/docs/configuration.html#Using-an-Alternate-Config" target="_blank" rel="noopener">alternate config file</a>.</p>
+<h3 id="site"><a class="markdownIt-Anchor" href="#site"></a> Site</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td>The title of your website</td>
+</tr>
+<tr>
+<td><code>subtitle</code></td>
+<td>The subtitle of your website</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>The description of your website</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>Your name</td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td>The language of your website. Use a <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank" rel="noopener">2-lettter ISO-639-1 code</a>. Default is <code>en</code>.</td>
+</tr>
+<tr>
+<td><code>timezone</code></td>
+<td>The timezone of your website. Hexo uses the setting on your computer by default. You can find the list of available timezones <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones" target="_blank" rel="noopener">here</a>. Some examples are <code>America/New_York</code>, <code>Japan</code>, and <code>UTC</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="url"><a class="markdownIt-Anchor" href="#url"></a> URL</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>url</code></td>
+<td>The URL of your website</td>
+<td></td>
+</tr>
+<tr>
+<td><code>root</code></td>
+<td>The root directory of your website</td>
+<td></td>
+</tr>
+<tr>
+<td><code>permalink</code></td>
+<td>The <a href="https://hexo.io/docs/permalinks.html" target="_blank" rel="noopener">permalink</a> format of articles</td>
+<td><code>:year/:month/:day/:title/</code></td>
+</tr>
+<tr>
+<td><code>permalink_defaults</code></td>
+<td>Default values of each segment in permalink</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Website in subdirectory</p>
+<p>If your website is in a subdirectory (such as <code>http://example.org/blog</code>) set <code>url</code> to <code>http://example.org/blog</code> and set <code>root</code> to <code>/blog/</code>.</p>
+</blockquote>
+<h3 id="directory"><a class="markdownIt-Anchor" href="#directory"></a> Directory</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>source_dir</code></td>
+<td>Source folder. Where your content is stored</td>
+<td><code>source</code></td>
+</tr>
+<tr>
+<td><code>public_dir</code></td>
+<td>Public folder. Where the static site will be generated</td>
+<td><code>public</code></td>
+</tr>
+<tr>
+<td><code>tag_dir</code></td>
+<td>Tag directory</td>
+<td><code>tags</code></td>
+</tr>
+<tr>
+<td><code>archive_dir</code></td>
+<td>Archive directory</td>
+<td><code>archives</code></td>
+</tr>
+<tr>
+<td><code>category_dir</code></td>
+<td>Category directory</td>
+<td><code>categories</code></td>
+</tr>
+<tr>
+<td><code>code_dir</code></td>
+<td>Include code directory</td>
+<td><code>downloads/code</code></td>
+</tr>
+<tr>
+<td><code>i18n_dir</code></td>
+<td>i18n directory</td>
+<td><code>:lang</code></td>
+</tr>
+<tr>
+<td><code>skip_render</code></td>
+<td>Paths not to be rendered. You can use <a href="https://github.com/isaacs/minimatch" target="_blank" rel="noopener">glob expressions</a> for path matching</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="writing"><a class="markdownIt-Anchor" href="#writing"></a> Writing</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>new_post_name</code></td>
+<td>The filename format for new posts</td>
+<td><code>:title.md</code></td>
+</tr>
+<tr>
+<td><code>default_layout</code></td>
+<td>Default layout</td>
+<td><code>post</code></td>
+</tr>
+<tr>
+<td><code>titlecase</code></td>
+<td>Transform titles into title case?</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>external_link</code></td>
+<td>Open external links in new tab?</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>filename_case</code></td>
+<td>Transform filenames to <code>1</code> lower case; <code>2</code> upper case</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>render_drafts</code></td>
+<td>Display drafts?</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>post_asset_folder</code></td>
+<td>Enable the <a href="https://hexo.io/docs/asset-folders.html" target="_blank" rel="noopener">Asset Folder</a>?</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>relative_link</code></td>
+<td>Make links relative to the root folder?</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>future</code></td>
+<td>Display future posts?</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>highlight</code></td>
+<td>Code block settings</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="category-tag"><a class="markdownIt-Anchor" href="#category-tag"></a> Category &amp; Tag</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>default_category</code></td>
+<td>Default category</td>
+<td><code>uncategorized</code></td>
+</tr>
+<tr>
+<td><code>category_map</code></td>
+<td>Category slugs</td>
+<td></td>
+</tr>
+<tr>
+<td><code>tag_map</code></td>
+<td>Tag slugs</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="date-time-format"><a class="markdownIt-Anchor" href="#date-time-format"></a> Date / Time format</h3>
+<p>Hexo uses <a href="http://momentjs.com/" target="_blank" rel="noopener">Moment.js</a> to process dates.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>date_format</code></td>
+<td>Date format</td>
+<td><code>YYYY-MM-DD</code></td>
+</tr>
+<tr>
+<td><code>time_format</code></td>
+<td>Time format</td>
+<td><code>HH:mm:ss</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="pagination"><a class="markdownIt-Anchor" href="#pagination"></a> Pagination</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>per_page</code></td>
+<td>The amount of the posts displayed on a single page. <code>0</code> disables pagination</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td><code>pagination_dir</code></td>
+<td>Pagination directory</td>
+<td><code>page</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="extensions"><a class="markdownIt-Anchor" href="#extensions"></a> Extensions</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>theme</code></td>
+<td>Theme name. <code>false</code> disables theming</td>
+</tr>
+<tr>
+<td><code>deploy</code></td>
+<td>Deployment setting</td>
+</tr>
+</tbody>
+</table>
+<h3 id="includeexclude-files-or-folders"><a class="markdownIt-Anchor" href="#includeexclude-files-or-folders"></a> Include/Exclude Files or Folders</h3>
+<p>In the config file, set the include/exlude key to make hexo explicitly process or ignore certain files/folders.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>include</code></td>
+<td>Hexo defaultly ignore hidden files and folders, but set this field will make Hexo process them</td>
+</tr>
+<tr>
+<td><code>exclude</code></td>
+<td>Hexo process will ignore files list under this field</td>
+</tr>
+</tbody>
+</table>
+<p>Sample:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Include&#x2F;Exclude Files&#x2F;Folders</span><br><span class="line">include:</span><br><span class="line">  - .nojekyll</span><br><span class="line">exclude:</span><br><span class="line">  - .DS_Store</span><br></pre></td></tr></table></figure>
+<h3 id="using-an-alternate-config"><a class="markdownIt-Anchor" href="#using-an-alternate-config"></a> Using an Alternate Config</h3>
+<p>A custom config file path can be specified by adding the <code>--config</code> flag to your <code>hexo</code> commands with a path to an alternate YAML or JSON config file, or a comma-separated list (no spaces) of multiple YAML or JSON files.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># use &#39;custom.yml&#39; in place of &#39;_config.yml&#39;</span><br><span class="line">$ hexo server --config custom.yml</span><br><span class="line"></span><br><span class="line"># use &#39;custom.yml&#39; &amp; &#39;custom2.json&#39;, prioritizing &#39;custom2.json&#39;</span><br><span class="line">$ hexo server --config custom.yml,custom2.json</span><br></pre></td></tr></table></figure>
+<p>Using multiple files combines all the config files and saves the merged settings to <code>_multiconfig.yml</code>. The later values take precedence. It works with any number of JSON and YAML files with arbitrarily deep objects. Note that <strong>no spaces are allowed in the list</strong>.</p>
+<p>For instance, in the above example if <code>foo: bar</code> is in <code>custom.yml</code>, but <code>&quot;foo&quot;: &quot;dinosaur&quot;</code> is in <code>custom2.json</code>, <code>_multiconfig.yml</code> will contain <code>foo: dinosaur</code>.</p>
+<h2 id="start-writing"><a class="markdownIt-Anchor" href="#start-writing"></a> Start Writing!</h2>
+<p>posts are located in <code>source/_post</code>as a markdown file. To create a new article, type <code>hexo new &quot;your title&quot;</code> to create one. the file can be devided into Front-matter and content.</p>
+<h3 id="front-matter"><a class="markdownIt-Anchor" href="#front-matter"></a> Front-matter</h3>
+<p>Front-matter is a block of YAML or JSON at the beginning of the file that is used to configure settings for your writings. Front-matter is terminated by three dashes when written in YAML or three semicolons when written in JSON.</p>
+<p><strong>YAML</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: Hello World</span><br><span class="line">date: 2013&#x2F;7&#x2F;13 20:46:25</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p><strong>JSON</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;title&quot;: &quot;Hello World&quot;,</span><br><span class="line">&quot;date&quot;: &quot;2013&#x2F;7&#x2F;13 20:46:25&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="settings-their-default-values"><a class="markdownIt-Anchor" href="#settings-their-default-values"></a> Settings &amp; Their Default Values</h4>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>layout</code></td>
+<td>Layout</td>
+<td></td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>Title</td>
+<td></td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td>Published date</td>
+<td>File created date</td>
+</tr>
+<tr>
+<td><code>updated</code></td>
+<td>Updated date</td>
+<td>File updated date</td>
+</tr>
+<tr>
+<td><code>comments</code></td>
+<td>Enables comment feature for the post</td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>Tags (Not available for pages)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>categories</code></td>
+<td>Categories (Not available for pages)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>permalink</code></td>
+<td>Overrides the default permalink of the post</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="categories-tags"><a class="markdownIt-Anchor" href="#categories-tags"></a> Categories &amp; Tags</h4>
+<p>Only posts support the use of categories and tags. Categories apply to posts in order, resulting in a hierarchy of classifications and sub-classifications. Tags are all defined on the same hierarchical level so the order in which they appear is not important.</p>
+<p><strong>Example</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">- Sports</span><br><span class="line">- Baseball</span><br><span class="line">tags:</span><br><span class="line">- Injury</span><br><span class="line">- Fight</span><br><span class="line">- Shocking</span><br></pre></td></tr></table></figure>
+<h3 id="content"><a class="markdownIt-Anchor" href="#content"></a> Content</h3>
+<p>content can be enriched by Markdown and tag plugin.You can learn tag plugin <a href="https://hexo.io/docs/tag-plugins.html" target="_blank" rel="noopener">here</a> and Markdown <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank" rel="noopener">here</a>.</p>
+<h2 id="deploy"><a class="markdownIt-Anchor" href="#deploy"></a> Deploy</h2>
+<p>The easiest way to deploy is to use the offical plugin: <code>npm install hexo-deployer-git --save</code></p>
+<p>Edit <code>_config.yml</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: &lt;repository url&gt;</span><br><span class="line">  branch: [branch]</span><br><span class="line">  message: [message]</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>repo</code></td>
+<td>GitHub/Bitbucket/Coding/GitLab repository URL</td>
+</tr>
+<tr>
+<td><code>branch</code></td>
+<td>Branch name. The deployer will detect the branch automatically if you are using GitHub or GitCafe.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td>Customize commit message (Default to <code>Site updated: \{\{ now('YYYY-MM-DD HH:mm:ss') \}\}</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>and then type <code>hexo deploy</code> to deploy the website.</p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2017/06/27/hexo-github-pages-profit-cn/">
+      Hexo + GitHub Pages + ??? = 賺了
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2017/05/28/wsl-research-interop/">
+        Further Research on WSL Interoperability
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

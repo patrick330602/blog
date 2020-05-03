@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2016/02/07/uwp-new-window/" />
+  <meta property="og:title" content="How to Create a New Window in UWP | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  How to Create a New Window in UWP | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>How to create a new window in UWP</h1>
+
+	---<br />
+	date: Feb 07, 2016<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/C/" rel="tag">C#</a><br />- <a class="tag-link" href="/tags/UWP/" rel="tag">UWP</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>Some friends of mine asked me how to create a window in UWP just like WinForms or UWP, to make their app more desktop-like. Actually, it is pretty simple.</p>
+ <a id="more"></a>
+<p><img src="https://cdn.patrickwu.space/posts/dev/uwp-new-window.png" alt="new window in UWP" /></p>
+<p>I cannot say this is difficult or simple. In order to open a new window, You need to use CoreApplication.CreateNewView() to generate the Window, or view:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> currentAV = ApplicationView.GetForCurrentView();</span><br><span class="line"></span><br><span class="line"><span class="keyword">await</span> newAV.Dispatcher.RunAsync(</span><br><span class="line"> CoreDispatcherPriority.Normal,</span><br><span class="line"> <span class="keyword">async</span> () =&gt;</span><br><span class="line"> &#123;</span><br><span class="line"> <span class="keyword">var</span> newWindow = Window.Current;</span><br><span class="line"> <span class="keyword">var</span> newAppView = ApplicationView.GetForCurrentView();newAppView.Title = title;  <span class="comment">//The title of new windowvar frame = new Frame();</span></span><br><span class="line"> frame.Navigate(<span class="keyword">typeof</span>(Page), Datatosend); <span class="comment">//Navigation is here</span></span><br><span class="line"> newWindow.Content = frame;</span><br><span class="line"> newWindow.Activate();<span class="keyword">await</span> ApplicationViewSwitcher.TryShowAsStandaloneAsync(</span><br><span class="line">newAppView.Id,</span><br><span class="line"> ViewSizePreference.UseMinimum,</span><br><span class="line">currentAV.Id,</span><br><span class="line"> ViewSizePreference.UseMinimum);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2016/02/18/Project-WPerfect/">
+      Project WPerfect
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2016/01/20/peculiar-stones/">
+        Peculiar Stone
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

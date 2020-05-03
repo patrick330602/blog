@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2018/05/14/wsl-research-interop-2/" />
+  <meta property="og:title" content="Even More Research on WSL Interoperability | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Even More Research on WSL Interoperability | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Even More Research on WSL Interoperability</h1>
+
+	---<br />
+	date: May 14, 2018<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/WSL/" rel="tag">WSL</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>As Windows 10 Linux Subsystem is becoming more and more mature and stable, it is more stable and powerful than ever before. As my own <a href="https://github.com/patrick330602/wslu" target="_blank" rel="noopener">wslu</a> has hit 1.3 already. In order to use it in a more efficient fashion, I extended the research in addition to the previous <a href="">article</a> I have mentioned. This article will keep updated as time goes by.</p>
+<a id="more"></a>
+<h2 id="powershellexe-execution-time-too-long"><a class="markdownIt-Anchor" href="#powershellexe-execution-time-too-long"></a> <code>powershell.exe</code> execution time too long</h2>
+<p>Thanks to <a href="https://github.com/cererate" target="_blank" rel="noopener">cerebrate</a>, wslu can now execute <code>wslusc</code> faster by boosting the code execution speed in powershell. If we execute powershell.exe directly, code will not be executed directly. Instead, it will try to load a interactive prompt, load profile, and then execute the code. hence, to execute powershell faster, we need to add two parameter: <code>-NoProfile</code> and <code>-NonInteractive</code>, to stop powershell to load profile and entering interactive prompt.</p>
+<h2 id="open-website-from-wsl"><a class="markdownIt-Anchor" href="#open-website-from-wsl"></a> open website from WSL</h2>
+<p>You can actually use <code>explorer.exe &lt;website&gt;</code> to start the webpage. Unfortunately, it only supports https website, and all website start with http will be ignored and <code>explorer.exe</code> itself will be started.</p>
+<p>UPDATE: A better way to do it is to use <code>powershell.exe Start</code>. Way faster and supports HTTPS.</p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2018/05/25/make-deb-packing-simple/">
+      Packaging .deb using a simple script: Explained
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2018/04/20/wsl-shortcut-without-cmd-window/">
+        Start WSL GUI apps without command prompt
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

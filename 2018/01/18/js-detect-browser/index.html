@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2018/01/18/js-detect-browser/" />
+  <meta property="og:title" content="Detect Browser in Javascript | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Detect Browser in Javascript | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Detect Browser in Javascript</h1>
+
+	---<br />
+	date: Jan 18, 2018<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Javascript/" rel="tag">Javascript</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>Here is a easy way to find out what browser the user is using when they browse this page; supports 6 most commonly used browsers, but it might not work on mobile since operating systems like iOS will force browser to use their core.</p>
+<a id="more"></a>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Opera 8.0+</span></span><br><span class="line"><span class="keyword">var</span> isOpera = (!!<span class="built_in">window</span>.opr &amp;&amp; !!opr.addons) || !!<span class="built_in">window</span>.opera || navigator.userAgent.indexOf(<span class="string">' OPR/'</span>) &gt;= <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Firefox 1.0+</span></span><br><span class="line"><span class="keyword">var</span> isFirefox = <span class="keyword">typeof</span> InstallTrigger !== <span class="string">'undefined'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Safari 3.0+ "[object HTMLElementConstructor]"</span></span><br><span class="line"><span class="keyword">var</span> isSafari = <span class="built_in">Object</span>.prototype.toString.call(<span class="built_in">window</span>.HTMLElement).indexOf(<span class="string">'Constructor'</span>) &gt; <span class="number">0</span> || (<span class="function"><span class="keyword">function</span> (<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">    p</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> p.toString() === <span class="string">"[object SafariRemoteNotification]"</span>;</span><br><span class="line">&#125;)(!<span class="built_in">window</span>[<span class="string">'safari'</span>] || safari.pushNotification);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Internet Explorer 6-11</span></span><br><span class="line"><span class="keyword">var</span> isIE = <span class="comment">/*@cc_on!@*/</span> <span class="literal">false</span> || !!<span class="built_in">document</span>.documentMode;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Edge 20+</span></span><br><span class="line"><span class="keyword">var</span> isEdge = !isIE &amp;&amp; !!<span class="built_in">window</span>.StyleMedia;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Chrome 1+</span></span><br><span class="line"><span class="keyword">var</span> isChrome = !!<span class="built_in">window</span>.chrome &amp;&amp; !!<span class="built_in">window</span>.chrome.webstore;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> data = isOpera ? <span class="string">'opera'</span> :</span><br><span class="line">    isFirefox ? <span class="string">'firefox'</span> :</span><br><span class="line">    isSafari ? <span class="string">'safari'</span> :</span><br><span class="line">    isChrome ? <span class="string">'chrome'</span> :</span><br><span class="line">    isIE ? <span class="string">'ie'</span> :</span><br><span class="line">    isEdge ? <span class="string">'edge'</span> :</span><br><span class="line">    <span class="string">"browser"</span>;</span><br></pre></td></tr></table></figure>
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2018/01/25/story-of-uwp-devkit/">
+      2nd Anniversary and the Story of UWP DevKit
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2017/12/14/effect-of-language-on-discrimiative-behavior/">
+        Effect of Language on Discriminative Behaviour
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

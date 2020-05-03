@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2019/08/03/wsl-powershell-raster-font-problem/" />
+  <meta property="og:title" content="How to Stop Powershell From Resetting Your WSL Console Font | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  How to Stop Powershell From Resetting Your WSL Console Font | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>How to stop Powershell from resetting your WSL console font</h1>
+
+	---<br />
+	date: Aug 03, 2019<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Powershell/" rel="tag">Powershell</a><br />- <a class="tag-link" href="/tags/WSL/" rel="tag">WSL</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>This problem exists for a long time, starting from the beginning of my development of <code>wslu</code> project. Someone told me there was such problem but unfortunately I am unable to reproduce such problem for a very long time (Later turned out that using the experimental UTF-8 option at the time in Insider builds prevent this issue). Few days ago, someone opened an issue (<a href="https://github.com/wslutilities/wslu/issues/83" target="_blank" rel="noopener">wslutilities/wslu issue #83</a>) so that I have to took it more seriously and I created a Virtual Machine trying to reproduce the issue. And I did.</p>
+<p>Tracing down and found out this is an existing issue for a long time(<a href="https://github.com/microsoft/terminal/issues/280" target="_blank" rel="noopener">Microsoft/Terminal issue #280</a>). As one Microsoft employee on <code>wslu</code>'s issue said,</p>
+<blockquote>
+<p>Powershell sets and resets the system codepage, which it shouldn’t be doing. This can cause the fonts to reset to “raster fonts”.</p>
+</blockquote>
+<p>So what does this mean? Well, by default, system have a global variable called the <strong>OEM Codepage</strong> (<code>oemcp</code>). It is usually a 3 to 4-digit number determined by your system language, and this is intended to help apps to determine what character set it needs to use. For example, “<strong>OEM - United States</strong>” is Codepage 437. There is a lot more, checkout Wikipedia page of <a href="https://en.wikipedia.org/wiki/Category:DOS_code_pages" target="_blank" rel="noopener">DOS code pages</a> and <a href="https://en.wikipedia.org/wiki/Windows_code_page" target="_blank" rel="noopener">Windows code pages</a>.</p>
+<p>Among them, there is one special codepage: 65001, or better known as <strong>UTF-8</strong>. In latest version of Windows, you can set the OEM Codepage to UTF-8 by going to Control Panel -&gt; Clock and Region -&gt; Change date, time or number formats -&gt; Administrative -&gt; Change System Locale and choose <strong>Use Unicode UTF-8</strong>:</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/ps-raster/1.png" alt="" /></p>
+<p>And now problem surfaces: WSL Distro consoles do not use <strong>OEM Codepage</strong>, they use <strong>Unicode UTF-8 Codepage</strong>; but PowerShell uses <strong>OEM Codepage</strong>. So, if you don’t set system to use the Unicode UTF-8, executing mixing commands with bash and PowerShell cause <code>powershell.exe</code> to reset codepage forcefully which leads to resetting the console to raster font.</p>
+<p>Now it is clear what caused the problem, so the solution become simple:</p>
+<ol>
+<li>set to OEM Codepage before you do powershell;</li>
+<li>powershell something;</li>
+<li>set back to WSL Distro console Codepage 65001.</li>
+</ol>
+<p>You can use the <code>chcp.com</code> (<strong>ch</strong>ange <strong>c</strong>ode<strong>p</strong>age) to change codepage.</p>
+<p>So for the first step, you should get <strong>OEM Codepage</strong> from registry (in WSL):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oemcp=$(reg.exe query <span class="string">"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Nls\\CodePage"</span> /v OEMCP 2&gt;&amp;1 | sed -n 3p | sed -e <span class="string">'s|\r||g'</span> | grep -o <span class="string">'[[:digit:]]*'</span>)</span><br></pre></td></tr></table></figure>
+<p>Then set the WSL console codepage to OEM Codepage:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chcp.com <span class="variable">$oemcp</span></span><br></pre></td></tr></table></figure>
+<p>Then you powershell something. When complete, set back to UTF-8 Codepage:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chcp.com 65001</span><br></pre></td></tr></table></figure>
+<p>Overall, it should be something like this:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">oemcp=$(reg.exe query <span class="string">"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Nls\\CodePage"</span> /v OEMCP 2&gt;&amp;1 | sed -n 3p | sed -e <span class="string">'s|\r||g'</span> | grep -o <span class="string">'[[:digit:]]*'</span>)</span><br><span class="line">chcp.com <span class="variable">$oemcp</span></span><br><span class="line">powershell.exe ...</span><br><span class="line">chcp.com 65001</span><br></pre></td></tr></table></figure>
+<p>Now, the problem is gone!</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/ps-raster/2.png" alt="" /></p>
+<p><strong>UPDATE</strong>: Some spelling and grammar error fixes and better elaboration.</p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2019/08/20/linux-tips/">
+      Collection of Continuing Updating Notes On Linux
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2019/05/10/build-2019/">
+        Microsft build 2019: My Tiny Little Summary
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2014/09/07/csharp-byte-stream-ibuffer-conversion/" />
+  <meta property="og:title" content="Byte[],Stream,Ibuffer,IRandomAccessStream的互相轉換 | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Byte[],Stream,Ibuffer,IRandomAccessStream的互相轉換 | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Byte[],Stream,Ibuffer,IRandomAccessStream的互相轉換</h1>
+
+	---<br />
+	date: Sep 07, 2014<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/C/" rel="tag">C#</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>今天做8.1程序時徹底弄混了IRandomAcessStream和Stream。。。於是乎，我找了一個可用的不同類型轉換。。。。</p>
+<h3 id="stream-轉irandomaccessstream"><a class="markdownIt-Anchor" href="#stream-轉irandomaccessstream"></a> Stream 轉IRandomAccessStream</h3>
+<h4 id="方法一"><a class="markdownIt-Anchor" href="#方法一"></a> 方法一：</h4>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">byte</span>[] bytes = StreamToBytes(stream);</span><br><span class="line">InMemoryRandomAccessStream memoryStream = <span class="keyword">new</span> InMemoryRandomAccessStream();</span><br><span class="line">DataWriter datawriter = <span class="keyword">new</span> DataWriter(memoryStream.GetOutputStreamAt(<span class="number">0</span>));</span><br><span class="line">datawriter.WriteBytes(bytes);</span><br><span class="line"><span class="keyword">await</span> datawriter.StoreAsync();</span><br></pre></td></tr></table></figure>
+ <a id="more"></a>
+<h4 id="方法二"><a class="markdownIt-Anchor" href="#方法二"></a> 方法二：</h4>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> randomAccessStream = <span class="keyword">new</span> InMemoryRandomAccessStream();</span><br><span class="line"><span class="keyword">var</span> outputStream = randomAccessStream.GetOutputStreamAt(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">await</span> RandomAccessStream.CopyAsync(stream.AsInputStream(), outputStream);</span><br></pre></td></tr></table></figure>
+<h3 id="irandomaccessstream-轉-stream"><a class="markdownIt-Anchor" href="#irandomaccessstream-轉-stream"></a> IRandomAccessStream 轉 Stream</h3>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stream stream=WindowsRuntimeStreamExtensions.AsStreamForRead(randomStream.GetInputStreamAt(<span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="ibuffer轉stream"><a class="markdownIt-Anchor" href="#ibuffer轉stream"></a> Ibuffer轉Stream</h3>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Stream stream = WindowsRuntimeBufferExtensions.AsStream(buffer);</span><br></pre></td></tr></table></figure>
+<h3 id="stream轉ibuffer"><a class="markdownIt-Anchor" href="#stream轉ibuffer"></a> Stream轉Ibuffer</h3>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> MemoryStream memoryStream = <span class="keyword">new</span> MemoryStream();           </span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span> (stream != <span class="literal">null</span>)</span><br><span class="line"> &#123;</span><br><span class="line">  <span class="keyword">byte</span>[] bytes = ReadFully(stream);</span><br><span class="line">  <span class="keyword">if</span> (bytes != <span class="literal">null</span>)</span><br><span class="line">  &#123;</span><br><span class="line">       <span class="keyword">var</span> binaryWriter = <span class="keyword">new</span> BinaryWriter(memoryStream);</span><br><span class="line">       binaryWriter.Write(bytes);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">IBuffer buffer=WindowsRuntimeBufferExtensions.GetWindowsRuntimeBuffer(memoryStream,<span class="number">0</span>,(<span class="keyword">int</span>)memoryStream.Length);</span><br></pre></td></tr></table></figure>
+<h3 id="ibuffer轉byte"><a class="markdownIt-Anchor" href="#ibuffer轉byte"></a> Ibuffer轉byte[]</h3>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">byte</span>[] bytes=WindowsRuntimeBufferExtensions.ToArray(buffer,<span class="number">0</span>,(<span class="keyword">int</span>)buffer.Length);</span><br></pre></td></tr></table></figure>
+<h3 id="byte轉ibuffer"><a class="markdownIt-Anchor" href="#byte轉ibuffer"></a> Byte[]轉Ibuffer</h3>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WindowsRuntimeBufferExtensions.AsBuffer(bytes,<span class="number">0</span>,bytes.Length);</span><br></pre></td></tr></table></figure>
+<h3 id="ibuffer轉irandomaccessstream"><a class="markdownIt-Anchor" href="#ibuffer轉irandomaccessstream"></a> Ibuffer轉IrandomAccessStream</h3>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">InMemoryRandomAccessStream inStream = <span class="keyword">new</span> InMemoryRandomAccessStream();</span><br><span class="line">DataWriter datawriter = <span class="keyword">new</span> DataWriter(inStream.GetOutputStreamAt(<span class="number">0</span>));</span><br><span class="line">datawriter.WriteBuffer(buffer,<span class="number">0</span>,buffer.Length);</span><br><span class="line"></span><br><span class="line"><span class="keyword">await</span> datawriter.StoreAsync();</span><br></pre></td></tr></table></figure>
+<h3 id="irandomaccessstream轉ibuffer"><a class="markdownIt-Anchor" href="#irandomaccessstream轉ibuffer"></a> IrandomAccessStream轉Ibuffer</h3>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Stream stream=WindowsRuntimeStreamExtensions.AsStreamForRead(randomStream.GetInputStreamAt(<span class="number">0</span>));</span><br><span class="line">MemoryStream memoryStream = <span class="keyword">new</span> MemoryStream();           </span><br><span class="line"><span class="keyword">if</span> (stream != <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">byte</span>[] bytes = ReadFully(stream);</span><br><span class="line">  <span class="keyword">if</span> (bytes != <span class="literal">null</span>)</span><br><span class="line">  &#123;</span><br><span class="line">     <span class="keyword">var</span> binaryWriter = <span class="keyword">new</span> BinaryWriter(memoryStream);</span><br><span class="line">     binaryWriter.Write(bytes);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">IBuffer buffer=WindowsRuntimeBufferExtensions.GetWindowsRuntimeBuffer(memoryStream,<span class="number">0</span>,(<span class="keyword">int</span>)memoryStream.Length);</span><br></pre></td></tr></table></figure>
+<h3 id="irandomaccessstream轉fileinputstream"><a class="markdownIt-Anchor" href="#irandomaccessstream轉fileinputstream"></a> IRandomAccessStream轉FileInputStream</h3>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileInputStream inputStream=randomStream.GetInputStreamAt(<span class="number">0</span>) <span class="keyword">as</span> FileInputStream;</span><br></pre></td></tr></table></figure>
+<h3 id="irandomaccessstream轉fileoutputstream"><a class="markdownIt-Anchor" href="#irandomaccessstream轉fileoutputstream"></a> IRandomAccessStream轉FileOutputStream</h3>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FileOutputStream outStream= randomStream.GetOutputStreamAt(<span class="number">0</span>) <span class="keyword">as</span> FileOutputStream;</span><br></pre></td></tr></table></figure>
+<h3 id="stream轉byte"><a class="markdownIt-Anchor" href="#stream轉byte"></a> Stream轉byte[]</h3>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] <span class="title">ConvertStreamTobyte</span>(<span class="params">Stream input</span>)</span></span><br><span class="line"><span class="function"></span>   &#123;</span><br><span class="line">       <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">16</span> * <span class="number">1024</span>];</span><br><span class="line">       <span class="keyword">using</span> (MemoryStream ms = <span class="keyword">new</span> MemoryStream())</span><br><span class="line">           &#123;</span><br><span class="line">               <span class="keyword">int</span> read;</span><br><span class="line">               <span class="keyword">while</span> ((read = input.Read(buffer, <span class="number">0</span>, buffer.Length)) &gt; <span class="number">0</span>)</span><br><span class="line">               &#123;</span><br><span class="line">                   ms.Write(buffer, <span class="number">0</span>, read);</span><br><span class="line">               &#125;</span><br><span class="line">           <span class="keyword">return</span> ms.ToArray();</span><br><span class="line">           &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="byte轉stream"><a class="markdownIt-Anchor" href="#byte轉stream"></a> Byte轉Stream</h3>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Stream <span class="title">BytesToStream</span>(<span class="params"><span class="keyword">byte</span>[] bytes</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Stream stream = <span class="keyword">new</span> MemoryStream(bytes);</span><br><span class="line">        <span class="keyword">return</span> stream;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="stream轉memorystream"><a class="markdownIt-Anchor" href="#stream轉memorystream"></a> Stream轉MemoryStream</h3>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> MemoryStream <span class="title">ConvertStreamToMemoryStream</span>(<span class="params">Stream stream</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        MemoryStream memoryStream = <span class="keyword">new</span> MemoryStream();</span><br><span class="line">        <span class="keyword">if</span> (stream != <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">byte</span>[] buffer = ReadFully(stream);</span><br><span class="line">            <span class="keyword">if</span> (buffer != <span class="literal">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">var</span> binaryWriter = <span class="keyword">new</span> BinaryWriter(memoryStream);</span><br><span class="line">                binaryWriter.Write(buffer);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> memoryStream;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="irandomaccessstream轉byte"><a class="markdownIt-Anchor" href="#irandomaccessstream轉byte"></a> IrandomAccessStream轉byte[]</h3>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Stream stream = WindowsRuntimeStreamExtensions.AsStreamForRead(randomStream.GetInputStreamAt(<span class="number">0</span>));</span><br><span class="line">MemoryStream ms = <span class="keyword">new</span> MemoryStream();</span><br><span class="line"><span class="keyword">await</span> stream.CopyToAsync(ms);</span><br><span class="line"><span class="keyword">byte</span>[] bytes = ms.ToArray();</span><br></pre></td></tr></table></figure>
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2014/10/15/wp8-feedback/">
+      Windows Phone 8 开发：应用崩溃时给作者发送错误报告邮件
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2014/07/21/wp8-device-camera/">
+        WP8摄像头API（硬件快门、自动对焦、实时修改捕获视频）
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

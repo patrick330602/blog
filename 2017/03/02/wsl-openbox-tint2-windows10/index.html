@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2017/03/02/wsl-openbox-tint2-windows10/" />
+  <meta property="og:title" content="Make WSL DE Great Again: Openbox and Tint2 | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Make WSL DE Great Again: Openbox and Tint2 | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Make WSL DE Great Again: Openbox and Tint2</h1>
+
+	---<br />
+	date: Mar 02, 2017<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Openbox/" rel="tag">Openbox</a><br />- <a class="tag-link" href="/tags/WSL/" rel="tag">WSL</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>In this world full of complexity, we need a DE that can help us to run away from sophisticated world. With two lightweight component Openbox and Tint2, you can get a familiar, simple and easy-to-use Desktop Environment in Windows 10 as well as in native Linux system. In this article, I will talk about how to install Openbox and Tint2 to use as the default DE in WSL which you will be also able to open the DE with one click using VcXsrv.</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/openbox-tin2-desktop.png" alt="Running Openbox and Tint2" /></p>
+<a id="more"></a>
+<ol>
+<li>
+<p>Install VcXsrv and open <strong>XLaunch</strong>. Choose “One Window without titlebar” with display number as 0. Other settings leave as default. In the last page, save the configuration as a xlaunch file.</p>
+</li>
+<li>
+<p>Install tint2 as well as openbox, and some tools:</p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install tint2 openbox lxappearance feh tint2conf obconf</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>create a bat file with following content:</p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/path/to/xlaunch.exe -run <span class="string">"/path/to/config.xlaunch"</span></span><br><span class="line">bash -c <span class="string">"DISPLAY=:0 openbox-session"</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>xlaunch.exe can be found in the installation folder in VcXsrv</p>
+</blockquote>
+<p>Now you can start the openbox environment using one click.</p>
+</li>
+<li>
+<p>Copy the default configuration using the following code:</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -R /etc/xdg/openbox ~/.config/</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>Configure autostart by using <code>vim ~/.config/openbox/autostart</code>; Add <code>tint2 &amp;</code> to start tint2 taskbar automatically. Add <code>feh --bg-scale /path/to/wallpaper &amp;</code> to set a wallpaper for Openbox.</p>
+</li>
+<li>
+<p>Configure menu.xml by using <code>vim ~/.config/openbox/menu.xml</code>; Add the following line in the <strong>root-menu</strong>:</p>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">item</span> <span class="attr">label</span>=<span class="string">"tint2 Configuration"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"Execute"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">execute</span>&gt;</span>tint2conf<span class="tag">&lt;/<span class="name">execute</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">item</span> <span class="attr">label</span>=<span class="string">"Openbox Appearance"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"Execute"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">execute</span>&gt;</span>lxappearance<span class="tag">&lt;/<span class="name">execute</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Now, the basic configuration is completed. You can now open the openbox by using the bat you previously created. Also, you can manually launch by start VcXsrv using the configuration I mentioned in Step 1, and run <code>DISPLAY=:0 openbox-session</code> in Bash Terminal to start the server. To open the menu, right click the desktop. to configure Openbox, use <code>obconf</code>(Also in menu); To configure Tint2, use <code>tint2conf</code>(Tint2 Configuration in menu); To configure other customization, use <code>lxappearance</code>(Openbox Appearance).</p>
+<p>Now everything is set up. Happy bashing!</p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2017/03/06/MSSS-Inauguration-Dinner-2017-Reflection/">
+      Reflection on MSSS Inauguration Dinner 2017
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2017/02/24/New-ideas-with-my-REDBird-project/">
+        New ideas with my REDBird project
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

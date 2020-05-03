@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2017/11/16/server-periodic-tasks/" />
+  <meta property="og:title" content="Run Periodic Tasks Using Crontab | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Run Periodic Tasks Using Crontab | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Run periodic tasks using crontab</h1>
+
+	---<br />
+	date: Nov 16, 2017<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Server/" rel="tag">Server</a><br />- <a class="tag-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>To schedule tasks on Linux, We need a tool called <code>crontab</code>. It can be found in all the Unix-like operating systems such as Ubuntu, Mac OS X, etc. It is used to schedule commands to be executed periodically.<br />
+Crontab is short for <strong>cron table</strong>. A cron table contains a list of commands that will be executed periodically. These processes are called <strong>cronjobs</strong>.</p>
+<p>There are two kinds of cronjobs: <strong>evelated</strong> and <strong>non-evelated</strong>, which the only difference is that the first one will be executed by <code>root</code>.</p>
+<a id="more"></a>
+<h2 id="commands"><a class="markdownIt-Anchor" href="#commands"></a> Commands</h2>
+<p>To see what cronjobs are currently running on your system, you can open a terminal and run:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -l</span><br></pre></td></tr></table></figure>
+<p>To edit the list of elevated cronjobs, you need to run:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
+<p>To remove your crontab file:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -r</span><br></pre></td></tr></table></figure>
+<p>To display the last time you edited your crontab file:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -v</span><br></pre></td></tr></table></figure>
+<p>One important thing is, <strong>DO NOT</strong> open crontab file on your own, which will possibly break the <code>crontab</code> deamon. Also, the <code>crontab</code> will begin running as soon as it is properly edited and saved.</p>
+<h2 id="syntax"><a class="markdownIt-Anchor" href="#syntax"></a> Syntax</h2>
+<p><code>crontab</code> has syntax of following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">min hr dd mo wk com</span><br></pre></td></tr></table></figure>
+<p>Where:</p>
+<ul>
+<li><code>min</code>: minute (0-59)</li>
+<li><code>hr</code>: hour (0-23, 0 = midnight)</li>
+<li><code>dd</code>: day (1-31)</li>
+<li><code>mo</code>: month (1-12)</li>
+<li><code>wk</code>: weekday (0-6, 0 = Sunday)</li>
+<li><code>com</code>: command to be executed</li>
+</ul>
+<p>An asterisk (*) can be used so that every instance (every hour, every weekday, every month, etc.) of a time period is used.</p>
+<p>Comma-separated values can be used to run more than one instance of a particular command within a time period. Hyphen-separated values can be used to run a command continuously.</p>
+<p>You may want to run a script some number of times per time unit, use <code>*/n</code> where it runs every time that is divisible by <code>n</code>.</p>
+<p>Also, it is recommended that you use the full path to the desired commands as shown in the above examples.</p>
+<h2 id="exmaples"><a class="markdownIt-Anchor" href="#exmaples"></a> Exmaples</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">21 06 12 3 1 python &#x2F;usr&#x2F;bin&#x2F;myfolder&#x2F;myscript.py</span><br></pre></td></tr></table></figure>
+<p>The above example will run <code>python /usr/bin/myfolder/myscript.py</code> at 6:21 AM on March 12 plus every Monday in March.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">21 06 * * * python &#x2F;usr&#x2F;bin&#x2F;myfolder&#x2F;myscript.py</span><br></pre></td></tr></table></figure>
+<p>The above example will run <code>python /usr/bin/myfolder/myscript.py</code> at 6:21 AM on every day of every month.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">01,31 04,05 1-15 1,6 * python &#x2F;usr&#x2F;bin&#x2F;myfolder&#x2F;myscript.py</span><br></pre></td></tr></table></figure>
+<p>The above example will run <code>python /usr/bin/myfolder/myscript.py</code> at 01 and 31, past the hours of 4:00am and 5:00am on the 1st through the 15th of every January and June.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*&#x2F;10 * * * * python &#x2F;usr&#x2F;bin&#x2F;myfolder&#x2F;myscript.py</span><br></pre></td></tr></table></figure>
+<p>The above example will run <code>python /usr/bin/myfolder/myscript.py</code> every 10 minutes.</p>
+<h2 id="special-words"><a class="markdownIt-Anchor" href="#special-words"></a> Special words</h2>
+<p>For the first (minute) field, you can also put in a keyword instead of a number:</p>
+<ul>
+<li><code>@reboot</code>: Run once, at startup</li>
+<li><code>@yearly</code>: Run once a year “0 0 1 1 *”</li>
+<li><code>@annually</code>: (same as @yearly)</li>
+<li><code>@monthly</code>: Run once a month “0 0 1 * *”</li>
+<li><code>@weekly</code>: Run once a week “0 0 * * 0”</li>
+<li><code>@daily</code>: Run once a day “0 0 * * *”</li>
+<li><code>@midnight</code>: (same as @daily)</li>
+<li><code>@hourly</code>: Run once an hour “0 * * * *”</li>
+</ul>
+<h2 id="environment"><a class="markdownIt-Anchor" href="#environment"></a> Environment</h2>
+<p>We should know that <code>cron</code> invokes the command from the user’s HOME directory with the shell, (/usr/bin/sh). cron supplies a default environment for every shell, defining:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HOME=user’s-home-directory</span><br><span class="line">LOGNAME=user’s-login-id</span><br><span class="line">PATH=/usr/bin:/usr/sbin</span><br><span class="line">SHELL=/usr/bin/sh</span><br></pre></td></tr></table></figure>
+<p>Users who desire to have their <code>.profile</code> executed must explicitly do so in the crontab entry or in a script called by the entry.</p>
+<h2 id="storing-output"><a class="markdownIt-Anchor" href="#storing-output"></a> Storing Output</h2>
+<p>add <code>&gt;&gt; /var/log/&lt;the name you want&gt;.log 2&gt;&amp;1</code> to the end of your command.</p>
+<h2 id="disable-email"><a class="markdownIt-Anchor" href="#disable-email"></a> Disable Email</h2>
+<p>By default, cronjobs sends a email to the user account executing the cronjob. If this is not needed, then put <code>&gt;/dev/null 2&gt;&amp;1</code> at the end of the cron job line. You can also configure crontab to forward all output to a real email address by starting your crontab with <code>MAILTO=&quot;myname@somedomain.com&quot;</code>.</p>
+<h2 id="storing-logs"><a class="markdownIt-Anchor" href="#storing-logs"></a> Storing Logs</h2>
+<p>To collect the cron execution execution log in a file:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">30 18 * * * rm &#x2F;home&#x2F;someuser&#x2F;tmp&#x2F;* &gt; &#x2F;home&#x2F;someuser&#x2F;cronlogs&#x2F;clean_tmp_dir.log</span><br></pre></td></tr></table></figure>
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2017/12/12/Microsoft-Antitrust-Case-and-ENGG1150/">
+      Microsoft Antitrust Case and ENGG1150
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2017/11/09/python-encoding-issue/">
+        Encoding problem in Python and how to solve it
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

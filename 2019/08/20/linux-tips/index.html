@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2019/08/20/linux-tips/" />
+  <meta property="og:title" content="Collection of Continuing Updating Notes on Linux | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Collection of Continuing Updating Notes on Linux | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Collection of Continuing Updating Notes On Linux</h1>
+
+	---<br />
+	date: Aug 20, 2019<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Antergos/" rel="tag">Antergos</a><br />- <a class="tag-link" href="/tags/Linux/" rel="tag">Linux</a><br />- <a class="tag-link" href="/tags/SSH/" rel="tag">SSH</a><br />- <a class="tag-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<h1 id="what"><a class="markdownIt-Anchor" href="#what"></a> What?</h1>
+<p>Well, I always forget about small tricks on get something done on linux and sometimes even when I keep it locally, I forget about where the heck they are and search them again. But these small tips are just so tiny that they cannot be kept as articles. So now I will keep everything here so I won’t forget about them.</p>
+<h2 id="give-sudo-password-a-star"><a class="markdownIt-Anchor" href="#give-sudo-password-a-star"></a> Give sudo password a star</h2>
+<p>You first <code>visudo</code>, then append <code>,pwfeedback</code> on the line <code>Defaults env_reset</code>, and then it’s done.</p>
+<h2 id="disable-error-reporting-in-ubuntu"><a class="markdownIt-Anchor" href="#disable-error-reporting-in-ubuntu"></a> Disable Error Reporting in Ubuntu</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo service apport stop</span><br><span class="line">sudo gedit /etc/default/apport</span><br></pre></td></tr></table></figure>
+<p>change <code>enabled=1</code> to <code>enabled=0</code></p>
+<h2 id="fix-time-differences-in-ubuntu-windows"><a class="markdownIt-Anchor" href="#fix-time-differences-in-ubuntu-windows"></a> Fix Time Differences in Ubuntu &amp; Windows</h2>
+<p>In previous Ubuntu editions, you can edit the config file <code>/etc/default/rcS</code> to disable UTC.</p>
+<p>In Ubuntu 16.04, open terminal (<strong>Ctrl+Alt+T</strong>) and run the command below instead:</p>
+<p><code>timedatectl set-local-rtc 1 --adjust-system-clock</code></p>
+<p>To check out if your system uses Local time, just run:</p>
+<p><code>timedatectl</code></p>
+<p>you’ll the local time zone is in use in the Warning section.</p>
+<h2 id="ssh-folder-permission"><a class="markdownIt-Anchor" href="#ssh-folder-permission"></a> SSH folder permission</h2>
+<ul>
+<li><code>.ssh</code> folder: <code>700</code></li>
+<li><code>*.pub</code>: <code>644</code></li>
+<li>pravate keys, config, known_hosts: <code>600</code></li>
+</ul>
+<h2 id="how-to-display-asian-character-poroperly-in-antergos"><a class="markdownIt-Anchor" href="#how-to-display-asian-character-poroperly-in-antergos"></a> How to display Asian character poroperly in Antergos</h2>
+<p>I tried multiple ways of installing Chinese font like <code>ttf-arphic-uming</code>, <code>adobe-source-han-sans-otc-fonts</code> and <code>noto-fonts-cjk</code>. This packages solved the problem in system, but not in browsers like Chrome and Firefox.</p>
+<p>Reference: <a href="https://bbs.archlinux.org/viewtopic.php?id=158897" target="_blank" rel="noopener">this post</a></p>
+<ol>
+<li>Remove <code>ttf-google-fonts</code>(Google Web Font)</li>
+<li>Install one of them: <code>ttf-arphic-uming</code>, <code>adobe-source-han-sans-otc-fonts</code>, <code>noto-fonts-cjk</code></li>
+<li>rebuild the font cache using <code>sudo fc-cache -f -v</code> to regenerate font cache.</li>
+</ol>
+<p>To keep it safe, Here is a Ubuntu font config:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Font Location</th>
+<th style="text-align:right">Font  Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Window Titles</td>
+<td style="text-align:right">Cantarell Bold</td>
+</tr>
+<tr>
+<td style="text-align:left">Interface</td>
+<td style="text-align:right">Ubuntu</td>
+</tr>
+<tr>
+<td style="text-align:left">Documents</td>
+<td style="text-align:right">Sans</td>
+</tr>
+<tr>
+<td style="text-align:left">Monospace</td>
+<td style="text-align:right">Ubuntu Mono</td>
+</tr>
+</tbody>
+</table>
+<h2 id="manually-install-linux-kernel-in-ubuntu"><a class="markdownIt-Anchor" href="#manually-install-linux-kernel-in-ubuntu"></a> Manually Install Linux kernel in Ubuntu</h2>
+<p>Download Latest Kernel Here:<br />
+<a href="http://kernel.ubuntu.com/~kernel-ppa/mainline/" target="_blank" rel="noopener">http://kernel.ubuntu.com/~kernel-ppa/mainline/</a></p>
+<h3 id="x86"><a class="markdownIt-Anchor" href="#x86"></a> x86</h3>
+<p>Download <code>headers-all</code>, <code>headers-i386</code>, <code>image-i386</code> and install all the deb.</p>
+<h3 id="x64"><a class="markdownIt-Anchor" href="#x64"></a> x64</h3>
+<p>Download <code>headers-all</code>, <code>headers-amd64</code>, <code>image-amd64</code> and install all the deb.</p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2019/08/28/server-alicloud-format-drive-larger-than-2tib/">
+      Format drive larger than 2TiB in Alicloud
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2019/08/03/wsl-powershell-raster-font-problem/">
+        How to stop Powershell from resetting your WSL console font
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2019/10/29/wsl2-darling-build-cn/" />
+  <meta property="og:title" content="在WSL2上编译并使用Darling | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  在WSL2上编译并使用Darling | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>在WSL2上编译并使用Darling</h1>
+
+	---<br />
+	date: Oct 29, 2019<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Darwin/" rel="tag">Darwin</a><br />- <a class="tag-link" href="/tags/WSL/" rel="tag">WSL</a><br />- <a class="tag-link" href="/tags/WSL2/" rel="tag">WSL2</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<blockquote>
+<p>翻译并修改自<a href="https://github.com/darlinghq/darling/issues/260#issuecomment-530184521" target="_blank" rel="noopener">darlinghq/darling issue #260 的评论</a></p>
+</blockquote>
+<h1 id="tldr"><a class="markdownIt-Anchor" href="#tldr"></a> TL;DR</h1>
+<p>这篇文章将会讲述如何在 WSL2 上编译并使用<a href="http://www.darlinghq.org/" target="_blank" rel="noopener">Darling</a>，一款可以在 Linux 系统上运行 Darwin （就是 MacOS 的开源内核）的兼容层,就像 WineHQ 一样。</p>
+<h2 id="编译-darling-和-wsl2-kernel"><a class="markdownIt-Anchor" href="#编译-darling-和-wsl2-kernel"></a> 编译 Darling 和 WSL2 Kernel</h2>
+<p>打开 WSL Ubuntu，并依次键入以下指令。以下指令会下载、编译和安装除了 Kernel 以外大部分 Darling 组件，并下载、编译和安装一份修改过的 WSL Kernel并复制到C盘。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"># 确保32位依赖能正确安装</span><br><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line"># 安装必要的安装包</span><br><span class="line">sudo apt-get install cmake clang bison flex xz-utils libfuse-dev libudev-dev pkg-config libc6-dev:i386 linux-headers-generic gcc-multilib libcap2-bin libcairo2-dev libgl1-mesa-dev libtiff5-dev libfreetype6-dev libfreetype6-dev:i386 git libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev libssl-dev</span><br><span class="line"></span><br><span class="line"># 克隆并编译 Darling</span><br><span class="line">git clone --recursive https:&#x2F;&#x2F;github.com&#x2F;darlinghq&#x2F;darling.git</span><br><span class="line">cd darling</span><br><span class="line">mkdir build &amp;&amp; cd build</span><br><span class="line">cmake ..</span><br><span class="line"></span><br><span class="line"># 链接一些文件到 &#96;&#x2F;usr&#x2F;include&#96;</span><br><span class="line">sudo ln -s &#x2F;usr&#x2F;include&#x2F;x86_64-linux-gnu&#x2F;jconfig.h &#x2F;usr&#x2F;include&#x2F;jconfig.h</span><br><span class="line">sudo ln -s &#x2F;usr&#x2F;include&#x2F;x86_64-linux-gnu&#x2F;tiffio.h &#x2F;usr&#x2F;include&#x2F;tiffio.h</span><br><span class="line">sudo ln -s &#x2F;usr&#x2F;include&#x2F;x86_64-linux-gnu&#x2F;tiff.h &#x2F;usr&#x2F;include&#x2F;tiff.h</span><br><span class="line">sudo ln -s &#x2F;usr&#x2F;include&#x2F;x86_64-linux-gnu&#x2F;tiffconf.h &#x2F;usr&#x2F;include&#x2F;tiffconf.h</span><br><span class="line">sudo ln -s &#x2F;usr&#x2F;include&#x2F;x86_64-linux-gnu&#x2F;tiffvers.h &#x2F;usr&#x2F;include&#x2F;tiffvers.h</span><br><span class="line">sudo ln -s &#x2F;usr&#x2F;include&#x2F;x86_64-linux-gnu&#x2F;tiffio.hxx &#x2F;usr&#x2F;include&#x2F;tiffio.hxx</span><br><span class="line"></span><br><span class="line"># 编译大部分Darling 组件</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br><span class="line"></span><br><span class="line"># 在编译 Kernel 模块之前，我们需要编译</span><br><span class="line">cd ..</span><br><span class="line"></span><br><span class="line"># 克隆并修改 Kernel</span><br><span class="line">git clone --depth 1 --single-branch --branch master https:&#x2F;&#x2F;github.com&#x2F;microsoft&#x2F;WSL2-Linux-Kernel.git kernel</span><br><span class="line">cd kernel</span><br><span class="line">sed -i &#39;s&#x2F;CONFIG_EMBEDDED&#x3D;y&#x2F;CONFIG_EMBEDDED&#x3D;n&#x2F;g&#39; Microsoft&#x2F;config-wsl</span><br><span class="line"></span><br><span class="line"># 编译并安装 Kernel</span><br><span class="line">make KCONFIG_CONFIG&#x3D;Microsoft&#x2F;config-wsl</span><br><span class="line">sudo make modules_install</span><br><span class="line">sudo make install</span><br><span class="line">sudo update-initramfs -c -k 4.19.67-microsoft-standard+</span><br><span class="line"></span><br><span class="line"># 复制到C盘；当然，你也可以选择复制到任何地方</span><br><span class="line">mkdir &#x2F;mnt&#x2F;c&#x2F;linux-kernels</span><br><span class="line">cp &#x2F;boot&#x2F;vmlinuz-4.19.67-microsoft-standard+ &#x2F;mnt&#x2F;c&#x2F;linux-kernels&#x2F;vmlinuz-4.19.67-microsoft-standard+</span><br></pre></td></tr></table></figure>
+<h2 id="修改-wsl2-使用的-kernel"><a class="markdownIt-Anchor" href="#修改-wsl2-使用的-kernel"></a> 修改 WSL2 使用的 Kernel</h2>
+<p>现在在你 Windows 用户文件夹下创建（或编辑） <code>.wslconfig</code> ，加入以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[wsl2]</span><br><span class="line">#你的其他设置</span><br><span class="line">kernel&#x3D;C:\\linux-kernels\\vmlinuz-4.19.67-microsoft-standard+</span><br></pre></td></tr></table></figure>
+<p>然后在 PowerShell 或者命令行里输入以下命令关闭所有运行中的 WSL 发行版：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --shutdown</span><br></pre></td></tr></table></figure>
+<h2 id="编译-darling-kernel-模组"><a class="markdownIt-Anchor" href="#编译-darling-kernel-模组"></a> 编译 Darling Kernel 模组</h2>
+<p>重新打开你的 WSL 窗口并执行以下命令。以下指令会编译并安装 Kernel 模组：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># get back to the directory you built Darling in</span></span><br><span class="line"><span class="built_in">cd</span> darling/build</span><br><span class="line">make lkm</span><br><span class="line">sudo make lkm_install</span><br></pre></td></tr></table></figure>
+<h2 id="搞定"><a class="markdownIt-Anchor" href="#搞定"></a> 搞定！</h2>
+<p>目前仍然有一个Bug使<code>darling shell</code> 只能以<code>root</code>用户运行，这意味着你只能用以下命令运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo darling shell</span><br></pre></td></tr></table></figure>
+<p>然后享受 Darwin on Linux on Windows 吧！</p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2019/12/25/review-2019/">
+      2019：淚與笑
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2019/10/28/wsl-fcitx-setup-cn/">
+        在WSL上配置输入法
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+
+<h2>Not the Footnote</h2>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
+		target="_blank">Nayo</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>This site is hosted on Digital Ocean. Deploy your next app in seconds. Get $100 in cloud credits from @DigitalOcean using <a href="https://m.do.co/t/e9a9d3044c4b" target="_blank" rel="noopener">my link</a>.</p>
+
+<a href="https://www.stickermule.com/unlock?ref_id=5024911701&utm_content=250x250&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="250" src="https://res.cloudinary.com/print-bear/image/upload/v1531752798/banners/stickermule-invite-friends-square.jpg" width="250" /></a>
+<h2>Possibly the Footnote</h2>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>
