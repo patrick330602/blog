@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://patrickwu.space/2020/05/31/build-2020/</loc>
+    
+    <lastmod>2020-06-01T03:31:04.426Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://patrickwu.space/2017/11/16/server-periodic-tasks/</loc>
+    
+    <lastmod>2020-05-22T15:06:32.286Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://patrickwu.space/2019/10/29/wsl2-darling-build-cn/</loc>
+    
+    <lastmod>2020-05-22T15:06:21.736Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://patrickwu.space/wslconf/index.html</loc>
     
-    <lastmod>2020-04-28T02:30:17.087Z</lastmod>
+    <lastmod>2020-04-28T02:30:17.000Z</lastmod>
     
   </url>
   
@@ -726,20 +747,6 @@
     <loc>https://patrickwu.space/tags/index.html</loc>
     
     <lastmod>2020-01-04T13:33:49.093Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://patrickwu.space/2019/10/29/wsl2-darling-build-cn/</loc>
-    
-    <lastmod>2019-12-07T09:02:26.494Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://patrickwu.space/2017/11/16/server-periodic-tasks/</loc>
-    
-    <lastmod>2019-10-29T11:34:56.000Z</lastmod>
     
   </url>
   

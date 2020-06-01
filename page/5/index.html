@@ -32,12 +32,34 @@
 
 
 
-<!-- hexo-inject:begin --><!-- hexo-inject:end --><p>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="tab">
 	<h1>Patrick Wu, Jinming</h1>
-	<a href="https://keybase.io/callmepk" target="_blank" rel="noopener">Keybase</a> |
-	<a href="https://www.linkedin.com/in/patrick-wu-jinming/" target="_blank" rel="noopener">LinkedIn</a> |
-	<a href="https://twitter.com/callmepkwu" target="_blank" rel="noopener">Twitter</a>
-</p>
+	<a href="#" id="default-tab" class="tablinks" onclick="openSection(event, 'sec-post')">Posts</a> |
+	<a href="#" class="tablinks" onclick="openSection(event, 'sec-about')">About</a> | 
+	<a href="#" class="tablinks" onclick="openSection(event, 'sec-tags')">Tags</a> |
+	<a href="#" class="tablinks" onclick="openSection(event, 'sec-friends')">Friends</a>
+</div>
+
+<script>
+	function openSection(evt, SecName) {
+	  var i, tabcontent, tablinks;
+	  tabcontent = document.getElementsByClassName("tabcontent");
+	  for (i = 0; i < tabcontent.length; i++) {
+		tabcontent[i].style.display = "none";
+	  }
+	  tablinks = document.getElementsByClassName("tablinks");
+	  for (i = 0; i < tablinks.length; i++) {
+		tablinks[i].className = tablinks[i].className.replace(" active", "");
+	  }
+	  document.getElementById(SecName).style.display = "block";
+	  evt.currentTarget.className += " active";
+	}
+	window.onload = function() {
+		document.getElementById('default-tab').click()
+	}
+</script>
+
+<div id="sec-about" class="tabcontent">
 
 <h2 style="margin: 20px 0 20px;">About</h2>
 <p>Love photography, designing, coding, hiking and Ramen; Love exploring new things, and always have a lot of ideas.</p>
@@ -45,9 +67,13 @@
 		href="https://wslutiliti.es">WSL Utilities</a>, and UWP Developer as <a href="https://github.com/wedotstudio" target="_blank" rel="noopener">WE. Studio</a>. Previously help developed Pengwin at <a
 		href="https://whitewaterfoundry.com">Whitewater Foundry</a>, and founder of (no longer active) Windows Phone community
 	<a href="https://wp8bartemp.wordpress.com/" target="_blank" rel="noopener">WPerfect</a>.</p>
+
+<p>I also talked about <a href="https://youtu.be/FX4FKxKJl74" target="_blank" rel="noopener">WSL For DevOps and Cross-Platform Development</a> (<a href="https://github.com/whitewaterfoundry/build2019" target="_blank" rel="noopener">Resources</a>) at <b>Microsoft Build 2019</b> with Hayden Barnes and <a href="https://youtu.be/2ur-VA2FuZg" target="_blank" rel="noopener">Scripting with WSL Interoperability: Tips & Tricks</a>(<a href="/wslconf">Resources</a>) at <b>WSLConf 2020</b>.</p>
+
 <p>You can find me on <a href="http://callmepatrick.unixcab.org" target="_blank">SDF</a>, <a
-		href="https://github.com/patrick330602">GitHub</a>, <a href="https://gitlab.com/callmepk" target="_blank" rel="noopener">GitLab</a> and <a
-		href="https://stackoverflow.com/users/8799874/patrick-wu-j-m">Stack Overflow</a>.</p>
+		href="https://github.com/patrick330602">GitHub</a>, <a href="https://gitlab.com/callmepk" target="_blank" rel="noopener">GitLab</a>, <a
+		href="https://stackoverflow.com/users/8799874/patrick-wu-j-m">Stack Overflow</a>, 	<a href="https://www.linkedin.com/in/patrick-wu-jinming/" target="_blank" rel="noopener">LinkedIn</a>, 
+		<a href="https://twitter.com/callmepkwu" target="_blank" rel="noopener">Twitter</a>, and <a href="https://unsplash.com/@callmepk" target="_blank" rel="noopener">Unsplash</a>.</p>
 
 <p>You can support me via <a href="https://github.com/sponsors/patrick330602" target="_blank" rel="noopener">GitHub Sponsors</a> or 
 		<a href="https://www.paypal.me/callmepk/" target="_blank" rel="noopener">PayPal</a>.</p>
@@ -55,406 +81,426 @@
 
 <p>My CV in pdf can be found <a href="https://cdn.patrickwu.space/base/cv.pdf" target="_blank" rel="noopener">here</a>.</p>
 
+</div>
+
+<div id="sec-post" class="tabcontent">
+
 <h2 style="margin: 20px 0 20px;">Posts</h2>
 
+
+
 <p>
-	<time>
-		Jan 20th
-	</time>
-	|
-	<span>
+
+	<time><b>2016 Feb 7th</b></time> 
+	<a  href="/2016/02/07/uwp-new-window/">How to create a new window in UWP</a>
+	<br/>><span>
+		
+			<a class="tag-link" href="/tags/C/" rel="tag">C#</a> <a class="tag-link" href="/tags/UWP/" rel="tag">UWP</a>
+			
+	</span>
+</p>
+
+
+
+<p>
+
+	<time><b>2016 Jan 20th</b></time> 
+	<a  href="/2016/01/20/peculiar-stones/">Peculiar Stone</a>
+	<br/>><span>
 		
 			<a class="tag-link" href="/tags/Write-ups/" rel="tag">Write-ups</a>
 			
 	</span>
-	<br />> 
-	<span>
-		<a href="/2016/01/20/peculiar-stones/">
-			Peculiar Stone
-		</a>
-	</span>
-	<br />
 </p>
 
+
+
 <p>
-	<time>
-		Dec 28th
-	</time>
-	|
-	<span>
+
+	<time><b>2015 Dec 28th</b></time> 
+	<a  href="/2015/12/28/the-walk/">The Walk·行</a>
+	<br/>><span>
 		
 			<a class="tag-link" href="/tags/REDBird/" rel="tag">REDBird</a> <a class="tag-link" href="/tags/Write-ups/" rel="tag">Write-ups</a>
 			
 	</span>
-	<br />> 
-	<span>
-		<a href="/2015/12/28/the-walk/">
-			The Walk·行
-		</a>
-	</span>
-	<br />
 </p>
 
+
+
 <p>
-	<time>
-		Nov 27th
-	</time>
-	|
-	<span>
+
+	<time><b>2015 Nov 27th</b></time> 
+	<a  href="/2015/11/27/uwp-usage-of-the-new-segoe-mdl2-icons/">Usage Of the new Segoe MDL2 icons</a>
+	<br/>><span>
 		
 			<a class="tag-link" href="/tags/Icon/" rel="tag">Icon</a> <a class="tag-link" href="/tags/UWP/" rel="tag">UWP</a>
 			
 	</span>
-	<br />> 
-	<span>
-		<a href="/2015/11/27/uwp-usage-of-the-new-segoe-mdl2-icons/">
-			Usage Of the new Segoe MDL2 icons
-		</a>
-	</span>
-	<br />
 </p>
 
+
+
 <p>
-	<time>
-		Apr 16th
-	</time>
-	|
-	<span>
+
+	<time><b>2015 Apr 16th</b></time> 
+	<a  href="/2015/04/16/csharp-get-weekday-using-only-date/">Get WeekDay Using Pure Date in C#</a>
+	<br/>><span>
 		
 			<a class="tag-link" href="/tags/C/" rel="tag">C#</a>
 			
 	</span>
-	<br />> 
-	<span>
-		<a href="/2015/04/16/csharp-get-weekday-using-only-date/">
-			Get WeekDay Using Pure Date in C#
-		</a>
-	</span>
-	<br />
 </p>
 
+
+
 <p>
-	<time>
-		Dec 31st
-	</time>
-	|
-	<span>
+
+	<time><b>2014 Dec 31st</b></time> 
+	<a  href="/2014/12/31/wp8-interop/">完美解锁WP8手机方法</a>
+	<br/>><span>
 		
 			<a class="tag-link" href="/tags/Interop/" rel="tag">Interop</a> <a class="tag-link" href="/tags/WP8/" rel="tag">WP8</a> <a class="tag-link" href="/tags/WP8-1/" rel="tag">WP8.1</a>
 			
 	</span>
-	<br />> 
-	<span>
-		<a href="/2014/12/31/wp8-interop/">
-			完美解锁WP8手机方法
-		</a>
-	</span>
-	<br />
 </p>
 
+
+
 <p>
-	<time>
-		Oct 16th
-	</time>
-	|
-	<span>
+
+	<time><b>2014 Oct 16th</b></time> 
+	<a  href="/2014/10/16/wp8-longlistselector-pinyin/">Windows Phone 8 LongListSelector按拼音首字母分组</a>
+	<br/>><span>
 		
 			<a class="tag-link" href="/tags/C/" rel="tag">C#</a> <a class="tag-link" href="/tags/WP8/" rel="tag">WP8</a>
 			
 	</span>
-	<br />> 
-	<span>
-		<a href="/2014/10/16/wp8-longlistselector-pinyin/">
-			Windows Phone 8 LongListSelector按拼音首字母分组
-		</a>
-	</span>
-	<br />
 </p>
 
+
+
 <p>
-	<time>
-		Oct 15th
-	</time>
-	|
-	<span>
+
+	<time><b>2014 Oct 15th</b></time> 
+	<a  href="/2014/10/15/wp8-81-disable-screenshot/">Windows Phone 8 APP中禁用截图</a>
+	<br/>><span>
 		
 			<a class="tag-link" href="/tags/C/" rel="tag">C#</a> <a class="tag-link" href="/tags/WP8/" rel="tag">WP8</a> <a class="tag-link" href="/tags/WP8-1/" rel="tag">WP8.1</a>
 			
 	</span>
-	<br />> 
-	<span>
-		<a href="/2014/10/15/wp8-81-disable-screenshot/">
-			Windows Phone 8 APP中禁用截图
-		</a>
-	</span>
-	<br />
 </p>
 
+
+
 <p>
-	<time>
-		Oct 15th
-	</time>
-	|
-	<span>
+
+	<time><b>2014 Oct 15th</b></time> 
+	<a  href="/2014/10/15/wp8-feedback/">Windows Phone 8 开发：应用崩溃时给作者发送错误报告邮件</a>
+	<br/>><span>
 		
 			<a class="tag-link" href="/tags/C/" rel="tag">C#</a> <a class="tag-link" href="/tags/WP8/" rel="tag">WP8</a>
 			
 	</span>
-	<br />> 
-	<span>
-		<a href="/2014/10/15/wp8-feedback/">
-			Windows Phone 8 开发：应用崩溃时给作者发送错误报告邮件
-		</a>
-	</span>
-	<br />
 </p>
 
+
+
 <p>
-	<time>
-		Sep 7th
-	</time>
-	|
-	<span>
+
+	<time><b>2014 Sep 7th</b></time> 
+	<a  href="/2014/09/07/csharp-byte-stream-ibuffer-conversion/">Byte[],Stream,Ibuffer,IRandomAccessStream的互相轉換</a>
+	<br/>><span>
 		
 			<a class="tag-link" href="/tags/C/" rel="tag">C#</a>
 			
 	</span>
-	<br />> 
-	<span>
-		<a href="/2014/09/07/csharp-byte-stream-ibuffer-conversion/">
-			Byte[],Stream,Ibuffer,IRandomAccessStream的互相轉換
-		</a>
-	</span>
-	<br />
 </p>
 
-<p>
-	<time>
-		Jul 21st
-	</time>
-	|
-	<span>
-		
-			<a class="tag-link" href="/tags/C/" rel="tag">C#</a> <a class="tag-link" href="/tags/WP8/" rel="tag">WP8</a> <a class="tag-link" href="/tags/XAML/" rel="tag">XAML</a>
-			
-	</span>
-	<br />> 
-	<span>
-		<a href="/2014/07/21/wp8-device-camera/">
-			WP8摄像头API（硬件快门、自动对焦、实时修改捕获视频）
-		</a>
-	</span>
-	<br />
-</p>
 
-<p>
-	<time>
-		Jul 8th
-	</time>
-	|
-	<span>
-		
-			<a class="tag-link" href="/tags/C/" rel="tag">C#</a> <a class="tag-link" href="/tags/WP8/" rel="tag">WP8</a>
-			
-	</span>
-	<br />> 
-	<span>
-		<a href="/2014/07/08/wp8-music-stop/">
-			WP8停止音乐实现办法
-		</a>
-	</span>
-	<br />
-</p>
 
-<p>
-	<time>
-		Jul 6th
-	</time>
-	|
-	<span>
-		
-			<a class="tag-link" href="/tags/C/" rel="tag">C#</a> <a class="tag-link" href="/tags/WP8/" rel="tag">WP8</a> <a class="tag-link" href="/tags/WP8-1/" rel="tag">WP8.1</a>
-			
-	</span>
-	<br />> 
-	<span>
-		<a href="/2014/07/06/wp8-live-tile/">
-			如何计划 Windows Phone 的磁贴更新
-		</a>
-	</span>
-	<br />
-</p>
 
-<p>
-	<time>
-		Jul 6th
-	</time>
-	|
-	<span>
-		
-			<a class="tag-link" href="/tags/C/" rel="tag">C#</a> <a class="tag-link" href="/tags/WP8/" rel="tag">WP8</a>
-			
-	</span>
-	<br />> 
-	<span>
-		<a href="/2014/07/06/wp8-flashlight-code/">
-			Window Phone 8手电筒代码
-		</a>
-	</span>
-	<br />
-</p>
 
-<p>
-	<time>
-		Jul 6th
-	</time>
-	|
-	<span>
-		
-			<a class="tag-link" href="/tags/C/" rel="tag">C#</a> <a class="tag-link" href="/tags/WP8/" rel="tag">WP8</a> <a class="tag-link" href="/tags/WP8-1/" rel="tag">WP8.1</a>
-			
-	</span>
-	<br />> 
-	<span>
-		<a href="/2014/07/06/wp8-81-uri-info/">
-			Windows Phone URI scheme
-		</a>
-	</span>
-	<br />
-</p>
 
-<p>
-	<time>
-		May 14th
-	</time>
-	|
-	<span>
-		
-			<a class="tag-link" href="/tags/Essay/" rel="tag">Essay</a>
-			
-	</span>
-	<br />> 
-	<span>
-		<a href="/2014/05/14/not-un-reachable/">
-			不是遙不可及
-		</a>
-	</span>
-	<br />
-</p>
 
-<p>
-	<time>
-		May 20th
-	</time>
-	|
-	<span>
-		
-			<a class="tag-link" href="/tags/Essay/" rel="tag">Essay</a>
-			
-	</span>
-	<br />> 
-	<span>
-		<a href="/2013/05/20/hope-even-though-darker/">
-			再黑暗，我們也有期望
-		</a>
-	</span>
-	<br />
-</p>
 
-<p>
-	<time>
-		Sep 22nd
-	</time>
-	|
-	<span>
-		
-			<a class="tag-link" href="/tags/Essay/" rel="tag">Essay</a>
-			
-	</span>
-	<br />> 
-	<span>
-		<a href="/2012/09/22/the-ideal-world/">
-			我理想中的太平盛世
-		</a>
-	</span>
-	<br />
-</p>
 
-<p>
-	<time>
-		Sep 15th
-	</time>
-	|
-	<span>
-		
-			<a class="tag-link" href="/tags/Essay/" rel="tag">Essay</a>
-			
-	</span>
-	<br />> 
-	<span>
-		<a href="/2012/09/15/that-tree/">
-			那棵樹
-		</a>
-	</span>
-	<br />
-</p>
 
-<p>
-	<time>
-		Mar 14th
-	</time>
-	|
-	<span>
-		
-			<a class="tag-link" href="/tags/Essay/" rel="tag">Essay</a>
-			
-	</span>
-	<br />> 
-	<span>
-		<a href="/2009/03/14/legacy-investigation-report/">
-			資源調查報告 [黑歷史]
-		</a>
-	</span>
-	<br />
-</p>
 
-<p>
-	<time>
-		Mar 14th
-	</time>
-	|
-	<span>
-		
-			<a class="tag-link" href="/tags/Essay/" rel="tag">Essay</a>
-			
-	</span>
-	<br />> 
-	<span>
-		<a href="/2009/03/14/legacy-summer-family-competition/">
-			寒假家庭一趣 [黑歷史]
-		</a>
-	</span>
-	<br />
-</p>
 
 
 <a href="/archives">[More](/archives)</a>
+</div>
 
-
-<h2 style="margin: 20px 0 20px;">Speaks</h2>
+<div id="sec-friends" class="tabcontent">
+<h2 style="margin: 20px 0 20px;">Friends</h2>
 <ul>
-	<li>WSL For DevOps and Cross-Platform Development @ <b>Microsoft Build 2019</b> <br />
-		[ <a href="https://github.com/whitewaterfoundry/build2019" target="_blank" rel="noopener">Resources</a> |
-		<a href="https://youtu.be/FX4FKxKJl74" target="_blank" rel="noopener">YouTube</a> ]</li>
-	<li>Scripting with WSL Interoperability: Tips & Tricks @ <b>WSLConf 2020</b><br />
-		[ <a href="/wslconf">Resources</a> | 
-		<a href="https://github.com/patrick330602/wslconf" target="_blank" rel="noopener">GitHub</a> |
-		<a href="https://youtu.be/2ur-VA2FuZg" target="_blank" rel="noopener">YouTube</a> ]</li>
+	
+		<li><a href="https://haysc.tech" target="_blank" rel="noopener">Hays&#39; Blog</a><br />不乱于心，不困于情。不畏将来，不念过往。</li>
+	
+		<li><a href="https://hanasei.cn/" target="_blank" rel="noopener">桜庭茶包铺</a><br />不是Peanut是Hanasei的花生</li>
+	
+		<li><a href="https://blessing.studio" target="_blank" rel="noopener">Blessing Studio</a><br />半吊子全栈开发者的日常</li>
+	
+		<li><a href="https://unihon.github.io/" target="_blank" rel="noopener">Hogan</a><br />Just ordinary people</li>
+	
 </ul>
+</div>
 
+<div id="sec-tags" class="tabcontent">
+<h2 style="margin: 20px 0 20px;">Tags</h2>
 
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/REDBird/">REDBird - 16</a>
+</span>
 
-<h2 style="margin: 20px 0 20px;">Projects</h2>
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Social-Service/">Social Service - 2</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/MSSS/">MSSS - 6</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/C/">C++ - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Makefile/">Makefile - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Reflection/">Reflection - 6</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/SDLP/">SDLP - 10</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Proposal/">Proposal - 2</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/SMARTe-Goals/">SMARTe Goals - 4</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Write-ups/">Write-ups - 6</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/WP8/">WP8 - 10</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/WP8-1/">WP8.1 - 5</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Poster/">Poster - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Design/">Design - 2</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Thesis/">Thesis - 7</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Web/">Web - 4</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/HTML/">HTML - 3</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/CSS/">CSS - 3</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Microsoft-Build/">Microsoft Build - 2</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/C/">C# - 15</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/WSL/">WSL - 23</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/WSL2/">WSL2 - 4</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Winodws-10-Insider/">Winodws 10 Insider - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/GitHub/">GitHub - 2</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Shell/">Shell - 3</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Hexo/">Hexo - 3</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Hyper-V/">Hyper-V - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Linux/">Linux - 7</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Windows/">Windows - 2</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Jekyll/">Jekyll - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Javascript/">Javascript - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Essay/">Essay - 9</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Linux-Packaging/">Linux Packaging - 2</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/OpenSUSE/">OpenSUSE - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Ubuntu/">Ubuntu - 8</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/SSH/">SSH - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Antergos/">Antergos - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/SSR/">SSR - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Server/">Server - 3</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Debian/">Debian - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Eclipse/">Eclipse - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/HiDPI/">HiDPI - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Announcement/">Announcement - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Python/">Python - 2</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Annual-Review/">Annual Review - 2</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/UWP/">UWP - 3</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Surface/">Surface - 3</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Wallpaper/">Wallpaper - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Android/">Android - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/XAML/">XAML - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Icon/">Icon - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Interop/">Interop - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Kali-Linux/">Kali Linux - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/LAMP/">LAMP - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/PHP/">PHP - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Arch-Linux/">Arch Linux - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/SQL/">SQL - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/OSX/">OSX - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Powershell/">Powershell - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Openbox/">Openbox - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/GUI/">GUI - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Darwin/">Darwin - 1</a>
+</span>
+
+</div>
+
+<!-- <h2 style="margin: 20px 0 20px;">Projects</h2>
 <ul>
 	<li>WSL Utilities<br />
 		[ Freenode: #wslu | <a href="https://wslutiliti.es/" target="_blank" rel="noopener">Website</a> | <a
@@ -497,290 +543,22 @@
 	<li>SurfaceLinux Wallpaper - a wallpaper series <br />
 		[ <a href="https://github.com/patrick330602/surfacelinux-wallpapers" target="_blank" rel="noopener">GitHub</a> ]</li>
 	<li>Jokes on Me - A comic about me. (Under Construction)</li>
-</ul>
-
-
-<h2 style="margin: 20px 0 20px;">Friends</h2>
-
-<ul>
-	
-		<li><a href="https://haysc.tech" target="_blank" rel="noopener">Hays&#39; Blog</a><br />不乱于心，不困于情。不畏将来，不念过往。</li>
-	
-		<li><a href="https://hanasei.cn/" target="_blank" rel="noopener">桜庭茶包铺</a><br />不是Peanut是Hanasei的花生</li>
-	
-		<li><a href="https://blessing.studio" target="_blank" rel="noopener">Blessing Studio</a><br />半吊子全栈开发者的日常</li>
-	
-		<li><a href="https://unihon.github.io/" target="_blank" rel="noopener">Hogan</a><br />Just ordinary people</li>
-	
-</ul>
-
-<h2 style="margin: 20px 0 20px;">Tags</h2>
-
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/REDBird/">REDBird - 16</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Social-Service/">Social Service - 2</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/MSSS/">MSSS - 6</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/C/">C++ - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Makefile/">Makefile - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Write-ups/">Write-ups - 6</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/SDLP/">SDLP - 10</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Proposal/">Proposal - 2</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Reflection/">Reflection - 6</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Thesis/">Thesis - 7</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/SMARTe-Goals/">SMARTe Goals - 4</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/WP8/">WP8 - 10</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/WP8-1/">WP8.1 - 5</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Poster/">Poster - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Design/">Design - 2</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Web/">Web - 4</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/CSS/">CSS - 3</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/HTML/">HTML - 3</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/C/">C# - 14</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/WSL/">WSL - 22</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/WSL2/">WSL2 - 3</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Microsoft-Build/">Microsoft Build - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Winodws-10-Insider/">Winodws 10 Insider - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/GitHub/">GitHub - 2</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Shell/">Shell - 3</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Hexo/">Hexo - 3</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Essay/">Essay - 9</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Hyper-V/">Hyper-V - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Linux/">Linux - 7</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Windows/">Windows - 2</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Jekyll/">Jekyll - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Javascript/">Javascript - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/SSR/">SSR - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Server/">Server - 3</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Ubuntu/">Ubuntu - 8</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/SSH/">SSH - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Antergos/">Antergos - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Linux-Packaging/">Linux Packaging - 2</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Debian/">Debian - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/OpenSUSE/">OpenSUSE - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Announcement/">Announcement - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Eclipse/">Eclipse - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/HiDPI/">HiDPI - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Python/">Python - 2</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Annual-Review/">Annual Review - 2</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/UWP/">UWP - 3</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Surface/">Surface - 3</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Wallpaper/">Wallpaper - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Android/">Android - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Icon/">Icon - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/XAML/">XAML - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Interop/">Interop - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Kali-Linux/">Kali Linux - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/LAMP/">LAMP - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/PHP/">PHP - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Arch-Linux/">Arch Linux - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/SQL/">SQL - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/OSX/">OSX - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Openbox/">Openbox - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Powershell/">Powershell - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/GUI/">GUI - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Darwin/">Darwin - 1</a>
-</span>
-
+</ul> -->
   
 
 
+<hr/>
 
-<h2>Not the Footnote</h2>
-<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> and using a site strcuture from the Hexo theme called <a href="https://github.com/Lemonreds/hexo-theme-Nayo"
-		target="_blank">Nayo</a>.</p>
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> hosted on GitHub Pages.</p>
 <p>The site is powered by the glorious CSS from <a
 		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
 </p>
 
-<h2>Possibly the Footnote</h2>
-
 <a href="https://patrickwu.space" target="_blank">Main</a> 
 | 
 <a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://cdn.patrickwu.space" target="_blank">CDN</a> 
 | 
 <a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
 | 
