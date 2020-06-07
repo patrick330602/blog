@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2020/06/07/deb-repo-from-stratch/" />
+  <meta property="og:title" content="Build Your Own Debian Repository: The Quick Way | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Build Your Own Debian Repository: The Quick Way | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Build Your Own Debian Repository: The quick way</h1>
+
+	---<br />
+	date: Jun 07, 2020<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Debian/" rel="tag">Debian</a><br />- <a class="tag-link" href="/tags/Linux/" rel="tag">Linux</a><br />- <a class="tag-link" href="/tags/Linux-Packaging/" rel="tag">Linux Packaging</a><br />- <a class="tag-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<h2 id="tldr"><a class="markdownIt-Anchor" href="#tldr"></a> TL;DR</h2>
+<p>This article is a quick little article to get you started with the Debian repository. I have been setting up Debian repositories for <code>wslu</code> and some other packages. You can check out my Debian repository for Debian and Kali Linux <a href="https://access.patrickwu.space/wslu/debian/" target="_blank" rel="noopener">here</a> and <a href="https://access.patrickwu.space/wslu/kali/" target="_blank" rel="noopener">here</a>.</p>
+<h2 id="setup"><a class="markdownIt-Anchor" href="#setup"></a> Setup</h2>
+<p>We will set up the repository using <code>reprepro</code>. You can install <code>reprepro</code> using your distro’s package manager, for example,  <code>sudo apt install reprepro</code> for debian-based operating systems.</p>
+<p>Now, you can create Create a directory for your repository. Here, I will call it <code>repo</code>. Create a folder <code>conf</code> under the <code>repo</code> folder, and under <code>conf</code> folder, create a file called <code>distributions</code> with the following content:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Origin: repo.example.com</span><br><span class="line">Label: repo.example.com</span><br><span class="line">Codename: trusty</span><br><span class="line">Architectures: i386 amd64 source</span><br><span class="line">Components: main</span><br><span class="line">Description: example repo</span><br><span class="line">SignWith: Yes</span><br></pre></td></tr></table></figure>
+<p>Here is a quick reference of this file:</p>
+<ul>
+<li><strong>Origin</strong>: This field is used to identify where this repository is coming from. Usually, it is a URL.</li>
+<li><strong>Label</strong>: Similar to Origin</li>
+<li><strong>Codename</strong>: This is usually the codename for the distribution like <em>focal</em>, <em>buster</em> and <em>kali-rolling</em>.</li>
+<li><strong>Architectures</strong>: The architectures.</li>
+<li><strong>Components</strong>: The names of the components that packages can be imported into. Usually, it is <code>main</code>.</li>
+<li><strong>Description</strong>: This field is optional, but useful for end-users.</li>
+<li><strong>SignWith</strong>: This field can be either <code>yes</code>, <code>default</code>, or have the GPG key ID of a GPG key that should be used to sign the repository metadata. If “yes” or “default” are specified, reprepro will use the default GPG key available when signing repository metadata.</li>
+</ul>
+<p>More detailed documentation can be found <a href="https://manpages.debian.org/jessie/reprepro/reprepro.1.en.html#conf/distributions" target="_blank" rel="noopener">here</a>, or check <code>man reprepro</code> under <strong>conf/distributions</strong> section.</p>
+<p>Now, you have complete the Debian repository. Now Let’s try to import a Debian package.</p>
+<h2 id="sign-and-import"><a class="markdownIt-Anchor" href="#sign-and-import"></a> Sign and Import</h2>
+<p>You need to get your private key and Debian package ready. I have an article talking about a simple way you can build a Debian package: <a href="https://patrickwu.space/2018/05/25/make-deb-packing-simple/">Packaging .deb using a simple script: Explained</a></p>
+<p>Now let’s prepare our signing environment by running <code>export GPG_TTY=$(tty)</code>, or include this line in your shell configuration file. This allows GPG-signing running in the terminal without throw out errors.</p>
+<p>Now, import your GPG key using <code>‌gpg --import &lt;key&gt;</code>. You can now sign packages with <code>dpkg-sig -k &lt;key&gt; --sign builder /path/to/package.deb</code> or <code>dpkg-sig --sign builder /path/to/package.deb</code> if your signing the package with default key.</p>
+<p>Now you can import packages using <code>reprepro -S &lt;category&gt; -b repo/ includedeb &lt;codename&gt; /path/to/package.deb</code>. <code>-S</code> is always required.</p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2020/05/31/build-2020/">
+        Microsoft Build 2020: My Tiny Little Summary
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+<hr/>
+
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> hosted on GitHub Pages.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://cdn.patrickwu.space" target="_blank">CDN</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

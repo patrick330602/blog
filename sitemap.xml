@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://patrickwu.space/2020/06/07/deb-repo-from-stratch/</loc>
+    
+    <lastmod>2020-06-07T04:15:08.060Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://patrickwu.space/2020/05/31/build-2020/</loc>
     
     <lastmod>2020-06-01T03:31:04.426Z</lastmod>
