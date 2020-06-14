@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://patrickwu.space/"/>
-  <updated>2020-06-07T05:16:18.267Z</updated>
+  <updated>2020-06-14T07:06:20.078Z</updated>
   <id>https://patrickwu.space/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Setup Protonmail on UWP Mail</title>
+    <link href="https://patrickwu.space/2020/06/14/protonmail-on-uwp-mail/"/>
+    <id>https://patrickwu.space/2020/06/14/protonmail-on-uwp-mail/</id>
+    <published>2020-06-14T07:06:20.000Z</published>
+    <updated>2020-06-14T07:06:20.078Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="tldr"><a class="markdownIt-Anchor" href="#tldr"></a> TL;DR</h2><p>This is a quick guide on how you can setup your Protonmail Bridge with UWP version of Mail app. There is some issues such as email content cannot be downloaded, but I heard that ProtonMail is investigating the issue.</p><h2 id="prepare"><a class="markdownIt-Anchor" href="#prepare"></a> Prepare</h2><p>Firstly, you need to download <a href="https://protonmail.com/bridge/install" target="_blank" rel="noopener">ProtonMail Bridge</a>, of course. Install and setup ProtonMail Bridge, and get all your Protonmail Configuration Information:</p><p><img src="https://cdn.patrickwu.space/posts/dev/protonmail/1.png" alt="" /></p><p>Also, remember to unlock the Mail app for Local loopback using the following command in PowerShell with Admin privilege:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">checknetisolation loopbackexempt -a -n&#x3D;&quot;(Get-AppxPackage *windowscommunications*).PackageFamilyName&quot;</span><br></pre></td></tr></table></figure><p><img src="https://cdn.patrickwu.space/posts/dev/protonmail/2.png" alt="" /></p><h2 id="adding-account"><a class="markdownIt-Anchor" href="#adding-account"></a> Adding account</h2><p>Now, open your UWP mail, and go to Settings -&gt; Manage Accounts -&gt; Add account -&gt; Advanced Setup -&gt; Internet Email. Input Information as follows:</p><table><thead><tr><th>Field</th><th>Input</th></tr></thead><tbody><tr><td>Email Address</td><td><em><strong>Username</strong> from Protonmail Configuration</em></td></tr><tr><td>Username</td><td><em><strong>Username</strong> from Protonmail Configuration</em></td></tr><tr><td>Password</td><td><em><strong>Password</strong> from Protonmail Configuration</em></td></tr><tr><td>Account name</td><td><em>whatever you like</em></td></tr><tr><td>Send your messages using this name</td><td><em>whatever you like</em></td></tr><tr><td>Incoming email server</td><td>127.0.0.1:1143</td></tr><tr><td>Account type</td><td>IMAP4</td></tr><tr><td>Outgoing (SMTP) email server</td><td>127.0.0.1:1025</td></tr></tbody></table><p>Also keep <strong>Outgoing server requires authentification</strong> and <strong>Use the same username and password for sending emails</strong>, and uncheck <strong>Rrequire SSL for incoming emails</strong> and <strong>Requie SSL for outgoing emails</strong>.</p><p>And now, you have setup your ProtonMail account on UWP Mail client!</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;tldr&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#tldr&quot;&gt;&lt;/a&gt; TL;DR&lt;/h2&gt;
+&lt;p&gt;This is a quick guide on how you can setup your Protonmail Bridge
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Windows 10" scheme="https://patrickwu.space/tags/Windows-10/"/>
+    
+  </entry>
   
   <entry>
     <title>Build Your Own Debian Repository: The quick way</title>
@@ -530,30 +555,6 @@
     
     
       <category term="Write-ups" scheme="https://patrickwu.space/tags/Write-ups/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Let&#39;s talk about Shadowsocks R</title>
-    <link href="https://patrickwu.space/2018/06/30/lets-talk-about-ssr/"/>
-    <id>https://patrickwu.space/2018/06/30/lets-talk-about-ssr/</id>
-    <published>2018-06-30T07:44:24.000Z</published>
-    <updated>2020-02-17T05:59:56.416Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="tldr"><a class="markdownIt-Anchor" href="#tldr"></a> TL;DR</h1><p>This article is about how to configure Shadowsocks R properly in Windows 10 Linux Subsystem, UWP and more, and some extra stuff I want to talk about.</p><a id="more"></a><h2 id="some-key-notes-first"><a class="markdownIt-Anchor" href="#some-key-notes-first"></a> Some key notes first</h2><h3 id="install"><a class="markdownIt-Anchor" href="#install"></a> Install</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh</span><br><span class="line">chmod +x shadowsocksR.sh</span><br><span class="line">./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log</span><br></pre></td></tr></table></figure><h3 id="uninstall"><a class="markdownIt-Anchor" href="#uninstall"></a> Uninstall</h3><p>./shadowsocksR.sh uninstall</p><h3 id="commands"><a class="markdownIt-Anchor" href="#commands"></a> Commands</h3><ul><li><strong>Start</strong> - <code>/etc/init.d/shadowsocks start</code></li><li><strong>Stop</strong> - <code>/etc/init.d/shadowsocks stop</code></li><li><strong>Restart</strong> - <code>/etc/init.d/shadowsocks restart</code></li><li><strong>Status</strong> - <code>/etc/init.d/shadowsocks status</code></li></ul><h3 id="path"><a class="markdownIt-Anchor" href="#path"></a> Path</h3><ul><li><strong>Configuration File</strong> - <code>/etc/shadowsocks.json</code></li><li><strong>Log File</strong> - <code>/var/log/shadowsocks.log</code></li><li><strong>Installation Location</strong> - <code>/usr/local/shadowsocks</code></li></ul><h3 id="sample-configuration"><a class="markdownIt-Anchor" href="#sample-configuration"></a> Sample Configuration</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">"server"</span>:<span class="string">"0.0.0.0"</span>,</span><br><span class="line"><span class="attr">"server_ipv6"</span>: <span class="string">"[::]"</span>,</span><br><span class="line"><span class="attr">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</span><br><span class="line"><span class="attr">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line"><span class="attr">"port_password"</span>:&#123;</span><br><span class="line">    <span class="attr">"8989"</span>:<span class="string">"password1"</span>,</span><br><span class="line">    <span class="attr">"8990"</span>:<span class="string">"password2"</span>,</span><br><span class="line">    <span class="attr">"8991"</span>:<span class="string">"password3"</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">"timeout"</span>:<span class="number">300</span>,</span><br><span class="line"><span class="attr">"method"</span>:<span class="string">"aes-256-cfb"</span>,</span><br><span class="line"><span class="attr">"protocol"</span>: <span class="string">"origin"</span>,</span><br><span class="line"><span class="attr">"protocol_param"</span>: <span class="string">""</span>,</span><br><span class="line"><span class="attr">"obfs"</span>: <span class="string">"plain"</span>,</span><br><span class="line"><span class="attr">"obfs_param"</span>: <span class="string">""</span>,</span><br><span class="line"><span class="attr">"redirect"</span>: <span class="string">""</span>,</span><br><span class="line"><span class="attr">"dns_ipv6"</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="attr">"fast_open"</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="attr">"workers"</span>: <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="clients"><a class="markdownIt-Anchor" href="#clients"></a> Clients</h3><ul><li><a href="https://github.com/shadowsocksrr/shadowsocksr-csharp/releases/" target="_blank" rel="noopener">Windows(ShadowsocksR)</a></li><li><a href="https://github.com/shadowsocksrr/shadowsocksr-android/releases/" target="_blank" rel="noopener">Android(SSRR)</a></li><li><a href="https://itunes.apple.com/us/app/shadowrocket/id932747118" target="_blank" rel="noopener">iOS(Shadowrocket)</a></li></ul><h2 id="some-fixes"><a class="markdownIt-Anchor" href="#some-fixes"></a> Some fixes</h2><h3 id="uwp"><a class="markdownIt-Anchor" href="#uwp"></a> UWP</h3><p>Most of UWP apps cannot use proxy to connect with SSR since they are not allowed to connect to <code>locahost</code>, In order to remove the Loopback restriction, install <strong>Fiddler4</strong>, and when you open the app and UWP Loopback is not enabled, there will be a notification to tell you enable, or if not showing up, you can clicking the <code>WinConfig</code>, or you can directly run it from <code>C:\Users\&lt;username&gt;\AppData\Local\Programs\Fiddler\EnableLoopback.exe</code>. Click <code>Exempt All</code> and then click <code>Save Changes</code>. Now UWP can use localhost proxy without any issues.</p><h3 id="windows-10-linux-subsystem"><a class="markdownIt-Anchor" href="#windows-10-linux-subsystem"></a> Windows 10 Linux Subsystem</h3><p>Windows 10 Linux Subsystem can use loopback without issue of course, but the proxy is not properly applied. In order to do that, add this to your configuration files such as <code>.bashrc</code>:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> socks=<span class="string">'ALL_PROXY=socks5://127.0.0.1:1080/ \</span></span><br><span class="line"><span class="string">        http_proxy=http://127.0.0.1:1080/ \</span></span><br><span class="line"><span class="string">        https_proxy=http://127.0.0.1:1080/ \</span></span><br><span class="line"><span class="string">        HTTP_PROXY=http://127.0.0.1:1080/ \</span></span><br><span class="line"><span class="string">        HTTPS_PROXY=http://127.0.0.1:1080/'</span></span><br></pre></td></tr></table></figure><p>source the file, and you can run <code>socks</code> to set all application to bypass proxy, or you can run things like <code>socks wget</code> to use it per command.</p><h2 id="and-some-more-things"><a class="markdownIt-Anchor" href="#and-some-more-things"></a> And some more things</h2><p>Now, let’s talk about Shadowsocks R and GFW. GFW is banning more and more IP, and my Google Cloud Server did not survive too. It is harder and harder to use VPN in China, and more are banned, even include the VPN and VDI of my school (It is now fine, seems they just pollute the IP). I have been never this angry. If they really have to blame westerners not giving them the latest technology, just look at themselves. They block CRAN. They block Tensorflow. They corrupt Ubuntu, Debian, PiPY and OpenSUSE’s server. Programmers, engineers, data scientists and students like me need a reliable connection to reach latest technologies, and you know what? They block them, how funny it is. What? You say using Ali or PKU server? No, I will not. They are unsafe, with limited packages. Ubuntu archive server in China is not even with the Official archive server. It’s NOT reliable. Deepin? They even cannot survive. CEO just quit several months ago, and using Deepin makes you fell into the dependency hell. “Azure Powered By 21Vianet”, “iCloud in Guizhou”, “China LinkedIn”, big corporation compromised. But for small individuals, we have a choice. Shadowsocks R® is still the most reliable way to bypassing GFW, sadly Shadowsocks R is so dead. Shadowsocks is saved by community, and the author of SSRR is criticized because a propaganda the author made. It’s hard to bypass GFW, but you know what? Life is also hard. deal with it.</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;tldr&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#tldr&quot;&gt;&lt;/a&gt; TL;DR&lt;/h1&gt;
-&lt;p&gt;This article is about how to configure Shadowsocks R properly in Windows 10 Linux Subsystem, UWP and more, and some extra stuff I want to talk about.&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="SSR" scheme="https://patrickwu.space/tags/SSR/"/>
-    
-      <category term="Server" scheme="https://patrickwu.space/tags/Server/"/>
     
   </entry>
   

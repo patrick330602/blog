@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2020/06/14/protonmail-on-uwp-mail/" />
+  <meta property="og:title" content="Setup Protonmail on UWP Mail | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Setup Protonmail on UWP Mail | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Setup Protonmail on UWP Mail</h1>
+
+	---<br />
+	date: Jun 14, 2020<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Windows-10/" rel="tag">Windows 10</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<h2 id="tldr"><a class="markdownIt-Anchor" href="#tldr"></a> TL;DR</h2>
+<p>This is a quick guide on how you can setup your Protonmail Bridge with UWP version of Mail app. There is some issues such as email content cannot be downloaded, but I heard that ProtonMail is investigating the issue.</p>
+<h2 id="prepare"><a class="markdownIt-Anchor" href="#prepare"></a> Prepare</h2>
+<p>Firstly, you need to download <a href="https://protonmail.com/bridge/install" target="_blank" rel="noopener">ProtonMail Bridge</a>, of course. Install and setup ProtonMail Bridge, and get all your Protonmail Configuration Information:</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/protonmail/1.png" alt="" /></p>
+<p>Also, remember to unlock the Mail app for Local loopback using the following command in PowerShell with Admin privilege:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">checknetisolation loopbackexempt -a -n&#x3D;&quot;(Get-AppxPackage *windowscommunications*).PackageFamilyName&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.patrickwu.space/posts/dev/protonmail/2.png" alt="" /></p>
+<h2 id="adding-account"><a class="markdownIt-Anchor" href="#adding-account"></a> Adding account</h2>
+<p>Now, open your UWP mail, and go to Settings -&gt; Manage Accounts -&gt; Add account -&gt; Advanced Setup -&gt; Internet Email. Input Information as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email Address</td>
+<td><em><strong>Username</strong> from Protonmail Configuration</em></td>
+</tr>
+<tr>
+<td>Username</td>
+<td><em><strong>Username</strong> from Protonmail Configuration</em></td>
+</tr>
+<tr>
+<td>Password</td>
+<td><em><strong>Password</strong> from Protonmail Configuration</em></td>
+</tr>
+<tr>
+<td>Account name</td>
+<td><em>whatever you like</em></td>
+</tr>
+<tr>
+<td>Send your messages using this name</td>
+<td><em>whatever you like</em></td>
+</tr>
+<tr>
+<td>Incoming email server</td>
+<td>127.0.0.1:1143</td>
+</tr>
+<tr>
+<td>Account type</td>
+<td>IMAP4</td>
+</tr>
+<tr>
+<td>Outgoing (SMTP) email server</td>
+<td>127.0.0.1:1025</td>
+</tr>
+</tbody>
+</table>
+<p>Also keep <strong>Outgoing server requires authentification</strong> and <strong>Use the same username and password for sending emails</strong>, and uncheck <strong>Rrequire SSL for incoming emails</strong> and <strong>Requie SSL for outgoing emails</strong>.</p>
+<p>And now, you have setup your ProtonMail account on UWP Mail client!</p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2020/06/07/deb-repo-from-stratch/">
+        Build Your Own Debian Repository: The quick way
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+<hr/>
+
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> hosted on GitHub Pages.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://cdn.patrickwu.space" target="_blank">CDN</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>
