@@ -33,7 +33,7 @@
 	<h1>Scripting with WSL interoperability: Tips &amp; Tricks</h1>
 
 	---<br />
-	date: May 22, 2020<br/>
+	date: Jul 19, 2020<br/>
 	---
 </div>
 
@@ -283,61 +283,12 @@ Running individual tools directly are usually the fastest; and then the <code>cm
 <h3 id="start-wsl-gui-apps-without-command-prompt"><a class="markdownIt-Anchor" href="#start-wsl-gui-apps-without-command-prompt"></a> Start WSL GUI apps without command prompt</h3>
 <p>I have posted a post about this topic before. You can view it <a href="https://patrickwu.space/2018/04/20/wsl-shortcut-without-cmd-window/">here</a>.</p>
 <h3 id="wsl-related-registry-a-small-dive"><a class="markdownIt-Anchor" href="#wsl-related-registry-a-small-dive"></a> WSL-related Registry: a small dive</h3>
-<blockquote>
-<p>Due to the lack of documentation, some of the information is possibly not complete.</p>
-</blockquote>
-<p>Information of WSL distributions store here: <code>HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Lxss</code>.</p>
-<h4 id="overview"><a class="markdownIt-Anchor" href="#overview"></a> Overview</h4>
-<p><img src="https://cdn.patrickwu.space/works/wslconf/images/top_key.png" alt="Overview of the key" /></p>
-<ul>
-<li>Subkeys are the definition of single WSL distributions. They are named using GUID.</li>
-<li><code>DafaultDistribution</code>, RGE_SZ: This defines the default distribution used when using <code>bash.exe</code> and <code>wsl.exe</code>. The value passed is a GUID. By default, it’s the first distribution installed.</li>
-<li><code>DefaultVersion</code>, REG_DWORD: (WSL2 Only) This defines the default WSL version that would be used for new WSL distributions.  Value for WSL1 is 0x1(1); for WSL2, 0x2(2).</li>
-</ul>
-<h4 id="store-distribution-key"><a class="markdownIt-Anchor" href="#store-distribution-key"></a> Store Distribution Key</h4>
-<p><img src="https://cdn.patrickwu.space/works/wslconf/images/store_distro_key.png" alt="View of a sample store distribution key" /></p>
-<p>Here are the details of the key values:</p>
-<ul>
-<li><code>BasePath</code>, REG_SZ: This defines where the WSL distribution source location is.</li>
-<li><code>DefaultEnvironment</code>, REG_MULTI_SZ: This defines the default environment value that passed to WSL Distribution when opening the WSL distribution.</li>
-<li><code>DefaultUid</code>, REG_DWORD: This defines the default user for the distro. The value uses the <code>uid</code> in Linux, for example, <code>root</code> is always <code>0</code>.</li>
-<li><code>DistributionName</code>, REG_SZ: This defines the registered name of the WSL distribution. This will be used in <code>wsl.exe --list</code> and in <code>wsl.exe -d</code>.</li>
-<li><code>Flags</code>, REG_DWORD: This defines the behavior of a distribution registered with the Windows Subsystem for Linux. The value passed is numeral combination of enumeration <code>WSL_DISTRIBUTION_FLAGS</code> , which is used by function <code>WslConfigureDistribution</code> in <code>wslapi.h</code>.  The default value is <code>WSL_DISTRIBUTION_FLAGS_DEFAULT</code>, which is 0x7(7) in older version and 0xf(15) in newer version. Known available single options are the following:
-<ul>
-<li>
-<p><code>WSL_DISTRIBUTION_FLAGS_NONE</code>: 0x0(0)</p>
-</li>
-<li>
-<p><code>WSL_DISTRIBUTION_FLAGS_ENABLE_INTEROP</code>: 0x1(1)</p>
-</li>
-<li>
-<p><code>WSL_DISTRIBUTION_FLAGS_APPEND_NT_PATH</code>: 0x2(2)</p>
-</li>
-<li>
-<p><code>WSL_DISTRIBUTION_FLAGS_ENABLE_DRIVE_MOUNTING</code>: 0x4(4)</p>
-<p>There is also one unknown undocumented flag with value 0x8(8) in the newer version. Related issue here: <a href="https://github.com/microsoft/WSL/issues/4251" target="_blank" rel="noopener">https://github.com/microsoft/WSL/issues/4251</a> (I personally suspect this is related to case-sensitive)</p>
-</li>
-</ul>
-</li>
-<li><code>KernelCommandLine</code>, REG_SZ: (2004 Only) This defines the command passed to WSL2 Kernel.</li>
-<li><code>PackageFamilyName</code>, REG_SZ: This defines the WSL distribution’s UWP package Family name.</li>
-<li><code>State</code>, REG_DWORD: This defines the state of WSL distribution. By default, it is in normal state 0x1(1). Here are also some other states:
-<ul>
-<li>Normal: 0x1(1)</li>
-<li>Installing: 0x3(3)</li>
-<li>Uninstalling: 0x4(4)</li>
-</ul>
-</li>
-<li><code>Version</code>, REG_DWORD: (2004 Only) This defines whether you are using WSL1 or WSL2. Value for WSL1 is 0x1(1); for WSL2, 0x2(2).</li>
-</ul>
-<h4 id="imported-distribution-key"><a class="markdownIt-Anchor" href="#imported-distribution-key"></a> Imported Distribution Key</h4>
-<p><img src="https://cdn.patrickwu.space/works/wslconf/images/imported_distro_key.png" alt="View of a sample imported distribution key" /></p>
-<p>As you can see, by default imported distribution do not have <code>DefaultEnvironment</code>‌, <code>KernelCommandLine</code> and <code>PackageFamilyName</code>. Also by default, <code>DefaultUid</code> will be <code>0</code> which is root.</p>
+<p>The section is moved to <a href="https://patrickwu.space/2020/07/19/wsl-related-registry/">this post</a> for better visibility.</p>
 <h3 id="execute-windows-executables-using-administrator-in-wsl"><a class="markdownIt-Anchor" href="#execute-windows-executables-using-administrator-in-wsl"></a> Execute Windows executables using Administrator in WSL</h3>
 <p>You can start using the <code>Start-Process</code> command in powershell, which will become something like the following:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell.exe -NonInteractive -NoProfile -Command &quot;Start-Process -FilePath powershell.exe -WorkingDirectory \&quot;$(wslpath -w $(pwd))\&quot; -ArgumentList &quot;-NonInteractive -NoProfile -Command &lt;Command&gt;&quot; -Verb RunAs&quot;</span><br></pre></td></tr></table></figure>
 <p>You might also want to tweak the line for your needs.</p>
-<p>If you find this is a bit too long or it is a bit complicated, you can use the following script from scoop creator Luke Sampson to do the thing: <a href="https://github.com/lukesampson/psutils/blob/master/sudo.ps1" target="_blank" rel="noopener">https://github.com/lukesampson/psutils/blob/master/sudo.ps1</a>. TO use this one, <code>-ExecutionPolicy ByPass</code> is suggested to use.</p>
+<p>If you find this is a bit too long or it is a bit complicated, you can use the following script from scoop creator Luke Sampson to do the thing: <a href="https://github.com/lukesampson/psutils/blob/master/sudo.ps1" target="_blank" rel="noopener">https://github.com/lukesampson/psutils/blob/master/sudo.ps1</a>. To use this one, <code>-ExecutionPolicy ByPass</code> is suggested to use.</p>
   	
 					
 	  </div>     

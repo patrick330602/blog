@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2020/07/19/wsl-related-registry/" />
+  <meta property="og:title" content="WSL-Related Registry: A Small Dive | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  WSL-Related Registry: A Small Dive | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>WSL-related Registry: A small dive</h1>
+
+	---<br />
+	date: Jul 19, 2020<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/WSL/" rel="tag">WSL</a><br />- <a class="tag-link" href="/tags/WSL2/" rel="tag">WSL2</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<blockquote>
+<p>Due to the lack of documentation, some of the information is possibly not complete or inaccurate. This is a updated version since WSLConf 2020.</p>
+</blockquote>
+<p>Information of WSL distributions store here: <code>HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Lxss</code>.</p>
+<h2 id="overview"><a class="markdownIt-Anchor" href="#overview"></a> Overview</h2>
+<p><img src="https://cdn.patrickwu.space/works/wslconf/images/top_key.png" alt="Overview of the key" /></p>
+<ul>
+<li>Subkeys are the definition of single WSL distributions. They are named using GUID.</li>
+<li><code>DafaultDistribution</code>, RGE_SZ: This defines the default distribution used when using <code>bash.exe</code> and <code>wsl.exe</code>. The value passed is a GUID. By default, it’s the first distribution installed.</li>
+<li><code>DefaultVersion</code>, REG_DWORD: (WSL2 Only) This defines the default WSL version that would be used for new WSL distributions.  Value for WSL1 is 0x1(1); for WSL2, 0x2(2).</li>
+</ul>
+<h3 id="store-distribution-key"><a class="markdownIt-Anchor" href="#store-distribution-key"></a> Store Distribution Key</h3>
+<p><img src="https://cdn.patrickwu.space/works/wslconf/images/store_distro_key.png" alt="View of a sample store distribution key" /></p>
+<p>Here are the details of the key values:</p>
+<ul>
+<li><code>BasePath</code>, REG_SZ: This defines where the WSL distribution source location is.</li>
+<li><code>DefaultEnvironment</code>, REG_MULTI_SZ: This defines the default environment value that passed to WSL Distribution when opening the WSL distribution.</li>
+<li><code>DefaultUid</code>, REG_DWORD: This defines the default user for the distro. The value uses the <code>uid</code> in Linux, for example, <code>root</code> is always <code>0</code>.</li>
+<li><code>DistributionName</code>, REG_SZ: This defines the registered name of the WSL distribution. This will be used in <code>wsl.exe --list</code> and in <code>wsl.exe -d</code>.</li>
+<li><code>Flags</code>, REG_DWORD: This defines the behavior of a distribution registered with the Windows Subsystem for Linux. The value passed is numeral combination of enumeration <code>WSL_DISTRIBUTION_FLAGS</code> , which is used by function <code>WslConfigureDistribution</code> in <code>wslapi.h</code>.  The default value is <code>WSL_DISTRIBUTION_FLAGS_DEFAULT</code>, which is 0x7(7) in older version and 0xf(15) in newer version. Known available single options are the following:
+<ul>
+<li>
+<p><code>WSL_DISTRIBUTION_FLAGS_NONE</code>: 0x0(0)</p>
+</li>
+<li>
+<p><code>WSL_DISTRIBUTION_FLAGS_ENABLE_INTEROP</code>: 0x1(1)</p>
+</li>
+<li>
+<p><code>WSL_DISTRIBUTION_FLAGS_APPEND_NT_PATH</code>: 0x2(2)</p>
+</li>
+<li>
+<p><code>WSL_DISTRIBUTION_FLAGS_ENABLE_DRIVE_MOUNTING</code>: 0x4(4)</p>
+<p>There is also one undocumented flag with value 0x8(8) in the newer version, which defines which WSL version it is using. With the flag, the distro will be using WSL2.</p>
+</li>
+</ul>
+</li>
+<li><code>KernelCommandLine</code>, REG_SZ: (2004 Only) This defines the command passed to WSL2 Kernel.</li>
+<li><code>PackageFamilyName</code>, REG_SZ: This defines the WSL distribution’s UWP package Family name.</li>
+<li><code>State</code>, REG_DWORD: This defines the state of WSL distribution. By default, it is in normal state 0x1(1). Here are also some other states:
+<ul>
+<li>Normal: 0x1(1)</li>
+<li>Installing: 0x3(3)</li>
+<li>Uninstalling: 0x4(4)</li>
+</ul>
+</li>
+<li><code>Version</code>, REG_DWORD: Do not confuse this with <code>DefaultVersion</code>! They define two entire different settings. This defines whether you are using <code>wslfs</code> or <code>lxfs</code> for the filesystem. Value for <code>lxfs</code> is 0x1(1); for <code>wslfs</code>, 0x2(2).</li>
+</ul>
+<h3 id="imported-distribution-key"><a class="markdownIt-Anchor" href="#imported-distribution-key"></a> Imported Distribution Key</h3>
+<p><img src="https://cdn.patrickwu.space/works/wslconf/images/imported_distro_key.png" alt="View of a sample imported distribution key" /></p>
+<p>As you can see, by default imported distribution do not have <code>DefaultEnvironment</code>‌, <code>KernelCommandLine</code> and <code>PackageFamilyName</code>. Also by default, <code>DefaultUid</code> will be <code>0</code> which is root.</p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2020/06/14/protonmail-on-uwp-mail/">
+        Setup Protonmail on UWP Mail
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+<hr/>
+
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> hosted on GitHub Pages.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://cdn.patrickwu.space" target="_blank">CDN</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

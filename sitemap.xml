@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://patrickwu.space/wslconf/index.html</loc>
+    
+    <lastmod>2020-07-19T05:52:02.089Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://patrickwu.space/2020/07/19/wsl-related-registry/</loc>
+    
+    <lastmod>2020-07-19T05:46:26.388Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://patrickwu.space/2020/06/14/protonmail-on-uwp-mail/</loc>
     
     <lastmod>2020-06-14T07:06:20.078Z</lastmod>
@@ -33,13 +47,6 @@
     <loc>https://patrickwu.space/2019/10/29/wsl2-darling-build-cn/</loc>
     
     <lastmod>2020-05-22T15:06:21.736Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://patrickwu.space/wslconf/index.html</loc>
-    
-    <lastmod>2020-04-28T02:30:17.000Z</lastmod>
     
   </url>
   
