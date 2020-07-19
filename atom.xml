@@ -120,13 +120,13 @@
     
     
     
-      <category term="Microsoft Build" scheme="https://patrickwu.space/tags/Microsoft-Build/"/>
-    
       <category term="C#" scheme="https://patrickwu.space/tags/C/"/>
     
       <category term="WSL" scheme="https://patrickwu.space/tags/WSL/"/>
     
       <category term="WSL2" scheme="https://patrickwu.space/tags/WSL2/"/>
+    
+      <category term="Microsoft Build" scheme="https://patrickwu.space/tags/Microsoft-Build/"/>
     
   </entry>
   
@@ -205,9 +205,9 @@
     
       <category term="Web" scheme="https://patrickwu.space/tags/Web/"/>
     
-      <category term="HTML" scheme="https://patrickwu.space/tags/HTML/"/>
-    
       <category term="CSS" scheme="https://patrickwu.space/tags/CSS/"/>
+    
+      <category term="HTML" scheme="https://patrickwu.space/tags/HTML/"/>
     
   </entry>
   
@@ -425,13 +425,13 @@
     
     
     
-      <category term="Microsoft Build" scheme="https://patrickwu.space/tags/Microsoft-Build/"/>
-    
       <category term="C#" scheme="https://patrickwu.space/tags/C/"/>
     
       <category term="WSL" scheme="https://patrickwu.space/tags/WSL/"/>
     
       <category term="WSL2" scheme="https://patrickwu.space/tags/WSL2/"/>
+    
+      <category term="Microsoft Build" scheme="https://patrickwu.space/tags/Microsoft-Build/"/>
     
   </entry>
   
