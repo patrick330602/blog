@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://patrickwu.space/"/>
-  <updated>2020-07-19T05:46:26.388Z</updated>
+  <updated>2020-11-09T16:26:00.169Z</updated>
   <id>https://patrickwu.space/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Implement a &quot;tab&quot; in JavaScript</title>
+    <link href="https://patrickwu.space/2020/11/09/js-tab-uwu/"/>
+    <id>https://patrickwu.space/2020/11/09/js-tab-uwu/</id>
+    <published>2020-11-09T07:53:25.000Z</published>
+    <updated>2020-11-09T16:26:00.169Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="tldr"><a class="markdownIt-Anchor" href="#tldr"></a> TL;DR</h2><p>This article is a quick guide on building a simple tab on a webpage using vanilla JavaScript.</p><h2 id="why"><a class="markdownIt-Anchor" href="#why"></a> WHY?</h2><p>If you saw this post, You will know that I already remove the tab on my homepage. I decided that I don’t want the tab on my site anymore; so I decided to write an article about this to archive it. Here is how it works, and it is all happening on the same page:</p><p><img src="https://cdn.patrickwu.space/posts/dev/js-tab.gif" alt="demonstration of Tab" /></p><p>Some people might be already shouting at me for using vanilla JavaScript; To be honest, I am not that kind of JavaScript framework guy; I like to keep thing simple (but most of the time they turn out to be spaghetti) like this site (Like, I literally inherited the CSS stylesheet from <a href="http://bettermotherfuckingwebsite.com" target="_blank" rel="noopener">bettermotherf**kingwebsite.com</a>; more details <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">here</a>).</p><p>Well, less talking more writing.</p><h2 id="the-real-part"><a class="markdownIt-Anchor" href="#the-real-part"></a> The real part</h2><script async src="//jsfiddle.net/callmepk/oqht7k1c/1/embed/js,html,css,result/dark/"></script><p>I can just that there and call it for a day, you know. Well, I will not. I will, at least, explain some parts of it.</p><p>First, we got the function <code>openSection()</code> that we used in <code>onclick</code> property:</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">openSection</span>(<span class="params">SecName</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">var</span> i, tabcontent;</span><br><span class="line"> tabcontent = <span class="built_in">document</span>.getElementsByClassName(<span class="string">"tabcontent"</span>);</span><br><span class="line"> <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; tabcontent.length; i++) &#123;</span><br><span class="line"> tabcontent[i].style.display = <span class="string">"none"</span>;</span><br><span class="line">. &#125;</span><br><span class="line"> <span class="built_in">document</span>.getElementById(SecName).style.display = <span class="string">"block"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>This function will try to find all tag with class name <code>tabcontent</code> and set their <code>display</code> to <code>none</code>. Then, find the <code>tabcontent</code> with the name passed from <code>SecName</code> and set only that to <code>block</code>.</p><p>For the <code>window.onload</code> event, this allows you to load the default tab by id.</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="built_in">document</span>.getElementById(<span class="string">'default-tab'</span>).click()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>You might be curious with the CSS part, since it looks useless:</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.tabcontent</span> &#123;</span><br><span class="line"> <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>However, this is very important. This small piece of <s>spaghetti</s> CSS prevents the situation in some browser that, for some reason, it is not fast enough to set the display to none, causing the web page to look bad when loading.</p><h2 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion"></a> Conclusion</h2><p>This article is just about a tiny piece of JavaScript. I hope you find it useful, but I knew most of you already know about this 😉 Also, check out your browser console if you haven’t.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;tldr&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#tldr&quot;&gt;&lt;/a&gt; TL;DR&lt;/h2&gt;
+&lt;p&gt;This article is a quick guide on building a simple tab on a webpa
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Javascript" scheme="https://patrickwu.space/tags/Javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>WSL-related Registry: A small dive</title>
@@ -205,9 +230,9 @@
     
       <category term="Web" scheme="https://patrickwu.space/tags/Web/"/>
     
-      <category term="CSS" scheme="https://patrickwu.space/tags/CSS/"/>
-    
       <category term="HTML" scheme="https://patrickwu.space/tags/HTML/"/>
+    
+      <category term="CSS" scheme="https://patrickwu.space/tags/CSS/"/>
     
   </entry>
   
@@ -537,30 +562,6 @@
       <category term="WSL" scheme="https://patrickwu.space/tags/WSL/"/>
     
       <category term="Arch Linux" scheme="https://patrickwu.space/tags/Arch-Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Start apps without systemd in WSL</title>
-    <link href="https://patrickwu.space/2018/08/14/wsl-mysql-without-systemd/"/>
-    <id>https://patrickwu.space/2018/08/14/wsl-mysql-without-systemd/</id>
-    <published>2018-08-14T05:36:34.000Z</published>
-    <updated>2020-02-17T06:08:57.404Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="tldr"><a class="markdownIt-Anchor" href="#tldr"></a> TL;DR</h1><p>This is an article explaining how to start some service without <code>systemd</code> on WSL and some thoughts.</p><a id="more"></a><h2 id="the-problem"><a class="markdownIt-Anchor" href="#the-problem"></a> The problem</h2><p>I recently have a nodejs server with Redis and MySQL to set up and thinking that using ubuntu will be a lot easier to set up than doing it in Windows, I tried to set up on WSL. When I tried to set up using MySQL, I realized that MySQL now uses <code>systemd</code> to start server instead of good ol’ <code>service</code>, and WSL has not yet supported systemd and <a href="https://github.com/Microsoft/WSL/issues/994" target="_blank" rel="noopener">the first issue report about systemd</a> is still open and not solved. This means we cannot use anything related to <code>systemd</code> or <code>systemctl</code>. Same thing happened when I try to setup the openSSH Server on openSUSE, as openSUSE do not provide <code>service</code> version of openSUSE Server startup script.</p><h2 id="the-solution"><a class="markdownIt-Anchor" href="#the-solution"></a> The solution</h2><p>the solution is simple, just use its still existed <code>init.d</code> service on system, that is:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#mysql</span></span><br><span class="line">sudo /etc/init.d/mysql start</span><br><span class="line"></span><br><span class="line"><span class="comment">#opensuse openSSH server</span></span><br><span class="line">sudo /usr/sbin/sshd</span><br></pre></td></tr></table></figure><p>but this reminds me that as the adoption of <code>systemd</code> in Debian and Ubuntu in the late 2013, it becomes increasingly controversy, with bug exploited, and system abandon it, <code>systemd</code> is just not friendly. Software should have at least two methods (<code>init.d</code>/<code>systemd</code>) for service control so that all *inx can be properly used.</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;tldr&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#tldr&quot;&gt;&lt;/a&gt; TL;DR&lt;/h1&gt;
-&lt;p&gt;This is an article explaining how to start some service without &lt;code&gt;systemd&lt;/code&gt; on WSL and some thoughts.&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="WSL" scheme="https://patrickwu.space/tags/WSL/"/>
-    
-      <category term="SQL" scheme="https://patrickwu.space/tags/SQL/"/>
     
   </entry>
   

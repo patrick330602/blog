@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2020/11/09/js-tab-uwu/" />
+  <meta property="og:title" content="Implement a &#34;Tab&#34; in JavaScript | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Implement a &#34;Tab&#34; in JavaScript | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Implement a &#34;tab&#34; in JavaScript</h1>
+
+	---<br />
+	date: Nov 09, 2020<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Javascript/" rel="tag">Javascript</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<h2 id="tldr"><a class="markdownIt-Anchor" href="#tldr"></a> TL;DR</h2>
+<p>This article is a quick guide on building a simple tab on a webpage using vanilla JavaScript.</p>
+<h2 id="why"><a class="markdownIt-Anchor" href="#why"></a> WHY?</h2>
+<p>If you saw this post, You will know that I already remove the tab on my homepage. I decided that I don’t want the tab on my site anymore; so I decided to write an article about this to archive it. Here is how it works, and it is all happening on the same page:</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/js-tab.gif" alt="demonstration of Tab" /></p>
+<p>Some people might be already shouting at me for using vanilla JavaScript; To be honest, I am not that kind of JavaScript framework guy; I like to keep thing simple (but most of the time they turn out to be spaghetti) like this site (Like, I literally inherited the CSS stylesheet from <a href="http://bettermotherfuckingwebsite.com" target="_blank" rel="noopener">bettermotherf**kingwebsite.com</a>; more details <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">here</a>).</p>
+<p>Well, less talking more writing.</p>
+<h2 id="the-real-part"><a class="markdownIt-Anchor" href="#the-real-part"></a> The real part</h2>
+<script async src="//jsfiddle.net/callmepk/oqht7k1c/1/embed/js,html,css,result/dark/"></script>
+<p>I can just that there and call it for a day, you know. Well, I will not. I will, at least, explain some parts of it.</p>
+<p>First, we got the function <code>openSection()</code> that we used in <code>onclick</code> property:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">openSection</span>(<span class="params">SecName</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">var</span> i, tabcontent;</span><br><span class="line"> tabcontent = <span class="built_in">document</span>.getElementsByClassName(<span class="string">"tabcontent"</span>);</span><br><span class="line"> <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; tabcontent.length; i++) &#123;</span><br><span class="line"> tabcontent[i].style.display = <span class="string">"none"</span>;</span><br><span class="line">. &#125;</span><br><span class="line"> <span class="built_in">document</span>.getElementById(SecName).style.display = <span class="string">"block"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This function will try to find all tag with class name <code>tabcontent</code> and set their <code>display</code> to <code>none</code>. Then, find the <code>tabcontent</code> with the name passed from <code>SecName</code> and set only that to <code>block</code>.</p>
+<p>For the <code>window.onload</code> event, this allows you to load the default tab by id.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="built_in">document</span>.getElementById(<span class="string">'default-tab'</span>).click()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You might be curious with the CSS part, since it looks useless:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.tabcontent</span> &#123;</span><br><span class="line"> <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>However, this is very important. This small piece of <s>spaghetti</s> CSS prevents the situation in some browser that, for some reason, it is not fast enough to set the display to none, causing the web page to look bad when loading.</p>
+<h2 id="conclusion"><a class="markdownIt-Anchor" href="#conclusion"></a> Conclusion</h2>
+<p>This article is just about a tiny piece of JavaScript. I hope you find it useful, but I knew most of you already know about this 😉 Also, check out your browser console if you haven’t.</p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2020/07/19/wsl-related-registry/">
+        WSL-related Registry: A small dive
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+<hr/>
+
+<a rel="license noopener" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+<br />
+Unless specified, all the articles are licensed under a <a rel="license noopener" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+<br />
+<br />
+<img alt="Free Software Fundation Member" style="border-width:0" src="https://static.fsf.org/nosvn/associate/crm/5041715.png"/>
+
+<hr/>
+
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> hosted on GitHub Pages.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://cdn.patrickwu.space" target="_blank">CDN</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2020
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

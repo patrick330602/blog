@@ -32,43 +32,18 @@
 
 
 
-<!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="tab">
-	<h1>Patrick Wu, Jinming</h1>
-	<a href="#" id="default-tab" class="tablinks" onclick="openSection(event, 'sec-post')">Posts</a> |
-	<a href="#" class="tablinks" onclick="openSection(event, 'sec-about')">About</a> | 
-	<a href="#" class="tablinks" onclick="openSection(event, 'sec-tags')">Tags</a> |
-	<a href="#" class="tablinks" onclick="openSection(event, 'sec-friends')">Friends</a>
-</div>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><h1>Patrick Wu, Jinming</h1>
 
-<script>
-	function openSection(evt, SecName) {
-	  var i, tabcontent, tablinks;
-	  tabcontent = document.getElementsByClassName("tabcontent");
-	  for (i = 0; i < tabcontent.length; i++) {
-		tabcontent[i].style.display = "none";
-	  }
-	  tablinks = document.getElementsByClassName("tablinks");
-	  for (i = 0; i < tablinks.length; i++) {
-		tablinks[i].className = tablinks[i].className.replace(" active", "");
-	  }
-	  document.getElementById(SecName).style.display = "block";
-	  evt.currentTarget.className += " active";
-	}
-	window.onload = function() {
-		document.getElementById('default-tab').click()
-	}
-</script>
-
-<div id="sec-about" class="tabcontent">
+<div>
 
 <h2 style="margin: 20px 0 20px;">About</h2>
-<p>Love photography, designing, coding, hiking and Ramen; Love exploring new things, and always have a lot of ideas.</p>
-<p>Graduated in Hong Kong University of Science and Technology, currently working as a Ubuntu Desktop Software Developer in Canonical. Developer of <a
+
+<p>Graduated in Hong Kong University of Science and Technology, currently working as a Ubuntu Desktop Software Developer in Canonical, while persuing Master degree in Chinese University of Hong Kong. Developer of <a
 		href="https://wslutiliti.es">WSL Utilities</a>, and UWP Developer as <a href="https://github.com/wedotstudio" target="_blank" rel="noopener">WE. Studio</a>. Previously help developed Pengwin at <a
 		href="https://whitewaterfoundry.com">Whitewater Foundry</a>, and founder of (no longer active) Windows Phone community
 	<a href="https://wp8bartemp.wordpress.com/" target="_blank" rel="noopener">WPerfect</a>.</p>
 
-<p>I also talked about <a href="https://youtu.be/FX4FKxKJl74" target="_blank" rel="noopener">WSL For DevOps and Cross-Platform Development</a> (<a href="https://github.com/whitewaterfoundry/build2019" target="_blank" rel="noopener">Resources</a>) at <b>Microsoft Build 2019</b> with Hayden Barnes and <a href="https://youtu.be/2ur-VA2FuZg" target="_blank" rel="noopener">Scripting with WSL Interoperability: Tips & Tricks</a>(<a href="/wslconf">Resources</a>) at <b>WSLConf 2020</b>.</p>
+<p>I also gave talks like <a href="https://youtu.be/FX4FKxKJl74" target="_blank" rel="noopener">WSL For DevOps and Cross-Platform Development</a> (<a href="https://github.com/whitewaterfoundry/build2019" target="_blank" rel="noopener">Resources</a>) at <b>Microsoft Build 2019</b> with Hayden Barnes and <a href="https://youtu.be/2ur-VA2FuZg" target="_blank" rel="noopener">Scripting with WSL Interoperability: Tips & Tricks</a>(<a href="/wslconf">Resources</a>) at <b>WSLConf 2020</b>.</p>
 
 <p>You can find me on <a href="http://callmepatrick.unixcab.org" target="_blank">SDF</a>, <a
 		href="https://github.com/patrick330602">GitHub</a>, <a href="https://gitlab.com/callmepk" target="_blank" rel="noopener">GitLab</a>, <a
@@ -83,9 +58,22 @@
 
 </div>
 
-<div id="sec-post" class="tabcontent">
+<div id="sec-post">
 
 <h2 style="margin: 20px 0 20px;">Posts</h2>
+
+
+
+<p>
+
+	<time><b>2020 Nov 9th</b></time> 
+	<a  href="/2020/11/09/js-tab-uwu/">Implement a &#34;tab&#34; in JavaScript</a>
+	<br/>><span>
+		
+			<a class="tag-link" href="/tags/Javascript/" rel="tag">Javascript</a>
+			
+	</span>
+</p>
 
 
 
@@ -206,16 +194,6 @@
 
 
 
-<p>
-
-	<time><b>2019 Oct 28th</b></time> 
-	<a  href="/2019/10/28/wsl-fcitx-setup-cn/">在WSL上配置输入法</a>
-	<br/>><span>
-		
-			<a class="tag-link" href="/tags/WSL/" rel="tag">WSL</a>
-			
-	</span>
-</p>
 
 
 
@@ -226,13 +204,10 @@
 
 
 
-
-
-
-<a href="/archives">[More](/archives)</a>
+<b>>> <a href="/archives">More this way!</a></b>
 </div>
 
-<div id="sec-friends" class="tabcontent">
+<div id="sec-friends">
 <h2 style="margin: 20px 0 20px;">Friends</h2>
 <ul>
 	
@@ -247,7 +222,7 @@
 </ul>
 </div>
 
-<div id="sec-tags" class="tabcontent">
+<div id="sec-tags">
 <h2 style="margin: 20px 0 20px;">Tags</h2>
 
 <span class="hometag">
@@ -263,6 +238,14 @@
 </span>
 
 <span class="hometag">
+	<a style="text-decoration: none;" href="/tags/C/">C++ - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Makefile/">Makefile - 1</a>
+</span>
+
+<span class="hometag">
 	<a style="text-decoration: none;" href="/tags/Write-ups/">Write-ups - 6</a>
 </span>
 
@@ -272,14 +255,6 @@
 
 <span class="hometag">
 	<a style="text-decoration: none;" href="/tags/SDLP/">SDLP - 10</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/C/">C++ - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Makefile/">Makefile - 1</a>
 </span>
 
 <span class="hometag">
@@ -315,11 +290,11 @@
 </span>
 
 <span class="hometag">
-	<a style="text-decoration: none;" href="/tags/CSS/">CSS - 3</a>
+	<a style="text-decoration: none;" href="/tags/HTML/">HTML - 3</a>
 </span>
 
 <span class="hometag">
-	<a style="text-decoration: none;" href="/tags/HTML/">HTML - 3</a>
+	<a style="text-decoration: none;" href="/tags/CSS/">CSS - 3</a>
 </span>
 
 <span class="hometag">
@@ -367,10 +342,6 @@
 </span>
 
 <span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Hexo/">Hexo - 3</a>
-</span>
-
-<span class="hometag">
 	<a style="text-decoration: none;" href="/tags/Essay/">Essay - 9</a>
 </span>
 
@@ -383,19 +354,15 @@
 </span>
 
 <span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Javascript/">Javascript - 1</a>
+	<a style="text-decoration: none;" href="/tags/Hexo/">Hexo - 3</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Javascript/">Javascript - 2</a>
 </span>
 
 <span class="hometag">
 	<a style="text-decoration: none;" href="/tags/Jekyll/">Jekyll - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/SSR/">SSR - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/Server/">Server - 3</a>
 </span>
 
 <span class="hometag">
@@ -404,6 +371,14 @@
 
 <span class="hometag">
 	<a style="text-decoration: none;" href="/tags/Antergos/">Antergos - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/SSR/">SSR - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/Server/">Server - 3</a>
 </span>
 
 <span class="hometag">
@@ -479,19 +454,19 @@
 </span>
 
 <span class="hometag">
-	<a style="text-decoration: none;" href="/tags/SQL/">SQL - 1</a>
-</span>
-
-<span class="hometag">
-	<a style="text-decoration: none;" href="/tags/OSX/">OSX - 1</a>
-</span>
-
-<span class="hometag">
 	<a style="text-decoration: none;" href="/tags/Openbox/">Openbox - 1</a>
 </span>
 
 <span class="hometag">
+	<a style="text-decoration: none;" href="/tags/SQL/">SQL - 1</a>
+</span>
+
+<span class="hometag">
 	<a style="text-decoration: none;" href="/tags/Powershell/">Powershell - 1</a>
+</span>
+
+<span class="hometag">
+	<a style="text-decoration: none;" href="/tags/OSX/">OSX - 1</a>
 </span>
 
 <span class="hometag">
