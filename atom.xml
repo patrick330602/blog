@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://patrickwu.space/"/>
-  <updated>2020-12-28T03:51:44.753Z</updated>
+  <updated>2020-12-28T15:53:30.671Z</updated>
   <id>https://patrickwu.space/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mia Unua Afiŝo en Esperanto</title>
+    <link href="https://patrickwu.space/2020/12/28/eo-unua-afisxo/"/>
+    <id>https://patrickwu.space/2020/12/28/eo-unua-afisxo/</id>
+    <published>2020-12-28T15:52:56.000Z</published>
+    <updated>2020-12-28T15:53:30.671Z</updated>
+    
+    <content type="html"><![CDATA[<p>Estas mia una afiŝo en Esperanto sur ĉi tiu blogo. Estas homoj kiuj demandas mi ‘Kial vi volas lerni Esperanto?’ La origina caŭso estas ke mi volas uzi Esperanto por lerni aliaj lingvoj. Ĝin jam helpis: Mi ege trovas ke lerni la Francan pli facila(Oui, Je crois). Nun mi trovas, ke Esperanto estas amuza, kaj mi amas ĝin.</p><p>Mi provos diskuti pri politiko kaj teknologio en Esperanto estonte; ĉar mi ne volas afiŝi politikan io en la Angla, kaj skribi afiŝoj helpas min por lerni Esperanto.</p><p>Mi havas du projektojn sur GitHub kun Esperantaj tradukaĵoj: <a href="https://github.com/wslutilities/wslu/blob/master/README.eo.md" target="_blank" rel="noopener">wslu</a> kaj <a href="https://github.com/patrick330602/esperanto-osx-keyboard-layout" target="_blank" rel="noopener">Esperanta Klava</a>. Mi ankaŭ helpas tradukadon en <strong><a href="https://discourse.ubuntu.com/t/announcing-ubuntu-on-windows-community-preview/19789" target="_blank" rel="noopener">Ubuntu on Windows Community Preview</a></strong>, kiun mi okupiĝas pri.</p><p><img src="https://lh6.googleusercontent.com/YC5K0CkeZvnAg3VeOkdymd8bM0TddfXamywvFtVgvzVGEarxwZTLfpymQfOLKFxNkelaOD5AyhafHbsb-GJgluK9bbI2ihV6D4xSfTUBOL_9mZEZ09o5VwTkIhsu2gTF7mUnpOyI" alt="Esperanto en UoWCP" /></p><p>Mi esperas ke mi havas pli bonan komprenadon de Esperanto dum scribi pli.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Estas mia una afiŝo en Esperanto sur ĉi tiu blogo. Estas homoj kiuj demandas mi ‘Kial vi volas lerni Esperanto?’ La origina caŭso estas k
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Esperanto" scheme="https://patrickwu.space/tags/Esperanto/"/>
+    
+  </entry>
   
   <entry>
     <title>2020: Ĉi tiu ne estas bone!</title>
@@ -255,9 +279,9 @@
     
       <category term="Web" scheme="https://patrickwu.space/tags/Web/"/>
     
-      <category term="HTML" scheme="https://patrickwu.space/tags/HTML/"/>
-    
       <category term="CSS" scheme="https://patrickwu.space/tags/CSS/"/>
+    
+      <category term="HTML" scheme="https://patrickwu.space/tags/HTML/"/>
     
   </entry>
   
@@ -535,32 +559,6 @@
     
     
       <category term="Essay" scheme="https://patrickwu.space/tags/Essay/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>向後2018，向前2019</title>
-    <link href="https://patrickwu.space/2018/12/28/review-2018/"/>
-    <id>https://patrickwu.space/2018/12/28/review-2018/</id>
-    <published>2018-12-28T06:56:53.000Z</published>
-    <updated>2020-02-17T05:56:12.549Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="幹了些啥"><a class="markdownIt-Anchor" href="#幹了些啥"></a> 幹了些啥？</h2><p>2018， 這是一個註定不平凡的一年。</p><p>1月，美國交換。紐約，羅拉，聖路易斯，芝加哥，西雅圖。交了新朋友，還見了闊別6年的舊友。第一次在海外過春節，第一次自己計劃旅程，許許多多的第一次，貢獻給了美國之旅。</p><p>2月，我正式放棄開發 UWP 應用，專注開發 wslu. 感謝自己做出了正確的決定，如果不放手，我的項目不會超過300星，我也不會加入 Whitewater Foundry, 我會仍然原地踏步。</p><p>6月，參加在杭州的實習。</p><p>7月，參加TechCrunch大會。</p><p>8月，9月，10月，難熬的託福和GRE。</p><p>9月，加入Whitewater Foundry。</p><p>12月，學期結束。盡了自己的最大努力，雖然成績仍不如意，但是我這次，能告訴我自己：我真的盡力了。</p><h2 id="看了些啥"><a class="markdownIt-Anchor" href="#看了些啥"></a> 看了些啥？</h2><p><strong>士兵的重負 | The Things They Carried</strong> <em>Tim O’Brien</em></p><p>一本關於越南戰爭的書。這種半自傳的設定，很喜歡。</p><p><strong>廉價車之王 | The Fivver King</strong> <em>Upton Sinclair</em></p><p>一個關於美國20世紀初，福特公司的故事。</p><p><strong>夢幻花 | むげんばな</strong> <em>東野圭吾</em></p><p>因為他，我愛上了偵探小説。但這本書，卻頗有虎頭蛇尾之感覺。</p><h2 id="寫畫拍了些啥"><a class="markdownIt-Anchor" href="#寫畫拍了些啥"></a> 寫/畫/拍了些啥？</h2><p>似乎今年，沒寫些啥。想要寫《和平路書報攤》和《WSL指北》，但都只寫了個開頭。</p><p>哦對了，寫了<a href="https://patrickwu.space/2018/06/11/travel-adventure/">美國交流的感想</a>。</p><p>畫到是不少，就是垃圾了點。比如新的分類圖，還有還有，<a href="http://patrickwu.space/categories/Jokes-On-Me">Jokes On Me</a>。</p><p>代碼也是寫了不少。主要還是wslu和WLinux。還有畢業設計。還有MSSS的論壇改版。差不多就這些了。</p><p>拍了不少照片，不過大部分還是用手機。拿到 Canon 5D Mark IV 後立即拍了些。還不錯。</p><h2 id="2019幹啥"><a class="markdownIt-Anchor" href="#2019幹啥"></a> 2019，幹啥？</h2><ul><li>寫完《和平路書報攤》和《WSL指北》；</li><li>認真的去找個女朋友；</li><li>繼續保持鍛鍊，瘦下來。</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;幹了些啥&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#幹了些啥&quot;&gt;&lt;/a&gt; 幹了些啥？&lt;/h2&gt;
-&lt;p&gt;2018， 這是一個註定不平凡的一年。&lt;/p&gt;
-&lt;p&gt;1月，美國交換。紐約，羅拉，聖路易斯，芝加哥，西雅圖。交了新朋友，還見了闊別
-      
-    
-    </summary>
-    
-    
-    
-      <category term="Annual Review" scheme="https://patrickwu.space/tags/Annual-Review/"/>
     
   </entry>
   
