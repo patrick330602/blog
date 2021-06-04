@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2021/03/09/wsl-solution-to-native-docker-daemon-not-starting/" />
+  <meta property="og:title" content="Solving Native Docker(Not Docker Desktop) Unable to Start on Ubuntu 20.10+ on WSL | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Solving Native Docker(Not Docker Desktop) Unable to Start on Ubuntu 20.10+ on WSL | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+  //<![CDATA[
+  var owa_baseUrl = 'https://a.patrickwu.space/';
+  var owa_cmds = owa_cmds || [];
+  owa_cmds.push(['setSiteId', 'f134ed8fb95667ce94bbca095d32af45']);
+  owa_cmds.push(['trackPageView']);
+  owa_cmds.push(['trackClicks']);
+  
+  (function() {
+      var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+      owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+      _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+      var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+  }());
+  //]]>
+</script>
+<!-- End Open Web Analytics Code -->
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Solving Native Docker(Not Docker Desktop) unable to start on Ubuntu 20.10+ on WSL</h1>
+
+	---<br />
+	date: Mar 09, 2021<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Docker/" rel="tag">Docker</a><br />- <a class="tag-link" href="/tags/WSL/" rel="tag">WSL</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>Right now, you know you have two options to run docker on WSL2: You can</p>
+<ol>
+<li>Install using the package manager version;</li>
+<li>Install using Docker Desktop for Windows and enable the WSL2 support.</li>
+</ol>
+<p>The option 2 would usually a great solution for users; but sometimes, we prefer option 1 to do some works more natively.</p>
+<p>However, Recently we got a <a href="https://bugs.launchpad.net/ubuntu-wsl-integration/+bug/1908539" target="_blank" rel="noopener">bug report</a> that people could not use Docker on UoWCP (Ubuntu on Windows Community Preview, based on Ubuntu Hirsute Hippo (21.04)) as they cannot start the daemon.</p>
+<p>Some investigation leads to an interesting find: When trying to run <code>dockerd</code>, it will throw an error:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">INFO[2021-03-09T15:06:20.839195000+08:00] Loading containers: start.</span><br><span class="line">INFO[2021-03-09T15:06:20.885624800+08:00] stopping event stream following graceful shutdown  error&#x3D;&quot;&lt;nil&gt;&quot; module&#x3D;libcontainerd namespace&#x3D;moby</span><br><span class="line">INFO[2021-03-09T15:06:20.885865900+08:00] stopping healthcheck following graceful shutdown  module&#x3D;libcontainerd</span><br><span class="line">INFO[2021-03-09T15:06:20.886012400+08:00] stopping event stream following graceful shutdown  error&#x3D;&quot;context canceled&quot; module&#x3D;libcontainerd namespace&#x3D;plugins.moby</span><br><span class="line">failed to start daemon: Error initializing network controller: error obtaining controller instance: unable to add return rule in DOCKER-ISOLATION-STAGE-1 chain:  (iptables failed: iptables --wait -A DOCKER-ISOLATION-STAGE-1 -j RETURN: iptables v1.8.7 (nf_tables):  RULE_APPEND failed (No such file or directory): rule in chain DOCKER-ISOLATION-STAGE-1</span><br><span class="line"> (exit status 4))</span><br></pre></td></tr></table></figure>
+<p>I noticed <code>iptables</code> being used is a <code>nftables</code> version. Turns out, Starting from version 20.10, Ubuntu switched the firewall system to <code>nftables</code> in like mentoned <a href="https://net2.com/ubuntu-20-10-comes-with-nftables-as-firewall/" target="_blank" rel="noopener">here</a>; But unfortunately, using <code>nftables</code> natively requires Linux Kernel 5.8, where the latest Kernel version for WSL is 5.4.</p>
+<p>Fortunately, Ubuntu still have a legacy version of <code>iptables</code> kept in the system. To do it, you can simlpy use <code>update-alternatives --config iptables</code> to change it:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ sudo update-alternatives --config iptables</span><br><span class="line">There are 2 choices for the alternative iptables (providing &#x2F;usr&#x2F;sbin&#x2F;iptables).</span><br><span class="line"></span><br><span class="line">  Selection    Path                       Priority   Status</span><br><span class="line">------------------------------------------------------------</span><br><span class="line">* 0            &#x2F;usr&#x2F;sbin&#x2F;iptables-nft      20        auto mode</span><br><span class="line">  1            &#x2F;usr&#x2F;sbin&#x2F;iptables-legacy   10        manual mode</span><br><span class="line">  2            &#x2F;usr&#x2F;sbin&#x2F;iptables-nft      20        manual mode</span><br><span class="line"></span><br><span class="line">Press &lt;enter&gt; to keep the current choice[*], or type selection number: 1</span><br><span class="line">update-alternatives: using &#x2F;usr&#x2F;sbin&#x2F;iptables-legacy to provide &#x2F;usr&#x2F;sbin&#x2F;iptables (iptables) in manual mode</span><br></pre></td></tr></table></figure>
+<p>Afterwards, restart the daemon and you will notice docker works normal again!</p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2021/04/30/wsl-ubuntu1604-eol/">
+      Ubuntu 16.04 End-Of-Life on WSL: What you should do
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2021/02/02/wsl-powershell-output-issue/">
+        WSL powershell.exe Output Encoding Problem
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+<hr/>
+
+<a rel="license noopener" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+<br />
+Unless specified, all the articles are licensed under a <a rel="license noopener" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+
+<hr/>
+
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> hosted on <a href="https://www.digitalocean.com/products/app-platform/" target="_blank" rel="noopener">DigitalOcean App Platform</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>The source code of this website is hosted at <a href="https://github.com/patrick330602/blog-source" target="_blank" rel="noopener">patrick330602/blog-source</a>, so that you can see the spaghetti code behind my blog.</p>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://cdn.patrickwu.space" target="_blank">CDN</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2021
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

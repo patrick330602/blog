@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2021/06/03/build-2021/" />
+  <meta property="og:title" content="Microsoft Build 2021: My Tiny Little Summary | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Microsoft Build 2021: My Tiny Little Summary | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+  //<![CDATA[
+  var owa_baseUrl = 'https://a.patrickwu.space/';
+  var owa_cmds = owa_cmds || [];
+  owa_cmds.push(['setSiteId', 'f134ed8fb95667ce94bbca095d32af45']);
+  owa_cmds.push(['trackPageView']);
+  owa_cmds.push(['trackClicks']);
+  
+  (function() {
+      var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+      owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+      _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+      var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+  }());
+  //]]>
+</script>
+<!-- End Open Web Analytics Code -->
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Microsoft Build 2021: My Tiny Little Summary</h1>
+
+	---<br />
+	date: Jun 03, 2021<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/C/" rel="tag">C#</a><br />- <a class="tag-link" href="/tags/Microsoft-Build/" rel="tag">Microsoft Build</a><br />- <a class="tag-link" href="/tags/WSL/" rel="tag">WSL</a><br />- <a class="tag-link" href="/tags/WSLg/" rel="tag">WSLg</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<h2 id="tl-dr"><a class="markdownIt-Anchor" href="#tl-dr"></a> TL; DR</h2>
+<p>Oh, look, a wild Microsoft Build appeared! The Microsoft Build this year was, you know, all virtual again. As a person who is more interested in .NET and WSL development, I find it disappointing that not much of Windows development is mentioned in the entire conference. It made me miss <a href="https://patrickwu.space/2019/05/10/build-2019/">Build 2019</a>. While I am still not recovered from my master’s study, my laptop died right during the Build conference; I can only provide a straightforward summary of this year’s Build. Well, I think let’s dive in.</p>
+<div class="twitter-wrapper"><blockquote class="twitter-tweet"><a href="https://twitter.com/callmepkwu/status/1397623325560504329" target="_blank" rel="noopener"></a></blockquote></div><script async defer src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<h2 id="wsl"><a class="markdownIt-Anchor" href="#wsl"></a> WSL</h2>
+<p>To my disappointment, there is not much new in this build. This build generally recapped everything we have so far, such as WSLg and ``wsl --install`. The only new thing I noticed is Visual Studio’s ability to debug using the browser in WSL using WSLg.</p>
+<div class="twitter-wrapper"><blockquote class="twitter-tweet"><a href="https://twitter.com/callmepkwu/status/1397585583459868673" target="_blank" rel="noopener"></a></blockquote></div><script async defer src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<h2 id="net"><a class="markdownIt-Anchor" href="#net"></a> .NET</h2>
+<p>The sessions about .NET is packed with information, although there is nearly 1-digit number of sessions about it. .NET Upgrade Assistant (Help upgrade .NET project to latest version) would be possibly a great tool for me to migrate my old projects to newer version, and .NET 6 with its Single stack (only one SDK, BCL, Toolchain for cross-platform) structure made it looks really promising.  Here is a quick sum up from the <a href="https://docs.microsoft.com/en-us/events/build-may-2021/azure/breakouts/od485/?ocid=AID3032299" target="_blank" rel="noopener">session</a>:</p>
+<ul>
+<li>
+<p>C# 10</p>
+<ul>
+<li>Syntactic Simplications
+<ul>
+<li>In-line comparison (Equals in <code>{}</code> in Writeline can be simplified to just <code>==</code>)</li>
+</ul>
+</li>
+<li>Record structs
+<ul>
+<li>record class/struct</li>
+</ul>
+</li>
+<li>Improvements to lambdas and auto-properties
+<ul>
+<li><code>init</code> for simple initialization</li>
+<li><code>required</code> option for <code>init</code> items</li>
+<li><code>=&gt;</code> for <code>init</code>, <code>get</code> and <code>set</code></li>
+<li><code>!!</code> for check incoming variable</li>
+<li><code>global using</code> for all dependency accorss</li>
+<li><code>namespace &lt;name&gt;;</code>can be used instead of the old<code>namespace &lt;name&gt; {}</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Web API (minimal)</p>
+</li>
+<li>
+<p>.NET MAUI</p>
+<ul>
+<li><code>dotnet new maui</code></li>
+<li>Speacial Resources type (Maui*)</li>
+<li>Would be really great for some projects</li>
+</ul>
+</li>
+<li>
+<p>Blazor</p>
+</li>
+<li>
+<p>WebAssembly ahead-of-time compilation</p>
+</li>
+<li>
+<p>Error boundaries</p>
+</li>
+<li>
+<p>Razor component type inference &amp; generic type constraints</p>
+</li>
+<li>
+<p>Dynamic Components</p>
+</li>
+<li>
+<p>Blazor state persistence during prendering</p>
+</li>
+<li>
+<p>Fluent UI</p>
+</li>
+<li>
+<p><a href="http://ASP.NET" target="_blank" rel="noopener">ASP.NET</a> Core</p>
+<ul>
+<li>Runtime
+<ul>
+<li>HTTP/3</li>
+<li>HTTP logging middleware</li>
+<li>Shadow copying for IIS deployment</li>
+<li>OpenTelementary support</li>
+</ul>
+</li>
+<li>API
+<ul>
+<li>Minimal APIs
+<ul>
+<li><code>start.cs</code> is now optional</li>
+<li>lambda support</li>
+<li>provide experience similar to NodeJS</li>
+</ul>
+</li>
+<li>Async streaming</li>
+<li><code>IAsyncDisposable</code> support</li>
+<li>gRPC client retries &amp; load balancing</li>
+</ul>
+</li>
+<li>Web UI
+<ul>
+<li>CSS isolation for Pages &amp; Views</li>
+<li>Improved SPA support</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="other"><a class="markdownIt-Anchor" href="#other"></a> Other</h1>
+<ul>
+<li><a href="https://devblogs.microsoft.com/commandline/windows-package-manager-1-0/?utm_source=isaacl&amp;utm_medium=twitter&amp;utm_campaign=link&amp;WT.mc_id=link-twitter-isaacl" target="_blank" rel="noopener">winget 1.0</a></li>
+<li>Visual Studio Hot Reload; this will save a lot of times for me</li>
+<li>Project Reunion 0.8
+<ul>
+<li>Provides UWP-like interface</li>
+<li>MAUI+WinUI</li>
+<li>1.0 will come with the notification feature</li>
+</ul>
+</li>
+</ul>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2021/06/04/github-multiple-email-change/">
+      How to change multiple emails in Your Repos
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2021/04/30/wsl-ubuntu1604-eol/">
+        Ubuntu 16.04 End-Of-Life on WSL: What you should do
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+<hr/>
+
+<a rel="license noopener" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+<br />
+Unless specified, all the articles are licensed under a <a rel="license noopener" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+
+<hr/>
+
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> hosted on <a href="https://www.digitalocean.com/products/app-platform/" target="_blank" rel="noopener">DigitalOcean App Platform</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>The source code of this website is hosted at <a href="https://github.com/patrick330602/blog-source" target="_blank" rel="noopener">patrick330602/blog-source</a>, so that you can see the spaghetti code behind my blog.</p>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://cdn.patrickwu.space" target="_blank">CDN</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2021
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

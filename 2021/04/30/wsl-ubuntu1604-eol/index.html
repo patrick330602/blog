@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2021/04/30/wsl-ubuntu1604-eol/" />
+  <meta property="og:title" content="Ubuntu 16.04 End-of-Life on WSL: What You Should Do | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  Ubuntu 16.04 End-of-Life on WSL: What You Should Do | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+  //<![CDATA[
+  var owa_baseUrl = 'https://a.patrickwu.space/';
+  var owa_cmds = owa_cmds || [];
+  owa_cmds.push(['setSiteId', 'f134ed8fb95667ce94bbca095d32af45']);
+  owa_cmds.push(['trackPageView']);
+  owa_cmds.push(['trackClicks']);
+  
+  (function() {
+      var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+      owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+      _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+      var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+  }());
+  //]]>
+</script>
+<!-- End Open Web Analytics Code -->
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>Ubuntu 16.04 End-Of-Life on WSL: What you should do</h1>
+
+	---<br />
+	date: Apr 30, 2021<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a><br />- <a class="tag-link" href="/tags/WSL/" rel="tag">WSL</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>Ubuntu 16.04 LTS reached End-Of-Life today. This also means Ubuntu 16.04 on Windows also will get off from the Microsoft Store. For people who still use Ubuntu 16.04 on WSL, unless you have purchased <a href="https://ubuntu.com/security/esm" target="_blank" rel="noopener">ESM (Extended Security Maintainance)</a> as part of Ubuntu Advantage, you will not be able to upgrade packages on Ubuntu 16.04 LTS. If you still have a WSL instance running Ubuntu 16.04 LTS, you can take the following actions.</p>
+<h2 id="move-ubuntu-1604-images-to-another-ubuntu-uwp"><a class="markdownIt-Anchor" href="#move-ubuntu-1604-images-to-another-ubuntu-uwp"></a> Move Ubuntu 16.04 images to another Ubuntu UWP</h2>
+<p>As Ubuntu 16.04 is removed from the Microsoft Store, it is suggested to move your WSL system to another supported UWP version of Ubuntu:</p>
+<ul>
+<li><a href="https://www.microsoft.com/store/apps/9N9TNGVNDL3Q" target="_blank" rel="noopener">Ubuntu 18.04 LTS</a></li>
+<li><a href="https://www.microsoft.com/store/apps/9n6svws3rx71" target="_blank" rel="noopener">Ubuntu 20.04 LTS</a></li>
+<li><a href="https://www.microsoft.com/store/apps/9NBLGGH4MSV6" target="_blank" rel="noopener">Ubuntu</a></li>
+</ul>
+<p>Download one of them, open it once, and proceed to the following steps:</p>
+<h3 id="export-and-remove-ubuntu-1604-lts"><a class="markdownIt-Anchor" href="#export-and-remove-ubuntu-1604-lts"></a> Export and Remove Ubuntu 16.04 LTS</h3>
+<p>Export your current distro to a tarball:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --export Ubuntu-16.04 ubuntu1604.tar</span><br></pre></td></tr></table></figure>
+<p>It would be best if you also used this as a copy of your original Ubuntu 16.04 backup.</p>
+<h3 id="install"><a class="markdownIt-Anchor" href="#install"></a> Install</h3>
+<h4 id="for-ubuntu-2004-lts"><a class="markdownIt-Anchor" href="#for-ubuntu-2004-lts"></a> For Ubuntu 20.04 LTS</h4>
+<p>Execute the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wsl --unregister Ubuntu-20.04</span><br><span class="line">wsl --import Ubuntu-20.04 C:\Users\&lt;Your Windows Username&gt;\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu20.04onWindows_79rhkp1fndgsc\LocalState .\ubuntu1604.tar</span><br><span class="line">ubuntu2004.exe config --default-user &lt;Your WSL Username&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="for-ubuntu-1804-lts"><a class="markdownIt-Anchor" href="#for-ubuntu-1804-lts"></a> For Ubuntu 18.04 LTS</h4>
+<p>Execute the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wsl --unregister Ubuntu-18.04</span><br><span class="line">wsl --import Ubuntu-18.04 C:\Users\&lt;Your Windows Username&gt;\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc\LocalState .\ubuntu1604.tar</span><br><span class="line">ubuntu1804.exe config --default-user &lt;Your WSL Username&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="for-ubuntu"><a class="markdownIt-Anchor" href="#for-ubuntu"></a> For Ubuntu</h4>
+<p>Execute the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wsl --unregister Ubuntu</span><br><span class="line">wsl --import Ubuntu C:\Users\&lt;Your Windows Username&gt;\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState .\ubuntu1604.tar</span><br><span class="line">ubuntu.exe config --default-user &lt;Your WSL Username&gt;</span><br></pre></td></tr></table></figure>
+<p>And then you are done! Now we should upgrade your system to a supported one:</p>
+<h2 id="upgrading-ubuntu-1604-to-the-latest-supported-version"><a class="markdownIt-Anchor" href="#upgrading-ubuntu-1604-to-the-latest-supported-version"></a> Upgrading Ubuntu 16.04 to the latest supported version</h2>
+<p>You should still be able to upgrade to the latest supported version when this article is written. But if you miss the deadline, you should follow the following method to perform the release upgrade.</p>
+<h3 id="update-sourceslist"><a class="markdownIt-Anchor" href="#update-sourceslist"></a> Update sources.list</h3>
+<p>To begin the upgrade, make sure you have a <code>sources.list</code> like the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Required</span><br><span class="line">deb http:&#x2F;&#x2F;old-releases.ubuntu.com&#x2F;ubuntu&#x2F; xenial main restricted universe multiverse</span><br><span class="line">deb http:&#x2F;&#x2F;old-releases.ubuntu.com&#x2F;ubuntu&#x2F; xenial-updates main restricted universe multiverse</span><br><span class="line">deb http:&#x2F;&#x2F;old-releases.ubuntu.com&#x2F;ubuntu&#x2F; xenial-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"># Optional</span><br><span class="line">#deb http:&#x2F;&#x2F;old-releases.ubuntu.com&#x2F;ubuntu&#x2F; CODENAME-backports main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+<p>You can use <code>-backports</code> and or <code>-proposed</code> if you want.</p>
+<h3 id="dependencies"><a class="markdownIt-Anchor" href="#dependencies"></a> Dependencies</h3>
+<p>It would help if you also made sure meta-package <code>ubuntu-wsl</code> is installed so the upgrade can continue without problems.</p>
+<h3 id="run-the-upgrade"><a class="markdownIt-Anchor" href="#run-the-upgrade"></a> Run the upgrade</h3>
+<p>After you’ve done the above, run the updates and then the upgrade as usually:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get dist-upgrade</span><br><span class="line">sudo do-release-upgrade</span><br></pre></td></tr></table></figure>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2021/06/03/build-2021/">
+      Microsoft Build 2021: My Tiny Little Summary
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2021/03/09/wsl-solution-to-native-docker-daemon-not-starting/">
+        Solving Native Docker(Not Docker Desktop) unable to start...
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+<hr/>
+
+<a rel="license noopener" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+<br />
+Unless specified, all the articles are licensed under a <a rel="license noopener" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+
+<hr/>
+
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> hosted on <a href="https://www.digitalocean.com/products/app-platform/" target="_blank" rel="noopener">DigitalOcean App Platform</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>The source code of this website is hosted at <a href="https://github.com/patrick330602/blog-source" target="_blank" rel="noopener">patrick330602/blog-source</a>, so that you can see the spaghetti code behind my blog.</p>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://cdn.patrickwu.space" target="_blank">CDN</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2021
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>

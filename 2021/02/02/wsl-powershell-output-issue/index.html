@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes"/>
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@patrick330602" />
+  <meta name="twitter:creator" content="@patrick330602" />
+  <meta property="og:url" content="https://patrickwu.space/2021/02/02/wsl-powershell-output-issue/" />
+  <meta property="og:title" content="WSL powershell.exe Output Encoding Problem | Listener" />
+  <meta property="og:image" content="https://cdn.patrickwu.space/base/social.png" />
+  <title>  WSL powershell.exe Output Encoding Problem | Listener </title>
+
+ 
+  
+    <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
+  
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+  //<![CDATA[
+  var owa_baseUrl = 'https://a.patrickwu.space/';
+  var owa_cmds = owa_cmds || [];
+  owa_cmds.push(['setSiteId', 'f134ed8fb95667ce94bbca095d32af45']);
+  owa_cmds.push(['trackPageView']);
+  owa_cmds.push(['trackClicks']);
+  
+  (function() {
+      var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
+      owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
+      _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
+      var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
+  }());
+  //]]>
+</script>
+<!-- End Open Web Analytics Code -->
+
+  
+<script src="/honk.js"></script>
+
+  
+<link rel="stylesheet" href="/style.css">
+ 
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Listener" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Listener" type="application/rss+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><article class="post">
+	<div>
+
+	<h1>WSL powershell.exe Output Encoding Problem</h1>
+
+	---<br />
+	date: Feb 02, 2021<br />
+
+	
+	tags:<br />
+	-
+	<a class="tag-link" href="/tags/Powershell/" rel="tag">Powershell</a><br />- <a class="tag-link" href="/tags/WSL/" rel="tag">WSL</a>
+	<br />
+	---
+</div>
+	
+	<div>
+		
+			<p>Well well well, here we go again.</p>
+<p>I recently received a bug report that when there are umlauts in their username (<a href="https://github.com/wslutilities/wslu/issues/162" target="_blank" rel="noopener">wslutilities/wslu#162</a>), <code>wslusc</code> failed to copy the file. In his case, the username is “StephanHochdörfer,” and the output is the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">[warn] wsl.ico not found in Windows directory. Copying right now...</span><br><span class="line">mkdir: cannot create directory &#39;&#x2F;mnt&#x2F;c&#x2F;Users&#x2F;StephanHochd\224rfer&#x2F;wslu&#39;: No such file or directory</span><br><span class="line">cp: cannot create regular file &#39;&#x2F;mnt&#x2F;c&#x2F;Users&#x2F;StephanHochd&#39;$&#39;\224&#39;&#39;rfer&#x2F;wslu&#39;: No such file or directory</span><br><span class="line">[info] wsl.ico copied. Located at &quot;&#x2F;mnt&#x2F;c&#x2F;Users&#x2F;StephanHochd�rfer&#x2F;wslu&quot;.</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.patrickwu.space/memes/oh-no-anyway.jpeg" alt="Oh no! Anyway..." /></p>
+<p>Oh no! Anyway, it’s related to the code page mess in our good old <code>powershell.exe</code> —- what a great sequel to our <a href="https://patrickwu.space/2019/08/03/wsl-powershell-raster-font-problem/">powershell raster font problem</a>.</p>
+<p>From last time, we already get a pretty good structure that solves raster font, so we will expand from there:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">oemcp=$(reg.exe query <span class="string">"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Nls\\CodePage"</span> /v OEMCP 2&gt;&amp;1 | sed -n 3p | sed -e <span class="string">'s|\r||g'</span> | grep -o <span class="string">'[[:digit:]]*'</span>)</span><br><span class="line">chcp.com <span class="variable">$oemcp</span></span><br><span class="line">powershell.exe ... </span><br><span class="line">chcp.com 65001</span><br></pre></td></tr></table></figure>
+<p><code>powershell.exe</code> has an interesting way in its input/output encoding, that it will follow the system code page. You can type <code>[Console]::OutputEncoding</code> and <code>[Console]::InputEncoding</code> in Powershell, and you can see what language/encoding/code page your console is currently using (Mine here is already corrupted during the debugging):</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/wsl-winps-encoding-1.png" alt="My messed up encoding" /></p>
+<p>However, As we mentioned in <a href="https://patrickwu.space/2019/08/03/wsl-powershell-raster-font-problem/">powershell raster font problem article</a>, we need UTF-8 all the time. Thus, we can force input to follow your system language by using <code>[Console]::InputEncoding = [System.Text.Encoding]::GetEncoding(&lt;codepage&gt;)</code> command, where <code>codepage</code> is… well… code page; we can then force the output to use UTF-8 by using <code>[Console]::OutputEncoding = [System.Text.Encoding]::UTF8</code> command. Both commands should be executed before executing your command, so it should be something like this:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell.exe ... -Command <span class="string">"[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; [Console]::InputEncoding = [System.Text.Encoding]::GetEncoding(&lt;codepage&gt;); &lt;command&gt;"</span></span><br></pre></td></tr></table></figure>
+<p>Combining from the base, we got the following:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">oemcp=$(reg.exe query <span class="string">"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Nls\\CodePage"</span> /v OEMCP 2&gt;&amp;1 | sed -n 3p | sed -e <span class="string">'s|\r||g'</span> | grep -o <span class="string">'[[:digit:]]*'</span>)</span><br><span class="line">chcp.com <span class="variable">$oemcp</span></span><br><span class="line">oemcp=$((<span class="variable">$oemcp</span>+0))</span><br><span class="line">powershell.exe ... -Command <span class="string">"[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; [Console]::InputEncoding = [System.Text.Encoding]::GetEncoding(<span class="variable">$cp</span>); &lt;command&gt;"</span></span><br><span class="line">chcp.com 65001</span><br></pre></td></tr></table></figure>
+<p>And now the problem is now gone! Following is demo of the fixed bug in <code>wslu</code>:</p>
+<p><img src="https://cdn.patrickwu.space/posts/dev/wsl/wsl-winps-encoding-2.png" alt="" /></p>
+<p>Now I wish there won’t be another sequel to this problem…</p>
+
+		
+	</div>
+	<h2>Navigation</h2>
+
+
+<nav>
+  
+  <div>
+    <strong>Next Post</strong>
+    
+    <a class="post-nav-title" href="/2021/03/09/wsl-solution-to-native-docker-daemon-not-starting/">
+      Solving Native Docker(Not Docker Desktop) unable to start...
+    </a>
+  </div>
+  
+  
+  <div>
+      <strong>Previous Post</strong> :
+      
+      <a class="post-nav-title" href="/2021/01/10/Among-Us-but-it-s-Garbled-AND-Transfer/">
+        Among Us but it&#39;s Garbled AND Transfer
+      </a>
+  </div>
+  
+</nav>
+
+</article>
+  
+
+
+<hr/>
+
+<a rel="license noopener" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a>
+<br />
+Unless specified, all the articles are licensed under a <a rel="license noopener" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+
+<hr/>
+
+<p>The site is proudly powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> hosted on <a href="https://www.digitalocean.com/products/app-platform/" target="_blank" rel="noopener">DigitalOcean App Platform</a>.</p>
+<p>The site is powered by the glorious CSS from <a
+		href="http://bettermotherfuckingwebsite.com">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+</p>
+
+<p>The source code of this website is hosted at <a href="https://github.com/patrick330602/blog-source" target="_blank" rel="noopener">patrick330602/blog-source</a>, so that you can see the spaghetti code behind my blog.</p>
+
+<a href="https://patrickwu.space" target="_blank">Main</a> 
+| 
+<a href="https://access.patrickwu.space" target="_blank">Access</a> 
+| 
+<a href="https://cdn.patrickwu.space" target="_blank">CDN</a> 
+| 
+<a href="https://patrickwu.space/atom.xml" target="_blank">RSS</a> 
+| 
+<a href="https://patrickwu.space/sitemap.xml" target="_blank">Sitemap</a>
+<br/>
+2008 - 2021
+|
+Patrick WU Jinming<!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+
+</html>
