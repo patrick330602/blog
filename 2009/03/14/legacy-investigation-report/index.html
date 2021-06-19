@@ -17,16 +17,35 @@
     <link rel="icon" href="https://cdn.patrickwu.space/base/icon.png">
   
 
-
-<!-- Start Open Web Analytics Tracker -->
 <script type="text/javascript">
   //<![CDATA[
+  function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  function Toptout() {
+    document.cookie = "patblog_track_is_opt_out=a; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/;";
+    window['patblog_track_is_opt_out'] = 'a';
+  }
   var owa_baseUrl = 'https://api.patrickwu.space/analytics/';
   var owa_cmds = owa_cmds || [];
+  is_opt_out=getCookie("patblog_track_is_opt_out");
   owa_cmds.push(['setSiteId', 'f134ed8fb95667ce94bbca095d32af45']);
+  if(is_opt_out != "" ) {owa_cmds.push(['pause-owa']);}
   owa_cmds.push(['trackPageView']);
   owa_cmds.push(['trackClicks']);
   owa_cmds.push(['trackDomStream']);
+  if(is_opt_out != "" ) {owa_cmds.push(['unpause-owa']);}
   
   (function() {
       var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
@@ -36,7 +55,6 @@
   }());
   //]]>
   </script>
-  <!-- End Open Web Analytics Code -->
 
   
 <script src="/honk.js"></script>
@@ -114,7 +132,9 @@ Unless specified, all the articles are licensed under a <a rel="license noopener
 
 <hr/>
 
-<p>The site is powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>. It uses a self-hosted <a href="http://www.openwebanalytics.com/" target="_blank" rel="noopener">Open Web Analytics</a> to get insights. It is using the glorious CSS from <a href="http://bettermotherfuckingwebsite.com" target="_blank" rel="noopener">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
+<p>The site is powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>.<br/>
+     It uses a self-hosted <a href="http://www.openwebanalytics.com/" target="_blank" rel="noopener">Open Web Analytics</a> to get insights. Click <a href="javascript:Toptout()">here</a> to optout.<br/>
+     It is using the glorious CSS from <a href="http://bettermotherfuckingwebsite.com" target="_blank" rel="noopener">bettermotherf**kingwebsite.com</a> with some <a href="https://patrickwu.space/2020/01/04/a-even-better-motherfing-website/">tweaks</a>. Censored the f-word for good.
 </p>
 
 <p>The source code of this website is hosted at <a href="https://github.com/patrick330602/blog-source" target="_blank" rel="noopener">here</a>, so that you can see the spaghetti code behind my blog.</p>
